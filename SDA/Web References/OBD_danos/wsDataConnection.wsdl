@@ -1,0 +1,3671 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx">
+      <s:element name="UpdateEstatusEmi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCotiza" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Estatus" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEstatusEmiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateEstatusEmiResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Error">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valor" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertaRenovacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdCotizacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdEjecutivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Prima" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertaRenovacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertaRenovacionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificaEmisor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdCotizacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdEjecutivo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificaEmisorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModificaEmisorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertaPrimas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCotizacion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNABA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PTABA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNPRIMERO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PTPRIMERO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNQUALITAS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PTQUALITAS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNMULTIVA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PTMULTIVA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNMAPFRE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PTMAPFRE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNGNP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PTGNP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNPOTOSI" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PTPOTOSI" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNANA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PTANA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNZURICH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PTZURICH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PNAXA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PTAXA" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertaPrimasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertaPrimasResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EE_Inserta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCotizacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdEjecutivo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdSocio" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdModelo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdValor" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="SumaAsegurada" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaCotizacion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdEmision" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoPoliza" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdAseguradora" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cobertura" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoMotor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoSerie" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoPlacas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrimaNeta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DerechoPoliza" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IVA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrimaTotal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaInicio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaVigencia" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdTipoRegistroVehicular" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegistroVehicular" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoComprobante" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoPago" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Poblacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoPostal" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdBeneficiario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaEmision" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EE_InsertaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EE_InsertaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EE_ConsultaEmisiones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FechaInicio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaFin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EE_ConsultaEmisionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EE_ConsultaEmisionesResult" type="tns:ArrayOfEEConsulta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEEConsulta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EEConsulta" nillable="true" type="tns:EEConsulta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EEConsulta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdEmite" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoCotizacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Poliza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreAseguradora" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cobertura" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoComprobante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaInicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreEjecutivo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cooperativa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plaza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaEmision" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaNeta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DerechoPoliza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IVA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaTotal" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EE_RegresaEmisionExterna">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCotizacion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EE_RegresaEmisionExternaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EE_RegresaEmisionExternaResult" type="tns:EmisionExterna" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmisionExterna">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdEmite" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCotiza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimerNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SegundoNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoPaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoMaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaNacimiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaIngreso" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CURP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdEstado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdMunicipio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Municipio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdColonia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colonia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoExterior" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoInterior" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoPostal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Poblacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DomicilioActual" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdTipoTel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoTel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdOcupacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCivil" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdAseguradora" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cobertura" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdMarca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modelo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnoVehiculo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ValorVehiculo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SumaAsegurada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaInicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaVigencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoMotor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSerie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoPlacas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoRegVe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistroVehicular" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdBeneficiario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoPoliza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoComprobante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaNeta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DerechoPoliza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IVA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaTotal" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AdminCatRegresaModelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdModelo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdminCatRegresaModeloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdminCatRegresaModeloResult" type="tns:DatosModelo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosModelo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Multiva" type="tns:Multiva" />
+          <s:element minOccurs="0" maxOccurs="1" name="Gnp" type="tns:GNP" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdModelo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdPrybe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdMarca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ano" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClaveAba" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClavePrimero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClaveQualitas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClaveAna" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClaveMapfre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClavePotosi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClaveZurich" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClaveAxa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ValorComercial" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Multiva">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubMarca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescSubMarca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GNP">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AdminCatConsultaModelos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdMarca" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AnoVehiculo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdminCatConsultaModelosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdminCatConsultaModelosResult" type="tns:ArrayOfGridModelo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGridModelo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GridModelo" nillable="true" type="tns:GridModelo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GridModelo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdModelo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdPrybe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdMarca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ano" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ValorComercial" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AdminCatInsertaModelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdPRYBE" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdMarca" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AnoVehiculo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveABA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClavePrimero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveMultiva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MarcaMultiva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubMultiva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DescMultiva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveQualitas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveGNP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MarcaGNP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DescGNP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveANA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveMapfre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClavePotosi" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveZurich" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveAXA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ValorComercial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdminCatInsertaModeloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminCatInsertaModeloResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdminCatActualizaModelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdModelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdPRYBE" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdMarca" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AnoVehiculo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveABA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClavePrimero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveMultiva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MarcaMultiva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubMultiva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DescMultiva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveQualitas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveGNP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MarcaGNP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DescGNP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveANA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveMapfre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClavePotosi" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveZurich" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClaveAXA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ValorComercial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdminCatActualizaModeloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminCatActualizaModeloResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambiaEstadoAseguradora">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdAseguradora" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambiaEstadoAseguradoraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CambiaEstadoAseguradoraResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaEstadoAseguradora">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdAseguradora" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaEstadoAseguradoraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConsultaEstadoAseguradoraResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdMotivo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Estatus" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Comentarios" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertTicketResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBenefPref">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaNac" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdGiro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoPersona" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdTipoTel" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Lada" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Extension" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Origen" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdColonia" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoExt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoInt" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DomActual" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdTipoDom" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBenefPrefResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertBenefPrefResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertCotizacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="E_Cot" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Socio" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modelo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Valor_veh" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Sum_aseg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertCotizacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertCotizacionResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSocio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApellidoPat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApellidoMat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaNac" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaIng" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CURP" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ocupacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="EdoCivil" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdColonia" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Origen" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoExt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoInt" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Actual" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdTipoDom" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdTipoTel1" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Lada1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Telefono1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ext1" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdTipoTel2" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Lada2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Telefono2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ext2" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Oper" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSocioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertSocioResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertEmision">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Aseguradora" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cobertura" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="E_Emi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Estatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Descuento" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tipo_RegVeh" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="No_Cotizacion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Pedimento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Factura" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Motor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Serie" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Placas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="F_Vigencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="F_Inicio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Registro_veh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Poblacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CP" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Beneficiario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tipo_pago" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertEmisionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertEmisionResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnIdCotizacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="E_Cot" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Socio" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modelo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnIdCotizacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnIdCotizacionResult" type="tns:IdCotizacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IdCotizacion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CIdCotizacion_IdCot" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnSiIdCotEmitida">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCot" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Operacion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnSiIdCotEmitidaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnSiIdCotEmitidaResult" type="tns:YaEmitida" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="YaEmitida">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnIdSocio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnIdSocioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnIdSocioResult" type="tns:IdSocio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IdSocio">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CIdSocio_IdSoc" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnIdEstado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdEstado" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnIdEstadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnIdEstadoResult" type="tns:Estado" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Estado">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ABA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimeroSeguros" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Multiva" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Qualitas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ANA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GNP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mapfre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Potosi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zurich" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnIdColonia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdColonia" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnIdColoniaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnIdColoniaResult" type="tns:Colonia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Colonia">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdMunicipio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ABA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zurich" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnIdMunicipio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdMunicipio" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnIdMunicipioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnIdMunicipioResult" type="tns:Municipio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Municipio">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdEstado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ABA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimeroSeguros" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Multiva" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mapfre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Potosi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ANA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnDatModelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdModelo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnDatModeloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnDatModeloResult" type="tns:Modelo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Modelo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Multiva" type="tns:Multiva" />
+          <s:element minOccurs="0" maxOccurs="1" name="GNP" type="tns:GNP" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ano" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ABA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ANA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Qualitas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimeroSeguros" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mapfre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Potosi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zurich" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ValorComercial" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnDatSocio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdCoop" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnDatSocioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnDatSocioResult" type="tns:Socio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Socio">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApePat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApeMat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaNac" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaIng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdTipoTel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CURP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoExt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoInt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colonia" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCoop" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdPlaza" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdOcupacion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdEdoCivil" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="boolEncontrado" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaCotizacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NoCotizacion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCotizacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaCotizacionResult" type="tns:Cotizacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Cotizacion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCotizacion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdMarca" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdModelo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modelo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ano" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valor_veh" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sum_aseg" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdEstado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdMunicipio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Municipio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdSocio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoPat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoMat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CURP" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdEdoCivil" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdOcupacion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaNac" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdColonia" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colonia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoExt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoInt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoTel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCoop" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Coop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plaza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MnsjError" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estatus" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BoolError" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaEmision">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCotiza" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaEmisionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaEmisionResult" type="tns:Emision" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Emision">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCotizacion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valor_veh" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sum_aseg" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdEstado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdMunicipio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Municipio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdSocio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoPat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoMat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CURP" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdEdoCivil" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ocupacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaNac" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdColonia" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colonia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Poblacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoExt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoInt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoTel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DomicilioActual" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Aseguradora" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cobertura" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaInicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaVigencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoMotor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSerie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoPlacas" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoRegVeh" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistroVeh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estatus" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BeneficiarioPref" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorBool" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMnsj" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnStatusCot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCotiza" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnStatusCotResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnStatusCotResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCotPrev">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCotiza" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Coop" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCotPrevResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConsultaCotPrevResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEmision">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NoCotizacion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Poliza" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrimaNeta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DerechoPoliza" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IVA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrimaTotal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoComprobante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaInicio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaVigencia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEmisionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateEmisionResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMotCanCot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCotiza" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Motivo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMotCanCotResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateMotCanCotResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEstatusCot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCotiza" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Estatus" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEstatusCotResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateEstatusCotResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConDatReimpresion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCot" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConDatReimpresionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConDatReimpresionResult" type="tns:Reimprime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Reimprime">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Aseguradora" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Poliza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="F_Vigencia" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Error" nillable="true" type="tns:Error" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="ArrayOfEEConsulta" nillable="true" type="tns:ArrayOfEEConsulta" />
+      <s:element name="EmisionExterna" nillable="true" type="tns:EmisionExterna" />
+      <s:element name="DatosModelo" nillable="true" type="tns:DatosModelo" />
+      <s:element name="ArrayOfGridModelo" nillable="true" type="tns:ArrayOfGridModelo" />
+      <s:element name="IdCotizacion" nillable="true" type="tns:IdCotizacion" />
+      <s:element name="YaEmitida" nillable="true" type="tns:YaEmitida" />
+      <s:element name="IdSocio" nillable="true" type="tns:IdSocio" />
+      <s:element name="Estado" nillable="true" type="tns:Estado" />
+      <s:element name="Colonia" nillable="true" type="tns:Colonia" />
+      <s:element name="Municipio" nillable="true" type="tns:Municipio" />
+      <s:element name="Modelo" nillable="true" type="tns:Modelo" />
+      <s:element name="Socio" nillable="true" type="tns:Socio" />
+      <s:element name="Cotizacion" nillable="true" type="tns:Cotizacion" />
+      <s:element name="Emision" nillable="true" type="tns:Emision" />
+      <s:element name="int" type="s:int" />
+      <s:element name="Reimprime" nillable="true" type="tns:Reimprime" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateEstatusEmiSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEstatusEmi" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusEmiSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEstatusEmiResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertaRenovacionSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertaRenovacion" />
+  </wsdl:message>
+  <wsdl:message name="InsertaRenovacionSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertaRenovacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificaEmisorSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificaEmisor" />
+  </wsdl:message>
+  <wsdl:message name="ModificaEmisorSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificaEmisorResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertaPrimasSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertaPrimas" />
+  </wsdl:message>
+  <wsdl:message name="InsertaPrimasSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertaPrimasResponse" />
+  </wsdl:message>
+  <wsdl:message name="EE_InsertaSoapIn">
+    <wsdl:part name="parameters" element="tns:EE_Inserta" />
+  </wsdl:message>
+  <wsdl:message name="EE_InsertaSoapOut">
+    <wsdl:part name="parameters" element="tns:EE_InsertaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EE_ConsultaEmisionesSoapIn">
+    <wsdl:part name="parameters" element="tns:EE_ConsultaEmisiones" />
+  </wsdl:message>
+  <wsdl:message name="EE_ConsultaEmisionesSoapOut">
+    <wsdl:part name="parameters" element="tns:EE_ConsultaEmisionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="EE_RegresaEmisionExternaSoapIn">
+    <wsdl:part name="parameters" element="tns:EE_RegresaEmisionExterna" />
+  </wsdl:message>
+  <wsdl:message name="EE_RegresaEmisionExternaSoapOut">
+    <wsdl:part name="parameters" element="tns:EE_RegresaEmisionExternaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatRegresaModeloSoapIn">
+    <wsdl:part name="parameters" element="tns:AdminCatRegresaModelo" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatRegresaModeloSoapOut">
+    <wsdl:part name="parameters" element="tns:AdminCatRegresaModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatConsultaModelosSoapIn">
+    <wsdl:part name="parameters" element="tns:AdminCatConsultaModelos" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatConsultaModelosSoapOut">
+    <wsdl:part name="parameters" element="tns:AdminCatConsultaModelosResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatInsertaModeloSoapIn">
+    <wsdl:part name="parameters" element="tns:AdminCatInsertaModelo" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatInsertaModeloSoapOut">
+    <wsdl:part name="parameters" element="tns:AdminCatInsertaModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatActualizaModeloSoapIn">
+    <wsdl:part name="parameters" element="tns:AdminCatActualizaModelo" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatActualizaModeloSoapOut">
+    <wsdl:part name="parameters" element="tns:AdminCatActualizaModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="CambiaEstadoAseguradoraSoapIn">
+    <wsdl:part name="parameters" element="tns:CambiaEstadoAseguradora" />
+  </wsdl:message>
+  <wsdl:message name="CambiaEstadoAseguradoraSoapOut">
+    <wsdl:part name="parameters" element="tns:CambiaEstadoAseguradoraResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEstadoAseguradoraSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaEstadoAseguradora" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEstadoAseguradoraSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaEstadoAseguradoraResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertTicket" />
+  </wsdl:message>
+  <wsdl:message name="InsertTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertBenefPrefSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertBenefPref" />
+  </wsdl:message>
+  <wsdl:message name="InsertBenefPrefSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertBenefPrefResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertCotizacionSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertCotizacion" />
+  </wsdl:message>
+  <wsdl:message name="InsertCotizacionSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertCotizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertSocio" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertEmision" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertEmisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdCotizacionSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnIdCotizacion" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdCotizacionSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnIdCotizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSiIdCotEmitidaSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnSiIdCotEmitida" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSiIdCotEmitidaSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnSiIdCotEmitidaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnIdSocio" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnIdSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdEstadoSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnIdEstado" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdEstadoSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnIdEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdColoniaSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnIdColonia" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdColoniaSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnIdColoniaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdMunicipioSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnIdMunicipio" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdMunicipioSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnIdMunicipioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatModeloSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnDatModelo" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatModeloSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnDatModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatSocioSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnDatSocio" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatSocioSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnDatSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotizacionSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaCotizacion" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotizacionSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaCotizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEmisionSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaEmision" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEmisionSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaEmisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnStatusCotSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnStatusCot" />
+  </wsdl:message>
+  <wsdl:message name="ReturnStatusCotSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnStatusCotResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotPrevSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaCotPrev" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotPrevSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaCotPrevResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmisionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEmision" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmisionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEmisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMotCanCotSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMotCanCot" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMotCanCotSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMotCanCotResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusCotSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEstatusCot" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusCotSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEstatusCotResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConDatReimpresionSoapIn">
+    <wsdl:part name="parameters" element="tns:ConDatReimpresion" />
+  </wsdl:message>
+  <wsdl:message name="ConDatReimpresionSoapOut">
+    <wsdl:part name="parameters" element="tns:ConDatReimpresionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusEmiHttpGetIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+    <wsdl:part name="Estatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusEmiHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertaRenovacionHttpGetIn">
+    <wsdl:part name="IdCotizacion" type="s:string" />
+    <wsdl:part name="IdEjecutivo" type="s:string" />
+    <wsdl:part name="Prima" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertaRenovacionHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ModificaEmisorHttpGetIn">
+    <wsdl:part name="IdCotizacion" type="s:string" />
+    <wsdl:part name="IdEjecutivo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ModificaEmisorHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="InsertaPrimasHttpGetIn">
+    <wsdl:part name="IdCotizacion" type="s:string" />
+    <wsdl:part name="PNABA" type="s:string" />
+    <wsdl:part name="PTABA" type="s:string" />
+    <wsdl:part name="PNPRIMERO" type="s:string" />
+    <wsdl:part name="PTPRIMERO" type="s:string" />
+    <wsdl:part name="PNQUALITAS" type="s:string" />
+    <wsdl:part name="PTQUALITAS" type="s:string" />
+    <wsdl:part name="PNMULTIVA" type="s:string" />
+    <wsdl:part name="PTMULTIVA" type="s:string" />
+    <wsdl:part name="PNMAPFRE" type="s:string" />
+    <wsdl:part name="PTMAPFRE" type="s:string" />
+    <wsdl:part name="PNGNP" type="s:string" />
+    <wsdl:part name="PTGNP" type="s:string" />
+    <wsdl:part name="PNPOTOSI" type="s:string" />
+    <wsdl:part name="PTPOTOSI" type="s:string" />
+    <wsdl:part name="PNANA" type="s:string" />
+    <wsdl:part name="PTANA" type="s:string" />
+    <wsdl:part name="PNZURICH" type="s:string" />
+    <wsdl:part name="PTZURICH" type="s:string" />
+    <wsdl:part name="PNAXA" type="s:string" />
+    <wsdl:part name="PTAXA" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertaPrimasHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EE_InsertaHttpGetIn">
+    <wsdl:part name="IdCotizacion" type="s:string" />
+    <wsdl:part name="IdEjecutivo" type="s:string" />
+    <wsdl:part name="IdSocio" type="s:string" />
+    <wsdl:part name="IdModelo" type="s:string" />
+    <wsdl:part name="IdValor" type="s:string" />
+    <wsdl:part name="SumaAsegurada" type="s:string" />
+    <wsdl:part name="FechaCotizacion" type="s:string" />
+    <wsdl:part name="IdEmision" type="s:string" />
+    <wsdl:part name="NoPoliza" type="s:string" />
+    <wsdl:part name="IdAseguradora" type="s:string" />
+    <wsdl:part name="Cobertura" type="s:string" />
+    <wsdl:part name="NoMotor" type="s:string" />
+    <wsdl:part name="NoSerie" type="s:string" />
+    <wsdl:part name="NoPlacas" type="s:string" />
+    <wsdl:part name="Color" type="s:string" />
+    <wsdl:part name="PrimaNeta" type="s:string" />
+    <wsdl:part name="DerechoPoliza" type="s:string" />
+    <wsdl:part name="IVA" type="s:string" />
+    <wsdl:part name="PrimaTotal" type="s:string" />
+    <wsdl:part name="FechaInicio" type="s:string" />
+    <wsdl:part name="FechaVigencia" type="s:string" />
+    <wsdl:part name="IdTipoRegistroVehicular" type="s:string" />
+    <wsdl:part name="RegistroVehicular" type="s:string" />
+    <wsdl:part name="NoComprobante" type="s:string" />
+    <wsdl:part name="TipoPago" type="s:string" />
+    <wsdl:part name="Poblacion" type="s:string" />
+    <wsdl:part name="CodigoPostal" type="s:string" />
+    <wsdl:part name="IdBeneficiario" type="s:string" />
+    <wsdl:part name="Descripcion" type="s:string" />
+    <wsdl:part name="FechaEmision" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EE_InsertaHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EE_ConsultaEmisionesHttpGetIn">
+    <wsdl:part name="FechaInicio" type="s:string" />
+    <wsdl:part name="FechaFin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EE_ConsultaEmisionesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEEConsulta" />
+  </wsdl:message>
+  <wsdl:message name="EE_RegresaEmisionExternaHttpGetIn">
+    <wsdl:part name="idCotizacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EE_RegresaEmisionExternaHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmisionExterna" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatRegresaModeloHttpGetIn">
+    <wsdl:part name="IdModelo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatRegresaModeloHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosModelo" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatConsultaModelosHttpGetIn">
+    <wsdl:part name="IdMarca" type="s:string" />
+    <wsdl:part name="AnoVehiculo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatConsultaModelosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfGridModelo" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatInsertaModeloHttpGetIn">
+    <wsdl:part name="IdPRYBE" type="s:string" />
+    <wsdl:part name="IdMarca" type="s:string" />
+    <wsdl:part name="Descripcion" type="s:string" />
+    <wsdl:part name="AnoVehiculo" type="s:string" />
+    <wsdl:part name="ClaveABA" type="s:string" />
+    <wsdl:part name="ClavePrimero" type="s:string" />
+    <wsdl:part name="ClaveMultiva" type="s:string" />
+    <wsdl:part name="MarcaMultiva" type="s:string" />
+    <wsdl:part name="SubMultiva" type="s:string" />
+    <wsdl:part name="DescMultiva" type="s:string" />
+    <wsdl:part name="ClaveQualitas" type="s:string" />
+    <wsdl:part name="ClaveGNP" type="s:string" />
+    <wsdl:part name="MarcaGNP" type="s:string" />
+    <wsdl:part name="DescGNP" type="s:string" />
+    <wsdl:part name="ClaveANA" type="s:string" />
+    <wsdl:part name="ClaveMapfre" type="s:string" />
+    <wsdl:part name="ClavePotosi" type="s:string" />
+    <wsdl:part name="ClaveZurich" type="s:string" />
+    <wsdl:part name="ClaveAXA" type="s:string" />
+    <wsdl:part name="ValorComercial" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatInsertaModeloHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatActualizaModeloHttpGetIn">
+    <wsdl:part name="IdModelo" type="s:string" />
+    <wsdl:part name="IdPRYBE" type="s:string" />
+    <wsdl:part name="IdMarca" type="s:string" />
+    <wsdl:part name="Descripcion" type="s:string" />
+    <wsdl:part name="AnoVehiculo" type="s:string" />
+    <wsdl:part name="ClaveABA" type="s:string" />
+    <wsdl:part name="ClavePrimero" type="s:string" />
+    <wsdl:part name="ClaveMultiva" type="s:string" />
+    <wsdl:part name="MarcaMultiva" type="s:string" />
+    <wsdl:part name="SubMultiva" type="s:string" />
+    <wsdl:part name="DescMultiva" type="s:string" />
+    <wsdl:part name="ClaveQualitas" type="s:string" />
+    <wsdl:part name="ClaveGNP" type="s:string" />
+    <wsdl:part name="MarcaGNP" type="s:string" />
+    <wsdl:part name="DescGNP" type="s:string" />
+    <wsdl:part name="ClaveANA" type="s:string" />
+    <wsdl:part name="ClaveMapfre" type="s:string" />
+    <wsdl:part name="ClavePotosi" type="s:string" />
+    <wsdl:part name="ClaveZurich" type="s:string" />
+    <wsdl:part name="ClaveAXA" type="s:string" />
+    <wsdl:part name="ValorComercial" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatActualizaModeloHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="CambiaEstadoAseguradoraHttpGetIn">
+    <wsdl:part name="IdAseguradora" type="s:string" />
+    <wsdl:part name="Estado" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CambiaEstadoAseguradoraHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEstadoAseguradoraHttpGetIn">
+    <wsdl:part name="IdAseguradora" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEstadoAseguradoraHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="InsertTicketHttpGetIn">
+    <wsdl:part name="IdUsuario" type="s:string" />
+    <wsdl:part name="IdMotivo" type="s:string" />
+    <wsdl:part name="Asunto" type="s:string" />
+    <wsdl:part name="Descripcion" type="s:string" />
+    <wsdl:part name="Estatus" type="s:string" />
+    <wsdl:part name="Comentarios" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertTicketHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertBenefPrefHttpGetIn">
+    <wsdl:part name="Nombre" type="s:string" />
+    <wsdl:part name="RFC" type="s:string" />
+    <wsdl:part name="FechaNac" type="s:string" />
+    <wsdl:part name="IdGiro" type="s:string" />
+    <wsdl:part name="TipoPersona" type="s:string" />
+    <wsdl:part name="Correo" type="s:string" />
+    <wsdl:part name="IdTipoTel" type="s:string" />
+    <wsdl:part name="Lada" type="s:string" />
+    <wsdl:part name="Tel" type="s:string" />
+    <wsdl:part name="Extension" type="s:string" />
+    <wsdl:part name="Origen" type="s:string" />
+    <wsdl:part name="IdColonia" type="s:string" />
+    <wsdl:part name="Calle" type="s:string" />
+    <wsdl:part name="NoExt" type="s:string" />
+    <wsdl:part name="NoInt" type="s:string" />
+    <wsdl:part name="DomActual" type="s:string" />
+    <wsdl:part name="IdTipoDom" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertBenefPrefHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertCotizacionHttpGetIn">
+    <wsdl:part name="E_Cot" type="s:string" />
+    <wsdl:part name="Id_Socio" type="s:string" />
+    <wsdl:part name="Modelo" type="s:string" />
+    <wsdl:part name="Valor_veh" type="s:string" />
+    <wsdl:part name="Sum_aseg" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertCotizacionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioHttpGetIn">
+    <wsdl:part name="NoSocio" type="s:string" />
+    <wsdl:part name="Nombre1" type="s:string" />
+    <wsdl:part name="Nombre2" type="s:string" />
+    <wsdl:part name="ApellidoPat" type="s:string" />
+    <wsdl:part name="ApellidoMat" type="s:string" />
+    <wsdl:part name="FechaNac" type="s:string" />
+    <wsdl:part name="FechaIng" type="s:string" />
+    <wsdl:part name="Sexo" type="s:string" />
+    <wsdl:part name="Correo" type="s:string" />
+    <wsdl:part name="RFC" type="s:string" />
+    <wsdl:part name="CURP" type="s:string" />
+    <wsdl:part name="Ocupacion" type="s:string" />
+    <wsdl:part name="EdoCivil" type="s:string" />
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="IdColonia" type="s:string" />
+    <wsdl:part name="Origen" type="s:string" />
+    <wsdl:part name="Calle" type="s:string" />
+    <wsdl:part name="NoExt" type="s:string" />
+    <wsdl:part name="NoInt" type="s:string" />
+    <wsdl:part name="Actual" type="s:string" />
+    <wsdl:part name="IdTipoDom" type="s:string" />
+    <wsdl:part name="IdTipoTel1" type="s:string" />
+    <wsdl:part name="Lada1" type="s:string" />
+    <wsdl:part name="Telefono1" type="s:string" />
+    <wsdl:part name="Ext1" type="s:string" />
+    <wsdl:part name="IdTipoTel2" type="s:string" />
+    <wsdl:part name="Lada2" type="s:string" />
+    <wsdl:part name="Telefono2" type="s:string" />
+    <wsdl:part name="Ext2" type="s:string" />
+    <wsdl:part name="Oper" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionHttpGetIn">
+    <wsdl:part name="Aseguradora" type="s:string" />
+    <wsdl:part name="Cobertura" type="s:string" />
+    <wsdl:part name="E_Emi" type="s:string" />
+    <wsdl:part name="Estatus" type="s:string" />
+    <wsdl:part name="Descuento" type="s:string" />
+    <wsdl:part name="Tipo_RegVeh" type="s:string" />
+    <wsdl:part name="No_Cotizacion" type="s:string" />
+    <wsdl:part name="No_Pedimento" type="s:string" />
+    <wsdl:part name="No_Factura" type="s:string" />
+    <wsdl:part name="No_Motor" type="s:string" />
+    <wsdl:part name="No_Serie" type="s:string" />
+    <wsdl:part name="No_Placas" type="s:string" />
+    <wsdl:part name="F_Vigencia" type="s:string" />
+    <wsdl:part name="F_Inicio" type="s:string" />
+    <wsdl:part name="Registro_veh" type="s:string" />
+    <wsdl:part name="Poblacion" type="s:string" />
+    <wsdl:part name="CP" type="s:string" />
+    <wsdl:part name="Beneficiario" type="s:string" />
+    <wsdl:part name="Descripcion" type="s:string" />
+    <wsdl:part name="Tipo_pago" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdCotizacionHttpGetIn">
+    <wsdl:part name="E_Cot" type="s:string" />
+    <wsdl:part name="Id_Socio" type="s:string" />
+    <wsdl:part name="Modelo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdCotizacionHttpGetOut">
+    <wsdl:part name="Body" element="tns:IdCotizacion" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSiIdCotEmitidaHttpGetIn">
+    <wsdl:part name="IdCot" type="s:string" />
+    <wsdl:part name="Operacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSiIdCotEmitidaHttpGetOut">
+    <wsdl:part name="Body" element="tns:YaEmitida" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioHttpGetIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="NoSocio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioHttpGetOut">
+    <wsdl:part name="Body" element="tns:IdSocio" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdEstadoHttpGetIn">
+    <wsdl:part name="IdEstado" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdEstadoHttpGetOut">
+    <wsdl:part name="Body" element="tns:Estado" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdColoniaHttpGetIn">
+    <wsdl:part name="IdColonia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdColoniaHttpGetOut">
+    <wsdl:part name="Body" element="tns:Colonia" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdMunicipioHttpGetIn">
+    <wsdl:part name="IdMunicipio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdMunicipioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Municipio" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatModeloHttpGetIn">
+    <wsdl:part name="IdModelo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatModeloHttpGetOut">
+    <wsdl:part name="Body" element="tns:Modelo" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatSocioHttpGetIn">
+    <wsdl:part name="NoSocio" type="s:string" />
+    <wsdl:part name="IdCoop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatSocioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Socio" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotizacionHttpGetIn">
+    <wsdl:part name="NoCotizacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotizacionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Cotizacion" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEmisionHttpGetIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEmisionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Emision" />
+  </wsdl:message>
+  <wsdl:message name="ReturnStatusCotHttpGetIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnStatusCotHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotPrevHttpGetIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+    <wsdl:part name="Id_Coop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotPrevHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmisionHttpGetIn">
+    <wsdl:part name="NoCotizacion" type="s:string" />
+    <wsdl:part name="Poliza" type="s:string" />
+    <wsdl:part name="PrimaNeta" type="s:string" />
+    <wsdl:part name="DerechoPoliza" type="s:string" />
+    <wsdl:part name="IVA" type="s:string" />
+    <wsdl:part name="PrimaTotal" type="s:string" />
+    <wsdl:part name="NoComprobante" type="s:string" />
+    <wsdl:part name="FechaInicio" type="s:string" />
+    <wsdl:part name="FechaVigencia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmisionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMotCanCotHttpGetIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+    <wsdl:part name="Motivo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMotCanCotHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusCotHttpGetIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+    <wsdl:part name="Estatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusCotHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="ConDatReimpresionHttpGetIn">
+    <wsdl:part name="IdCot" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConDatReimpresionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Reimprime" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusEmiHttpPostIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+    <wsdl:part name="Estatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusEmiHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertaRenovacionHttpPostIn">
+    <wsdl:part name="IdCotizacion" type="s:string" />
+    <wsdl:part name="IdEjecutivo" type="s:string" />
+    <wsdl:part name="Prima" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertaRenovacionHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ModificaEmisorHttpPostIn">
+    <wsdl:part name="IdCotizacion" type="s:string" />
+    <wsdl:part name="IdEjecutivo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ModificaEmisorHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="InsertaPrimasHttpPostIn">
+    <wsdl:part name="IdCotizacion" type="s:string" />
+    <wsdl:part name="PNABA" type="s:string" />
+    <wsdl:part name="PTABA" type="s:string" />
+    <wsdl:part name="PNPRIMERO" type="s:string" />
+    <wsdl:part name="PTPRIMERO" type="s:string" />
+    <wsdl:part name="PNQUALITAS" type="s:string" />
+    <wsdl:part name="PTQUALITAS" type="s:string" />
+    <wsdl:part name="PNMULTIVA" type="s:string" />
+    <wsdl:part name="PTMULTIVA" type="s:string" />
+    <wsdl:part name="PNMAPFRE" type="s:string" />
+    <wsdl:part name="PTMAPFRE" type="s:string" />
+    <wsdl:part name="PNGNP" type="s:string" />
+    <wsdl:part name="PTGNP" type="s:string" />
+    <wsdl:part name="PNPOTOSI" type="s:string" />
+    <wsdl:part name="PTPOTOSI" type="s:string" />
+    <wsdl:part name="PNANA" type="s:string" />
+    <wsdl:part name="PTANA" type="s:string" />
+    <wsdl:part name="PNZURICH" type="s:string" />
+    <wsdl:part name="PTZURICH" type="s:string" />
+    <wsdl:part name="PNAXA" type="s:string" />
+    <wsdl:part name="PTAXA" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertaPrimasHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EE_InsertaHttpPostIn">
+    <wsdl:part name="IdCotizacion" type="s:string" />
+    <wsdl:part name="IdEjecutivo" type="s:string" />
+    <wsdl:part name="IdSocio" type="s:string" />
+    <wsdl:part name="IdModelo" type="s:string" />
+    <wsdl:part name="IdValor" type="s:string" />
+    <wsdl:part name="SumaAsegurada" type="s:string" />
+    <wsdl:part name="FechaCotizacion" type="s:string" />
+    <wsdl:part name="IdEmision" type="s:string" />
+    <wsdl:part name="NoPoliza" type="s:string" />
+    <wsdl:part name="IdAseguradora" type="s:string" />
+    <wsdl:part name="Cobertura" type="s:string" />
+    <wsdl:part name="NoMotor" type="s:string" />
+    <wsdl:part name="NoSerie" type="s:string" />
+    <wsdl:part name="NoPlacas" type="s:string" />
+    <wsdl:part name="Color" type="s:string" />
+    <wsdl:part name="PrimaNeta" type="s:string" />
+    <wsdl:part name="DerechoPoliza" type="s:string" />
+    <wsdl:part name="IVA" type="s:string" />
+    <wsdl:part name="PrimaTotal" type="s:string" />
+    <wsdl:part name="FechaInicio" type="s:string" />
+    <wsdl:part name="FechaVigencia" type="s:string" />
+    <wsdl:part name="IdTipoRegistroVehicular" type="s:string" />
+    <wsdl:part name="RegistroVehicular" type="s:string" />
+    <wsdl:part name="NoComprobante" type="s:string" />
+    <wsdl:part name="TipoPago" type="s:string" />
+    <wsdl:part name="Poblacion" type="s:string" />
+    <wsdl:part name="CodigoPostal" type="s:string" />
+    <wsdl:part name="IdBeneficiario" type="s:string" />
+    <wsdl:part name="Descripcion" type="s:string" />
+    <wsdl:part name="FechaEmision" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EE_InsertaHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EE_ConsultaEmisionesHttpPostIn">
+    <wsdl:part name="FechaInicio" type="s:string" />
+    <wsdl:part name="FechaFin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EE_ConsultaEmisionesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEEConsulta" />
+  </wsdl:message>
+  <wsdl:message name="EE_RegresaEmisionExternaHttpPostIn">
+    <wsdl:part name="idCotizacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EE_RegresaEmisionExternaHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmisionExterna" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatRegresaModeloHttpPostIn">
+    <wsdl:part name="IdModelo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatRegresaModeloHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosModelo" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatConsultaModelosHttpPostIn">
+    <wsdl:part name="IdMarca" type="s:string" />
+    <wsdl:part name="AnoVehiculo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatConsultaModelosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfGridModelo" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatInsertaModeloHttpPostIn">
+    <wsdl:part name="IdPRYBE" type="s:string" />
+    <wsdl:part name="IdMarca" type="s:string" />
+    <wsdl:part name="Descripcion" type="s:string" />
+    <wsdl:part name="AnoVehiculo" type="s:string" />
+    <wsdl:part name="ClaveABA" type="s:string" />
+    <wsdl:part name="ClavePrimero" type="s:string" />
+    <wsdl:part name="ClaveMultiva" type="s:string" />
+    <wsdl:part name="MarcaMultiva" type="s:string" />
+    <wsdl:part name="SubMultiva" type="s:string" />
+    <wsdl:part name="DescMultiva" type="s:string" />
+    <wsdl:part name="ClaveQualitas" type="s:string" />
+    <wsdl:part name="ClaveGNP" type="s:string" />
+    <wsdl:part name="MarcaGNP" type="s:string" />
+    <wsdl:part name="DescGNP" type="s:string" />
+    <wsdl:part name="ClaveANA" type="s:string" />
+    <wsdl:part name="ClaveMapfre" type="s:string" />
+    <wsdl:part name="ClavePotosi" type="s:string" />
+    <wsdl:part name="ClaveZurich" type="s:string" />
+    <wsdl:part name="ClaveAXA" type="s:string" />
+    <wsdl:part name="ValorComercial" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatInsertaModeloHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatActualizaModeloHttpPostIn">
+    <wsdl:part name="IdModelo" type="s:string" />
+    <wsdl:part name="IdPRYBE" type="s:string" />
+    <wsdl:part name="IdMarca" type="s:string" />
+    <wsdl:part name="Descripcion" type="s:string" />
+    <wsdl:part name="AnoVehiculo" type="s:string" />
+    <wsdl:part name="ClaveABA" type="s:string" />
+    <wsdl:part name="ClavePrimero" type="s:string" />
+    <wsdl:part name="ClaveMultiva" type="s:string" />
+    <wsdl:part name="MarcaMultiva" type="s:string" />
+    <wsdl:part name="SubMultiva" type="s:string" />
+    <wsdl:part name="DescMultiva" type="s:string" />
+    <wsdl:part name="ClaveQualitas" type="s:string" />
+    <wsdl:part name="ClaveGNP" type="s:string" />
+    <wsdl:part name="MarcaGNP" type="s:string" />
+    <wsdl:part name="DescGNP" type="s:string" />
+    <wsdl:part name="ClaveANA" type="s:string" />
+    <wsdl:part name="ClaveMapfre" type="s:string" />
+    <wsdl:part name="ClavePotosi" type="s:string" />
+    <wsdl:part name="ClaveZurich" type="s:string" />
+    <wsdl:part name="ClaveAXA" type="s:string" />
+    <wsdl:part name="ValorComercial" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdminCatActualizaModeloHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="CambiaEstadoAseguradoraHttpPostIn">
+    <wsdl:part name="IdAseguradora" type="s:string" />
+    <wsdl:part name="Estado" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CambiaEstadoAseguradoraHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEstadoAseguradoraHttpPostIn">
+    <wsdl:part name="IdAseguradora" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEstadoAseguradoraHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="InsertTicketHttpPostIn">
+    <wsdl:part name="IdUsuario" type="s:string" />
+    <wsdl:part name="IdMotivo" type="s:string" />
+    <wsdl:part name="Asunto" type="s:string" />
+    <wsdl:part name="Descripcion" type="s:string" />
+    <wsdl:part name="Estatus" type="s:string" />
+    <wsdl:part name="Comentarios" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertTicketHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertBenefPrefHttpPostIn">
+    <wsdl:part name="Nombre" type="s:string" />
+    <wsdl:part name="RFC" type="s:string" />
+    <wsdl:part name="FechaNac" type="s:string" />
+    <wsdl:part name="IdGiro" type="s:string" />
+    <wsdl:part name="TipoPersona" type="s:string" />
+    <wsdl:part name="Correo" type="s:string" />
+    <wsdl:part name="IdTipoTel" type="s:string" />
+    <wsdl:part name="Lada" type="s:string" />
+    <wsdl:part name="Tel" type="s:string" />
+    <wsdl:part name="Extension" type="s:string" />
+    <wsdl:part name="Origen" type="s:string" />
+    <wsdl:part name="IdColonia" type="s:string" />
+    <wsdl:part name="Calle" type="s:string" />
+    <wsdl:part name="NoExt" type="s:string" />
+    <wsdl:part name="NoInt" type="s:string" />
+    <wsdl:part name="DomActual" type="s:string" />
+    <wsdl:part name="IdTipoDom" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertBenefPrefHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertCotizacionHttpPostIn">
+    <wsdl:part name="E_Cot" type="s:string" />
+    <wsdl:part name="Id_Socio" type="s:string" />
+    <wsdl:part name="Modelo" type="s:string" />
+    <wsdl:part name="Valor_veh" type="s:string" />
+    <wsdl:part name="Sum_aseg" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertCotizacionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioHttpPostIn">
+    <wsdl:part name="NoSocio" type="s:string" />
+    <wsdl:part name="Nombre1" type="s:string" />
+    <wsdl:part name="Nombre2" type="s:string" />
+    <wsdl:part name="ApellidoPat" type="s:string" />
+    <wsdl:part name="ApellidoMat" type="s:string" />
+    <wsdl:part name="FechaNac" type="s:string" />
+    <wsdl:part name="FechaIng" type="s:string" />
+    <wsdl:part name="Sexo" type="s:string" />
+    <wsdl:part name="Correo" type="s:string" />
+    <wsdl:part name="RFC" type="s:string" />
+    <wsdl:part name="CURP" type="s:string" />
+    <wsdl:part name="Ocupacion" type="s:string" />
+    <wsdl:part name="EdoCivil" type="s:string" />
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="IdColonia" type="s:string" />
+    <wsdl:part name="Origen" type="s:string" />
+    <wsdl:part name="Calle" type="s:string" />
+    <wsdl:part name="NoExt" type="s:string" />
+    <wsdl:part name="NoInt" type="s:string" />
+    <wsdl:part name="Actual" type="s:string" />
+    <wsdl:part name="IdTipoDom" type="s:string" />
+    <wsdl:part name="IdTipoTel1" type="s:string" />
+    <wsdl:part name="Lada1" type="s:string" />
+    <wsdl:part name="Telefono1" type="s:string" />
+    <wsdl:part name="Ext1" type="s:string" />
+    <wsdl:part name="IdTipoTel2" type="s:string" />
+    <wsdl:part name="Lada2" type="s:string" />
+    <wsdl:part name="Telefono2" type="s:string" />
+    <wsdl:part name="Ext2" type="s:string" />
+    <wsdl:part name="Oper" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionHttpPostIn">
+    <wsdl:part name="Aseguradora" type="s:string" />
+    <wsdl:part name="Cobertura" type="s:string" />
+    <wsdl:part name="E_Emi" type="s:string" />
+    <wsdl:part name="Estatus" type="s:string" />
+    <wsdl:part name="Descuento" type="s:string" />
+    <wsdl:part name="Tipo_RegVeh" type="s:string" />
+    <wsdl:part name="No_Cotizacion" type="s:string" />
+    <wsdl:part name="No_Pedimento" type="s:string" />
+    <wsdl:part name="No_Factura" type="s:string" />
+    <wsdl:part name="No_Motor" type="s:string" />
+    <wsdl:part name="No_Serie" type="s:string" />
+    <wsdl:part name="No_Placas" type="s:string" />
+    <wsdl:part name="F_Vigencia" type="s:string" />
+    <wsdl:part name="F_Inicio" type="s:string" />
+    <wsdl:part name="Registro_veh" type="s:string" />
+    <wsdl:part name="Poblacion" type="s:string" />
+    <wsdl:part name="CP" type="s:string" />
+    <wsdl:part name="Beneficiario" type="s:string" />
+    <wsdl:part name="Descripcion" type="s:string" />
+    <wsdl:part name="Tipo_pago" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdCotizacionHttpPostIn">
+    <wsdl:part name="E_Cot" type="s:string" />
+    <wsdl:part name="Id_Socio" type="s:string" />
+    <wsdl:part name="Modelo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdCotizacionHttpPostOut">
+    <wsdl:part name="Body" element="tns:IdCotizacion" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSiIdCotEmitidaHttpPostIn">
+    <wsdl:part name="IdCot" type="s:string" />
+    <wsdl:part name="Operacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSiIdCotEmitidaHttpPostOut">
+    <wsdl:part name="Body" element="tns:YaEmitida" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioHttpPostIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="NoSocio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioHttpPostOut">
+    <wsdl:part name="Body" element="tns:IdSocio" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdEstadoHttpPostIn">
+    <wsdl:part name="IdEstado" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdEstadoHttpPostOut">
+    <wsdl:part name="Body" element="tns:Estado" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdColoniaHttpPostIn">
+    <wsdl:part name="IdColonia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdColoniaHttpPostOut">
+    <wsdl:part name="Body" element="tns:Colonia" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdMunicipioHttpPostIn">
+    <wsdl:part name="IdMunicipio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdMunicipioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Municipio" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatModeloHttpPostIn">
+    <wsdl:part name="IdModelo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatModeloHttpPostOut">
+    <wsdl:part name="Body" element="tns:Modelo" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatSocioHttpPostIn">
+    <wsdl:part name="NoSocio" type="s:string" />
+    <wsdl:part name="IdCoop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatSocioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Socio" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotizacionHttpPostIn">
+    <wsdl:part name="NoCotizacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotizacionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Cotizacion" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEmisionHttpPostIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaEmisionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Emision" />
+  </wsdl:message>
+  <wsdl:message name="ReturnStatusCotHttpPostIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnStatusCotHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotPrevHttpPostIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+    <wsdl:part name="Id_Coop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCotPrevHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmisionHttpPostIn">
+    <wsdl:part name="NoCotizacion" type="s:string" />
+    <wsdl:part name="Poliza" type="s:string" />
+    <wsdl:part name="PrimaNeta" type="s:string" />
+    <wsdl:part name="DerechoPoliza" type="s:string" />
+    <wsdl:part name="IVA" type="s:string" />
+    <wsdl:part name="PrimaTotal" type="s:string" />
+    <wsdl:part name="NoComprobante" type="s:string" />
+    <wsdl:part name="FechaInicio" type="s:string" />
+    <wsdl:part name="FechaVigencia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmisionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMotCanCotHttpPostIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+    <wsdl:part name="Motivo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMotCanCotHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusCotHttpPostIn">
+    <wsdl:part name="IdCotiza" type="s:string" />
+    <wsdl:part name="Estatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEstatusCotHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="ConDatReimpresionHttpPostIn">
+    <wsdl:part name="IdCot" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConDatReimpresionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Reimprime" />
+  </wsdl:message>
+  <wsdl:portType name="wsDataConnectionSoap">
+    <wsdl:operation name="UpdateEstatusEmi">
+      <wsdl:input message="tns:UpdateEstatusEmiSoapIn" />
+      <wsdl:output message="tns:UpdateEstatusEmiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRenovacion">
+      <wsdl:input message="tns:InsertaRenovacionSoapIn" />
+      <wsdl:output message="tns:InsertaRenovacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificaEmisor">
+      <wsdl:input message="tns:ModificaEmisorSoapIn" />
+      <wsdl:output message="tns:ModificaEmisorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaPrimas">
+      <wsdl:input message="tns:InsertaPrimasSoapIn" />
+      <wsdl:output message="tns:InsertaPrimasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EE_Inserta">
+      <wsdl:input message="tns:EE_InsertaSoapIn" />
+      <wsdl:output message="tns:EE_InsertaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EE_ConsultaEmisiones">
+      <wsdl:input message="tns:EE_ConsultaEmisionesSoapIn" />
+      <wsdl:output message="tns:EE_ConsultaEmisionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EE_RegresaEmisionExterna">
+      <wsdl:input message="tns:EE_RegresaEmisionExternaSoapIn" />
+      <wsdl:output message="tns:EE_RegresaEmisionExternaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatRegresaModelo">
+      <wsdl:input message="tns:AdminCatRegresaModeloSoapIn" />
+      <wsdl:output message="tns:AdminCatRegresaModeloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatConsultaModelos">
+      <wsdl:input message="tns:AdminCatConsultaModelosSoapIn" />
+      <wsdl:output message="tns:AdminCatConsultaModelosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatInsertaModelo">
+      <wsdl:input message="tns:AdminCatInsertaModeloSoapIn" />
+      <wsdl:output message="tns:AdminCatInsertaModeloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatActualizaModelo">
+      <wsdl:input message="tns:AdminCatActualizaModeloSoapIn" />
+      <wsdl:output message="tns:AdminCatActualizaModeloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstadoAseguradora">
+      <wsdl:input message="tns:CambiaEstadoAseguradoraSoapIn" />
+      <wsdl:output message="tns:CambiaEstadoAseguradoraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEstadoAseguradora">
+      <wsdl:input message="tns:ConsultaEstadoAseguradoraSoapIn" />
+      <wsdl:output message="tns:ConsultaEstadoAseguradoraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTicket">
+      <wsdl:input message="tns:InsertTicketSoapIn" />
+      <wsdl:output message="tns:InsertTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBenefPref">
+      <wsdl:input message="tns:InsertBenefPrefSoapIn" />
+      <wsdl:output message="tns:InsertBenefPrefSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCotizacion">
+      <wsdl:input message="tns:InsertCotizacionSoapIn" />
+      <wsdl:output message="tns:InsertCotizacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSocio">
+      <wsdl:input message="tns:InsertSocioSoapIn" />
+      <wsdl:output message="tns:InsertSocioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmision">
+      <wsdl:input message="tns:InsertEmisionSoapIn" />
+      <wsdl:output message="tns:InsertEmisionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdCotizacion">
+      <wsdl:input message="tns:ReturnIdCotizacionSoapIn" />
+      <wsdl:output message="tns:ReturnIdCotizacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSiIdCotEmitida">
+      <wsdl:input message="tns:ReturnSiIdCotEmitidaSoapIn" />
+      <wsdl:output message="tns:ReturnSiIdCotEmitidaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocio">
+      <wsdl:input message="tns:ReturnIdSocioSoapIn" />
+      <wsdl:output message="tns:ReturnIdSocioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdEstado">
+      <wsdl:input message="tns:ReturnIdEstadoSoapIn" />
+      <wsdl:output message="tns:ReturnIdEstadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdColonia">
+      <wsdl:input message="tns:ReturnIdColoniaSoapIn" />
+      <wsdl:output message="tns:ReturnIdColoniaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdMunicipio">
+      <wsdl:input message="tns:ReturnIdMunicipioSoapIn" />
+      <wsdl:output message="tns:ReturnIdMunicipioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatModelo">
+      <wsdl:input message="tns:ReturnDatModeloSoapIn" />
+      <wsdl:output message="tns:ReturnDatModeloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatSocio">
+      <wsdl:input message="tns:ReturnDatSocioSoapIn" />
+      <wsdl:output message="tns:ReturnDatSocioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotizacion">
+      <wsdl:input message="tns:ConsultaCotizacionSoapIn" />
+      <wsdl:output message="tns:ConsultaCotizacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEmision">
+      <wsdl:input message="tns:ConsultaEmisionSoapIn" />
+      <wsdl:output message="tns:ConsultaEmisionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnStatusCot">
+      <wsdl:input message="tns:ReturnStatusCotSoapIn" />
+      <wsdl:output message="tns:ReturnStatusCotSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotPrev">
+      <wsdl:input message="tns:ConsultaCotPrevSoapIn" />
+      <wsdl:output message="tns:ConsultaCotPrevSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmision">
+      <wsdl:input message="tns:UpdateEmisionSoapIn" />
+      <wsdl:output message="tns:UpdateEmisionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotCanCot">
+      <wsdl:input message="tns:UpdateMotCanCotSoapIn" />
+      <wsdl:output message="tns:UpdateMotCanCotSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstatusCot">
+      <wsdl:input message="tns:UpdateEstatusCotSoapIn" />
+      <wsdl:output message="tns:UpdateEstatusCotSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConDatReimpresion">
+      <wsdl:input message="tns:ConDatReimpresionSoapIn" />
+      <wsdl:output message="tns:ConDatReimpresionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsDataConnectionHttpGet">
+    <wsdl:operation name="UpdateEstatusEmi">
+      <wsdl:input message="tns:UpdateEstatusEmiHttpGetIn" />
+      <wsdl:output message="tns:UpdateEstatusEmiHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRenovacion">
+      <wsdl:input message="tns:InsertaRenovacionHttpGetIn" />
+      <wsdl:output message="tns:InsertaRenovacionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificaEmisor">
+      <wsdl:input message="tns:ModificaEmisorHttpGetIn" />
+      <wsdl:output message="tns:ModificaEmisorHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaPrimas">
+      <wsdl:input message="tns:InsertaPrimasHttpGetIn" />
+      <wsdl:output message="tns:InsertaPrimasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EE_Inserta">
+      <wsdl:input message="tns:EE_InsertaHttpGetIn" />
+      <wsdl:output message="tns:EE_InsertaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EE_ConsultaEmisiones">
+      <wsdl:input message="tns:EE_ConsultaEmisionesHttpGetIn" />
+      <wsdl:output message="tns:EE_ConsultaEmisionesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EE_RegresaEmisionExterna">
+      <wsdl:input message="tns:EE_RegresaEmisionExternaHttpGetIn" />
+      <wsdl:output message="tns:EE_RegresaEmisionExternaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatRegresaModelo">
+      <wsdl:input message="tns:AdminCatRegresaModeloHttpGetIn" />
+      <wsdl:output message="tns:AdminCatRegresaModeloHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatConsultaModelos">
+      <wsdl:input message="tns:AdminCatConsultaModelosHttpGetIn" />
+      <wsdl:output message="tns:AdminCatConsultaModelosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatInsertaModelo">
+      <wsdl:input message="tns:AdminCatInsertaModeloHttpGetIn" />
+      <wsdl:output message="tns:AdminCatInsertaModeloHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatActualizaModelo">
+      <wsdl:input message="tns:AdminCatActualizaModeloHttpGetIn" />
+      <wsdl:output message="tns:AdminCatActualizaModeloHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstadoAseguradora">
+      <wsdl:input message="tns:CambiaEstadoAseguradoraHttpGetIn" />
+      <wsdl:output message="tns:CambiaEstadoAseguradoraHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEstadoAseguradora">
+      <wsdl:input message="tns:ConsultaEstadoAseguradoraHttpGetIn" />
+      <wsdl:output message="tns:ConsultaEstadoAseguradoraHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTicket">
+      <wsdl:input message="tns:InsertTicketHttpGetIn" />
+      <wsdl:output message="tns:InsertTicketHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBenefPref">
+      <wsdl:input message="tns:InsertBenefPrefHttpGetIn" />
+      <wsdl:output message="tns:InsertBenefPrefHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCotizacion">
+      <wsdl:input message="tns:InsertCotizacionHttpGetIn" />
+      <wsdl:output message="tns:InsertCotizacionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSocio">
+      <wsdl:input message="tns:InsertSocioHttpGetIn" />
+      <wsdl:output message="tns:InsertSocioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmision">
+      <wsdl:input message="tns:InsertEmisionHttpGetIn" />
+      <wsdl:output message="tns:InsertEmisionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdCotizacion">
+      <wsdl:input message="tns:ReturnIdCotizacionHttpGetIn" />
+      <wsdl:output message="tns:ReturnIdCotizacionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSiIdCotEmitida">
+      <wsdl:input message="tns:ReturnSiIdCotEmitidaHttpGetIn" />
+      <wsdl:output message="tns:ReturnSiIdCotEmitidaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocio">
+      <wsdl:input message="tns:ReturnIdSocioHttpGetIn" />
+      <wsdl:output message="tns:ReturnIdSocioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdEstado">
+      <wsdl:input message="tns:ReturnIdEstadoHttpGetIn" />
+      <wsdl:output message="tns:ReturnIdEstadoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdColonia">
+      <wsdl:input message="tns:ReturnIdColoniaHttpGetIn" />
+      <wsdl:output message="tns:ReturnIdColoniaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdMunicipio">
+      <wsdl:input message="tns:ReturnIdMunicipioHttpGetIn" />
+      <wsdl:output message="tns:ReturnIdMunicipioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatModelo">
+      <wsdl:input message="tns:ReturnDatModeloHttpGetIn" />
+      <wsdl:output message="tns:ReturnDatModeloHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatSocio">
+      <wsdl:input message="tns:ReturnDatSocioHttpGetIn" />
+      <wsdl:output message="tns:ReturnDatSocioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotizacion">
+      <wsdl:input message="tns:ConsultaCotizacionHttpGetIn" />
+      <wsdl:output message="tns:ConsultaCotizacionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEmision">
+      <wsdl:input message="tns:ConsultaEmisionHttpGetIn" />
+      <wsdl:output message="tns:ConsultaEmisionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnStatusCot">
+      <wsdl:input message="tns:ReturnStatusCotHttpGetIn" />
+      <wsdl:output message="tns:ReturnStatusCotHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotPrev">
+      <wsdl:input message="tns:ConsultaCotPrevHttpGetIn" />
+      <wsdl:output message="tns:ConsultaCotPrevHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmision">
+      <wsdl:input message="tns:UpdateEmisionHttpGetIn" />
+      <wsdl:output message="tns:UpdateEmisionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotCanCot">
+      <wsdl:input message="tns:UpdateMotCanCotHttpGetIn" />
+      <wsdl:output message="tns:UpdateMotCanCotHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstatusCot">
+      <wsdl:input message="tns:UpdateEstatusCotHttpGetIn" />
+      <wsdl:output message="tns:UpdateEstatusCotHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConDatReimpresion">
+      <wsdl:input message="tns:ConDatReimpresionHttpGetIn" />
+      <wsdl:output message="tns:ConDatReimpresionHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsDataConnectionHttpPost">
+    <wsdl:operation name="UpdateEstatusEmi">
+      <wsdl:input message="tns:UpdateEstatusEmiHttpPostIn" />
+      <wsdl:output message="tns:UpdateEstatusEmiHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRenovacion">
+      <wsdl:input message="tns:InsertaRenovacionHttpPostIn" />
+      <wsdl:output message="tns:InsertaRenovacionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificaEmisor">
+      <wsdl:input message="tns:ModificaEmisorHttpPostIn" />
+      <wsdl:output message="tns:ModificaEmisorHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaPrimas">
+      <wsdl:input message="tns:InsertaPrimasHttpPostIn" />
+      <wsdl:output message="tns:InsertaPrimasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EE_Inserta">
+      <wsdl:input message="tns:EE_InsertaHttpPostIn" />
+      <wsdl:output message="tns:EE_InsertaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EE_ConsultaEmisiones">
+      <wsdl:input message="tns:EE_ConsultaEmisionesHttpPostIn" />
+      <wsdl:output message="tns:EE_ConsultaEmisionesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EE_RegresaEmisionExterna">
+      <wsdl:input message="tns:EE_RegresaEmisionExternaHttpPostIn" />
+      <wsdl:output message="tns:EE_RegresaEmisionExternaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatRegresaModelo">
+      <wsdl:input message="tns:AdminCatRegresaModeloHttpPostIn" />
+      <wsdl:output message="tns:AdminCatRegresaModeloHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatConsultaModelos">
+      <wsdl:input message="tns:AdminCatConsultaModelosHttpPostIn" />
+      <wsdl:output message="tns:AdminCatConsultaModelosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatInsertaModelo">
+      <wsdl:input message="tns:AdminCatInsertaModeloHttpPostIn" />
+      <wsdl:output message="tns:AdminCatInsertaModeloHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatActualizaModelo">
+      <wsdl:input message="tns:AdminCatActualizaModeloHttpPostIn" />
+      <wsdl:output message="tns:AdminCatActualizaModeloHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstadoAseguradora">
+      <wsdl:input message="tns:CambiaEstadoAseguradoraHttpPostIn" />
+      <wsdl:output message="tns:CambiaEstadoAseguradoraHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEstadoAseguradora">
+      <wsdl:input message="tns:ConsultaEstadoAseguradoraHttpPostIn" />
+      <wsdl:output message="tns:ConsultaEstadoAseguradoraHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTicket">
+      <wsdl:input message="tns:InsertTicketHttpPostIn" />
+      <wsdl:output message="tns:InsertTicketHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBenefPref">
+      <wsdl:input message="tns:InsertBenefPrefHttpPostIn" />
+      <wsdl:output message="tns:InsertBenefPrefHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCotizacion">
+      <wsdl:input message="tns:InsertCotizacionHttpPostIn" />
+      <wsdl:output message="tns:InsertCotizacionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSocio">
+      <wsdl:input message="tns:InsertSocioHttpPostIn" />
+      <wsdl:output message="tns:InsertSocioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmision">
+      <wsdl:input message="tns:InsertEmisionHttpPostIn" />
+      <wsdl:output message="tns:InsertEmisionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdCotizacion">
+      <wsdl:input message="tns:ReturnIdCotizacionHttpPostIn" />
+      <wsdl:output message="tns:ReturnIdCotizacionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSiIdCotEmitida">
+      <wsdl:input message="tns:ReturnSiIdCotEmitidaHttpPostIn" />
+      <wsdl:output message="tns:ReturnSiIdCotEmitidaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocio">
+      <wsdl:input message="tns:ReturnIdSocioHttpPostIn" />
+      <wsdl:output message="tns:ReturnIdSocioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdEstado">
+      <wsdl:input message="tns:ReturnIdEstadoHttpPostIn" />
+      <wsdl:output message="tns:ReturnIdEstadoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdColonia">
+      <wsdl:input message="tns:ReturnIdColoniaHttpPostIn" />
+      <wsdl:output message="tns:ReturnIdColoniaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdMunicipio">
+      <wsdl:input message="tns:ReturnIdMunicipioHttpPostIn" />
+      <wsdl:output message="tns:ReturnIdMunicipioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatModelo">
+      <wsdl:input message="tns:ReturnDatModeloHttpPostIn" />
+      <wsdl:output message="tns:ReturnDatModeloHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatSocio">
+      <wsdl:input message="tns:ReturnDatSocioHttpPostIn" />
+      <wsdl:output message="tns:ReturnDatSocioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotizacion">
+      <wsdl:input message="tns:ConsultaCotizacionHttpPostIn" />
+      <wsdl:output message="tns:ConsultaCotizacionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEmision">
+      <wsdl:input message="tns:ConsultaEmisionHttpPostIn" />
+      <wsdl:output message="tns:ConsultaEmisionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnStatusCot">
+      <wsdl:input message="tns:ReturnStatusCotHttpPostIn" />
+      <wsdl:output message="tns:ReturnStatusCotHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotPrev">
+      <wsdl:input message="tns:ConsultaCotPrevHttpPostIn" />
+      <wsdl:output message="tns:ConsultaCotPrevHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmision">
+      <wsdl:input message="tns:UpdateEmisionHttpPostIn" />
+      <wsdl:output message="tns:UpdateEmisionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotCanCot">
+      <wsdl:input message="tns:UpdateMotCanCotHttpPostIn" />
+      <wsdl:output message="tns:UpdateMotCanCotHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstatusCot">
+      <wsdl:input message="tns:UpdateEstatusCotHttpPostIn" />
+      <wsdl:output message="tns:UpdateEstatusCotHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConDatReimpresion">
+      <wsdl:input message="tns:ConDatReimpresionHttpPostIn" />
+      <wsdl:output message="tns:ConDatReimpresionHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsDataConnectionSoap" type="tns:wsDataConnectionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateEstatusEmi">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/UpdateEstatusEmi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRenovacion">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertaRenovacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificaEmisor">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ModificaEmisor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaPrimas">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertaPrimas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_Inserta">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/EE_Inserta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_ConsultaEmisiones">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/EE_ConsultaEmisiones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_RegresaEmisionExterna">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/EE_RegresaEmisionExterna" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatRegresaModelo">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/AdminCatRegresaModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatConsultaModelos">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/AdminCatConsultaModelos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatInsertaModelo">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/AdminCatInsertaModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatActualizaModelo">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/AdminCatActualizaModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstadoAseguradora">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/CambiaEstadoAseguradora" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEstadoAseguradora">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ConsultaEstadoAseguradora" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTicket">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBenefPref">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertBenefPref" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCotizacion">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertCotizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSocio">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertSocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmision">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertEmision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdCotizacion">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnIdCotizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSiIdCotEmitida">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnSiIdCotEmitida" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocio">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnIdSocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdEstado">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnIdEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdColonia">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnIdColonia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdMunicipio">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnIdMunicipio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatModelo">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnDatModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatSocio">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnDatSocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotizacion">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ConsultaCotizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEmision">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ConsultaEmision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnStatusCot">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnStatusCot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotPrev">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ConsultaCotPrev" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmision">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/UpdateEmision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotCanCot">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/UpdateMotCanCot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstatusCot">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/UpdateEstatusCot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConDatReimpresion">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ConDatReimpresion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsDataConnectionSoap12" type="tns:wsDataConnectionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateEstatusEmi">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/UpdateEstatusEmi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRenovacion">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertaRenovacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificaEmisor">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ModificaEmisor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaPrimas">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertaPrimas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_Inserta">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/EE_Inserta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_ConsultaEmisiones">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/EE_ConsultaEmisiones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_RegresaEmisionExterna">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/EE_RegresaEmisionExterna" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatRegresaModelo">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/AdminCatRegresaModelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatConsultaModelos">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/AdminCatConsultaModelos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatInsertaModelo">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/AdminCatInsertaModelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatActualizaModelo">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/AdminCatActualizaModelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstadoAseguradora">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/CambiaEstadoAseguradora" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEstadoAseguradora">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ConsultaEstadoAseguradora" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTicket">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBenefPref">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertBenefPref" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCotizacion">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertCotizacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSocio">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmision">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/InsertEmision" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdCotizacion">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnIdCotizacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSiIdCotEmitida">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnSiIdCotEmitida" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocio">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnIdSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdEstado">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnIdEstado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdColonia">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnIdColonia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdMunicipio">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnIdMunicipio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatModelo">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnDatModelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatSocio">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnDatSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotizacion">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ConsultaCotizacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEmision">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ConsultaEmision" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnStatusCot">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ReturnStatusCot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotPrev">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ConsultaCotPrev" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmision">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/UpdateEmision" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotCanCot">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/UpdateMotCanCot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstatusCot">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/UpdateEstatusCot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConDatReimpresion">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx/ConDatReimpresion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsDataConnectionHttpGet" type="tns:wsDataConnectionHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="UpdateEstatusEmi">
+      <http:operation location="/UpdateEstatusEmi" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRenovacion">
+      <http:operation location="/InsertaRenovacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificaEmisor">
+      <http:operation location="/ModificaEmisor" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaPrimas">
+      <http:operation location="/InsertaPrimas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_Inserta">
+      <http:operation location="/EE_Inserta" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_ConsultaEmisiones">
+      <http:operation location="/EE_ConsultaEmisiones" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_RegresaEmisionExterna">
+      <http:operation location="/EE_RegresaEmisionExterna" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatRegresaModelo">
+      <http:operation location="/AdminCatRegresaModelo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatConsultaModelos">
+      <http:operation location="/AdminCatConsultaModelos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatInsertaModelo">
+      <http:operation location="/AdminCatInsertaModelo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatActualizaModelo">
+      <http:operation location="/AdminCatActualizaModelo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstadoAseguradora">
+      <http:operation location="/CambiaEstadoAseguradora" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEstadoAseguradora">
+      <http:operation location="/ConsultaEstadoAseguradora" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTicket">
+      <http:operation location="/InsertTicket" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBenefPref">
+      <http:operation location="/InsertBenefPref" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCotizacion">
+      <http:operation location="/InsertCotizacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSocio">
+      <http:operation location="/InsertSocio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmision">
+      <http:operation location="/InsertEmision" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdCotizacion">
+      <http:operation location="/ReturnIdCotizacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSiIdCotEmitida">
+      <http:operation location="/ReturnSiIdCotEmitida" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocio">
+      <http:operation location="/ReturnIdSocio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdEstado">
+      <http:operation location="/ReturnIdEstado" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdColonia">
+      <http:operation location="/ReturnIdColonia" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdMunicipio">
+      <http:operation location="/ReturnIdMunicipio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatModelo">
+      <http:operation location="/ReturnDatModelo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatSocio">
+      <http:operation location="/ReturnDatSocio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotizacion">
+      <http:operation location="/ConsultaCotizacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEmision">
+      <http:operation location="/ConsultaEmision" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnStatusCot">
+      <http:operation location="/ReturnStatusCot" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotPrev">
+      <http:operation location="/ConsultaCotPrev" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmision">
+      <http:operation location="/UpdateEmision" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotCanCot">
+      <http:operation location="/UpdateMotCanCot" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstatusCot">
+      <http:operation location="/UpdateEstatusCot" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConDatReimpresion">
+      <http:operation location="/ConDatReimpresion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsDataConnectionHttpPost" type="tns:wsDataConnectionHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="UpdateEstatusEmi">
+      <http:operation location="/UpdateEstatusEmi" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaRenovacion">
+      <http:operation location="/InsertaRenovacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificaEmisor">
+      <http:operation location="/ModificaEmisor" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaPrimas">
+      <http:operation location="/InsertaPrimas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_Inserta">
+      <http:operation location="/EE_Inserta" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_ConsultaEmisiones">
+      <http:operation location="/EE_ConsultaEmisiones" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EE_RegresaEmisionExterna">
+      <http:operation location="/EE_RegresaEmisionExterna" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatRegresaModelo">
+      <http:operation location="/AdminCatRegresaModelo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatConsultaModelos">
+      <http:operation location="/AdminCatConsultaModelos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatInsertaModelo">
+      <http:operation location="/AdminCatInsertaModelo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminCatActualizaModelo">
+      <http:operation location="/AdminCatActualizaModelo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstadoAseguradora">
+      <http:operation location="/CambiaEstadoAseguradora" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEstadoAseguradora">
+      <http:operation location="/ConsultaEstadoAseguradora" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTicket">
+      <http:operation location="/InsertTicket" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBenefPref">
+      <http:operation location="/InsertBenefPref" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCotizacion">
+      <http:operation location="/InsertCotizacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSocio">
+      <http:operation location="/InsertSocio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmision">
+      <http:operation location="/InsertEmision" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdCotizacion">
+      <http:operation location="/ReturnIdCotizacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSiIdCotEmitida">
+      <http:operation location="/ReturnSiIdCotEmitida" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocio">
+      <http:operation location="/ReturnIdSocio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdEstado">
+      <http:operation location="/ReturnIdEstado" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdColonia">
+      <http:operation location="/ReturnIdColonia" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdMunicipio">
+      <http:operation location="/ReturnIdMunicipio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatModelo">
+      <http:operation location="/ReturnDatModelo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatSocio">
+      <http:operation location="/ReturnDatSocio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotizacion">
+      <http:operation location="/ConsultaCotizacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEmision">
+      <http:operation location="/ConsultaEmision" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnStatusCot">
+      <http:operation location="/ReturnStatusCot" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCotPrev">
+      <http:operation location="/ConsultaCotPrev" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmision">
+      <http:operation location="/UpdateEmision" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotCanCot">
+      <http:operation location="/UpdateMotCanCot" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEstatusCot">
+      <http:operation location="/UpdateEstatusCot" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConDatReimpresion">
+      <http:operation location="/ConDatReimpresion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsDataConnection">
+    <wsdl:port name="wsDataConnectionSoap" binding="tns:wsDataConnectionSoap">
+      <soap:address location="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsDataConnectionSoap12" binding="tns:wsDataConnectionSoap12">
+      <soap12:address location="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsDataConnectionHttpGet" binding="tns:wsDataConnectionHttpGet">
+      <http:address location="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsDataConnectionHttpPost" binding="tns:wsDataConnectionHttpPost">
+      <http:address location="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

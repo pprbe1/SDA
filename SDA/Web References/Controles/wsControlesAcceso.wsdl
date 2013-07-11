@@ -1,0 +1,1776 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx">
+      <s:import namespace="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx" />
+      <s:element name="ActualizaPass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdUser" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OPass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizaPassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActualizaPassResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Error">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valor" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EstatusUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdUser" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Estatus" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EstatusUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ValidateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateUserResult" type="tns:Variables" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Variables">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ListaPermisos" type="tns:ArrayOfInt" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ejecut" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estat" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activ" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Access" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreCompleto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCoop" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s1:Error" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Encriptar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="texto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncriptarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncriptarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Desencriptar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="textoEncriptado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DesencriptarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DesencriptarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertLogDanos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Usuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Mensaje" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Detalle" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertLogDanosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertLogDanosResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="longitud" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenPasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre_2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apellido_Pat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apellido_Mat" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdSuc" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pass" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdUser" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertUserResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsignarRolUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdUser" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdRol" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsignarRolUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AsignarRolUserResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuitarRolUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdUser" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdRol" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuitarRolUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuitarRolUserResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaRoles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSistema" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaRolesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaRolesResult" type="tns:ArrayOfRoles" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRoles">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Roles" nillable="true" type="tns:Roles" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Roles">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdRol" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rol" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaRolesXUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdUser" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdSistema" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaRolesXUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaRolesXUserResult" type="tns:ArrayOfRoles" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaPermisosXRol">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdRol" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaPermisosXRolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaPermisosXRolResult" type="tns:ArrayOfPermisos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPermisos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Permisos" nillable="true" type="tns:Permisos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Permisos">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPermiso" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Permiso" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaPermisosXUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdUser" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaPermisosXUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaPermisosXUserResult" type="tns:ArrayOfPermisos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaUsuarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsultaUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaUsuariosResult" type="tns:ArrayOfUsuario_Sim" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUsuario_Sim">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Usuario_Sim" nillable="true" type="tns:Usuario_Sim" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Usuario_Sim">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Usuario" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Coop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plaza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado_User" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaUsuariosEspecificos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Coop" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaUsuariosEspecificosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaUsuariosEspecificosResult" type="tns:ArrayOfUsuario_Sim" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDatUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdUser" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDatUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaDatUsuarioResult" type="tns:Usuario_Com" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Usuario_Com">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario_Sim" type="tns:Usuario_Sim" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre_2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido_Pat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido_Mat" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Coop" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Plaza" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Sucursal" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estatus" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertRol">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSistema" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Rol" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertRolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertRolResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPermiso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Permiso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPermisoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPermisoResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPermisosXRol">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdRol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdPermiso" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPermisosXRolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPermisosXRolResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Error" nillable="true" type="tns:Error" />
+      <s:element name="Variables" nillable="true" type="tns:Variables" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfRoles" nillable="true" type="tns:ArrayOfRoles" />
+      <s:element name="ArrayOfPermisos" nillable="true" type="tns:ArrayOfPermisos" />
+      <s:element name="ArrayOfUsuario_Sim" nillable="true" type="tns:ArrayOfUsuario_Sim" />
+      <s:element name="Usuario_Com" nillable="true" type="tns:Usuario_Com" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx">
+      <s:complexType name="Error">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Valor" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ActualizaPassSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizaPass" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaPassSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizaPassResponse" />
+  </wsdl:message>
+  <wsdl:message name="EstatusUserSoapIn">
+    <wsdl:part name="parameters" element="tns:EstatusUser" />
+  </wsdl:message>
+  <wsdl:message name="EstatusUserSoapOut">
+    <wsdl:part name="parameters" element="tns:EstatusUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateUser" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarSoapIn">
+    <wsdl:part name="parameters" element="tns:Encriptar" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarSoapOut">
+    <wsdl:part name="parameters" element="tns:EncriptarResponse" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarSoapIn">
+    <wsdl:part name="parameters" element="tns:Desencriptar" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarSoapOut">
+    <wsdl:part name="parameters" element="tns:DesencriptarResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertLogDanosSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertLogDanos" />
+  </wsdl:message>
+  <wsdl:message name="InsertLogDanosSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertLogDanosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:GenPassword" />
+  </wsdl:message>
+  <wsdl:message name="GenPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:GenPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertUserSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertUser" />
+  </wsdl:message>
+  <wsdl:message name="InsertUserSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AsignarRolUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AsignarRolUser" />
+  </wsdl:message>
+  <wsdl:message name="AsignarRolUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AsignarRolUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuitarRolUserSoapIn">
+    <wsdl:part name="parameters" element="tns:QuitarRolUser" />
+  </wsdl:message>
+  <wsdl:message name="QuitarRolUserSoapOut">
+    <wsdl:part name="parameters" element="tns:QuitarRolUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaRoles" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesXUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaRolesXUser" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesXUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaRolesXUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXRolSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaPermisosXRol" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXRolSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaPermisosXRolResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaPermisosXUser" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaPermisosXUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaUsuariosEspecificosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaUsuariosEspecificos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaUsuariosEspecificosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaUsuariosEspecificosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaDatUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaDatUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertRolSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertRol" />
+  </wsdl:message>
+  <wsdl:message name="InsertRolSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertRolResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPermiso" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPermisoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisosXRolSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPermisosXRol" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisosXRolSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPermisosXRolResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaPassHttpGetIn">
+    <wsdl:part name="IdUser" type="s:string" />
+    <wsdl:part name="User" type="s:string" />
+    <wsdl:part name="OPass" type="s:string" />
+    <wsdl:part name="Pass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaPassHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="EstatusUserHttpGetIn">
+    <wsdl:part name="IdUser" type="s:string" />
+    <wsdl:part name="Estatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EstatusUserHttpGetOut" />
+  <wsdl:message name="ValidateUserHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="passWord" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:Variables" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarHttpGetIn">
+    <wsdl:part name="texto" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarHttpGetIn">
+    <wsdl:part name="textoEncriptado" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertLogDanosHttpGetIn">
+    <wsdl:part name="Usuario" type="s:string" />
+    <wsdl:part name="Mensaje" type="s:string" />
+    <wsdl:part name="Detalle" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertLogDanosHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="GenPasswordHttpGetIn">
+    <wsdl:part name="longitud" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GenPasswordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertUserHttpGetIn">
+    <wsdl:part name="Nombre" type="s:string" />
+    <wsdl:part name="Nombre_2" type="s:string" />
+    <wsdl:part name="Apellido_Pat" type="s:string" />
+    <wsdl:part name="Apellido_Mat" type="s:string" />
+    <wsdl:part name="IdSuc" type="s:string" />
+    <wsdl:part name="Correo" type="s:string" />
+    <wsdl:part name="Usuario" type="s:string" />
+    <wsdl:part name="Pass" type="s:string" />
+    <wsdl:part name="Activo" type="s:string" />
+    <wsdl:part name="IdUser" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="AsignarRolUserHttpGetIn">
+    <wsdl:part name="IdUser" type="s:string" />
+    <wsdl:part name="IdRol" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AsignarRolUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="QuitarRolUserHttpGetIn">
+    <wsdl:part name="IdUser" type="s:string" />
+    <wsdl:part name="IdRol" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QuitarRolUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesHttpGetIn">
+    <wsdl:part name="IdSistema" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfRoles" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesXUserHttpGetIn">
+    <wsdl:part name="IdUser" type="s:string" />
+    <wsdl:part name="IdSistema" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesXUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfRoles" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXRolHttpGetIn">
+    <wsdl:part name="IdRol" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXRolHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPermisos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXUserHttpGetIn">
+    <wsdl:part name="IdUser" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPermisos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaUsuariosHttpGetIn" />
+  <wsdl:message name="ConsultaUsuariosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUsuario_Sim" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaUsuariosEspecificosHttpGetIn">
+    <wsdl:part name="Coop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaUsuariosEspecificosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUsuario_Sim" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatUsuarioHttpGetIn">
+    <wsdl:part name="IdUser" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatUsuarioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Usuario_Com" />
+  </wsdl:message>
+  <wsdl:message name="InsertRolHttpGetIn">
+    <wsdl:part name="IdSistema" type="s:string" />
+    <wsdl:part name="Rol" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertRolHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisoHttpGetIn">
+    <wsdl:part name="Permiso" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisoHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisosXRolHttpGetIn">
+    <wsdl:part name="IdRol" type="s:string" />
+    <wsdl:part name="IdPermiso" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisosXRolHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaPassHttpPostIn">
+    <wsdl:part name="IdUser" type="s:string" />
+    <wsdl:part name="User" type="s:string" />
+    <wsdl:part name="OPass" type="s:string" />
+    <wsdl:part name="Pass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaPassHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="EstatusUserHttpPostIn">
+    <wsdl:part name="IdUser" type="s:string" />
+    <wsdl:part name="Estatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EstatusUserHttpPostOut" />
+  <wsdl:message name="ValidateUserHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="passWord" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:Variables" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarHttpPostIn">
+    <wsdl:part name="texto" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarHttpPostIn">
+    <wsdl:part name="textoEncriptado" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertLogDanosHttpPostIn">
+    <wsdl:part name="Usuario" type="s:string" />
+    <wsdl:part name="Mensaje" type="s:string" />
+    <wsdl:part name="Detalle" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertLogDanosHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="GenPasswordHttpPostIn">
+    <wsdl:part name="longitud" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GenPasswordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertUserHttpPostIn">
+    <wsdl:part name="Nombre" type="s:string" />
+    <wsdl:part name="Nombre_2" type="s:string" />
+    <wsdl:part name="Apellido_Pat" type="s:string" />
+    <wsdl:part name="Apellido_Mat" type="s:string" />
+    <wsdl:part name="IdSuc" type="s:string" />
+    <wsdl:part name="Correo" type="s:string" />
+    <wsdl:part name="Usuario" type="s:string" />
+    <wsdl:part name="Pass" type="s:string" />
+    <wsdl:part name="Activo" type="s:string" />
+    <wsdl:part name="IdUser" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="AsignarRolUserHttpPostIn">
+    <wsdl:part name="IdUser" type="s:string" />
+    <wsdl:part name="IdRol" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AsignarRolUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="QuitarRolUserHttpPostIn">
+    <wsdl:part name="IdUser" type="s:string" />
+    <wsdl:part name="IdRol" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QuitarRolUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesHttpPostIn">
+    <wsdl:part name="IdSistema" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfRoles" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesXUserHttpPostIn">
+    <wsdl:part name="IdUser" type="s:string" />
+    <wsdl:part name="IdSistema" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaRolesXUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfRoles" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXRolHttpPostIn">
+    <wsdl:part name="IdRol" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXRolHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPermisos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXUserHttpPostIn">
+    <wsdl:part name="IdUser" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPermisosXUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPermisos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaUsuariosHttpPostIn" />
+  <wsdl:message name="ConsultaUsuariosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUsuario_Sim" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaUsuariosEspecificosHttpPostIn">
+    <wsdl:part name="Coop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaUsuariosEspecificosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUsuario_Sim" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatUsuarioHttpPostIn">
+    <wsdl:part name="IdUser" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatUsuarioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Usuario_Com" />
+  </wsdl:message>
+  <wsdl:message name="InsertRolHttpPostIn">
+    <wsdl:part name="IdSistema" type="s:string" />
+    <wsdl:part name="Rol" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertRolHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisoHttpPostIn">
+    <wsdl:part name="Permiso" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisoHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisosXRolHttpPostIn">
+    <wsdl:part name="IdRol" type="s:string" />
+    <wsdl:part name="IdPermiso" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPermisosXRolHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:portType name="wsControlesAccesoSoap">
+    <wsdl:operation name="ActualizaPass">
+      <wsdl:input message="tns:ActualizaPassSoapIn" />
+      <wsdl:output message="tns:ActualizaPassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstatusUser">
+      <wsdl:input message="tns:EstatusUserSoapIn" />
+      <wsdl:output message="tns:EstatusUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <wsdl:input message="tns:ValidateUserSoapIn" />
+      <wsdl:output message="tns:ValidateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Encriptar">
+      <wsdl:input message="tns:EncriptarSoapIn" />
+      <wsdl:output message="tns:EncriptarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <wsdl:input message="tns:DesencriptarSoapIn" />
+      <wsdl:output message="tns:DesencriptarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertLogDanos">
+      <wsdl:input message="tns:InsertLogDanosSoapIn" />
+      <wsdl:output message="tns:InsertLogDanosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenPassword">
+      <wsdl:input message="tns:GenPasswordSoapIn" />
+      <wsdl:output message="tns:GenPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertUser">
+      <wsdl:input message="tns:InsertUserSoapIn" />
+      <wsdl:output message="tns:InsertUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarRolUser">
+      <wsdl:input message="tns:AsignarRolUserSoapIn" />
+      <wsdl:output message="tns:AsignarRolUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuitarRolUser">
+      <wsdl:input message="tns:QuitarRolUserSoapIn" />
+      <wsdl:output message="tns:QuitarRolUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRoles">
+      <wsdl:input message="tns:ConsultaRolesSoapIn" />
+      <wsdl:output message="tns:ConsultaRolesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRolesXUser">
+      <wsdl:input message="tns:ConsultaRolesXUserSoapIn" />
+      <wsdl:output message="tns:ConsultaRolesXUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXRol">
+      <wsdl:input message="tns:ConsultaPermisosXRolSoapIn" />
+      <wsdl:output message="tns:ConsultaPermisosXRolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXUser">
+      <wsdl:input message="tns:ConsultaPermisosXUserSoapIn" />
+      <wsdl:output message="tns:ConsultaPermisosXUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuarios">
+      <wsdl:input message="tns:ConsultaUsuariosSoapIn" />
+      <wsdl:output message="tns:ConsultaUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuariosEspecificos">
+      <wsdl:input message="tns:ConsultaUsuariosEspecificosSoapIn" />
+      <wsdl:output message="tns:ConsultaUsuariosEspecificosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDatUsuario">
+      <wsdl:input message="tns:ConsultaDatUsuarioSoapIn" />
+      <wsdl:output message="tns:ConsultaDatUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRol">
+      <wsdl:input message="tns:InsertRolSoapIn" />
+      <wsdl:output message="tns:InsertRolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermiso">
+      <wsdl:input message="tns:InsertPermisoSoapIn" />
+      <wsdl:output message="tns:InsertPermisoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermisosXRol">
+      <wsdl:input message="tns:InsertPermisosXRolSoapIn" />
+      <wsdl:output message="tns:InsertPermisosXRolSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsControlesAccesoHttpGet">
+    <wsdl:operation name="ActualizaPass">
+      <wsdl:input message="tns:ActualizaPassHttpGetIn" />
+      <wsdl:output message="tns:ActualizaPassHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstatusUser">
+      <wsdl:input message="tns:EstatusUserHttpGetIn" />
+      <wsdl:output message="tns:EstatusUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <wsdl:input message="tns:ValidateUserHttpGetIn" />
+      <wsdl:output message="tns:ValidateUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Encriptar">
+      <wsdl:input message="tns:EncriptarHttpGetIn" />
+      <wsdl:output message="tns:EncriptarHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <wsdl:input message="tns:DesencriptarHttpGetIn" />
+      <wsdl:output message="tns:DesencriptarHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertLogDanos">
+      <wsdl:input message="tns:InsertLogDanosHttpGetIn" />
+      <wsdl:output message="tns:InsertLogDanosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenPassword">
+      <wsdl:input message="tns:GenPasswordHttpGetIn" />
+      <wsdl:output message="tns:GenPasswordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertUser">
+      <wsdl:input message="tns:InsertUserHttpGetIn" />
+      <wsdl:output message="tns:InsertUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarRolUser">
+      <wsdl:input message="tns:AsignarRolUserHttpGetIn" />
+      <wsdl:output message="tns:AsignarRolUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuitarRolUser">
+      <wsdl:input message="tns:QuitarRolUserHttpGetIn" />
+      <wsdl:output message="tns:QuitarRolUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRoles">
+      <wsdl:input message="tns:ConsultaRolesHttpGetIn" />
+      <wsdl:output message="tns:ConsultaRolesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRolesXUser">
+      <wsdl:input message="tns:ConsultaRolesXUserHttpGetIn" />
+      <wsdl:output message="tns:ConsultaRolesXUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXRol">
+      <wsdl:input message="tns:ConsultaPermisosXRolHttpGetIn" />
+      <wsdl:output message="tns:ConsultaPermisosXRolHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXUser">
+      <wsdl:input message="tns:ConsultaPermisosXUserHttpGetIn" />
+      <wsdl:output message="tns:ConsultaPermisosXUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuarios">
+      <wsdl:input message="tns:ConsultaUsuariosHttpGetIn" />
+      <wsdl:output message="tns:ConsultaUsuariosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuariosEspecificos">
+      <wsdl:input message="tns:ConsultaUsuariosEspecificosHttpGetIn" />
+      <wsdl:output message="tns:ConsultaUsuariosEspecificosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDatUsuario">
+      <wsdl:input message="tns:ConsultaDatUsuarioHttpGetIn" />
+      <wsdl:output message="tns:ConsultaDatUsuarioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRol">
+      <wsdl:input message="tns:InsertRolHttpGetIn" />
+      <wsdl:output message="tns:InsertRolHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermiso">
+      <wsdl:input message="tns:InsertPermisoHttpGetIn" />
+      <wsdl:output message="tns:InsertPermisoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermisosXRol">
+      <wsdl:input message="tns:InsertPermisosXRolHttpGetIn" />
+      <wsdl:output message="tns:InsertPermisosXRolHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsControlesAccesoHttpPost">
+    <wsdl:operation name="ActualizaPass">
+      <wsdl:input message="tns:ActualizaPassHttpPostIn" />
+      <wsdl:output message="tns:ActualizaPassHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstatusUser">
+      <wsdl:input message="tns:EstatusUserHttpPostIn" />
+      <wsdl:output message="tns:EstatusUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <wsdl:input message="tns:ValidateUserHttpPostIn" />
+      <wsdl:output message="tns:ValidateUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Encriptar">
+      <wsdl:input message="tns:EncriptarHttpPostIn" />
+      <wsdl:output message="tns:EncriptarHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <wsdl:input message="tns:DesencriptarHttpPostIn" />
+      <wsdl:output message="tns:DesencriptarHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertLogDanos">
+      <wsdl:input message="tns:InsertLogDanosHttpPostIn" />
+      <wsdl:output message="tns:InsertLogDanosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenPassword">
+      <wsdl:input message="tns:GenPasswordHttpPostIn" />
+      <wsdl:output message="tns:GenPasswordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertUser">
+      <wsdl:input message="tns:InsertUserHttpPostIn" />
+      <wsdl:output message="tns:InsertUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarRolUser">
+      <wsdl:input message="tns:AsignarRolUserHttpPostIn" />
+      <wsdl:output message="tns:AsignarRolUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuitarRolUser">
+      <wsdl:input message="tns:QuitarRolUserHttpPostIn" />
+      <wsdl:output message="tns:QuitarRolUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRoles">
+      <wsdl:input message="tns:ConsultaRolesHttpPostIn" />
+      <wsdl:output message="tns:ConsultaRolesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRolesXUser">
+      <wsdl:input message="tns:ConsultaRolesXUserHttpPostIn" />
+      <wsdl:output message="tns:ConsultaRolesXUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXRol">
+      <wsdl:input message="tns:ConsultaPermisosXRolHttpPostIn" />
+      <wsdl:output message="tns:ConsultaPermisosXRolHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXUser">
+      <wsdl:input message="tns:ConsultaPermisosXUserHttpPostIn" />
+      <wsdl:output message="tns:ConsultaPermisosXUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuarios">
+      <wsdl:input message="tns:ConsultaUsuariosHttpPostIn" />
+      <wsdl:output message="tns:ConsultaUsuariosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuariosEspecificos">
+      <wsdl:input message="tns:ConsultaUsuariosEspecificosHttpPostIn" />
+      <wsdl:output message="tns:ConsultaUsuariosEspecificosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDatUsuario">
+      <wsdl:input message="tns:ConsultaDatUsuarioHttpPostIn" />
+      <wsdl:output message="tns:ConsultaDatUsuarioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRol">
+      <wsdl:input message="tns:InsertRolHttpPostIn" />
+      <wsdl:output message="tns:InsertRolHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermiso">
+      <wsdl:input message="tns:InsertPermisoHttpPostIn" />
+      <wsdl:output message="tns:InsertPermisoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermisosXRol">
+      <wsdl:input message="tns:InsertPermisosXRolHttpPostIn" />
+      <wsdl:output message="tns:InsertPermisosXRolHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsControlesAccesoSoap" type="tns:wsControlesAccesoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ActualizaPass">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ActualizaPass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstatusUser">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/EstatusUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ValidateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Encriptar">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/Encriptar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/Desencriptar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLogDanos">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/InsertLogDanos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenPassword">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/GenPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertUser">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/InsertUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarRolUser">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/AsignarRolUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuitarRolUser">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/QuitarRolUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRoles">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRolesXUser">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaRolesXUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXRol">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaPermisosXRol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXUser">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaPermisosXUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuarios">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuariosEspecificos">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaUsuariosEspecificos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDatUsuario">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaDatUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRol">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/InsertRol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermiso">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/InsertPermiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermisosXRol">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/InsertPermisosXRol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsControlesAccesoSoap12" type="tns:wsControlesAccesoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ActualizaPass">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ActualizaPass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstatusUser">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/EstatusUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ValidateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Encriptar">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/Encriptar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/Desencriptar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLogDanos">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/InsertLogDanos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenPassword">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/GenPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertUser">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/InsertUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarRolUser">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/AsignarRolUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuitarRolUser">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/QuitarRolUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRoles">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaRoles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRolesXUser">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaRolesXUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXRol">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaPermisosXRol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXUser">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaPermisosXUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuarios">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuariosEspecificos">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaUsuariosEspecificos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDatUsuario">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/ConsultaDatUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRol">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/InsertRol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermiso">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/InsertPermiso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermisosXRol">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx/InsertPermisosXRol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsControlesAccesoHttpGet" type="tns:wsControlesAccesoHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ActualizaPass">
+      <http:operation location="/ActualizaPass" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstatusUser">
+      <http:operation location="/EstatusUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <http:operation location="/ValidateUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Encriptar">
+      <http:operation location="/Encriptar" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <http:operation location="/Desencriptar" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLogDanos">
+      <http:operation location="/InsertLogDanos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenPassword">
+      <http:operation location="/GenPassword" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertUser">
+      <http:operation location="/InsertUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarRolUser">
+      <http:operation location="/AsignarRolUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuitarRolUser">
+      <http:operation location="/QuitarRolUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRoles">
+      <http:operation location="/ConsultaRoles" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRolesXUser">
+      <http:operation location="/ConsultaRolesXUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXRol">
+      <http:operation location="/ConsultaPermisosXRol" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXUser">
+      <http:operation location="/ConsultaPermisosXUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuarios">
+      <http:operation location="/ConsultaUsuarios" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuariosEspecificos">
+      <http:operation location="/ConsultaUsuariosEspecificos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDatUsuario">
+      <http:operation location="/ConsultaDatUsuario" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRol">
+      <http:operation location="/InsertRol" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermiso">
+      <http:operation location="/InsertPermiso" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermisosXRol">
+      <http:operation location="/InsertPermisosXRol" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsControlesAccesoHttpPost" type="tns:wsControlesAccesoHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ActualizaPass">
+      <http:operation location="/ActualizaPass" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstatusUser">
+      <http:operation location="/EstatusUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <http:operation location="/ValidateUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Encriptar">
+      <http:operation location="/Encriptar" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <http:operation location="/Desencriptar" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLogDanos">
+      <http:operation location="/InsertLogDanos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenPassword">
+      <http:operation location="/GenPassword" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertUser">
+      <http:operation location="/InsertUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarRolUser">
+      <http:operation location="/AsignarRolUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuitarRolUser">
+      <http:operation location="/QuitarRolUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRoles">
+      <http:operation location="/ConsultaRoles" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaRolesXUser">
+      <http:operation location="/ConsultaRolesXUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXRol">
+      <http:operation location="/ConsultaPermisosXRol" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPermisosXUser">
+      <http:operation location="/ConsultaPermisosXUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuarios">
+      <http:operation location="/ConsultaUsuarios" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaUsuariosEspecificos">
+      <http:operation location="/ConsultaUsuariosEspecificos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDatUsuario">
+      <http:operation location="/ConsultaDatUsuario" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRol">
+      <http:operation location="/InsertRol" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermiso">
+      <http:operation location="/InsertPermiso" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPermisosXRol">
+      <http:operation location="/InsertPermisosXRol" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsControlesAcceso">
+    <wsdl:port name="wsControlesAccesoSoap" binding="tns:wsControlesAccesoSoap">
+      <soap:address location="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsControlesAccesoSoap12" binding="tns:wsControlesAccesoSoap12">
+      <soap12:address location="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsControlesAccesoHttpGet" binding="tns:wsControlesAccesoHttpGet">
+      <http:address location="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsControlesAccesoHttpPost" binding="tns:wsControlesAccesoHttpPost">
+      <http:address location="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

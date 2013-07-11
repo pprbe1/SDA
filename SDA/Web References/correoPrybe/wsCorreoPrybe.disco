@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://qa.prybe.coop/WSPrybe/wspf/wsCorreoPrybe.asmx?wsdl" docRef="http://qa.prybe.coop/WSPrybe/wspf/wsCorreoPrybe.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://qa.prybe.coop/WSPrybe/wspf/wsCorreoPrybe.asmx" xmlns:q1="http://seguros.prybe.coop/WSPrybe/wspf/wsPrybe.asmx" binding="q1:wsCorreoPrybeSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://qa.prybe.coop/WSPrybe/wspf/wsCorreoPrybe.asmx" xmlns:q2="http://seguros.prybe.coop/WSPrybe/wspf/wsPrybe.asmx" binding="q2:wsCorreoPrybeSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

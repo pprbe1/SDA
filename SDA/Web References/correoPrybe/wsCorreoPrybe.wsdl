@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://seguros.prybe.coop/WSPrybe/wspf/wsPrybe.asmx" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://seguros.prybe.coop/WSPrybe/wspf/wsPrybe.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;strong&gt;&lt;font size=3&gt;WebService Correo PRYBE:&lt;/font&gt;&lt;/strong&gt;&lt;/br&gt;&lt;font size=2&gt;Servicio encargado de una cotización con la aseguradora seleccionada&lt;/font&gt;</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://seguros.prybe.coop/WSPrybe/wspf/wsPrybe.asmx">
+      <s:element name="EnviaCorreo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="toA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fromA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="body" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="esHTML" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviaCorreoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnviaCorreoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EnviaCorreoSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviaCorreo" />
+  </wsdl:message>
+  <wsdl:message name="EnviaCorreoSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviaCorreoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviaCorreoHttpGetIn">
+    <wsdl:part name="toA" type="s:string" />
+    <wsdl:part name="fromA" type="s:string" />
+    <wsdl:part name="subject" type="s:string" />
+    <wsdl:part name="body" type="s:string" />
+    <wsdl:part name="esHTML" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnviaCorreoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EnviaCorreoHttpPostIn">
+    <wsdl:part name="toA" type="s:string" />
+    <wsdl:part name="fromA" type="s:string" />
+    <wsdl:part name="subject" type="s:string" />
+    <wsdl:part name="body" type="s:string" />
+    <wsdl:part name="esHTML" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EnviaCorreoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="wsCorreoPrybeSoap">
+    <wsdl:operation name="EnviaCorreo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;strong&gt;Web Service que permite enviar un correo electrónico&lt;/strong&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnviaCorreoSoapIn" />
+      <wsdl:output message="tns:EnviaCorreoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsCorreoPrybeHttpGet">
+    <wsdl:operation name="EnviaCorreo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;strong&gt;Web Service que permite enviar un correo electrónico&lt;/strong&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnviaCorreoHttpGetIn" />
+      <wsdl:output message="tns:EnviaCorreoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsCorreoPrybeHttpPost">
+    <wsdl:operation name="EnviaCorreo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;strong&gt;Web Service que permite enviar un correo electrónico&lt;/strong&gt;</wsdl:documentation>
+      <wsdl:input message="tns:EnviaCorreoHttpPostIn" />
+      <wsdl:output message="tns:EnviaCorreoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsCorreoPrybeSoap" type="tns:wsCorreoPrybeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EnviaCorreo">
+      <soap:operation soapAction="http://seguros.prybe.coop/WSPrybe/wspf/wsPrybe.asmx/EnviaCorreo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsCorreoPrybeSoap12" type="tns:wsCorreoPrybeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EnviaCorreo">
+      <soap12:operation soapAction="http://seguros.prybe.coop/WSPrybe/wspf/wsPrybe.asmx/EnviaCorreo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsCorreoPrybeHttpGet" type="tns:wsCorreoPrybeHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="EnviaCorreo">
+      <http:operation location="/EnviaCorreo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsCorreoPrybeHttpPost" type="tns:wsCorreoPrybeHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="EnviaCorreo">
+      <http:operation location="/EnviaCorreo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsCorreoPrybe">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;strong&gt;&lt;font size=3&gt;WebService Correo PRYBE:&lt;/font&gt;&lt;/strong&gt;&lt;/br&gt;&lt;font size=2&gt;Servicio encargado de una cotización con la aseguradora seleccionada&lt;/font&gt;</wsdl:documentation>
+    <wsdl:port name="wsCorreoPrybeSoap" binding="tns:wsCorreoPrybeSoap">
+      <soap:address location="http://qa.prybe.coop/WSPrybe/wspf/wsCorreoPrybe.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsCorreoPrybeSoap12" binding="tns:wsCorreoPrybeSoap12">
+      <soap12:address location="http://qa.prybe.coop/WSPrybe/wspf/wsCorreoPrybe.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsCorreoPrybeHttpGet" binding="tns:wsCorreoPrybeHttpGet">
+      <http:address location="http://qa.prybe.coop/WSPrybe/wspf/wsCorreoPrybe.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsCorreoPrybeHttpPost" binding="tns:wsCorreoPrybeHttpPost">
+      <http:address location="http://qa.prybe.coop/WSPrybe/wspf/wsCorreoPrybe.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

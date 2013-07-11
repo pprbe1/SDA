@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SDA.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SDA_correoPrybe_wsCorreoPrybe" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://qa.prybe.coop/WSPrybe/wspf/wsCorreoPrybe.asmx</Value>
+    </Setting>
+    <Setting Name="SDA_Controles_wsControlesAcceso" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://qa.prybe.coop/WSPrybeBDa/wspbd/wsControlesAcceso.asmx</Value>
+    </Setting>
+    <Setting Name="SDA_OBD_Danos_wsDataConnection" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://qa.prybe.coop/WSPrybeBDa/wspbd/wsDataConnection.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
