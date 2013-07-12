@@ -83,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\AnalisisReclamo.aspx" />
     <Content Include="App\Menu.aspx" />
     <Content Include="App\SocioBeneficios.aspx" />
     <Content Include="Media\Image\Buttons\btnConfig.png" />
@@ -294,6 +295,13 @@
     <None Include="Web References\wsInsercionDatosBen\wsInsertaDatosBeneficios.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\AnalisisReclamo.aspx.cs">
+      <DependentUpon>AnalisisReclamo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\AnalisisReclamo.aspx.designer.cs">
+      <DependentUpon>AnalisisReclamo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
