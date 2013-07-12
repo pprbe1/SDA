@@ -7,13 +7,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Gray">
-        <Listeners>
+    <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Gray"/>
+       <%-- <Listeners>
             <DocumentReady Handler="#{strCoop}.load();#{cmbCoop}.setValue(1);#{strPlaza}.load();#{cmbPlaza}.setValue(1);" />
-        </Listeners>    
-    </ext:ResourceManager>
+        </Listeners>    --%>
 
-    <ext:Store ID="strCoop" runat="server">
+    <%--<ext:Store ID="strCoop" runat="server">
         <Proxy>
             <ext:AjaxProxy runat="server" Url="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaCoop">
                 <ActionMethods Read="POST" />
@@ -285,13 +284,12 @@
         <Listeners>
             <Load Handler="#{cmbPaqueteria}.setValue(#{cmbPaqueteria}.store.getAt(0).get('id'));" />
         </Listeners> 
-    </ext:Store>
+    </ext:Store>--%>
 
     <ext:Panel ID="pnlSocio" runat="server"
         ButtonAlign="Right" Title="Datos Del Socio"
         Border="true" Layout="FormLayout"
-        Icon="UserMagnify" Height="280"
-        BodyStyle="background-image: url('/Styles/Image/bgPRYBE.png')">
+        Icon="UserMagnify" Height="280">
         <Items>
             <ext:Panel ID="Panel1" runat="server"
                 Border="false" Layout="ColumnLayout"
@@ -302,8 +300,7 @@
                         Header="false" 
                         ColumnWidth=".29" 
                         Layout="FormLayout"
-                        LabelAlign="Right"                               
-                        BodyStyle="background-image: url('/Styles/Image/bgPRYBE.png')">
+                        LabelAlign="Right"                               >
                         <Items>
                             <ext:FieldContainer ID="fcNumSocio" runat="server" FieldBodyCls="Numero de Socio" MsgTarget="Under">
                                 <Items>
@@ -319,7 +316,6 @@
                             <ext:ComboBox 
                                 ID="cmbCoop"
                                 runat="server" 
-                                StoreID="strCoop"
                                 Editable="false"
                                 TypeAhead="true" 
                                 QueryMode="Local"
@@ -330,15 +326,14 @@
                                 EmptyText="Loading..."
                                 ValueNotFoundText="Loading...">
 
-                                 <Listeners>
+                                 <%--<Listeners>
                                     <Select Handler="#{PlazaStore}.load();" />
-                                </Listeners>
+                                </Listeners>--%>
                         
                             </ext:ComboBox>
                             <ext:ComboBox 
                                 ID="cmbPlaza"
                                 runat="server" 
-                                StoreID="strPlaza"
                                 Editable="false"
                                 TypeAhead="true" 
                                 QueryMode="Local"
@@ -348,14 +343,13 @@
                                 ValueField="id"
                                 EmptyText="Loading..."
                                 ValueNotFoundText="Loading...">
-                                <Listeners>
+                                <%--<Listeners>
                                     <Select Handler="#{cmbSucursal}.clearValue();#{strSucursal}.load();" />
-                                </Listeners>
+                                </Listeners>--%>
                             </ext:ComboBox>
                             <ext:ComboBox 
                                 ID="cmbSucursal"
                                 runat="server" 
-                                StoreID="strSucursal"
                                 Editable="false"
                                 TypeAhead="true" 
                                 QueryMode="Local"
@@ -376,7 +370,6 @@
                         ColumnWidth=".4" 
                         Layout="Form"                               
                         LabelAlign="Right"
-                        BodyStyle="background-image: url('/Styles/Image/bgPRYBE.png')"
                         LabelWidth="115">  
                         <Items>
                             <ext:FieldContainer ID="fcNombres" runat="server" FieldLabel="Nombre(s)" MsgTarget="Under" Disabled="true">
@@ -418,15 +411,14 @@
                                         StyleSpec="text-transform:uppercase"
                                         FieldLabel="Ocupación"  
                                         Width="130" 
-                                        StoreID="strOcupacion"
                                         Disabled="true"/>
+
                             <ext:ComboBox ID="cmbEdoCivil" 
                                         runat="server"  
                                         Editable="true" 
                                         TypeAhead="true" 
                                         Mode="Local" 
                                         ForceSelection="true" 
-                                        StoreID="strEdoCivil" 
                                         TriggerAction="All" 
                                         DisplayField="name" 
                                         ValueField="id"
@@ -443,13 +435,11 @@
                         Header="false"
                         ColumnWidth=".31"
                         Layout="Form"
-                        LabelAlign="Right"
-                        BodyStyle="background-image: url('/Styles/Image/bgPRYBE.png')">
+                        LabelAlign="Right">
                         <Items>
                             <ext:ComboBox 
                                 ID="cmbEdo"
-                                runat="server"
-                                StoreID="strEstado"            
+                                runat="server"  
                                 Editable="true"
                                 TypeAhead="true" 
                                 Mode="Local"
@@ -463,14 +453,10 @@
                                 FieldLabel="Estado"
                                 Resizable="True"
                                 Disabled="true">    
-                                <Listeners>
-                                    <Select Handler="#{cmbMunicipio}.clearValue();#{strMunicipio}.load();" />
-                                </Listeners>
                             </ext:ComboBox>
                             <ext:ComboBox 
                                 ID="cmbMnpo"
                                 runat="server" 
-                                StoreID="strMunicipio"
                                 Editable="true"
                                 TypeAhead="true" 
                                 Mode="Local"
@@ -484,14 +470,10 @@
                                 FieldLabel="Municipio"
                                 Resizable="True"
                                 Disabled="true">
-                                <Listeners>
-                                    <Select Handler="#{cmbColonia}.clearValue();#{strColonia}.load();" />
-                                </Listeners>
                             </ext:ComboBox>
                             <ext:ComboBox 
                                 ID="cmbCol"
                                 runat="server" 
-                                StoreID="strColonia"
                                 SelectOnFocus="true"
                                 Editable="true"
                                 TypeAhead="true" 
@@ -504,15 +486,11 @@
                                 ValueNotFoundText="Cargando..." 
                                 FieldLabel="Colonia"
                                 Resizable="True"
-                                Disabled="true">       
-                                <Listeners>
-                                    <Select Handler="#{cmbCP}.clearValue();#{strCP}.load();" />
-                                </Listeners>
+                                Disabled="true">    
                             </ext:ComboBox>
                             <ext:ComboBox 
                                 ID="cmbCP"
                                 runat="server" 
-                                StoreID="strCP"
                                 Editable="false"
                                 TypeAhead="true" 
                                 Mode="Local"
@@ -539,14 +517,14 @@
                     <ext:Toolbar ID="Toolbar1" runat="server" AutoHeight="true">
                         <Items>
                             <ext:Button ID="btnCancelarRegistroSocio" runat="server" Text="Cancelar" Icon="Cancel" Disabled="true">
-                                <DirectEvents>
+                                <%--<DirectEvents>
                                     <Click OnEvent="btnCancelarRegistroSocio_DirectClick"></Click>
-                                </DirectEvents>
+                                </DirectEvents>--%>
                             </ext:Button>
                             <ext:Button ID="btnModificarSocio" runat="server" Text="Guardar" Icon="DiskEdit" Disabled="true">
-                                <DirectEvents>
+                                <%--<DirectEvents>
                                     <Click OnEvent="btnModificarSocio_DirectClick"></Click>
-                                </DirectEvents>
+                                </DirectEvents>--%>
                             </ext:Button>
                         </Items>
                     </ext:Toolbar>
@@ -564,8 +542,7 @@
         Layout="Form"
         LabelAlign="Right"
         Disabled="true"
-        Height="260"
-        BodyStyle="background-image: url('/Styles/Image/bgPRYBE.png')">
+        Height="260">
         <Items>
             <ext:FormPanel ID="paneDocumentos"
                 runat="server"
@@ -573,7 +550,7 @@
                 AutoScroll = "true"
                 Border = "false">
                 <Items>
-                    <ext:ComboBox ID="cmbPaqueteria" runat="server" StoreID="strPaqueteria"  FieldLabel="Paquetería" Editable="true" TypeAhead="true" 
+                    <ext:ComboBox ID="cmbPaqueteria" runat="server" FieldLabel="Paquetería" Editable="true" TypeAhead="true" 
                                     Mode="Local" ForceSelection="true" TriggerAction="All" DisplayField="name" ValueField="id" Width="200" />    
                     <ext:TextField ID="txtGuia" runat="server" FieldLabel="Guía de Paquete" AllowBlank="false" MaxLengthText="45" StyleSpec="text-transform:uppercase" Width="200" />
                 </Items>
@@ -589,7 +566,6 @@
                     runat="server" 
                     AutoWidth="true"
                     Height="200"
-                    StoreID="strDocumentosAgregados" 
                     AutoScroll="true"
                     Layout="FormLayout"
                     ButtonAlign="Center">
@@ -628,23 +604,22 @@
                                     Width="300"
                                     Mode="Local" 
                                     ForceSelection="true" 
-                                    StoreID="strDocumentos" 
                                     TriggerAction="All" 
                                     DisplayField="name" 
                                     ValueField="id" />
                                 <ext:Button ID="btnAgregarDocumento" runat="server" Text="Agregar" Icon="PageAdd" LabelAlign="Right">
-                                    <DirectEvents>
+                                    <%--<DirectEvents>
                                         <Click OnEvent="btnAgregarDocumento_Click" />
-                                    </DirectEvents>
+                                    </DirectEvents>--%>
                                 </ext:Button>     
                             </Items>
                         </ext:Toolbar>
                     </TopBar>
                     <Buttons>
                         <ext:Button ID="btnGuardar" runat="server" Text="Guardar" Icon="DiskEdit">                    
-                            <DirectEvents>                    
+                            <%--<DirectEvents>                    
                                 <Click OnEvent="btnGuardar_Click"></Click>
-                            </DirectEvents>
+                            </DirectEvents>--%>
                         </ext:Button>
                     </Buttons>
                 </ext:GridPanel>
