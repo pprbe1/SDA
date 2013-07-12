@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx">
+      <s:element name="ObtenSocioCPM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenSocioCPMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenSocioCPMResult" type="tns:SocioCPM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SocioCPM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimerNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SegundoNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimerApellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SegundoApellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSocioTitular" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plaza" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaNacimiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CURP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoExterior" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoInterior" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Municipio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colonia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ocupacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstadoCivil" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaIngreso" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Error">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Valor" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenPermisoCPM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenPermisoCPMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenPermisoCPMResult" type="tns:PermisoCPM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PermisoCPM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+          <s:element minOccurs="0" maxOccurs="1" name="Permiso" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SocioCPM" nillable="true" type="tns:SocioCPM" />
+      <s:element name="PermisoCPM" nillable="true" type="tns:PermisoCPM" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenSocioCPMSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenSocioCPM" />
+  </wsdl:message>
+  <wsdl:message name="ObtenSocioCPMSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenSocioCPMResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenPermisoCPMSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenPermisoCPM" />
+  </wsdl:message>
+  <wsdl:message name="ObtenPermisoCPMSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenPermisoCPMResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenSocioCPMHttpGetIn">
+    <wsdl:part name="NoSocio" type="s:string" />
+    <wsdl:part name="Usuario" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObtenSocioCPMHttpGetOut">
+    <wsdl:part name="Body" element="tns:SocioCPM" />
+  </wsdl:message>
+  <wsdl:message name="ObtenPermisoCPMHttpGetIn">
+    <wsdl:part name="Usuario" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObtenPermisoCPMHttpGetOut">
+    <wsdl:part name="Body" element="tns:PermisoCPM" />
+  </wsdl:message>
+  <wsdl:message name="ObtenSocioCPMHttpPostIn">
+    <wsdl:part name="NoSocio" type="s:string" />
+    <wsdl:part name="Usuario" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObtenSocioCPMHttpPostOut">
+    <wsdl:part name="Body" element="tns:SocioCPM" />
+  </wsdl:message>
+  <wsdl:message name="ObtenPermisoCPMHttpPostIn">
+    <wsdl:part name="Usuario" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObtenPermisoCPMHttpPostOut">
+    <wsdl:part name="Body" element="tns:PermisoCPM" />
+  </wsdl:message>
+  <wsdl:portType name="wsPrybeCPMSoap">
+    <wsdl:operation name="ObtenSocioCPM">
+      <wsdl:input message="tns:ObtenSocioCPMSoapIn" />
+      <wsdl:output message="tns:ObtenSocioCPMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenPermisoCPM">
+      <wsdl:input message="tns:ObtenPermisoCPMSoapIn" />
+      <wsdl:output message="tns:ObtenPermisoCPMSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsPrybeCPMHttpGet">
+    <wsdl:operation name="ObtenSocioCPM">
+      <wsdl:input message="tns:ObtenSocioCPMHttpGetIn" />
+      <wsdl:output message="tns:ObtenSocioCPMHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenPermisoCPM">
+      <wsdl:input message="tns:ObtenPermisoCPMHttpGetIn" />
+      <wsdl:output message="tns:ObtenPermisoCPMHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsPrybeCPMHttpPost">
+    <wsdl:operation name="ObtenSocioCPM">
+      <wsdl:input message="tns:ObtenSocioCPMHttpPostIn" />
+      <wsdl:output message="tns:ObtenSocioCPMHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenPermisoCPM">
+      <wsdl:input message="tns:ObtenPermisoCPMHttpPostIn" />
+      <wsdl:output message="tns:ObtenPermisoCPMHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsPrybeCPMSoap" type="tns:wsPrybeCPMSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenSocioCPM">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx/ObtenSocioCPM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenPermisoCPM">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx/ObtenPermisoCPM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsPrybeCPMSoap12" type="tns:wsPrybeCPMSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenSocioCPM">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx/ObtenSocioCPM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenPermisoCPM">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx/ObtenPermisoCPM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsPrybeCPMHttpGet" type="tns:wsPrybeCPMHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ObtenSocioCPM">
+      <http:operation location="/ObtenSocioCPM" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenPermisoCPM">
+      <http:operation location="/ObtenPermisoCPM" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsPrybeCPMHttpPost" type="tns:wsPrybeCPMHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ObtenSocioCPM">
+      <http:operation location="/ObtenSocioCPM" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenPermisoCPM">
+      <http:operation location="/ObtenPermisoCPM" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsPrybeCPM">
+    <wsdl:port name="wsPrybeCPMSoap" binding="tns:wsPrybeCPMSoap">
+      <soap:address location="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsPrybeCPMSoap12" binding="tns:wsPrybeCPMSoap12">
+      <soap12:address location="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsPrybeCPMHttpGet" binding="tns:wsPrybeCPMHttpGet">
+      <http:address location="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsPrybeCPMHttpPost" binding="tns:wsPrybeCPMHttpPost">
+      <http:address location="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -178,6 +178,17 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\OBD_danos\wsDataConnection.disco" />
+    <None Include="Web References\wsCPM\PermisoCPM.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsCPM\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsCPM\SocioCPM.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsCPM\wsPrybeCPM.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -189,6 +200,7 @@
     <None Include="Web References\OBD_danos\YaEmitida1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\wsCPM\wsPrybeCPM.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\Menu.aspx.cs">
@@ -232,6 +244,11 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\OBD_danos\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\wsCPM\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -282,6 +299,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SDA_OBD_Danos_wsDataConnection</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsCPM\</RelPath>
+      <UpdateFromURL>http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SDA_wsCPM_wsPrybeCPM</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
