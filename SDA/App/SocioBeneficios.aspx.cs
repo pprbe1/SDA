@@ -150,7 +150,7 @@ namespace SDA.App
                 ErrorOper = socio.InsertSocioBeneficio(this.txtNumSocio.Text.ToUpper(), this.txtNombre.Text.ToUpper(), this.txtNombre2.Text.ToUpper(), this.txtApellidoPat.Text.ToUpper(),
                                this.txtApellidoMat.Text.ToUpper(), fechaNac.ToString("dd/MM/yyyy"), fechaIng.ToString("dd/MM/yyyy"), (int)(Session["Sexo"]), "", "", "",
                                Convert.ToInt32(this.cmbOcupacion.SelectedItem.Value), Convert.ToInt32(this.cmbEdoCivil.SelectedItem.Value),
-                               Convert.ToInt32(this.cmbSucursal.SelectedItem.Value), Convert.ToString(ano), hoy.ToString("dd/MM/yyyy"), Convert.ToInt32(this.cmbCol.SelectedItem.Value), this.txtCalle.Text.ToUpper(),
+                               Convert.ToInt32(this.cmbSucursal.SelectedItem.Value), Convert.ToString(ano), hoy.ToString("dd/MM/yyyy"), Convert.ToInt32(this.cmbColonia.SelectedItem.Value), this.txtCalle.Text.ToUpper(),
                                this.txtNoExt.Text.ToUpper(), this.txtNoInt.Text.ToUpper(), 1, 1, Convert.ToInt32(this.cmbPaqueteria.SelectedItem.Value), this.txtGuia.Text.ToUpper());
                 if (ErrorOper.Valor == true)
                 {
@@ -195,9 +195,9 @@ namespace SDA.App
             this.rdoSexo.Disabled = true;
             this.cmbOcupacion.Disabled = true;
             this.cmbEdoCivil.Disabled = true;
-            this.cmbEdo.Disabled = true;
-            this.cmbMnpo.Disabled = true;
-            this.cmbCol.Disabled = true;
+            this.cmbEstado.Disabled = true;
+            this.cmbMunicipio.Disabled = true;
+            this.cmbColonia.Disabled = true;
             this.cmbCP.Disabled = true;
             this.txtCalle.Disabled = true;
             this.txtNumSocio.Text = "";
@@ -264,10 +264,12 @@ namespace SDA.App
             this.txtNoExt.Disabled = false;
             this.txtNoInt.Disabled = false;
             this.rdoSexo.Disabled = false;
-            this.cmbEdo.Disabled = false;
-            this.cmbMnpo.Disabled = false;
-            this.cmbCol.Disabled = false;
+            this.cmbEstado.Disabled = false;
+            this.cmbMunicipio.Disabled = false;
+            this.cmbColonia.Disabled = false;
             this.cmbCP.Disabled = false;
+            this.fcNumero.Disabled = false;
+            this.fcNumSocio.Disabled = true;
             //this.btnSiguiente.Disabled = false;
         }
 
