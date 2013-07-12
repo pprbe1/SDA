@@ -1,0 +1,1576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx">
+      <s:element name="ConsultaSiniestro">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsultaSiniestroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaSiniestroResult" type="tns:ArrayOfConsultaSiniestros" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaSiniestros">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaSiniestros" nillable="true" type="tns:ConsultaSiniestros" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaSiniestros">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Coop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Num" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prestamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ahorro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Funerario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mutual" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prodos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Montomes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reclamosacum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Montoacum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaPrima">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsultaPrimaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaPrimaResult" type="tns:ArrayOfConsultaPrimas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaPrimas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaPrimas" nillable="true" type="tns:ConsultaPrimas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaPrimas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Plaza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prestamos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AhMayores" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AhMenores" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAmenores" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Basica" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DobleI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AditamentoJ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edad1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edad2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edad3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cobertura" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Funerario1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Funerario2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Funerario3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FunerarioFun" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalP" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaReclamosGeneral">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Op" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Socio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaReclamosGeneralResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaReclamosGeneralResult" type="tns:ArrayOfConsultaReclamoGeneral" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaReclamoGeneral">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaReclamoGeneral" nillable="true" type="tns:ConsultaReclamoGeneral" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaReclamoGeneral">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NumSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumReclamo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaRec" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ocupacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnoReclamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstadoB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdReclamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdSucursal" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaReclamos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Socio" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Op" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaReclamosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaReclamosResult" type="tns:ArrayOfConsultaReclamo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaReclamo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaReclamo" nillable="true" type="tns:ConsultaReclamo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaReclamo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NumSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumReclamo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaRec" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ocupacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnoReclamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstadoB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdReclamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdSucursal" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaDocumentos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="numsocio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idsucursal" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDocumentosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaDocumentosResult" type="tns:ArrayOfConsultaDocumentoSocio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaDocumentoSocio">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaDocumentoSocio" nillable="true" type="tns:ConsultaDocumentoSocio" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaDocumentoSocio">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Documento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdDocumento" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaBeneficiarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdReclamo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaBeneficiariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaBeneficiariosResult" type="tns:ArrayOfConsultaBeneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaBeneficiario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaBeneficiario" nillable="true" type="tns:ConsultaBeneficiario" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaBeneficiario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NombreBeneficiario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Porcentaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdBeneficiario" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaBeneficiariosNombres">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdReclamo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdBeneficiario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaBeneficiariosNombresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaBeneficiariosNombresResult" type="tns:ConsultaBeneficiarioNombres" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConsultaBeneficiarioNombres">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoPat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoMat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Porcentaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdBeneficiario" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaProductos">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsultaProductosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaProductosResult" type="tns:ArrayOfConsultasProductos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultasProductos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultasProductos" nillable="true" type="tns:ConsultasProductos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultasProductos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id_Prod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Producto" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="consultasaldo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nosoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idsuc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultasaldoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultasaldoResult" type="tns:ArrayOfConsultaSaldos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaSaldos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaSaldos" nillable="true" type="tns:ConsultaSaldos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaSaldos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Total" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaProductosxcta">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsultaProductosxctaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaProductosxctaResult" type="tns:ArrayOfConsultaProdxCta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaProdxCta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaProdxCta" nillable="true" type="tns:ConsultaProdxCta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaProdxCta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id_Prodxcta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Id_Prod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Id_Cuenta" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaCuentas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdCoop" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Tipo_Cta" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCuentasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaCuentasResult" type="tns:ArrayOfCuentas" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCuentas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cuentas" nillable="true" type="tns:Cuentas" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cuentas">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cuenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCoop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCuenta" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaCaptacionGeneral">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdReclamo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCaptacionGeneralResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaCaptacionGeneralResult" type="tns:ArrayOfConsultaCaptacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaCaptacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaCaptacion" nillable="true" type="tns:ConsultaCaptacion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaCaptacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Saldo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UltimoMovimiento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdAnalisis" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCaptacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cuenta" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AditamentoJ" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DobleI" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PorcetajeAditamento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaldoTotal" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaCaptacionDetalle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdReclamo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdCaptacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCaptacionDetalleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaCaptacionDetalleResult" type="tns:ConsultaCaptaciones" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConsultaCaptaciones">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Saldo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UltimoMovimiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdAnalisis" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCaptacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Captacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AditamentoJ" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DobleI" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaColocaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdReclamo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaColocacionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaColocacionesResult" type="tns:ArrayOfConsultaColocacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaColocacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaColocacion" nillable="true" type="tns:ConsultaColocacion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaColocacion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FechaPrestamo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UltimoMovimientoColocacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plazo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TasaInt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdAnalisis" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Monto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaldoTotal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdColocacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoPrestamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaldoColocacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InteresesCubrir" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaColocacionDetalle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdReclamo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdColocacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaColocacionDetalleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaColocacionDetalleResult" type="tns:ConsultasColocaciones" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConsultasColocaciones">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Monto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaPrest" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UltimoMovColocacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdColocacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdTipoPrestamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TasaInt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plazo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaldoColocacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaReportesBeneficios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdReclamo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaReportesBeneficiosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaReportesBeneficiosResult" type="tns:ArrayOfConsultaReportes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaReportes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaReportes" nillable="true" type="tns:ConsultaReportes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsultaReportes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NombreBeneficiario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCoop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Coop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApoyoFunerario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroPoliza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plaza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroReclamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdBeneficiario" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfConsultaSiniestros" nillable="true" type="tns:ArrayOfConsultaSiniestros" />
+      <s:element name="ArrayOfConsultaPrimas" nillable="true" type="tns:ArrayOfConsultaPrimas" />
+      <s:element name="ArrayOfConsultaReclamoGeneral" nillable="true" type="tns:ArrayOfConsultaReclamoGeneral" />
+      <s:element name="ArrayOfConsultaReclamo" nillable="true" type="tns:ArrayOfConsultaReclamo" />
+      <s:element name="ArrayOfConsultaDocumentoSocio" nillable="true" type="tns:ArrayOfConsultaDocumentoSocio" />
+      <s:element name="ArrayOfConsultaBeneficiario" nillable="true" type="tns:ArrayOfConsultaBeneficiario" />
+      <s:element name="ConsultaBeneficiarioNombres" nillable="true" type="tns:ConsultaBeneficiarioNombres" />
+      <s:element name="ArrayOfConsultasProductos" nillable="true" type="tns:ArrayOfConsultasProductos" />
+      <s:element name="ArrayOfConsultaSaldos" nillable="true" type="tns:ArrayOfConsultaSaldos" />
+      <s:element name="ArrayOfConsultaProdxCta" nillable="true" type="tns:ArrayOfConsultaProdxCta" />
+      <s:element name="ArrayOfCuentas" nillable="true" type="tns:ArrayOfCuentas" />
+      <s:element name="ArrayOfConsultaCaptacion" nillable="true" type="tns:ArrayOfConsultaCaptacion" />
+      <s:element name="ConsultaCaptaciones" nillable="true" type="tns:ConsultaCaptaciones" />
+      <s:element name="ArrayOfConsultaColocacion" nillable="true" type="tns:ArrayOfConsultaColocacion" />
+      <s:element name="ConsultasColocaciones" nillable="true" type="tns:ConsultasColocaciones" />
+      <s:element name="ArrayOfConsultaReportes" nillable="true" type="tns:ArrayOfConsultaReportes" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultaSiniestroSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaSiniestro" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaSiniestroSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaSiniestroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPrimaSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaPrima" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPrimaSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaPrimaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosGeneralSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaReclamosGeneral" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosGeneralSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaReclamosGeneralResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaReclamos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaReclamosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDocumentosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaDocumentos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDocumentosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaDocumentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaBeneficiarios" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaBeneficiariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosNombresSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaBeneficiariosNombres" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosNombresSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaBeneficiariosNombresResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaProductosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaProductos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaProductosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultasaldoSoapIn">
+    <wsdl:part name="parameters" element="tns:consultasaldo" />
+  </wsdl:message>
+  <wsdl:message name="consultasaldoSoapOut">
+    <wsdl:part name="parameters" element="tns:consultasaldoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaProductosxctaSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaProductosxcta" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaProductosxctaSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaProductosxctaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaCuentas" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaCuentasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionGeneralSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaCaptacionGeneral" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionGeneralSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaCaptacionGeneralResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionDetalleSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaCaptacionDetalle" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionDetalleSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaCaptacionDetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaColocaciones" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaColocacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionDetalleSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaColocacionDetalle" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionDetalleSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaColocacionDetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReportesBeneficiosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaReportesBeneficios" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReportesBeneficiosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaReportesBeneficiosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaSiniestroHttpGetIn" />
+  <wsdl:message name="ConsultaSiniestroHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaSiniestros" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPrimaHttpGetIn" />
+  <wsdl:message name="ConsultaPrimaHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaPrimas" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosGeneralHttpGetIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+    <wsdl:part name="No_Socio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosGeneralHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaReclamoGeneral" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosHttpGetIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="No_Socio" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaReclamo" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDocumentosHttpGetIn">
+    <wsdl:part name="numsocio" type="s:string" />
+    <wsdl:part name="idsucursal" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDocumentosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaDocumentoSocio" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosHttpGetIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosNombresHttpGetIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+    <wsdl:part name="IdBeneficiario" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosNombresHttpGetOut">
+    <wsdl:part name="Body" element="tns:ConsultaBeneficiarioNombres" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaProductosHttpGetIn" />
+  <wsdl:message name="ConsultaProductosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultasProductos" />
+  </wsdl:message>
+  <wsdl:message name="consultasaldoHttpGetIn">
+    <wsdl:part name="nosoc" type="s:string" />
+    <wsdl:part name="idsuc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="consultasaldoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaSaldos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaProductosxctaHttpGetIn" />
+  <wsdl:message name="ConsultaProductosxctaHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaProdxCta" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasHttpGetIn">
+    <wsdl:part name="IdCoop" type="s:string" />
+    <wsdl:part name="Id_Tipo_Cta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCuentas" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionGeneralHttpGetIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionGeneralHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaCaptacion" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionDetalleHttpGetIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+    <wsdl:part name="IdCaptacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionDetalleHttpGetOut">
+    <wsdl:part name="Body" element="tns:ConsultaCaptaciones" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionesHttpGetIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaColocacion" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionDetalleHttpGetIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+    <wsdl:part name="IdColocacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionDetalleHttpGetOut">
+    <wsdl:part name="Body" element="tns:ConsultasColocaciones" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReportesBeneficiosHttpGetIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReportesBeneficiosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaReportes" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaSiniestroHttpPostIn" />
+  <wsdl:message name="ConsultaSiniestroHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaSiniestros" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPrimaHttpPostIn" />
+  <wsdl:message name="ConsultaPrimaHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaPrimas" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosGeneralHttpPostIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+    <wsdl:part name="No_Socio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosGeneralHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaReclamoGeneral" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosHttpPostIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="No_Socio" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReclamosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaReclamo" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDocumentosHttpPostIn">
+    <wsdl:part name="numsocio" type="s:string" />
+    <wsdl:part name="idsucursal" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDocumentosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaDocumentoSocio" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosHttpPostIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosNombresHttpPostIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+    <wsdl:part name="IdBeneficiario" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosNombresHttpPostOut">
+    <wsdl:part name="Body" element="tns:ConsultaBeneficiarioNombres" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaProductosHttpPostIn" />
+  <wsdl:message name="ConsultaProductosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultasProductos" />
+  </wsdl:message>
+  <wsdl:message name="consultasaldoHttpPostIn">
+    <wsdl:part name="nosoc" type="s:string" />
+    <wsdl:part name="idsuc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="consultasaldoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaSaldos" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaProductosxctaHttpPostIn" />
+  <wsdl:message name="ConsultaProductosxctaHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaProdxCta" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasHttpPostIn">
+    <wsdl:part name="IdCoop" type="s:string" />
+    <wsdl:part name="Id_Tipo_Cta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCuentas" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionGeneralHttpPostIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionGeneralHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaCaptacion" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionDetalleHttpPostIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+    <wsdl:part name="IdCaptacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCaptacionDetalleHttpPostOut">
+    <wsdl:part name="Body" element="tns:ConsultaCaptaciones" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionesHttpPostIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaColocacion" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionDetalleHttpPostIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+    <wsdl:part name="IdColocacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaColocacionDetalleHttpPostOut">
+    <wsdl:part name="Body" element="tns:ConsultasColocaciones" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReportesBeneficiosHttpPostIn">
+    <wsdl:part name="IdReclamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaReportesBeneficiosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsultaReportes" />
+  </wsdl:message>
+  <wsdl:portType name="wsConsultaSiniestrosSoap">
+    <wsdl:operation name="ConsultaSiniestro">
+      <wsdl:input message="tns:ConsultaSiniestroSoapIn" />
+      <wsdl:output message="tns:ConsultaSiniestroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPrima">
+      <wsdl:input message="tns:ConsultaPrimaSoapIn" />
+      <wsdl:output message="tns:ConsultaPrimaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamosGeneral">
+      <wsdl:input message="tns:ConsultaReclamosGeneralSoapIn" />
+      <wsdl:output message="tns:ConsultaReclamosGeneralSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamos">
+      <wsdl:input message="tns:ConsultaReclamosSoapIn" />
+      <wsdl:output message="tns:ConsultaReclamosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDocumentos">
+      <wsdl:input message="tns:ConsultaDocumentosSoapIn" />
+      <wsdl:output message="tns:ConsultaDocumentosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <wsdl:input message="tns:ConsultaBeneficiariosSoapIn" />
+      <wsdl:output message="tns:ConsultaBeneficiariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiariosNombres">
+      <wsdl:input message="tns:ConsultaBeneficiariosNombresSoapIn" />
+      <wsdl:output message="tns:ConsultaBeneficiariosNombresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductos">
+      <wsdl:input message="tns:ConsultaProductosSoapIn" />
+      <wsdl:output message="tns:ConsultaProductosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultasaldo">
+      <wsdl:input message="tns:consultasaldoSoapIn" />
+      <wsdl:output message="tns:consultasaldoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductosxcta">
+      <wsdl:input message="tns:ConsultaProductosxctaSoapIn" />
+      <wsdl:output message="tns:ConsultaProductosxctaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentas">
+      <wsdl:input message="tns:ConsultaCuentasSoapIn" />
+      <wsdl:output message="tns:ConsultaCuentasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionGeneral">
+      <wsdl:input message="tns:ConsultaCaptacionGeneralSoapIn" />
+      <wsdl:output message="tns:ConsultaCaptacionGeneralSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionDetalle">
+      <wsdl:input message="tns:ConsultaCaptacionDetalleSoapIn" />
+      <wsdl:output message="tns:ConsultaCaptacionDetalleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocaciones">
+      <wsdl:input message="tns:ConsultaColocacionesSoapIn" />
+      <wsdl:output message="tns:ConsultaColocacionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocacionDetalle">
+      <wsdl:input message="tns:ConsultaColocacionDetalleSoapIn" />
+      <wsdl:output message="tns:ConsultaColocacionDetalleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReportesBeneficios">
+      <wsdl:input message="tns:ConsultaReportesBeneficiosSoapIn" />
+      <wsdl:output message="tns:ConsultaReportesBeneficiosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsConsultaSiniestrosHttpGet">
+    <wsdl:operation name="ConsultaSiniestro">
+      <wsdl:input message="tns:ConsultaSiniestroHttpGetIn" />
+      <wsdl:output message="tns:ConsultaSiniestroHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPrima">
+      <wsdl:input message="tns:ConsultaPrimaHttpGetIn" />
+      <wsdl:output message="tns:ConsultaPrimaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamosGeneral">
+      <wsdl:input message="tns:ConsultaReclamosGeneralHttpGetIn" />
+      <wsdl:output message="tns:ConsultaReclamosGeneralHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamos">
+      <wsdl:input message="tns:ConsultaReclamosHttpGetIn" />
+      <wsdl:output message="tns:ConsultaReclamosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDocumentos">
+      <wsdl:input message="tns:ConsultaDocumentosHttpGetIn" />
+      <wsdl:output message="tns:ConsultaDocumentosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <wsdl:input message="tns:ConsultaBeneficiariosHttpGetIn" />
+      <wsdl:output message="tns:ConsultaBeneficiariosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiariosNombres">
+      <wsdl:input message="tns:ConsultaBeneficiariosNombresHttpGetIn" />
+      <wsdl:output message="tns:ConsultaBeneficiariosNombresHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductos">
+      <wsdl:input message="tns:ConsultaProductosHttpGetIn" />
+      <wsdl:output message="tns:ConsultaProductosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultasaldo">
+      <wsdl:input message="tns:consultasaldoHttpGetIn" />
+      <wsdl:output message="tns:consultasaldoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductosxcta">
+      <wsdl:input message="tns:ConsultaProductosxctaHttpGetIn" />
+      <wsdl:output message="tns:ConsultaProductosxctaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentas">
+      <wsdl:input message="tns:ConsultaCuentasHttpGetIn" />
+      <wsdl:output message="tns:ConsultaCuentasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionGeneral">
+      <wsdl:input message="tns:ConsultaCaptacionGeneralHttpGetIn" />
+      <wsdl:output message="tns:ConsultaCaptacionGeneralHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionDetalle">
+      <wsdl:input message="tns:ConsultaCaptacionDetalleHttpGetIn" />
+      <wsdl:output message="tns:ConsultaCaptacionDetalleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocaciones">
+      <wsdl:input message="tns:ConsultaColocacionesHttpGetIn" />
+      <wsdl:output message="tns:ConsultaColocacionesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocacionDetalle">
+      <wsdl:input message="tns:ConsultaColocacionDetalleHttpGetIn" />
+      <wsdl:output message="tns:ConsultaColocacionDetalleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReportesBeneficios">
+      <wsdl:input message="tns:ConsultaReportesBeneficiosHttpGetIn" />
+      <wsdl:output message="tns:ConsultaReportesBeneficiosHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsConsultaSiniestrosHttpPost">
+    <wsdl:operation name="ConsultaSiniestro">
+      <wsdl:input message="tns:ConsultaSiniestroHttpPostIn" />
+      <wsdl:output message="tns:ConsultaSiniestroHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPrima">
+      <wsdl:input message="tns:ConsultaPrimaHttpPostIn" />
+      <wsdl:output message="tns:ConsultaPrimaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamosGeneral">
+      <wsdl:input message="tns:ConsultaReclamosGeneralHttpPostIn" />
+      <wsdl:output message="tns:ConsultaReclamosGeneralHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamos">
+      <wsdl:input message="tns:ConsultaReclamosHttpPostIn" />
+      <wsdl:output message="tns:ConsultaReclamosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDocumentos">
+      <wsdl:input message="tns:ConsultaDocumentosHttpPostIn" />
+      <wsdl:output message="tns:ConsultaDocumentosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <wsdl:input message="tns:ConsultaBeneficiariosHttpPostIn" />
+      <wsdl:output message="tns:ConsultaBeneficiariosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiariosNombres">
+      <wsdl:input message="tns:ConsultaBeneficiariosNombresHttpPostIn" />
+      <wsdl:output message="tns:ConsultaBeneficiariosNombresHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductos">
+      <wsdl:input message="tns:ConsultaProductosHttpPostIn" />
+      <wsdl:output message="tns:ConsultaProductosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultasaldo">
+      <wsdl:input message="tns:consultasaldoHttpPostIn" />
+      <wsdl:output message="tns:consultasaldoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductosxcta">
+      <wsdl:input message="tns:ConsultaProductosxctaHttpPostIn" />
+      <wsdl:output message="tns:ConsultaProductosxctaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentas">
+      <wsdl:input message="tns:ConsultaCuentasHttpPostIn" />
+      <wsdl:output message="tns:ConsultaCuentasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionGeneral">
+      <wsdl:input message="tns:ConsultaCaptacionGeneralHttpPostIn" />
+      <wsdl:output message="tns:ConsultaCaptacionGeneralHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionDetalle">
+      <wsdl:input message="tns:ConsultaCaptacionDetalleHttpPostIn" />
+      <wsdl:output message="tns:ConsultaCaptacionDetalleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocaciones">
+      <wsdl:input message="tns:ConsultaColocacionesHttpPostIn" />
+      <wsdl:output message="tns:ConsultaColocacionesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocacionDetalle">
+      <wsdl:input message="tns:ConsultaColocacionDetalleHttpPostIn" />
+      <wsdl:output message="tns:ConsultaColocacionDetalleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReportesBeneficios">
+      <wsdl:input message="tns:ConsultaReportesBeneficiosHttpPostIn" />
+      <wsdl:output message="tns:ConsultaReportesBeneficiosHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsConsultaSiniestrosSoap" type="tns:wsConsultaSiniestrosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaSiniestro">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaSiniestro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPrima">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaPrima" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamosGeneral">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaReclamosGeneral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamos">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaReclamos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDocumentos">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaDocumentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaBeneficiarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiariosNombres">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaBeneficiariosNombres" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductos">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultasaldo">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/consultasaldo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductosxcta">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaProductosxcta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentas">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaCuentas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionGeneral">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaCaptacionGeneral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionDetalle">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaCaptacionDetalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocaciones">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaColocaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocacionDetalle">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaColocacionDetalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReportesBeneficios">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaReportesBeneficios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsConsultaSiniestrosSoap12" type="tns:wsConsultaSiniestrosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaSiniestro">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaSiniestro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPrima">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaPrima" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamosGeneral">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaReclamosGeneral" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamos">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaReclamos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDocumentos">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaDocumentos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaBeneficiarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiariosNombres">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaBeneficiariosNombres" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductos">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultasaldo">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/consultasaldo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductosxcta">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaProductosxcta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentas">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaCuentas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionGeneral">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaCaptacionGeneral" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionDetalle">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaCaptacionDetalle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocaciones">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaColocaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocacionDetalle">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaColocacionDetalle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReportesBeneficios">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx/ConsultaReportesBeneficios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsConsultaSiniestrosHttpGet" type="tns:wsConsultaSiniestrosHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ConsultaSiniestro">
+      <http:operation location="/ConsultaSiniestro" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPrima">
+      <http:operation location="/ConsultaPrima" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamosGeneral">
+      <http:operation location="/ConsultaReclamosGeneral" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamos">
+      <http:operation location="/ConsultaReclamos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDocumentos">
+      <http:operation location="/ConsultaDocumentos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <http:operation location="/ConsultaBeneficiarios" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiariosNombres">
+      <http:operation location="/ConsultaBeneficiariosNombres" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductos">
+      <http:operation location="/ConsultaProductos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultasaldo">
+      <http:operation location="/consultasaldo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductosxcta">
+      <http:operation location="/ConsultaProductosxcta" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentas">
+      <http:operation location="/ConsultaCuentas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionGeneral">
+      <http:operation location="/ConsultaCaptacionGeneral" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionDetalle">
+      <http:operation location="/ConsultaCaptacionDetalle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocaciones">
+      <http:operation location="/ConsultaColocaciones" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocacionDetalle">
+      <http:operation location="/ConsultaColocacionDetalle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReportesBeneficios">
+      <http:operation location="/ConsultaReportesBeneficios" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsConsultaSiniestrosHttpPost" type="tns:wsConsultaSiniestrosHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ConsultaSiniestro">
+      <http:operation location="/ConsultaSiniestro" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPrima">
+      <http:operation location="/ConsultaPrima" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamosGeneral">
+      <http:operation location="/ConsultaReclamosGeneral" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReclamos">
+      <http:operation location="/ConsultaReclamos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDocumentos">
+      <http:operation location="/ConsultaDocumentos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <http:operation location="/ConsultaBeneficiarios" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiariosNombres">
+      <http:operation location="/ConsultaBeneficiariosNombres" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductos">
+      <http:operation location="/ConsultaProductos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultasaldo">
+      <http:operation location="/consultasaldo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaProductosxcta">
+      <http:operation location="/ConsultaProductosxcta" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentas">
+      <http:operation location="/ConsultaCuentas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionGeneral">
+      <http:operation location="/ConsultaCaptacionGeneral" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCaptacionDetalle">
+      <http:operation location="/ConsultaCaptacionDetalle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocaciones">
+      <http:operation location="/ConsultaColocaciones" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaColocacionDetalle">
+      <http:operation location="/ConsultaColocacionDetalle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaReportesBeneficios">
+      <http:operation location="/ConsultaReportesBeneficios" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsConsultaSiniestros">
+    <wsdl:port name="wsConsultaSiniestrosSoap" binding="tns:wsConsultaSiniestrosSoap">
+      <soap:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsConsultaSiniestrosSoap12" binding="tns:wsConsultaSiniestrosSoap12">
+      <soap12:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsConsultaSiniestrosHttpGet" binding="tns:wsConsultaSiniestrosHttpGet">
+      <http:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsConsultaSiniestrosHttpPost" binding="tns:wsConsultaSiniestrosHttpPost">
+      <http:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

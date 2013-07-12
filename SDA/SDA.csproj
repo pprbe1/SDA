@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Menu.aspx" />
+    <Content Include="App\SocioBeneficios.aspx" />
     <Content Include="Media\Image\Buttons\btnConfig.png" />
     <Content Include="Media\Image\Buttons\btnExit.png" />
     <Content Include="Media\Image\Buttons\estadisticas.png" />
@@ -178,6 +179,85 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\OBD_danos\wsDataConnection.disco" />
+    <None Include="Web References\wsConsultaDatos2\ConsultaBeneficiario.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaBeneficiarioNombres.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaCaptacion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaCaptaciones.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaColocacion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaDocumentoSocio.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaPrimas.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaProdxCta.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaReclamo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaReclamoGeneral.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaReportes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaSaldos.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultasColocaciones.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultaSiniestros.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\ConsultasProductos.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\Cuentas.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsConsultaDatos2\wsConsultaSiniestros.wsdl" />
+    <None Include="Web References\wsConsultaDatosBen\ConsultaContabilidad.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatosBen\ConsultaReportes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatosBen\ConsultaSaldoTotalCaptacion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatosBen\ConsultaSaldoTotalColocacion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatosBen\DatosAnalisis.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatosBen\DatosSocio.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatosBen\DatosSocioAlta.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaDatosBen\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsConsultaDatosBen\wsConsultaBeneficios.wsdl" />
     <None Include="Web References\wsCPM\PermisoCPM.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -189,6 +269,16 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\wsCPM\wsPrybeCPM.disco" />
+    <None Include="Web References\wsConsultaDatos2\wsConsultaSiniestros.disco" />
+    <None Include="Web References\wsConsultaDatosBen\wsConsultaBeneficios.disco" />
+    <None Include="Web References\wsInsercionDatosBen\Error.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsInsercionDatosBen\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsInsercionDatosBen\wsInsertaDatosBeneficios.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -201,6 +291,7 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\wsCPM\wsPrybeCPM.wsdl" />
+    <None Include="Web References\wsInsercionDatosBen\wsInsertaDatosBeneficios.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\Menu.aspx.cs">
@@ -209,6 +300,13 @@
     </Compile>
     <Compile Include="App\Menu.aspx.designer.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\SocioBeneficios.aspx.cs">
+      <DependentUpon>SocioBeneficios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\SocioBeneficios.aspx.designer.cs">
+      <DependentUpon>SocioBeneficios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -248,7 +346,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\wsConsultaDatos2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\wsConsultaDatosBen\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\wsCPM\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\wsInsercionDatosBen\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -299,6 +412,39 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SDA_OBD_Danos_wsDataConnection</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaBeneficios.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsConsultaDatosBen\</RelPath>
+      <UpdateFromURL>http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaBeneficios.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SDA_wsConsultaDatosBen_wsConsultaBeneficios</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsConsultaDatos2\</RelPath>
+      <UpdateFromURL>http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaSiniestros.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SDA_wsConsultaDatos2_wsConsultaSiniestros</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsInsercionDatosBen\</RelPath>
+      <UpdateFromURL>http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SDA_wsInsercionDatosBen_wsInsertaDatosBeneficios</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybeCPM/wspcpm/wsPrybeCPM.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>

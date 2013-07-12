@@ -1,0 +1,1449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx">
+      <s:element name="InsertSocioBeneficio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="No_Socio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre_2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apellido_Pat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apellido_Mat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fecha_Nac" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fecha_Ing" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Curp" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ocupacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Edo_Civil" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Sucursal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ano_Reclamo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fecha_Reclamo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Colonia" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Ext" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Int" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Actual" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Tipo_Dom" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Paqueteria" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Guia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSocioBeneficioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertSocioBeneficioResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Error">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valor" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Tipo_Doc" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Sucursal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Socio" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Verificar" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertDocumentoResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertAnalisis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Reclamo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fecha_Actual" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ultima_Fecha_Lab" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fecha_Muerte" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Causante" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Causa_Muerte" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Fallecimiento" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Menor_Ahorrador" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertAnalisisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertAnalisisResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBeneficiario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre_1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre_2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apellido_Pat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apellido_Mat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Porcentaje" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Reclamo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Beneficiario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Op" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBeneficiarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertBeneficiarioResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertCaptacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Saldo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ultimo_mov" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Cuenta" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Saldo_AditamentoJ" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Saldo_DobleI" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Reclamo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Producto" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Captacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Aditamento_Juv" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Doble_Indem" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Saldo_Total" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertCaptacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertCaptacionResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertColocacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Fecha_Prest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tasa_int" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Plazo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ult_Mov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Saldo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tipo_Prest" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Tipo_Cta" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Reclamo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Monto" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Colocacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Producto" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Saldo_Total" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Intereses_cubrir" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertColocacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertColocacionResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSiniestros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cooperativa" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="No_Reclamos" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Prestamo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ahorro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Funerario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mutual" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PRO_DOS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Monto_Mes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="No_Reclamos_Acum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Monto_Acum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSiniestrosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertSiniestrosResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertEmisionPrimas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Plaza" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Prestamos_Miles" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mayores_Miles" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Menores_Miles" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PA_Menor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Basica" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Doble_Indem" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Aditamento_Juv" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Rango_Edad1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Rango_Edad2" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Rango_Edad3" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cobertura" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apoyo_Fun1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apoyo_Fun2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apoyo_Fun3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apoyo_Fun_funcionarios" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Total_PA_PP_AF" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertEmisionPrimasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertEmisionPrimasResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EstatusReclamo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Edo_Beneficio" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Reclamo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EstatusReclamoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EstatusReclamoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPLusCaptacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Reclamo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Aditamento_Juv" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPLusCaptacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertPLusCaptacionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Documento" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Op" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarDocumentoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarBeneficiario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Beneficiario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Op" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarBeneficiarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarBeneficiarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarCaptacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Captacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Op" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarCaptacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarCaptacionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarColocacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Colocacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Op" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarColocacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarColocacionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Error" nillable="true" type="tns:Error" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertSocioBeneficioSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertSocioBeneficio" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioBeneficioSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertSocioBeneficioResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertDocumento" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertAnalisisSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="InsertAnalisisSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertBeneficiarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertCaptacionSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertCaptacion" />
+  </wsdl:message>
+  <wsdl:message name="InsertCaptacionSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertCaptacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertColocacionSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertColocacion" />
+  </wsdl:message>
+  <wsdl:message name="InsertColocacionSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertColocacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSiniestrosSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertSiniestros" />
+  </wsdl:message>
+  <wsdl:message name="InsertSiniestrosSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertSiniestrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionPrimasSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertEmisionPrimas" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionPrimasSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertEmisionPrimasResponse" />
+  </wsdl:message>
+  <wsdl:message name="EstatusReclamoSoapIn">
+    <wsdl:part name="parameters" element="tns:EstatusReclamo" />
+  </wsdl:message>
+  <wsdl:message name="EstatusReclamoSoapOut">
+    <wsdl:part name="parameters" element="tns:EstatusReclamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPLusCaptacionSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPLusCaptacion" />
+  </wsdl:message>
+  <wsdl:message name="InsertPLusCaptacionSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPLusCaptacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarDocumentoSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarDocumento" />
+  </wsdl:message>
+  <wsdl:message name="EliminarDocumentoSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarBeneficiarioSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="EliminarBeneficiarioSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarBeneficiarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarCaptacionSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarCaptacion" />
+  </wsdl:message>
+  <wsdl:message name="EliminarCaptacionSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarCaptacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarColocacionSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarColocacion" />
+  </wsdl:message>
+  <wsdl:message name="EliminarColocacionSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarColocacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioBeneficioHttpGetIn">
+    <wsdl:part name="No_Socio" type="s:string" />
+    <wsdl:part name="Nombre" type="s:string" />
+    <wsdl:part name="Nombre_2" type="s:string" />
+    <wsdl:part name="Apellido_Pat" type="s:string" />
+    <wsdl:part name="Apellido_Mat" type="s:string" />
+    <wsdl:part name="Fecha_Nac" type="s:string" />
+    <wsdl:part name="Fecha_Ing" type="s:string" />
+    <wsdl:part name="Sexo" type="s:string" />
+    <wsdl:part name="Correo" type="s:string" />
+    <wsdl:part name="RFC" type="s:string" />
+    <wsdl:part name="Curp" type="s:string" />
+    <wsdl:part name="Ocupacion" type="s:string" />
+    <wsdl:part name="Edo_Civil" type="s:string" />
+    <wsdl:part name="Id_Sucursal" type="s:string" />
+    <wsdl:part name="Ano_Reclamo" type="s:string" />
+    <wsdl:part name="Fecha_Reclamo" type="s:string" />
+    <wsdl:part name="Id_Colonia" type="s:string" />
+    <wsdl:part name="Calle" type="s:string" />
+    <wsdl:part name="No_Ext" type="s:string" />
+    <wsdl:part name="No_Int" type="s:string" />
+    <wsdl:part name="Actual" type="s:string" />
+    <wsdl:part name="Id_Tipo_Dom" type="s:string" />
+    <wsdl:part name="Paqueteria" type="s:string" />
+    <wsdl:part name="No_Guia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioBeneficioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentoHttpGetIn">
+    <wsdl:part name="Id_Tipo_Doc" type="s:string" />
+    <wsdl:part name="Id_Sucursal" type="s:string" />
+    <wsdl:part name="No_Socio" type="s:string" />
+    <wsdl:part name="Verificar" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentoHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertAnalisisHttpGetIn">
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+    <wsdl:part name="Fecha_Actual" type="s:string" />
+    <wsdl:part name="Ultima_Fecha_Lab" type="s:string" />
+    <wsdl:part name="Fecha_Muerte" type="s:string" />
+    <wsdl:part name="Id_Causante" type="s:string" />
+    <wsdl:part name="Causa_Muerte" type="s:string" />
+    <wsdl:part name="Id_Fallecimiento" type="s:string" />
+    <wsdl:part name="Menor_Ahorrador" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertAnalisisHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioHttpGetIn">
+    <wsdl:part name="Nombre_1" type="s:string" />
+    <wsdl:part name="Nombre_2" type="s:string" />
+    <wsdl:part name="Apellido_Pat" type="s:string" />
+    <wsdl:part name="Apellido_Mat" type="s:string" />
+    <wsdl:part name="Porcentaje" type="s:string" />
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+    <wsdl:part name="Id_Beneficiario" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertCaptacionHttpGetIn">
+    <wsdl:part name="Saldo" type="s:string" />
+    <wsdl:part name="Ultimo_mov" type="s:string" />
+    <wsdl:part name="Id_Cuenta" type="s:string" />
+    <wsdl:part name="Saldo_AditamentoJ" type="s:string" />
+    <wsdl:part name="Saldo_DobleI" type="s:string" />
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+    <wsdl:part name="Id_Producto" type="s:string" />
+    <wsdl:part name="Id_Captacion" type="s:string" />
+    <wsdl:part name="Aditamento_Juv" type="s:string" />
+    <wsdl:part name="Doble_Indem" type="s:string" />
+    <wsdl:part name="Saldo_Total" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertCaptacionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertColocacionHttpGetIn">
+    <wsdl:part name="Fecha_Prest" type="s:string" />
+    <wsdl:part name="Tasa_int" type="s:string" />
+    <wsdl:part name="Plazo" type="s:string" />
+    <wsdl:part name="Ult_Mov" type="s:string" />
+    <wsdl:part name="Saldo" type="s:string" />
+    <wsdl:part name="Tipo_Prest" type="s:string" />
+    <wsdl:part name="Id_Tipo_Cta" type="s:string" />
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+    <wsdl:part name="Monto" type="s:string" />
+    <wsdl:part name="Id_Colocacion" type="s:string" />
+    <wsdl:part name="Id_Producto" type="s:string" />
+    <wsdl:part name="Saldo_Total" type="s:string" />
+    <wsdl:part name="Intereses_cubrir" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertColocacionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertSiniestrosHttpGetIn">
+    <wsdl:part name="Cooperativa" type="s:string" />
+    <wsdl:part name="No_Reclamos" type="s:string" />
+    <wsdl:part name="Prestamo" type="s:string" />
+    <wsdl:part name="Ahorro" type="s:string" />
+    <wsdl:part name="Funerario" type="s:string" />
+    <wsdl:part name="Mutual" type="s:string" />
+    <wsdl:part name="PRO_DOS" type="s:string" />
+    <wsdl:part name="Monto_Mes" type="s:string" />
+    <wsdl:part name="No_Reclamos_Acum" type="s:string" />
+    <wsdl:part name="Monto_Acum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertSiniestrosHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionPrimasHttpGetIn">
+    <wsdl:part name="Plaza" type="s:string" />
+    <wsdl:part name="Prestamos_Miles" type="s:string" />
+    <wsdl:part name="Mayores_Miles" type="s:string" />
+    <wsdl:part name="Menores_Miles" type="s:string" />
+    <wsdl:part name="PP" type="s:string" />
+    <wsdl:part name="PA_Menor" type="s:string" />
+    <wsdl:part name="Basica" type="s:string" />
+    <wsdl:part name="Doble_Indem" type="s:string" />
+    <wsdl:part name="Aditamento_Juv" type="s:string" />
+    <wsdl:part name="Rango_Edad1" type="s:string" />
+    <wsdl:part name="Rango_Edad2" type="s:string" />
+    <wsdl:part name="Rango_Edad3" type="s:string" />
+    <wsdl:part name="Cobertura" type="s:string" />
+    <wsdl:part name="Apoyo_Fun1" type="s:string" />
+    <wsdl:part name="Apoyo_Fun2" type="s:string" />
+    <wsdl:part name="Apoyo_Fun3" type="s:string" />
+    <wsdl:part name="Apoyo_Fun_funcionarios" type="s:string" />
+    <wsdl:part name="Total_PA_PP_AF" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionPrimasHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EstatusReclamoHttpGetIn">
+    <wsdl:part name="Id_Edo_Beneficio" type="s:string" />
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EstatusReclamoHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="InsertPLusCaptacionHttpGetIn">
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+    <wsdl:part name="Aditamento_Juv" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPLusCaptacionHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EliminarDocumentoHttpGetIn">
+    <wsdl:part name="Id_Documento" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EliminarDocumentoHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EliminarBeneficiarioHttpGetIn">
+    <wsdl:part name="Id_Beneficiario" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EliminarBeneficiarioHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EliminarCaptacionHttpGetIn">
+    <wsdl:part name="Id_Captacion" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EliminarCaptacionHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EliminarColocacionHttpGetIn">
+    <wsdl:part name="Id_Colocacion" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EliminarColocacionHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioBeneficioHttpPostIn">
+    <wsdl:part name="No_Socio" type="s:string" />
+    <wsdl:part name="Nombre" type="s:string" />
+    <wsdl:part name="Nombre_2" type="s:string" />
+    <wsdl:part name="Apellido_Pat" type="s:string" />
+    <wsdl:part name="Apellido_Mat" type="s:string" />
+    <wsdl:part name="Fecha_Nac" type="s:string" />
+    <wsdl:part name="Fecha_Ing" type="s:string" />
+    <wsdl:part name="Sexo" type="s:string" />
+    <wsdl:part name="Correo" type="s:string" />
+    <wsdl:part name="RFC" type="s:string" />
+    <wsdl:part name="Curp" type="s:string" />
+    <wsdl:part name="Ocupacion" type="s:string" />
+    <wsdl:part name="Edo_Civil" type="s:string" />
+    <wsdl:part name="Id_Sucursal" type="s:string" />
+    <wsdl:part name="Ano_Reclamo" type="s:string" />
+    <wsdl:part name="Fecha_Reclamo" type="s:string" />
+    <wsdl:part name="Id_Colonia" type="s:string" />
+    <wsdl:part name="Calle" type="s:string" />
+    <wsdl:part name="No_Ext" type="s:string" />
+    <wsdl:part name="No_Int" type="s:string" />
+    <wsdl:part name="Actual" type="s:string" />
+    <wsdl:part name="Id_Tipo_Dom" type="s:string" />
+    <wsdl:part name="Paqueteria" type="s:string" />
+    <wsdl:part name="No_Guia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertSocioBeneficioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentoHttpPostIn">
+    <wsdl:part name="Id_Tipo_Doc" type="s:string" />
+    <wsdl:part name="Id_Sucursal" type="s:string" />
+    <wsdl:part name="No_Socio" type="s:string" />
+    <wsdl:part name="Verificar" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentoHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertAnalisisHttpPostIn">
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+    <wsdl:part name="Fecha_Actual" type="s:string" />
+    <wsdl:part name="Ultima_Fecha_Lab" type="s:string" />
+    <wsdl:part name="Fecha_Muerte" type="s:string" />
+    <wsdl:part name="Id_Causante" type="s:string" />
+    <wsdl:part name="Causa_Muerte" type="s:string" />
+    <wsdl:part name="Id_Fallecimiento" type="s:string" />
+    <wsdl:part name="Menor_Ahorrador" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertAnalisisHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioHttpPostIn">
+    <wsdl:part name="Nombre_1" type="s:string" />
+    <wsdl:part name="Nombre_2" type="s:string" />
+    <wsdl:part name="Apellido_Pat" type="s:string" />
+    <wsdl:part name="Apellido_Mat" type="s:string" />
+    <wsdl:part name="Porcentaje" type="s:string" />
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+    <wsdl:part name="Id_Beneficiario" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertCaptacionHttpPostIn">
+    <wsdl:part name="Saldo" type="s:string" />
+    <wsdl:part name="Ultimo_mov" type="s:string" />
+    <wsdl:part name="Id_Cuenta" type="s:string" />
+    <wsdl:part name="Saldo_AditamentoJ" type="s:string" />
+    <wsdl:part name="Saldo_DobleI" type="s:string" />
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+    <wsdl:part name="Id_Producto" type="s:string" />
+    <wsdl:part name="Id_Captacion" type="s:string" />
+    <wsdl:part name="Aditamento_Juv" type="s:string" />
+    <wsdl:part name="Doble_Indem" type="s:string" />
+    <wsdl:part name="Saldo_Total" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertCaptacionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertColocacionHttpPostIn">
+    <wsdl:part name="Fecha_Prest" type="s:string" />
+    <wsdl:part name="Tasa_int" type="s:string" />
+    <wsdl:part name="Plazo" type="s:string" />
+    <wsdl:part name="Ult_Mov" type="s:string" />
+    <wsdl:part name="Saldo" type="s:string" />
+    <wsdl:part name="Tipo_Prest" type="s:string" />
+    <wsdl:part name="Id_Tipo_Cta" type="s:string" />
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+    <wsdl:part name="Monto" type="s:string" />
+    <wsdl:part name="Id_Colocacion" type="s:string" />
+    <wsdl:part name="Id_Producto" type="s:string" />
+    <wsdl:part name="Saldo_Total" type="s:string" />
+    <wsdl:part name="Intereses_cubrir" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertColocacionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertSiniestrosHttpPostIn">
+    <wsdl:part name="Cooperativa" type="s:string" />
+    <wsdl:part name="No_Reclamos" type="s:string" />
+    <wsdl:part name="Prestamo" type="s:string" />
+    <wsdl:part name="Ahorro" type="s:string" />
+    <wsdl:part name="Funerario" type="s:string" />
+    <wsdl:part name="Mutual" type="s:string" />
+    <wsdl:part name="PRO_DOS" type="s:string" />
+    <wsdl:part name="Monto_Mes" type="s:string" />
+    <wsdl:part name="No_Reclamos_Acum" type="s:string" />
+    <wsdl:part name="Monto_Acum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertSiniestrosHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionPrimasHttpPostIn">
+    <wsdl:part name="Plaza" type="s:string" />
+    <wsdl:part name="Prestamos_Miles" type="s:string" />
+    <wsdl:part name="Mayores_Miles" type="s:string" />
+    <wsdl:part name="Menores_Miles" type="s:string" />
+    <wsdl:part name="PP" type="s:string" />
+    <wsdl:part name="PA_Menor" type="s:string" />
+    <wsdl:part name="Basica" type="s:string" />
+    <wsdl:part name="Doble_Indem" type="s:string" />
+    <wsdl:part name="Aditamento_Juv" type="s:string" />
+    <wsdl:part name="Rango_Edad1" type="s:string" />
+    <wsdl:part name="Rango_Edad2" type="s:string" />
+    <wsdl:part name="Rango_Edad3" type="s:string" />
+    <wsdl:part name="Cobertura" type="s:string" />
+    <wsdl:part name="Apoyo_Fun1" type="s:string" />
+    <wsdl:part name="Apoyo_Fun2" type="s:string" />
+    <wsdl:part name="Apoyo_Fun3" type="s:string" />
+    <wsdl:part name="Apoyo_Fun_funcionarios" type="s:string" />
+    <wsdl:part name="Total_PA_PP_AF" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmisionPrimasHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EstatusReclamoHttpPostIn">
+    <wsdl:part name="Id_Edo_Beneficio" type="s:string" />
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EstatusReclamoHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="InsertPLusCaptacionHttpPostIn">
+    <wsdl:part name="Id_Reclamo" type="s:string" />
+    <wsdl:part name="Aditamento_Juv" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPLusCaptacionHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EliminarDocumentoHttpPostIn">
+    <wsdl:part name="Id_Documento" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EliminarDocumentoHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EliminarBeneficiarioHttpPostIn">
+    <wsdl:part name="Id_Beneficiario" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EliminarBeneficiarioHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EliminarCaptacionHttpPostIn">
+    <wsdl:part name="Id_Captacion" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EliminarCaptacionHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EliminarColocacionHttpPostIn">
+    <wsdl:part name="Id_Colocacion" type="s:string" />
+    <wsdl:part name="Op" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EliminarColocacionHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="wsInsertaDatosBeneficiosSoap">
+    <wsdl:operation name="InsertSocioBeneficio">
+      <wsdl:input message="tns:InsertSocioBeneficioSoapIn" />
+      <wsdl:output message="tns:InsertSocioBeneficioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumento">
+      <wsdl:input message="tns:InsertDocumentoSoapIn" />
+      <wsdl:output message="tns:InsertDocumentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnalisis">
+      <wsdl:input message="tns:InsertAnalisisSoapIn" />
+      <wsdl:output message="tns:InsertAnalisisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiario">
+      <wsdl:input message="tns:InsertBeneficiarioSoapIn" />
+      <wsdl:output message="tns:InsertBeneficiarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCaptacion">
+      <wsdl:input message="tns:InsertCaptacionSoapIn" />
+      <wsdl:output message="tns:InsertCaptacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertColocacion">
+      <wsdl:input message="tns:InsertColocacionSoapIn" />
+      <wsdl:output message="tns:InsertColocacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSiniestros">
+      <wsdl:input message="tns:InsertSiniestrosSoapIn" />
+      <wsdl:output message="tns:InsertSiniestrosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmisionPrimas">
+      <wsdl:input message="tns:InsertEmisionPrimasSoapIn" />
+      <wsdl:output message="tns:InsertEmisionPrimasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstatusReclamo">
+      <wsdl:input message="tns:EstatusReclamoSoapIn" />
+      <wsdl:output message="tns:EstatusReclamoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPLusCaptacion">
+      <wsdl:input message="tns:InsertPLusCaptacionSoapIn" />
+      <wsdl:output message="tns:InsertPLusCaptacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDocumento">
+      <wsdl:input message="tns:EliminarDocumentoSoapIn" />
+      <wsdl:output message="tns:EliminarDocumentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarBeneficiario">
+      <wsdl:input message="tns:EliminarBeneficiarioSoapIn" />
+      <wsdl:output message="tns:EliminarBeneficiarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCaptacion">
+      <wsdl:input message="tns:EliminarCaptacionSoapIn" />
+      <wsdl:output message="tns:EliminarCaptacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarColocacion">
+      <wsdl:input message="tns:EliminarColocacionSoapIn" />
+      <wsdl:output message="tns:EliminarColocacionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsInsertaDatosBeneficiosHttpGet">
+    <wsdl:operation name="InsertSocioBeneficio">
+      <wsdl:input message="tns:InsertSocioBeneficioHttpGetIn" />
+      <wsdl:output message="tns:InsertSocioBeneficioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumento">
+      <wsdl:input message="tns:InsertDocumentoHttpGetIn" />
+      <wsdl:output message="tns:InsertDocumentoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnalisis">
+      <wsdl:input message="tns:InsertAnalisisHttpGetIn" />
+      <wsdl:output message="tns:InsertAnalisisHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiario">
+      <wsdl:input message="tns:InsertBeneficiarioHttpGetIn" />
+      <wsdl:output message="tns:InsertBeneficiarioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCaptacion">
+      <wsdl:input message="tns:InsertCaptacionHttpGetIn" />
+      <wsdl:output message="tns:InsertCaptacionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertColocacion">
+      <wsdl:input message="tns:InsertColocacionHttpGetIn" />
+      <wsdl:output message="tns:InsertColocacionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSiniestros">
+      <wsdl:input message="tns:InsertSiniestrosHttpGetIn" />
+      <wsdl:output message="tns:InsertSiniestrosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmisionPrimas">
+      <wsdl:input message="tns:InsertEmisionPrimasHttpGetIn" />
+      <wsdl:output message="tns:InsertEmisionPrimasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstatusReclamo">
+      <wsdl:input message="tns:EstatusReclamoHttpGetIn" />
+      <wsdl:output message="tns:EstatusReclamoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPLusCaptacion">
+      <wsdl:input message="tns:InsertPLusCaptacionHttpGetIn" />
+      <wsdl:output message="tns:InsertPLusCaptacionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDocumento">
+      <wsdl:input message="tns:EliminarDocumentoHttpGetIn" />
+      <wsdl:output message="tns:EliminarDocumentoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarBeneficiario">
+      <wsdl:input message="tns:EliminarBeneficiarioHttpGetIn" />
+      <wsdl:output message="tns:EliminarBeneficiarioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCaptacion">
+      <wsdl:input message="tns:EliminarCaptacionHttpGetIn" />
+      <wsdl:output message="tns:EliminarCaptacionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarColocacion">
+      <wsdl:input message="tns:EliminarColocacionHttpGetIn" />
+      <wsdl:output message="tns:EliminarColocacionHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsInsertaDatosBeneficiosHttpPost">
+    <wsdl:operation name="InsertSocioBeneficio">
+      <wsdl:input message="tns:InsertSocioBeneficioHttpPostIn" />
+      <wsdl:output message="tns:InsertSocioBeneficioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumento">
+      <wsdl:input message="tns:InsertDocumentoHttpPostIn" />
+      <wsdl:output message="tns:InsertDocumentoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnalisis">
+      <wsdl:input message="tns:InsertAnalisisHttpPostIn" />
+      <wsdl:output message="tns:InsertAnalisisHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiario">
+      <wsdl:input message="tns:InsertBeneficiarioHttpPostIn" />
+      <wsdl:output message="tns:InsertBeneficiarioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCaptacion">
+      <wsdl:input message="tns:InsertCaptacionHttpPostIn" />
+      <wsdl:output message="tns:InsertCaptacionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertColocacion">
+      <wsdl:input message="tns:InsertColocacionHttpPostIn" />
+      <wsdl:output message="tns:InsertColocacionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSiniestros">
+      <wsdl:input message="tns:InsertSiniestrosHttpPostIn" />
+      <wsdl:output message="tns:InsertSiniestrosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmisionPrimas">
+      <wsdl:input message="tns:InsertEmisionPrimasHttpPostIn" />
+      <wsdl:output message="tns:InsertEmisionPrimasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstatusReclamo">
+      <wsdl:input message="tns:EstatusReclamoHttpPostIn" />
+      <wsdl:output message="tns:EstatusReclamoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPLusCaptacion">
+      <wsdl:input message="tns:InsertPLusCaptacionHttpPostIn" />
+      <wsdl:output message="tns:InsertPLusCaptacionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDocumento">
+      <wsdl:input message="tns:EliminarDocumentoHttpPostIn" />
+      <wsdl:output message="tns:EliminarDocumentoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarBeneficiario">
+      <wsdl:input message="tns:EliminarBeneficiarioHttpPostIn" />
+      <wsdl:output message="tns:EliminarBeneficiarioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCaptacion">
+      <wsdl:input message="tns:EliminarCaptacionHttpPostIn" />
+      <wsdl:output message="tns:EliminarCaptacionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarColocacion">
+      <wsdl:input message="tns:EliminarColocacionHttpPostIn" />
+      <wsdl:output message="tns:EliminarColocacionHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsInsertaDatosBeneficiosSoap" type="tns:wsInsertaDatosBeneficiosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertSocioBeneficio">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertSocioBeneficio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumento">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnalisis">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiario">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertBeneficiario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCaptacion">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertCaptacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertColocacion">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertColocacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSiniestros">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertSiniestros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmisionPrimas">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertEmisionPrimas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstatusReclamo">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/EstatusReclamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPLusCaptacion">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertPLusCaptacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDocumento">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/EliminarDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarBeneficiario">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/EliminarBeneficiario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCaptacion">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/EliminarCaptacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarColocacion">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/EliminarColocacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsInsertaDatosBeneficiosSoap12" type="tns:wsInsertaDatosBeneficiosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertSocioBeneficio">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertSocioBeneficio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumento">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertDocumento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnalisis">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertAnalisis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiario">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertBeneficiario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCaptacion">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertCaptacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertColocacion">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertColocacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSiniestros">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertSiniestros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmisionPrimas">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertEmisionPrimas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstatusReclamo">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/EstatusReclamo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPLusCaptacion">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertPLusCaptacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDocumento">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/EliminarDocumento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarBeneficiario">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/EliminarBeneficiario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCaptacion">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/EliminarCaptacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarColocacion">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/EliminarColocacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsInsertaDatosBeneficiosHttpGet" type="tns:wsInsertaDatosBeneficiosHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="InsertSocioBeneficio">
+      <http:operation location="/InsertSocioBeneficio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumento">
+      <http:operation location="/InsertDocumento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnalisis">
+      <http:operation location="/InsertAnalisis" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiario">
+      <http:operation location="/InsertBeneficiario" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCaptacion">
+      <http:operation location="/InsertCaptacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertColocacion">
+      <http:operation location="/InsertColocacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSiniestros">
+      <http:operation location="/InsertSiniestros" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmisionPrimas">
+      <http:operation location="/InsertEmisionPrimas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstatusReclamo">
+      <http:operation location="/EstatusReclamo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPLusCaptacion">
+      <http:operation location="/InsertPLusCaptacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDocumento">
+      <http:operation location="/EliminarDocumento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarBeneficiario">
+      <http:operation location="/EliminarBeneficiario" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCaptacion">
+      <http:operation location="/EliminarCaptacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarColocacion">
+      <http:operation location="/EliminarColocacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsInsertaDatosBeneficiosHttpPost" type="tns:wsInsertaDatosBeneficiosHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="InsertSocioBeneficio">
+      <http:operation location="/InsertSocioBeneficio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumento">
+      <http:operation location="/InsertDocumento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnalisis">
+      <http:operation location="/InsertAnalisis" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiario">
+      <http:operation location="/InsertBeneficiario" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCaptacion">
+      <http:operation location="/InsertCaptacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertColocacion">
+      <http:operation location="/InsertColocacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSiniestros">
+      <http:operation location="/InsertSiniestros" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmisionPrimas">
+      <http:operation location="/InsertEmisionPrimas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstatusReclamo">
+      <http:operation location="/EstatusReclamo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPLusCaptacion">
+      <http:operation location="/InsertPLusCaptacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDocumento">
+      <http:operation location="/EliminarDocumento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarBeneficiario">
+      <http:operation location="/EliminarBeneficiario" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCaptacion">
+      <http:operation location="/EliminarCaptacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarColocacion">
+      <http:operation location="/EliminarColocacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsInsertaDatosBeneficios">
+    <wsdl:port name="wsInsertaDatosBeneficiosSoap" binding="tns:wsInsertaDatosBeneficiosSoap">
+      <soap:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsInsertaDatosBeneficiosSoap12" binding="tns:wsInsertaDatosBeneficiosSoap12">
+      <soap12:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsInsertaDatosBeneficiosHttpGet" binding="tns:wsInsertaDatosBeneficiosHttpGet">
+      <http:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsInsertaDatosBeneficiosHttpPost" binding="tns:wsInsertaDatosBeneficiosHttpPost">
+      <http:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
