@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx">
+      <s:element name="Siniestros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Operacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdEntidad" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SiniestrosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SiniestrosResult" type="tns:ArrayOfSiniestro" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSiniestro">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Siniestro" nillable="true" type="tns:Siniestro" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Siniestro">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NoSiniestro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaReclamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusSiniestro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ocupacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Coop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plaza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Bitacoras">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Operacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdEntidad" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BitacorasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BitacorasResult" type="tns:ArrayOfBitacora" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBitacora">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Bitacora" nillable="true" type="tns:Bitacora" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Bitacora">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdBitacora" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fecha" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdDocumentacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Paqueteria" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoGuia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaEnvio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaReclamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoDoc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfSiniestro" nillable="true" type="tns:ArrayOfSiniestro" />
+      <s:element name="ArrayOfBitacora" nillable="true" type="tns:ArrayOfBitacora" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SiniestrosSoapIn">
+    <wsdl:part name="parameters" element="tns:Siniestros" />
+  </wsdl:message>
+  <wsdl:message name="SiniestrosSoapOut">
+    <wsdl:part name="parameters" element="tns:SiniestrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="BitacorasSoapIn">
+    <wsdl:part name="parameters" element="tns:Bitacoras" />
+  </wsdl:message>
+  <wsdl:message name="BitacorasSoapOut">
+    <wsdl:part name="parameters" element="tns:BitacorasResponse" />
+  </wsdl:message>
+  <wsdl:message name="SiniestrosHttpGetIn">
+    <wsdl:part name="Operacion" type="s:string" />
+    <wsdl:part name="IdEntidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SiniestrosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSiniestro" />
+  </wsdl:message>
+  <wsdl:message name="BitacorasHttpGetIn">
+    <wsdl:part name="Operacion" type="s:string" />
+    <wsdl:part name="IdEntidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BitacorasHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBitacora" />
+  </wsdl:message>
+  <wsdl:message name="SiniestrosHttpPostIn">
+    <wsdl:part name="Operacion" type="s:string" />
+    <wsdl:part name="IdEntidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SiniestrosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSiniestro" />
+  </wsdl:message>
+  <wsdl:message name="BitacorasHttpPostIn">
+    <wsdl:part name="Operacion" type="s:string" />
+    <wsdl:part name="IdEntidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BitacorasHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBitacora" />
+  </wsdl:message>
+  <wsdl:portType name="wsConsultaReportesDASoap">
+    <wsdl:operation name="Siniestros">
+      <wsdl:input message="tns:SiniestrosSoapIn" />
+      <wsdl:output message="tns:SiniestrosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Bitacoras">
+      <wsdl:input message="tns:BitacorasSoapIn" />
+      <wsdl:output message="tns:BitacorasSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsConsultaReportesDAHttpGet">
+    <wsdl:operation name="Siniestros">
+      <wsdl:input message="tns:SiniestrosHttpGetIn" />
+      <wsdl:output message="tns:SiniestrosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Bitacoras">
+      <wsdl:input message="tns:BitacorasHttpGetIn" />
+      <wsdl:output message="tns:BitacorasHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsConsultaReportesDAHttpPost">
+    <wsdl:operation name="Siniestros">
+      <wsdl:input message="tns:SiniestrosHttpPostIn" />
+      <wsdl:output message="tns:SiniestrosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Bitacoras">
+      <wsdl:input message="tns:BitacorasHttpPostIn" />
+      <wsdl:output message="tns:BitacorasHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsConsultaReportesDASoap" type="tns:wsConsultaReportesDASoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Siniestros">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Siniestros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Bitacoras">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Bitacoras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsConsultaReportesDASoap12" type="tns:wsConsultaReportesDASoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Siniestros">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Siniestros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Bitacoras">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Bitacoras" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsConsultaReportesDAHttpGet" type="tns:wsConsultaReportesDAHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Siniestros">
+      <http:operation location="/Siniestros" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Bitacoras">
+      <http:operation location="/Bitacoras" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsConsultaReportesDAHttpPost" type="tns:wsConsultaReportesDAHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Siniestros">
+      <http:operation location="/Siniestros" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Bitacoras">
+      <http:operation location="/Bitacoras" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsConsultaReportesDA">
+    <wsdl:port name="wsConsultaReportesDASoap" binding="tns:wsConsultaReportesDASoap">
+      <soap:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsConsultaReportesDASoap12" binding="tns:wsConsultaReportesDASoap12">
+      <soap12:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsConsultaReportesDAHttpGet" binding="tns:wsConsultaReportesDAHttpGet">
+      <http:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsConsultaReportesDAHttpPost" binding="tns:wsConsultaReportesDAHttpPost">
+      <http:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -259,6 +259,17 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\wsConsultaDatosBen\wsConsultaBeneficios.wsdl" />
+    <None Include="Web References\wsConsultaReportesDA\Bitacora.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaReportesDA\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsConsultaReportesDA\Siniestro.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultaReportesDA\wsConsultaReportesDA.wsdl" />
     <None Include="Web References\wsCPM\PermisoCPM.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -280,6 +291,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\wsInsercionDatosBen\wsInsertaDatosBeneficios.disco" />
+    <None Include="Web References\wsConsultaReportesDA\wsConsultaReportesDA.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -364,6 +376,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\wsConsultaReportesDA\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\wsCPM\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -388,6 +405,17 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsConsultaReportesDA\</RelPath>
+      <UpdateFromURL>http://localhost:50444/wspbene/wsConsultaReportesDA.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SDA_wsConsultaReportesDA_wsConsultaReportesDA</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybe/wspf/wsCorreoPrybe.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\correoPrybe\</RelPath>
@@ -443,10 +471,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SDA_wsConsultaDatos2_wsConsultaSiniestros</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx">
+    <WebReferenceUrl Include="http://localhost:50444/wspbene/wsInsertaDatosBeneficios.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wsInsercionDatosBen\</RelPath>
-      <UpdateFromURL>http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:50444/wspbene/wsInsertaDatosBeneficios.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

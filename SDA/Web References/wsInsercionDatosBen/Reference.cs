@@ -29,6 +29,8 @@ namespace SDA.wsInsercionDatosBen {
     [System.Web.Services.WebServiceBindingAttribute(Name="wsInsertaDatosBeneficiosSoap", Namespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx")]
     public partial class wsInsertaDatosBeneficios : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback UploadFileForSiniestrosOperationCompleted;
+        
         private System.Threading.SendOrPostCallback InsertSocioBeneficioOperationCompleted;
         
         private System.Threading.SendOrPostCallback InsertDocumentoOperationCompleted;
@@ -96,6 +98,9 @@ namespace SDA.wsInsercionDatosBen {
         }
         
         /// <remarks/>
+        public event UploadFileForSiniestrosCompletedEventHandler UploadFileForSiniestrosCompleted;
+        
+        /// <remarks/>
         public event InsertSocioBeneficioCompletedEventHandler InsertSocioBeneficioCompleted;
         
         /// <remarks/>
@@ -136,6 +141,42 @@ namespace SDA.wsInsercionDatosBen {
         
         /// <remarks/>
         public event EliminarColocacionCompletedEventHandler EliminarColocacionCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/Uplo" +
+            "adFileForSiniestros", RequestNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx", ResponseNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool UploadFileForSiniestros([System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] bytes, string noSiniestro, string noGuia, string extension) {
+            object[] results = this.Invoke("UploadFileForSiniestros", new object[] {
+                        bytes,
+                        noSiniestro,
+                        noGuia,
+                        extension});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UploadFileForSiniestrosAsync(byte[] bytes, string noSiniestro, string noGuia, string extension) {
+            this.UploadFileForSiniestrosAsync(bytes, noSiniestro, noGuia, extension, null);
+        }
+        
+        /// <remarks/>
+        public void UploadFileForSiniestrosAsync(byte[] bytes, string noSiniestro, string noGuia, string extension, object userState) {
+            if ((this.UploadFileForSiniestrosOperationCompleted == null)) {
+                this.UploadFileForSiniestrosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUploadFileForSiniestrosOperationCompleted);
+            }
+            this.InvokeAsync("UploadFileForSiniestros", new object[] {
+                        bytes,
+                        noSiniestro,
+                        noGuia,
+                        extension}, this.UploadFileForSiniestrosOperationCompleted, userState);
+        }
+        
+        private void OnUploadFileForSiniestrosOperationCompleted(object arg) {
+            if ((this.UploadFileForSiniestrosCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UploadFileForSiniestrosCompleted(this, new UploadFileForSiniestrosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/Inse" +
@@ -921,6 +962,32 @@ namespace SDA.wsInsercionDatosBen {
             }
             set {
                 this.valorField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
+    public delegate void UploadFileForSiniestrosCompletedEventHandler(object sender, UploadFileForSiniestrosCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UploadFileForSiniestrosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UploadFileForSiniestrosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }

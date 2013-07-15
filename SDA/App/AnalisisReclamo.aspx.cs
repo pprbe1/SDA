@@ -6,121 +6,76 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using System.Text;
-
+using SDA.wsConsultaReportesDA;
 
 namespace SDA.App
 {
     public partial class AnalisisReclamo : System.Web.UI.Page
     {
-        wsConsultaDatos2.wsConsultaSiniestros reclamos = new wsConsultaDatos2.wsConsultaSiniestros();
+        wsConsultaReportesDA.wsConsultaReportesDA reportesDA = new wsConsultaReportesDA.wsConsultaReportesDA();
+        wsInsercionDatosBen.wsInsertaDatosBeneficios insertaDatos = new wsInsercionDatosBen.wsInsertaDatosBeneficios();
 
-        wsConsultaDatosBen.DatosSocio datossocio = new wsConsultaDatosBen.DatosSocio();
-        wsConsultaDatosBen.wsConsultaBeneficios datosSoc = new wsConsultaDatosBen.wsConsultaBeneficios();
-
-
-        string idReclamo;
-        int Op;
-
-
-        protected void Page_Load(object sender, EventArgs e)
+        protected void BuscarSiniestros(object sender, DirectEventArgs e)
         {
-            this.strReclamo.DataSource = new List<wsConsultaDatos2.ConsultaReclamo>();
-            if (!X.IsAjaxRequest)
-            {
-                this.strReclamo.DataBind();
-            }
-        }
+            wsConsultaReportesDA.Siniestro[] siniestros;
+            int operacion;
+            int entidad;
 
-        protected void btnBuscarSiniestros_Click(object sender, DirectEventArgs e)
-        {
-            if (this.txtNumSocio.Text != "")
+            if (txtNumSocio.Text != string.Empty)
             {
-                Op = 2;
+                operacion = 3;
+                entidad = Convert.ToInt32(txtNumSocio.Text);
             }
             else
             {
-                Op = 1;
+                operacion = 1;
+                entidad = Convert.ToInt32(cmbSucursal.SelectedItem.Value);
             }
-            List<wsConsultaDatos2.ConsultaReclamoGeneral> consultareclamosdetalle =
-                new List<wsConsultaDatos2.ConsultaReclamoGeneral>(reclamos.ConsultaReclamosGeneral(Convert.ToInt32(this.cbSucursal.SelectedItem.Value), Op, this.txtNumSocio.Text));
-            this.strReclamosGral.DataSource = consultareclamosdetalle;
+
+            siniestros = reportesDA.Siniestros(operacion, entidad);
+
+            this.strReclamosGral.DataSource = siniestros;
             this.strReclamosGral.DataBind();
-            this.txtNumSocio.Text = "";
         }
 
-
-        protected void CellAnalisisSiniestro_Click(object sender, DirectEventArgs e)
+        protected void UploadFile(object sender, DirectEventArgs e)
         {
-            RowSelectionModel sm = this.gplAnalisis.SelectionModel.Primary as RowSelectionModel;
-            StringBuilder sb = new StringBuilder();
+            byte[] bytes = fileSelector.FileBytes;
+            string noSiniestro = Session["NoSiniestro"].ToString();
+            string noGuia = txtGuia.Text;
+            string extension = System.IO.Path.GetExtension(fileSelector.FileName);
 
-            foreach (SelectedRow row in sm.SelectedRows)
-            {
-                sb.AppendFormat(row.RecordID);
-            }
-
-            idReclamo = sb.ToString();
-
-            Session["IdRec"] = Convert.ToInt32(idReclamo);
-
-            datossocio = datosSoc.CargaDatosSocio(idReclamo);
-            this.lblNombreSocio.Text = datossocio.Nombre;
-            this.lblNumeroSocio.Text = datossocio.NumSocio;
-            this.lblOcupacionSocio.Text = datossocio.Ocupacion;
-            this.lblSucursalSocio.Text = datossocio.Sucursal;
-            this.lblNumeroSiniestro.Text = datossocio.NumReclamo;
-            this.lblPlaza.Text = datossocio.Plaza;
-            this.lblCooperativa.Text = datossocio.Cooperativa;
-            this.lblEstadoBeneficio.Text = datossocio.EstadoBeneficio;
-            this.wdwInformacionSiniestro.Show();
-
+            insertaDatos.UploadFileForSiniestros(bytes, noSiniestro, noGuia, extension);
         }
-                
-        protected void btnAceptarAnalisis_Click(object sender, DirectEventArgs e)
+
+        protected void InformacionSiniestro(object sender, DirectEventArgs e)
         {
-            if (Session["IdRec"] != null)
-            {
-                Response.Redirect("AnalisisEspecifico.aspx", true); ; //aqui 
-            }
+            int idSocio = Convert.ToInt32(e.ExtraParams["ID"]);
+            
+            Siniestro[] siniestro = reportesDA.Siniestros(4, idSocio);
+
+            Session["IdSocio"] = idSocio;
+            Session["NoSiniestro"] = siniestro[0].NoSiniestro;
+
+            this.lblNombreSocio.Text = siniestro[0].Nombre;
+            this.lblNumeroSocio.Text = siniestro[0].NoSocio;
+            this.lblOcupacionSocio.Text = siniestro[0].Ocupacion;
+            this.lblSucursalSocio.Text = siniestro[0].Sucursal;
+            this.lblNumeroSiniestro.Text = siniestro[0].NoSiniestro;
+            this.lblPlaza.Text = siniestro[0].Plaza;
+            this.lblCooperativa.Text = siniestro[0].Coop;
+            //this.cmbEstadoBeneficio.Text = datossocio.EstadoBeneficio;
+            this.wndInformacionSiniestro.Show();
         }
 
-        //protected void btnBuscarSiniestrosMod_Click(object sender, DirectEventArgs e)
-        //{
-        //    if (this.txtNoSocio.Text != "")
-        //    {
-        //        Op = 2;
-        //    }
-        //    else
-        //    {
-        //        Op = 1;
-        //    }
-        //    List<ConsultaBeneficios.wsConsultaDatos2.ConsultaReclamoGeneral> consultareclamosgeneral =
-        //        new List<ConsultaBeneficios.wsConsultaDatos2.ConsultaReclamoGeneral>(reclamos.ConsultaReclamosGeneral(Convert.ToInt32(this.cbScl.SelectedItem.Value),Op,this.txtNoSocio.Text));
-        //    this.strReclamosGral.DataSource = consultareclamosgeneral;
-        //    this.strReclamosGral.DataBind();
-        //}
+        protected void BitacoraSiniestro(object sender, DirectEventArgs e)
+        {
 
-        //protected void CellSiniestroModificar_Click(object sender, DirectEventArgs e)
-        //{
-        //    RowSelectionModel sm = this.gplAnalisisModificar.SelectionModel.Primary as RowSelectionModel;
-        //    StringBuilder sb = new StringBuilder();
+        }
 
-        //    foreach (SelectedRow row in sm.SelectedRows)
-        //    {
-        //        sb.AppendFormat(row.RecordID);
-        //    }
+        protected void ArchivosSiniestro(object sender, DirectEventArgs e)
+        {
 
-        //    idReclamo = sb.ToString();
-
-        //    Session["IdRec"] = Convert.ToInt32(idReclamo);
-
-        //    Response.Redirect("AnalisisEspecifico.aspx", true); ; //aqui
-
-        //}
-
-
-
-
-       
+        }
     }
 }
