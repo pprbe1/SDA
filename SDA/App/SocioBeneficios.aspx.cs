@@ -66,27 +66,27 @@ namespace SDA.App
                     {
                         this.rdoFemenino.Checked = true;
                     }
-                    this.cmbOcupacion.SelectedItem.Value = datsocio.Ocupacion;
+                    cmbEdoCivil.Select(0);
                     switch (ConsultaSocioCPM.EstadoCivil)
                     {
                         case "C":
-                            cmbEdoCivil.SelectedItem.Value = "1";
+                            cmbEdoCivil.Select(0);
                             break;
 
                         case "D":
-                            cmbEdoCivil.SelectedItem.Value = "4";
+                            cmbEdoCivil.Select(3);
                             break;
 
                         case "L":
-                            cmbEdoCivil.SelectedItem.Value = "5";
+                            cmbEdoCivil.Select(4);
                             break;
 
                         case "S":
-                            cmbEdoCivil.SelectedItem.Value = "2";
+                            cmbEdoCivil.Select(1);
                             break;
 
                         case "V":
-                            cmbEdoCivil.SelectedItem.Value = "3";
+                            cmbEdoCivil.Select(2);
                             break;
                     }
                     this.txtCP.Text = ConsultaSocioCPM.CP;
@@ -202,7 +202,7 @@ namespace SDA.App
         protected void btnBuscaCP_DirectClick(object sender, DirectEventArgs e)
         {
             bool cpcheck;
-            X.Get("maskDiv").AddCls("x-hide-display");//Oculta la máscara de bloqueo de pantalla
+            //X.Get("maskDiv").AddCls("x-hide-display");//Oculta la máscara de bloqueo de pantalla
             cpcheck = true;
             Session["BuscaCP"] = cpcheck;
         }
@@ -211,6 +211,7 @@ namespace SDA.App
             Limpia_CamposSocio();
             //this.btnSiguiente.Disabled = true;
             this.btnModificarSocio.Disabled = true;
+            this.fcNumSocio.Disabled = false;
             this.btnBuscarSocio.Disabled = false;
             this.txtNumSocio.Disabled = false;
             this.cmbCoop.Disabled = false;
@@ -224,13 +225,15 @@ namespace SDA.App
             this.rdoSexo.Disabled = true;
             this.cmbOcupacion.Disabled = true;
             this.cmbEdoCivil.Disabled = true;
-            //this.cmbEstado.Disabled = true;
-            //this.cmbMunicipio.Disabled = true;
-            //this.cmbColonia.Disabled = true;
-            //this.cmbCP.Disabled = true;
+            this.cbEstado.Disabled = true;
+            this.cbMunicipio.Disabled = true;
+            this.cbColonia.Disabled = true;
+            this.txtCP.Disabled = true;
+            this.btnBuscaCP.Disabled = true;
             this.txtCalle.Disabled = true;
             this.txtNumSocio.Text = "";
-            this.btnCancelarRegistroSocio.Disabled = false;
+            this.cfCP.Disabled = true;
+            this.btnCancelarRegistroSocio.Disabled = true;
         }
 
 
@@ -293,11 +296,13 @@ namespace SDA.App
             this.txtNoExt.Disabled = false;
             this.txtNoInt.Disabled = false;
             this.rdoSexo.Disabled = false;
-            //this.cmbEstado.Disabled = false;
-            //this.cmbMunicipio.Disabled = false;
-            //this.cmbColonia.Disabled = false;
-            //this.cmbCP.Disabled = false;
+            this.cbEstado.Disabled = false;
+            this.cbMunicipio.Disabled = false;
+            this.cbColonia.Disabled = false;
+            this.txtCP.Disabled = false;
+            this.btnBuscaCP.Disabled = false;
             this.fcNumero.Disabled = false;
+            this.cfCP.Disabled = false;
             this.fcNumSocio.Disabled = true;
             //this.btnSiguiente.Disabled = false;
         }
@@ -313,6 +318,7 @@ namespace SDA.App
             this.txtCalle.Text = "";
             this.txtNoInt.Text = "";
             this.txtNoExt.Text = "";
+            this.txtCP.Text = "";
         }
 
         public void Carga_CamposDocumentos()

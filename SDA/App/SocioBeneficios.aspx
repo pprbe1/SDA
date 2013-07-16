@@ -371,7 +371,7 @@
                         ColumnWidth=".31" Layout="Form"
                         LabelAlign="Right">
                         <Items>                             
-                            <ext:FieldContainer runat="server" ID="cfCP" FieldLabel="Código Postal" MsgTarget="Under" Disabled="false" Layout="HBoxLayout" >
+                            <ext:FieldContainer runat="server" ID="cfCP" FieldLabel="Código Postal" MsgTarget="Under" Disabled="true" Layout="HBoxLayout" >
                             <Items>
                                 <ext:TextField 
                                     runat="server" 
@@ -411,7 +411,7 @@
                             ValueNotFoundText="Cargando..." 
                             FieldLabel="Colonia"
                             Width="145"
-                            Disabled="false"
+                            Disabled="true"
                             Resizable="True"
                             StyleSpec="background-image:url('/Microseguro/Styles/text_in.gif');">      
                             <Listeners>
@@ -436,7 +436,7 @@
                             ValueNotFoundText="Cargando..." 
                             FieldLabel="Municipio"
                             Width="145"
-                            Disabled="false"
+                            Disabled="true"
                             Resizable="True"
                             StyleSpec="background-image:url('/Microseguro/Styles/text_in.gif');">
                             <Listeners>
@@ -460,7 +460,7 @@
                             ValueNotFoundText="Cargando..."
                             EmptyText="Selecciona tu estado..." 
                             FieldLabel="Estado"
-                            Disabled="false"
+                            Disabled="true"
                             Resizable="True"
                             StyleSpec="background-image:url('/Microseguro/Styles/text_in.gif');"                            
                             Width="145">    
