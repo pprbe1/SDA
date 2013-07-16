@@ -9,7 +9,7 @@
 
     <ext:Store ID="strCoop" runat="server">
         <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaCoop">
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaCoop">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="Cooperativa" />
@@ -31,7 +31,7 @@
 
     <ext:Store ID="strPlaza" runat="server" AutoLoad="false">
         <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaPlaza">
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaPlaza">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="Plaza" />
@@ -56,7 +56,7 @@
 
     <ext:Store ID="strSucursal" runat="server" AutoLoad="false">
         <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaSucursal">
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaSucursal">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="Sucursal" />
@@ -157,32 +157,36 @@
             <ext:JsonPProxy />
         </Proxy>
     </ext:Store>
-    
-    <ext:Store ID="strEstado" runat="server">
-        <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsCargaCombosBene.asmx/CargaEstados">
+    <%--STORE ID PARA EL ESTADO--%>        
+        <ext:Store runat="server" ID="stEstado">
+            <Proxy>
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaEstados_SPM">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="Estados" />
                 </Reader>
             </ext:AjaxProxy>
         </Proxy>
+        <Parameters>
+            <ext:StoreParameter Name="Estado" Value="#{cbMunicipio}.getValue()" Mode="Raw" />              
+        </Parameters>
         <Model>
-            <ext:Model ID="Model8" runat="server">
+            <ext:Model ID="Model13" runat="server">
                 <Fields>
                     <ext:ModelField Name="id" Type="String" Mapping="Id" />
                     <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
                 </Fields>
             </ext:Model>
-        </Model>
-        <Listeners>
-            <Load Handler="#{cmbEstado}.setValue(#{cmbEstado}.getStore().getAt(0).get('id')); #{cmbMunicipio}.clearValue(); #{strMunicipio}.load();" />
-        </Listeners>
-    </ext:Store>
-    
-    <ext:Store ID="strMunicipio" runat="server" AutoLoad="false">
-        <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsCargaCombosBene.asmx/CargaMunicipios">
+        </Model>             
+            <Listeners>
+                <Load Handler="#{cbEstado}.setValue(#{cbEstado}.store.getAt(0).get('id'));" />
+            </Listeners>          
+        </ext:Store>
+        
+        <%--STORE ID PARA EL MUNICIPIO--%>
+        <ext:Store runat="server" ID="stMunicipio">
+            <Proxy>
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaMunicipios_SPM">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="Municipios" />
@@ -190,24 +194,25 @@
             </ext:AjaxProxy>
         </Proxy>
         <Parameters>
-            <ext:StoreParameter Name="Estado" Value="#{cmbEstado}.getValue()" Mode="Raw" />              
+            <ext:StoreParameter Name="Municipio" Value="#{cbColonia}.getValue()" Mode="Raw" />              
         </Parameters>
         <Model>
-            <ext:Model ID="Model9" runat="server">
+            <ext:Model ID="Model14" runat="server">
                 <Fields>
                     <ext:ModelField Name="id" Type="String" Mapping="Id" />
                     <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
                 </Fields>
             </ext:Model>
-        </Model>
-        <Listeners>
-            <Load Handler="#{cmbMunicipio}.setValue(#{cmbMunicipio}.getStore().getAt(0).get('id')); #{cmbColonia}.clearValue(); #{strColonia}.load();" />
-        </Listeners> 
-    </ext:Store>
-    
-    <ext:Store ID="strColonia" runat="server" AutoLoad="false">
-        <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsCargaCombosBene.asmx/CargaColonias">
+        </Model>        
+            <Listeners>
+                <Load Handler="#{cbMunicipio}.setValue(#{cbMunicipio}.store.getAt(0).get('id'));#{cbEstado}.clearValue();#{stEstado}.load();" />
+            </Listeners>            
+        </ext:Store>
+
+         <%--STORE ID PARA LA COLONIA--%>
+        <ext:Store runat="server" ID="stColonia">
+            <Proxy>
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaColonias_SPM">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="Colonias" />
@@ -215,46 +220,20 @@
             </ext:AjaxProxy>
         </Proxy>
         <Parameters>
-            <ext:StoreParameter Name="Municipio" Value="#{cmbMunicipio}.getValue()" Mode="Raw" />              
+            <ext:StoreParameter Name="CP" Value="#{txtCP}.getValue()" Mode="Raw" />              
         </Parameters>
         <Model>
-            <ext:Model ID="Model10" runat="server">
+            <ext:Model ID="Model15" runat="server">
                 <Fields>
                     <ext:ModelField Name="id" Type="String" Mapping="Id" />
                     <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
                 </Fields>
             </ext:Model>
         </Model>
-        <Listeners>
-            <Load Handler="#{cmbColonia}.setValue(#{cmbColonia}.getStore().getAt(0).get('id')); #{cmbCP}.clearValue();#{strCP}.load()" />
-        </Listeners> 
-    </ext:Store>
-    
-    <ext:Store ID="strCP" runat="server" AutoLoad="false">
-        <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsCargaCombosBene.asmx/CargaCP">
-                <ActionMethods Read="POST" />
-                    <Reader>
-                    <ext:XmlReader Record="Codigos"/>
-                </Reader>
-            </ext:AjaxProxy>
-        </Proxy>
-        <Parameters>
-            <ext:StoreParameter Name="Municipio" Value="#{cmbMunicipio}.getValue()" Mode="Raw" />                    
-            <ext:StoreParameter Name="Colonia" Value="#{cmbColonia}.getRawValue()" Mode="Raw" />
-        </Parameters>
-        <Model>
-            <ext:Model ID="Model11" runat="server">
-                <Fields>
-                    <ext:ModelField Name="id" Type="String" Mapping="Id" />
-                    <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
-                </Fields>
-            </ext:Model>
-        </Model>
-        <Listeners>
-            <Load Handler="#{cmbCP}.setValue(#{cmbCP}.store.getAt(0).get('id'));" />
-        </Listeners> 
-    </ext:Store>
+            <Listeners>
+                <Load Handler="#{cbColonia}.setValue(#{cbColonia}.store.getAt(0).get('id')); #{cbMunicipio}.clearValue();#{stMunicipio}.load()" />
+            </Listeners>            
+        </ext:Store>
     
     <ext:Store ID="strPaqueteria" runat="server">
         <Proxy>
@@ -281,21 +260,21 @@
     <ext:Panel ID="pnlSocio" runat="server"
         ButtonAlign="Right" Title="Datos Del Socio"
         Border="true" Layout="FormLayout"
-        Icon="UserMagnify" Height="280">
+        Icon="UserMagnify" Height="290">
         <Items>
             <ext:Panel ID="Panel1" runat="server"
                 Border="false" Layout="ColumnLayout"
                 Height="250">
                 <Items>                    
                     <ext:Panel ID="pnlSocio1" runat="server" 
-                        Border="false" Header="false" 
+                        Border="false" Header="false" BodyPadding="6"
                         ColumnWidth=".29" Layout="FormLayout"
                         Resizable="false" LabelAlign="Right">
                         <Items>
                             <ext:FieldContainer ID="fcNumSocio" runat="server" FieldBodyCls="Numero de Socio" MsgTarget="Under" Layout="ColumnLayout">
                                 <Items>
-                                    <ext:TextField ID="txtNumSocio" runat="server" FieldLabel="Número de Socio" AllowBlank="false" StyleSpec="text-transform:uppercase"
-                                        MaxLength="20" ColumnWidth=".9" />
+                                    <ext:TextField ID="txtNumSocio" runat="server" FieldLabel="Número de Socio" AllowBlank="false" Margins="0 5 0 0"
+                                        MaxLength="10" ColumnWidth=".9" />
                                     <ext:Button ID="btnBuscarSocio" runat="server" Icon="Magnifier">
                                         <DirectEvents>
                                             <Click OnEvent="btnBuscaSocio_Click"></Click>
@@ -373,8 +352,7 @@
                                 Editable="true" TypeAhead="true" 
                                 Resizable="true" Mode="Local" 
                                 ForceSelection="true" TriggerAction="All" 
-                                DisplayField="name" ValueField="id"
-                                StyleSpec="text-transform:uppercase" FieldLabel="Ocupación"
+                                DisplayField="name" ValueField="id" FieldLabel="Ocupación"
                                 StoreID="strOcupacion" Width="130" 
                                 Disabled="true"/>
                             <ext:ComboBox
@@ -382,8 +360,7 @@
                                 Editable="true" TypeAhead="true"
                                 StoreID="strEdoCivil" Mode="Local" 
                                 ForceSelection="true" TriggerAction="All" 
-                                DisplayField="name" ValueField="id"
-                                StyleSpec="text-transform:uppercase" FieldLabel="Estado Civil"  
+                                DisplayField="name" ValueField="id" FieldLabel="Estado Civil"  
                                 Width="130" Disabled="true"/>                                
                         </Items>                         
                     </ext:Panel>
@@ -393,74 +370,108 @@
                         Border="false" Header="false"
                         ColumnWidth=".31" Layout="Form"
                         LabelAlign="Right">
-                        <Items>
-                            <ext:ComboBox 
-                                ID="cmbEstado" runat="server"  
-                                Editable="true" TypeAhead="true" 
-                                Mode="Local" ForceSelection="true"
-                                TriggerAction="All" SelectOnFocus="true"
-                                DisplayField="name" StoreID="strEstado"
-                                ValueField="id" ValueNotFoundText="Cargando..."
-                                EmptyText="Selecciona tu estado..." FieldLabel="Estado"
-                                Resizable="True" Disabled="true">
+                        <Items>                             
+                            <ext:FieldContainer runat="server" ID="cfCP" FieldLabel="Código Postal" MsgTarget="Under" Disabled="false" Layout="HBoxLayout" >
+                            <Items>
+                                <ext:TextField 
+                                    runat="server" 
+                                    ID="txtCP" 
+                                    Width="120" 
+                                    StyleSpec="text-transform:uppercase; background-image:url('/Microseguro/Styles/text_in.gif');"
+                                    AllowBlank="false"
+                                    MaxLength="5"
+                                    Margins="0 3 0 0"
+                                    MinLength="5"
+                                    EmptyText="#####"
+                                    Regex="^[0-9]*$" 
+                                    RegexText="Este campo solo acepta numeros por favor rectifica"
+                                    Hidden="false" >
+                                </ext:TextField>
+                                <ext:Button runat="server" ID="btnBuscaCP" Icon="Magnifier" AutoPostBack="false" ToolTip="Busca el Código Postal especificado dando click aquí...">
                                     <Listeners>
-                                        <Select Handler="#{cmbMunicipio}.clearValue(); #{strMunicipio}.load();" />
+                                        <Click Handler="#{cbColonia}.clearValue();#{stColonia}.load();" />
                                     </Listeners>
-                            </ext:ComboBox>
-                            <ext:ComboBox 
-                                ID="cmbMunicipio" runat="server" 
-                                Editable="true" TypeAhead="true" Mode="Local"
-                                ForceSelection="true" SelectOnFocus="true"
-                                TriggerAction="All" DisplayField="name"
-                                StoreID="strMunicipio" ValueField="id"
-                                EmptyText="Cargando..." ValueNotFoundText="Cargando..." 
-                                FieldLabel="Municipio" Resizable="True"
-                                Disabled="true">
-                                    <Listeners>
-                                        <Select Handler="#{cmbColonia}.clearValue(); #{strColonia}.load();" />
-                                    </Listeners>
-                            </ext:ComboBox>
-                            <ext:ComboBox 
-                                ID="cmbColonia"
-                                runat="server" 
-                                SelectOnFocus="true"
-                                Editable="true"
-                                TypeAhead="true" 
-                                Mode="Local"
-                                ForceSelection="true"
-                                TriggerAction="All"            
-                                DisplayField="name"
-                                StoreID="strColonia"
-                                ValueField="id"
-                                EmptyText="Selecciona tu Municipio..."
-                                ValueNotFoundText="Cargando..." 
-                                FieldLabel="Colonia"
-                                Resizable="True"
-                                Disabled="true">
-                                    <Listeners>
-                                        <Select Handler="#{cmbCP}.clearValue(); #{strCP}.load();" />
-                                    </Listeners>    
-                            </ext:ComboBox>
-                            <ext:ComboBox 
-                                ID="cmbCP"
-                                runat="server" 
-                                Editable="false"
-                                TypeAhead="true" 
-                                Mode="Local"
-                                ForceSelection="true"
-                                TriggerAction="All"            
-                                DisplayField="name"
-                                StoreID="strCP"
-                                ValueField="id"
-                                EmptyText="Selecciona tu CP..."
-                                ValueNotFoundText="Cargando..." 
-                                FieldLabel="Código Postal"
-                                Disabled="true">      
-                            </ext:ComboBox>  
-                            <ext:TextField ID="txtCalle" runat="server" FieldLabel="Calle" AllowBlank="false" StyleSpec="text-transform:uppercase" MsgTarget="Side" Width="130" Disabled="true"/>
+                                    <DirectEvents>
+                                        <Click OnEvent="btnBuscaCP_DirectClick" />
+                                    </DirectEvents>
+                                </ext:Button>
+                            </Items>
+                        </ext:FieldContainer>
+                       
+                        <%--COMBO BOX COLONIA--%>
+                        <ext:ComboBox 
+                            ID="cbColonia" StoreID="stColonia"
+                            runat="server" 
+                            Editable="true"
+                            TypeAhead="true" 
+                            Mode="Local"      
+                            DisplayField="name"
+                            ValueField="id"
+                            EmptyText="Selecciona tu Colonia..."
+                            ValueNotFoundText="Cargando..." 
+                            FieldLabel="Colonia"
+                            Width="145"
+                            Disabled="false"
+                            Resizable="True"
+                            StyleSpec="background-image:url('/Microseguro/Styles/text_in.gif');">      
+                            <Listeners>
+                                <Select Handler="#{cbMunicipio}.clearValue();#{stMunicipio}.load();" />
+                            </Listeners>
+                        </ext:ComboBox>
+
+                        <%--COMBO BOX MUNICIPIO--%>
+                        <ext:ComboBox 
+                            ID="cbMunicipio"
+                            runat="server" 
+                            StoreID="stMunicipio"
+                            Editable="true"
+                            TypeAhead="true" 
+                            Mode="Local"
+                            ForceSelection="true"
+                            SelectOnFocus="true"
+                            TriggerAction="All"            
+                            DisplayField="name"
+                            ValueField="id"
+                            EmptyText="Selecciona tu Municipio..."
+                            ValueNotFoundText="Cargando..." 
+                            FieldLabel="Municipio"
+                            Width="145"
+                            Disabled="false"
+                            Resizable="True"
+                            StyleSpec="background-image:url('/Microseguro/Styles/text_in.gif');">
+                            <Listeners>
+                                <Select Handler="#{cbEstado}.clearValue();#{stEstado}.load();" />
+                            </Listeners>
+                         </ext:ComboBox>
+
+                        <%--COMBO BOX ESTADO--%>
+                        <ext:ComboBox 
+                            ID="cbEstado"
+                            runat="server"
+                            StoreID="stEstado"            
+                            Editable="true"
+                            TypeAhead="true" 
+                            Mode="Local"
+                            ForceSelection="true"
+                            TriggerAction="All"
+                            SelectOnFocus="true"
+                            DisplayField="name"
+                            ValueField="id"
+                            ValueNotFoundText="Cargando..."
+                            EmptyText="Selecciona tu estado..." 
+                            FieldLabel="Estado"
+                            Disabled="false"
+                            Resizable="True"
+                            StyleSpec="background-image:url('/Microseguro/Styles/text_in.gif');"                            
+                            Width="145">    
+                            <Listeners>
+                                <Select Handler="#{cbMunicipio}.clearValue();#{stMunicipio}.load();" />
+                            </Listeners>
+                        </ext:ComboBox>
+                            <ext:TextField ID="txtCalle" runat="server" FieldLabel="Calle" AllowBlank="false" MsgTarget="Side" Width="130" Disabled="true"/>
                             <ext:FieldContainer ID="fcNumero" runat="server" FieldLabel="Número" MsgTarget="Under" Layout="ColumnLayout" Disabled="true">
                                 <Items>
-                                    <ext:TextField ID="txtNoExt" DataIndex="Numero" runat="server" EmptyText="Ext" AllowBlank="false" MsgTarget="Side" Width="50" Disabled="true" ColumnWidth=".5"/>
+                                    <ext:TextField ID="txtNoExt" DataIndex="Numero" runat="server" EmptyText="Ext" AllowBlank="false" MsgTarget="Side" Width="50" Disabled="true" ColumnWidth=".5" Margins="0 5 0 0"/>
                                     <ext:TextField ID="txtNoInt" runat="server" EmptyText="Int" Disabled="true" Width="50" ColumnWidth=".5"/>
                                 </Items>
                             </ext:FieldContainer>           

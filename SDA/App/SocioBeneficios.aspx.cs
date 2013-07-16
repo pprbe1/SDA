@@ -22,6 +22,8 @@ namespace SDA.App
         wsConsultaDatos2.wsConsultaSiniestros cdocumento = new wsConsultaDatos2.wsConsultaSiniestros();
 
         wsInsercionDatosBen.Error ErrorOper = new wsInsercionDatosBen.Error();
+        wsCPM.wsPrybeCPM SocioCPM = new wsCPM.wsPrybeCPM();
+        wsCPM.SocioCPM ConsultaSocioCPM = new wsCPM.SocioCPM();
 
         DateTime fechaNac = new DateTime();
         DateTime fechaIng = new DateTime();
@@ -40,22 +42,23 @@ namespace SDA.App
             {
 
                 datsocio = llamada.CargaDatosSocioAlta(this.txtNumSocio.Text, this.cmbSucursal.SelectedItem.Value);
-                if (datsocio.NumSocio == this.txtNumSocio.Text && datsocio.Sucursal == this.cmbSucursal.SelectedItem.Value)
+                ConsultaSocioCPM = SocioCPM.ObtenSocioCPM(txtNumSocio.Text, "PRYBE");
+                if (!this.txtNumSocio.IsEmpty)
                 {
                     Habilitar_CamposSocio();
                     btnModificarSocio.Disabled = false;
                     //btnSiguiente.Disabled = true;
                     txtNumSocio.Disabled = true;
 
-                    this.txtNombre.Text = datsocio.Nombre;
-                    this.txtNombre2.Text = datsocio.Nombre2;
-                    this.txtApellidoPat.Text = datsocio.ApellidoPat;
-                    this.txtApellidoMat.Text = datsocio.ApellidoMat;
-                    fechaNac = Convert.ToDateTime(datsocio.FechaNac);
+                    this.txtNombre.Text = ConsultaSocioCPM.PrimerNombre;
+                    this.txtNombre2.Text = ConsultaSocioCPM.SegundoNombre;
+                    this.txtApellidoPat.Text = ConsultaSocioCPM.PrimerApellido;
+                    this.txtApellidoMat.Text = ConsultaSocioCPM.SegundoApellido;
+                    fechaNac = Convert.ToDateTime(ConsultaSocioCPM.FechaNacimiento);
                     this.dteFechaN.Text = fechaNac.ToString("dd/MM/yyyy");
-                    fechaIng = Convert.ToDateTime(datsocio.FechaIng);
+                    fechaIng = Convert.ToDateTime(ConsultaSocioCPM.FechaIngreso);
                     this.dteFechaI.Text = fechaIng.ToString("dd/MM/yyyy");
-                    if (datsocio.Sexo == true)
+                    if (ConsultaSocioCPM.Sexo == true)
                     {
                         this.rdoMasculino.Checked = true;
                     }
@@ -64,12 +67,32 @@ namespace SDA.App
                         this.rdoFemenino.Checked = true;
                     }
                     this.cmbOcupacion.SelectedItem.Value = datsocio.Ocupacion;
-                    this.cmbEdoCivil.SelectedItem.Value = datsocio.EdoCivil;
-                    this.txtCalle.Text = datsocio.Calle;
-                    this.txtNoExt.Text = datsocio.NumExt;
-                    this.txtNoInt.Text = datsocio.NumInt;
-                    this.cmbPaqueteria.SelectedItem.Value = datsocio.IdPaqueteria;
-                    this.txtGuia.Text = datsocio.NumeroGuia;
+                    switch (ConsultaSocioCPM.EstadoCivil)
+                    {
+                        case "C":
+                            cmbEdoCivil.SelectedItem.Value = "1";
+                            break;
+
+                        case "D":
+                            cmbEdoCivil.SelectedItem.Value = "4";
+                            break;
+
+                        case "L":
+                            cmbEdoCivil.SelectedItem.Value = "5";
+                            break;
+
+                        case "S":
+                            cmbEdoCivil.SelectedItem.Value = "2";
+                            break;
+
+                        case "V":
+                            cmbEdoCivil.SelectedItem.Value = "3";
+                            break;
+                    }
+                    this.txtCP.Text = ConsultaSocioCPM.CP;
+                    this.txtCalle.Text = ConsultaSocioCPM.Calle;
+                    this.txtNoExt.Text = ConsultaSocioCPM.NoExterior;
+                    this.txtNoInt.Text = ConsultaSocioCPM.NoInterior;
                 }
                 else
                 {
@@ -150,7 +173,7 @@ namespace SDA.App
                 ErrorOper = socio.InsertSocioBeneficio(this.txtNumSocio.Text.ToUpper(), this.txtNombre.Text.ToUpper(), this.txtNombre2.Text.ToUpper(), this.txtApellidoPat.Text.ToUpper(),
                                this.txtApellidoMat.Text.ToUpper(), fechaNac.ToString("dd/MM/yyyy"), fechaIng.ToString("dd/MM/yyyy"), (int)(Session["Sexo"]), "", "", "",
                                Convert.ToInt32(this.cmbOcupacion.SelectedItem.Value), Convert.ToInt32(this.cmbEdoCivil.SelectedItem.Value),
-                               Convert.ToInt32(this.cmbSucursal.SelectedItem.Value), Convert.ToString(ano), hoy.ToString("dd/MM/yyyy"), Convert.ToInt32(this.cmbColonia.SelectedItem.Value), this.txtCalle.Text.ToUpper(),
+                               Convert.ToInt32(this.cmbSucursal.SelectedItem.Value), Convert.ToString(ano), hoy.ToString("dd/MM/yyyy"), 1, this.txtCalle.Text.ToUpper(),
                                this.txtNoExt.Text.ToUpper(), this.txtNoInt.Text.ToUpper(), 1, 1, Convert.ToInt32(this.cmbPaqueteria.SelectedItem.Value), this.txtGuia.Text.ToUpper());
                 if (ErrorOper.Valor == true)
                 {
@@ -176,7 +199,13 @@ namespace SDA.App
             this.pnlAgregarDocumentacion.Disabled = true;
         }
 
-
+        protected void btnBuscaCP_DirectClick(object sender, DirectEventArgs e)
+        {
+            bool cpcheck;
+            X.Get("maskDiv").AddCls("x-hide-display");//Oculta la máscara de bloqueo de pantalla
+            cpcheck = true;
+            Session["BuscaCP"] = cpcheck;
+        }
         protected void btnCancelarRegistroSocio_DirectClick(object sneder, DirectEventArgs e)
         {
             Limpia_CamposSocio();
@@ -195,10 +224,10 @@ namespace SDA.App
             this.rdoSexo.Disabled = true;
             this.cmbOcupacion.Disabled = true;
             this.cmbEdoCivil.Disabled = true;
-            this.cmbEstado.Disabled = true;
-            this.cmbMunicipio.Disabled = true;
-            this.cmbColonia.Disabled = true;
-            this.cmbCP.Disabled = true;
+            //this.cmbEstado.Disabled = true;
+            //this.cmbMunicipio.Disabled = true;
+            //this.cmbColonia.Disabled = true;
+            //this.cmbCP.Disabled = true;
             this.txtCalle.Disabled = true;
             this.txtNumSocio.Text = "";
             this.btnCancelarRegistroSocio.Disabled = false;
@@ -264,10 +293,10 @@ namespace SDA.App
             this.txtNoExt.Disabled = false;
             this.txtNoInt.Disabled = false;
             this.rdoSexo.Disabled = false;
-            this.cmbEstado.Disabled = false;
-            this.cmbMunicipio.Disabled = false;
-            this.cmbColonia.Disabled = false;
-            this.cmbCP.Disabled = false;
+            //this.cmbEstado.Disabled = false;
+            //this.cmbMunicipio.Disabled = false;
+            //this.cmbColonia.Disabled = false;
+            //this.cmbCP.Disabled = false;
             this.fcNumero.Disabled = false;
             this.fcNumSocio.Disabled = true;
             //this.btnSiguiente.Disabled = false;

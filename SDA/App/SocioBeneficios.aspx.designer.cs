@@ -157,76 +157,58 @@ namespace SDA.App {
         protected global::Ext.Net.Model Model7;
         
         /// <summary>
-        /// Control strEstado.
+        /// Control stEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store strEstado;
+        protected global::Ext.Net.Store stEstado;
         
         /// <summary>
-        /// Control Model8.
+        /// Control Model13.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model Model8;
+        protected global::Ext.Net.Model Model13;
         
         /// <summary>
-        /// Control strMunicipio.
+        /// Control stMunicipio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store strMunicipio;
+        protected global::Ext.Net.Store stMunicipio;
         
         /// <summary>
-        /// Control Model9.
+        /// Control Model14.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model Model9;
+        protected global::Ext.Net.Model Model14;
         
         /// <summary>
-        /// Control strColonia.
+        /// Control stColonia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store strColonia;
+        protected global::Ext.Net.Store stColonia;
         
         /// <summary>
-        /// Control Model10.
+        /// Control Model15.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model Model10;
-        
-        /// <summary>
-        /// Control strCP.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store strCP;
-        
-        /// <summary>
-        /// Control Model11.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model Model11;
+        protected global::Ext.Net.Model Model15;
         
         /// <summary>
         /// Control strPaqueteria.
@@ -463,40 +445,58 @@ namespace SDA.App {
         protected global::Ext.Net.Panel pnlSocio3;
         
         /// <summary>
-        /// Control cmbEstado.
+        /// Control cfCP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbEstado;
+        protected global::Ext.Net.FieldContainer cfCP;
         
         /// <summary>
-        /// Control cmbMunicipio.
+        /// Control txtCP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbMunicipio;
+        protected global::Ext.Net.TextField txtCP;
         
         /// <summary>
-        /// Control cmbColonia.
+        /// Control btnBuscaCP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbColonia;
+        protected global::Ext.Net.Button btnBuscaCP;
         
         /// <summary>
-        /// Control cmbCP.
+        /// Control cbColonia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbCP;
+        protected global::Ext.Net.ComboBox cbColonia;
+        
+        /// <summary>
+        /// Control cbMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cbMunicipio;
+        
+        /// <summary>
+        /// Control cbEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cbEstado;
         
         /// <summary>
         /// Control txtCalle.

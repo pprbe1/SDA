@@ -192,7 +192,7 @@
                         <Items>
                             <ext:MenuItem ID="miAS" runat="server" Text="Alta de Siniestro" Icon="UserAdd">
                                 <Listeners>
-                                    <Click Handler="addTab(#{tabMain}, 'idAS', 'http://www.w3schools.com/', this, 'Siniestro - Nuevo Siniestro');" />
+                                    <Click Handler="addTab(#{tabMain}, 'idAS', 'SocioBeneficios.aspx', this, 'Siniestro - Nuevo Siniestro');" />
                                 </Listeners>
                             </ext:MenuItem>                            
                             
