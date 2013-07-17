@@ -229,7 +229,7 @@
                         <Items>
                             <ext:MenuItem ID="miSS" runat="server" Text="Consulta de Siniestro" Icon="MagnifierZoomIn">
                                 <Listeners>
-                                    <Click Handler="addTab(#{tabMain}, 'idCS', 'http://www.w3schools.com/', this, 'Seguimiento - Consulta de Siniestro');" />
+                                    <Click Handler="addTab(#{tabMain}, 'idCS', 'AnalisisReclamo.aspx', this, 'Seguimiento - Consulta de Siniestro');" />
                                 </Listeners>
                             </ext:MenuItem>                            
                             
