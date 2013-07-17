@@ -134,7 +134,7 @@ namespace SDA.App
                && this.dteFechaI.Text != "" && this.txtCalle.Text != "" && this.txtNoExt.Text != "")
             {
                 this.btnCancelarRegistroSocio.Disabled = true;
-                pnlAgregarDocumentacion.Disabled = false;
+                //pnlAgregarDocumentacion.Disabled = false;
             }
             else
             {
@@ -185,7 +185,7 @@ namespace SDA.App
                 noSocio = Convert.ToString(Session["No_Socio"]);
                 idSucursal = Convert.ToString(Session["Id_Sucursal"]);
 
-                this.pnlAgregarDocumentacion.Disabled = false;
+                //this.pnlAgregarDocumentacion.Disabled = false;
                 this.pnlSocio.Disabled = true;
                 Carga_CamposDocumentos();
             }
@@ -196,7 +196,7 @@ namespace SDA.App
             this.pnlSocio.Disabled = false;
             this.btnModificarSocio.Disabled = false;
 
-            this.pnlAgregarDocumentacion.Disabled = true;
+            //this.pnlAgregarDocumentacion.Disabled = true;
         }
 
         protected void btnBuscaCP_DirectClick(object sender, DirectEventArgs e)
@@ -240,8 +240,8 @@ namespace SDA.App
         protected void btnAgregarDocumento_Click(object sender, DirectEventArgs e)
         {
 
-            ErrorOper = documento.InsertDocumento(Convert.ToInt32(this.cmbDocumentos.SelectedItem.Value), (int)(Session["Id_Sucursal"]),
-                                         Convert.ToString(Session["No_Socio"]), 1);
+            //ErrorOper = documento.InsertDocumento(Convert.ToInt32(this.cmbDocumentos.SelectedItem.Value), (int)(Session["Id_Sucursal"]),
+              //                           Convert.ToString(Session["No_Socio"]), 1);
 
             if (ErrorOper.Valor == true)
             {

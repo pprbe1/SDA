@@ -1,4 +1,4 @@
-﻿<%@ Page Title="LOL" Language="C#" AutoEventWireup="true" CodeBehind="SocioBeneficios.aspx.cs" Inherits="SDA.App.SocioBeneficios" %>
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeBehind="SocioBeneficios.aspx.cs" Inherits="SDA.App.SocioBeneficios" %>
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
 
 <!DOCTYPE html>
@@ -157,8 +157,8 @@
             <ext:JsonPProxy />
         </Proxy>
     </ext:Store>
-    <%--STORE ID PARA EL ESTADO--%>        
-        <ext:Store runat="server" ID="stEstado">
+        
+    <ext:Store runat="server" ID="stEstado">
             <Proxy>
             <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaEstados_SPM">
                 <ActionMethods Read="POST" />
@@ -183,57 +183,55 @@
             </Listeners>          
         </ext:Store>
         
-        <%--STORE ID PARA EL MUNICIPIO--%>
-        <ext:Store runat="server" ID="stMunicipio">
-            <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaMunicipios_SPM">
-                <ActionMethods Read="POST" />
-                    <Reader>
-                    <ext:XmlReader Record="Municipios" />
-                </Reader>
-            </ext:AjaxProxy>
-        </Proxy>
-        <Parameters>
-            <ext:StoreParameter Name="Municipio" Value="#{cbColonia}.getValue()" Mode="Raw" />              
-        </Parameters>
-        <Model>
-            <ext:Model ID="Model14" runat="server">
-                <Fields>
-                    <ext:ModelField Name="id" Type="String" Mapping="Id" />
-                    <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
-                </Fields>
-            </ext:Model>
-        </Model>        
-            <Listeners>
-                <Load Handler="#{cbMunicipio}.setValue(#{cbMunicipio}.store.getAt(0).get('id'));#{cbEstado}.clearValue();#{stEstado}.load();" />
-            </Listeners>            
-        </ext:Store>
+    <ext:Store runat="server" ID="stMunicipio">
+        <Proxy>
+        <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaMunicipios_SPM">
+            <ActionMethods Read="POST" />
+                <Reader>
+                <ext:XmlReader Record="Municipios" />
+            </Reader>
+        </ext:AjaxProxy>
+    </Proxy>
+    <Parameters>
+        <ext:StoreParameter Name="Municipio" Value="#{cbColonia}.getValue()" Mode="Raw" />              
+    </Parameters>
+    <Model>
+        <ext:Model ID="Model14" runat="server">
+            <Fields>
+                <ext:ModelField Name="id" Type="String" Mapping="Id" />
+                <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
+            </Fields>
+        </ext:Model>
+    </Model>        
+        <Listeners>
+            <Load Handler="#{cbMunicipio}.setValue(#{cbMunicipio}.store.getAt(0).get('id'));#{cbEstado}.clearValue();#{stEstado}.load();" />
+        </Listeners>            
+    </ext:Store>
 
-         <%--STORE ID PARA LA COLONIA--%>
-        <ext:Store runat="server" ID="stColonia">
-            <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaColonias_SPM">
-                <ActionMethods Read="POST" />
-                    <Reader>
-                    <ext:XmlReader Record="Colonias" />
-                </Reader>
-            </ext:AjaxProxy>
-        </Proxy>
-        <Parameters>
-            <ext:StoreParameter Name="CP" Value="#{txtCP}.getValue()" Mode="Raw" />              
-        </Parameters>
-        <Model>
-            <ext:Model ID="Model15" runat="server">
-                <Fields>
-                    <ext:ModelField Name="id" Type="String" Mapping="Id" />
-                    <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
-                </Fields>
-            </ext:Model>
-        </Model>
-            <Listeners>
-                <Load Handler="#{cbColonia}.setValue(#{cbColonia}.store.getAt(0).get('id')); #{cbMunicipio}.clearValue();#{stMunicipio}.load()" />
-            </Listeners>            
-        </ext:Store>
+    <ext:Store runat="server" ID="stColonia">
+        <Proxy>
+        <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaColonias_SPM">
+            <ActionMethods Read="POST" />
+                <Reader>
+                <ext:XmlReader Record="Colonias" />
+            </Reader>
+        </ext:AjaxProxy>
+    </Proxy>
+    <Parameters>
+        <ext:StoreParameter Name="CP" Value="#{txtCP}.getValue()" Mode="Raw" />              
+    </Parameters>
+    <Model>
+        <ext:Model ID="Model15" runat="server">
+            <Fields>
+                <ext:ModelField Name="id" Type="String" Mapping="Id" />
+                <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
+            </Fields>
+        </ext:Model>
+    </Model>
+        <Listeners>
+            <Load Handler="#{cbColonia}.setValue(#{cbColonia}.store.getAt(0).get('id')); #{cbMunicipio}.clearValue();#{stMunicipio}.load()" />
+        </Listeners>            
+    </ext:Store>
     
     <ext:Store ID="strPaqueteria" runat="server">
         <Proxy>
@@ -255,6 +253,23 @@
         <Listeners>
             <Load Handler="#{cmbPaqueteria}.setValue(#{cmbPaqueteria}.store.getAt(0).get('id'));" />
         </Listeners> 
+    </ext:Store>
+
+    <ext:Store ID="strEnvio" runat="server">
+        <Model>
+            <ext:Model ID="Model8" runat="server">
+                <Fields>
+                    <ext:ModelField Name="numdocumentacion" Mapping="IdDocumentacion" />
+                    <ext:ModelField Name="paqueteria" Mapping="Paqueteria" />
+                    <ext:ModelField Name="numguia" Mapping="NoGuia" />
+                    <ext:ModelField Name="fechaenvio" Mapping="FechaEnvio" />
+                    <ext:ModelField Name="fechareclamo" Mapping="FechaReclamo" />
+                </Fields>
+            </ext:Model>
+        </Model>
+        <Reader>
+            <ext:ArrayReader />
+        </Reader>
     </ext:Store>
 
     <ext:Panel ID="pnlSocio" runat="server"
@@ -497,100 +512,77 @@
             </ext:Panel>
         </Items>           
     </ext:Panel>
-    <ext:Panel 
-        ID="pnlAgregarDocumentacion" 
-        Title="Documentos Recibidos"
-        runat="server"
-        Icon="Page"
-        Border="false"
-        Frame="false"
-        Layout="Form"
-        LabelAlign="Right"
-        Disabled="true"
-        Height="260">
+    <ext:Panel ID="paneArchivos" runat="server" Title="Archivos" Layout="ColumnLayout" Disabled="true">
         <Items>
-            <ext:FormPanel ID="paneDocumentos"
-                runat="server"
-                Layout="FormLayout"
-                AutoScroll = "true"
-                Border = "false">
+            <ext:GridPanel ID="grdArchivos" runat="server" ColumnWidth=".6" StoreID="strEnvio">
+                <ColumnModel>
+                    <Columns>
+                        <ext:Column ID="Column1" runat="server" Header="Fecha Envio" DataIndex="fechaenvio" Align="Center" />
+                        <ext:Column ID="Column2" runat="server" Header="Paquteria" DataIndex="paqueteria" Align="Center" />
+                        <ext:Column ID="Column3" runat="server" Header="N° Guia" DataIndex="numguia" Align="Left" Flex="1"/>
+                        <ext:CommandColumn ID="CommandColumn1" runat="server">
+                            <Commands>
+                                <ext:GridCommand Icon="WorldLink" CommandName="Descargar" Text="Descargar" />
+                            </Commands>
+                        </ext:CommandColumn>
+                    </Columns>
+                </ColumnModel>
+                <DirectEvents>
+                    <%--<Select OnEvent="DocumentosEnvio" >
+                        <ExtraParams>
+                            <ext:Parameter Name="ID" Value="Ext.value(record.data.numdocumentacion)" Mode="Raw" />
+                        </ExtraParams>
+                    </Select>--%>
+                </DirectEvents>
+                <Buttons>
+                    <ext:Button ID="btnNuevoEnvio" runat="server" Icon="Box" Text="Nuevo Envio"  />
+                </Buttons>
+            </ext:GridPanel>
+            <ext:FormPanel ID="frmArchivos" runat="server" ColumnWidth=".4" Title="Detalles/Nuevo Archivo" >
                 <Items>
-                    <ext:ComboBox ID="cmbPaqueteria" runat="server" FieldLabel="Paquetería" Editable="true" TypeAhead="true" 
-                                    Mode="Local" ForceSelection="true" TriggerAction="All" DisplayField="name" ValueField="id" Width="200" StoreID="strPaqueteria" />    
-                    <ext:TextField ID="txtGuia" runat="server" FieldLabel="Guía de Paquete" AllowBlank="false" MaxLengthText="45" StyleSpec="text-transform:uppercase" Width="200" />
+                    <ext:FormPanel ID="frmArchivosOpciones" runat="server" Border="false" Padding="5">
+                        <Items>
+                            <ext:CheckboxGroup ID="chkGroup" runat="server" ColumnsNumber="2">
+                                <Items>
+                                    <ext:Checkbox ID="chkDoc1" runat="server" ReadOnly="true" BoxLabel="Solicitud de Beneficios" IndicatorTip="Original de Formato de Solicitud de Beneficios" />
+                                    <ext:Checkbox ID="chkDoc2" runat="server" ReadOnly="true" BoxLabel="Solicitud de Ingreso" IndicatorTip="Original de Solicitud de ingreso" />
+                                    <ext:Checkbox ID="chkDoc3" runat="server" ReadOnly="true" BoxLabel="Designacion de Beneficiarios" IndicatorTip="Original de Designación de beneficiarios" />
+                                    <ext:Checkbox ID="chkDoc4" runat="server" ReadOnly="true" BoxLabel="Contrato de Dep. a Plazo Fijo Inicial y Subsecuentes" IndicatorTip="Original de Contrato de depósito a plazo fijo inicial y subsecuentes" />
+                                    <ext:Checkbox ID="chkDoc5" runat="server" ReadOnly="true" BoxLabel="Solicitud de Prestamo de cada credito reclamado" IndicatorTip="Original de Solicitud de préstamo (de cada uno de los créditos reclamados)" />
+                                    <ext:Checkbox ID="chkDoc6" runat="server" ReadOnly="true" BoxLabel="Pagaré o Línea de Crédito" IndicatorTip="Original de Pagaré o línea de crédito (de cada uno de los créditos reclamados)" />
+                                    <ext:Checkbox ID="chkDoc7" runat="server" ReadOnly="true" BoxLabel="Auxiliar de Parte Social" IndicatorTip="Original de Auxiliar de parte social" />
+                                    <ext:Checkbox ID="chkDoc8" runat="server" ReadOnly="true" BoxLabel="Auxiliar de Cada Cuenta de Captación" IndicatorTip="Original de Auxiliar de cada una de las cuentas de captación" />
+                                    <ext:Checkbox ID="chkDoc9" runat="server" ReadOnly="true" BoxLabel="Auxiliar de Cada Préstamo" IndicatorTip="Original de Auxiliar de cada préstamo reclamado" />
+                                    <ext:Checkbox ID="chkDoc10" runat="server" ReadOnly="true" BoxLabel="Acta de Defunción del Socio" IndicatorTip="Original Acta de defunción del socio" />
+                                    <ext:Checkbox ID="chkDoc11" runat="server" ReadOnly="true" BoxLabel="Acta de Nacimiento del Socio" IndicatorTip="Copia de Acta de nacimiento del socio" />
+                                    <ext:Checkbox ID="chkDoc12" runat="server" ReadOnly="true" BoxLabel="Acta de Nacimiento de cada Beneficiario" IndicatorTip="Copia de Acta de nacimiento de cada uno de los beneficiarios" />
+                                    <ext:Checkbox ID="chkDoc13" runat="server" ReadOnly="true" BoxLabel="Identificación Oficial del Socio" IndicatorTip="Copia de Identificación oficial del socio" />
+                                    <ext:Checkbox ID="chkDoc14" runat="server" ReadOnly="true" BoxLabel="Identificación Oficial de Cada Beneficiario" IndicatorTip="Copia de Identificación oficial de cada uno de los beneficiarios" />
+                                    <ext:Checkbox ID="chkDoc15" runat="server" ReadOnly="true" BoxLabel="Parte del Ministerio Público" IndicatorTip="Parte Oficial del M.P., para aquellos casos de que el fallecimiento hubiera sido de manera violenta (homicidio, suicidio, accidental)" />
+                                    <ext:Checkbox ID="chkDoc16" runat="server" ReadOnly="true" BoxLabel="Dictamen Médico" IndicatorTip="Dictamen médico emitido por una institución pública del sector salud (IMSS, ISSSTE, SSA) que determine la incapacidad total y permanente a causa de accidente" />
+                                </Items>
+                            </ext:CheckboxGroup>
+                        </Items>
+                    </ext:FormPanel>
+                    <ext:FormPanel ID="frmArchivosOpciones2" runat="server" Border="false" Padding="5" AnchorHorizontal="100">
+                        <Items>
+                            <ext:DateField ID="dateEnvio" runat="server" ReadOnly="true" FieldLabel="Fecha de Envio" AllowBlank="false" />
+                            <ext:FileUploadField ID="fileSelector" runat="server" FieldLabel="Archivo" ReadOnly="true" AllowBlank="false" />
+                            <ext:TextField ID="txtGuia" runat="server" EmptyText="N° de Guia" FieldLabel="Guia" ReadOnly="true" AllowBlank="false" />
+                            <ext:ComboBox ID="cmbPaqueteria" runat="server" StoreID="strPaqueteria" Editable="false"
+                                TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All"
+                                DisplayField="name" ValueField="id" EmptyText="Paquetería..." ValueNotFoundText="Cargando..."
+                                FieldLabel="Paquetería">
+                            </ext:ComboBox> 
+                        </Items>
+                    </ext:FormPanel>
                 </Items>
+                <%--<Buttons>
+                    <ext:Button ID="btnGuardarArchivo" runat="server" Text="Guardar" Icon="Disk" Hidden="true" OnDirectClick="InsertarEnvio" FormBind="true" />
+                    <ext:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" Icon="Cancel" Hidden="true" OnDirectClick="RestaurarArchivos" />
+                </Buttons>--%>
             </ext:FormPanel>
-                        
-            <ext:Panel ID="pnlGDocumentos" 
-                runat="server" 
-                Layout="Form" 
-                AutoScroll="true" 
-                Border="false" >
-                <Items>      
-                <ext:GridPanel ID="gplDocumentos" 
-                    runat="server" 
-                    AutoWidth="true"
-                    Height="200"
-                    AutoScroll="true"
-                    Layout="FormLayout"
-                    ButtonAlign="Center">
-                    <ColumnModel>
-                        <Columns>
-                            <ext:Column ID="Column1" runat="server" Header="Documento Agregado" Width="200" DataIndex="documento" ></ext:Column>
-                            <ext:CommandColumn ID="CommandColumn1" ColumnID="iddocumento" runat="server" DataIndex="iddocumento" >
-                                <Commands>
-                                    <ext:GridCommand Icon="Delete" CommandName="Eliminar" Text="Eliminar" >           
-                                    </ext:GridCommand>
-                                </Commands>
-                            </ext:CommandColumn>
-                        </Columns>
-                    </ColumnModel>    
-                    <SelectionModel>
-                        <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" SingleSelect="true" >
-                        </ext:RowSelectionModel>
-                    </SelectionModel>                                     
-                    <DirectEvents>
-                        <CellClick OnEvent="CellEliminarDocumento_Click" >
-                            <ExtraParams>
-                                <ext:Parameter Name="IdDoc" Value="Ext.value(record.data.iddocumento)" Mode="Raw" >
-                                </ext:Parameter>
-                            </ExtraParams>
-                        </CellClick>
-                    </DirectEvents>    
-                    <TopBar>
-                        <ext:Toolbar ID="Toolbar2" runat="server" >
-                            <Items>
-                                <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
-                                <ext:ComboBox ID="cmbDocumentos" 
-                                    runat="server" 
-                                    FieldLabel="Documento" 
-                                    Editable="true" 
-                                    TypeAhead="true" 
-                                    Width="300"
-                                    Mode="Local" 
-                                    ForceSelection="true" 
-                                    TriggerAction="All" 
-                                    DisplayField="name" 
-                                    ValueField="id" />
-                                <ext:Button ID="btnAgregarDocumento" runat="server" Text="Agregar" Icon="PageAdd" LabelAlign="Right">
-                                    <DirectEvents>
-                                        <Click OnEvent="btnAgregarDocumento_Click" />
-                                    </DirectEvents>
-                                </ext:Button>     
-                            </Items>
-                        </ext:Toolbar>
-                    </TopBar>
-                    <Buttons>
-                        <ext:Button ID="btnGuardar" runat="server" Text="Guardar" Icon="DiskEdit">                    
-                            <DirectEvents>                    
-                                <Click OnEvent="btnGuardar_Click"></Click>
-                            </DirectEvents>
-                        </ext:Button>
-                    </Buttons>
-                </ext:GridPanel>
-            </Items>
-            </ext:Panel>
-        </Items>          
+        </Items>
     </ext:Panel>
     </form>
 </body>

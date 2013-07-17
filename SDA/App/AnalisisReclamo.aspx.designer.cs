@@ -76,13 +76,13 @@ namespace SDA.App {
         protected global::Ext.Net.Model Model3;
         
         /// <summary>
-        /// Control strReclamosGral.
+        /// Control strBitacora.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store strReclamosGral;
+        protected global::Ext.Net.Store strBitacora;
         
         /// <summary>
         /// Control Model4.
@@ -92,6 +92,96 @@ namespace SDA.App {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Model Model4;
+        
+        /// <summary>
+        /// Control strReclamosGral.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store strReclamosGral;
+        
+        /// <summary>
+        /// Control Model5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model Model5;
+        
+        /// <summary>
+        /// Control strEnvio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store strEnvio;
+        
+        /// <summary>
+        /// Control Model6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model Model6;
+        
+        /// <summary>
+        /// Control strPaqueteria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store strPaqueteria;
+        
+        /// <summary>
+        /// Control Model8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model Model8;
+        
+        /// <summary>
+        /// Control strArchivos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store strArchivos;
+        
+        /// <summary>
+        /// Control Model7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model Model7;
+        
+        /// <summary>
+        /// Control strEstadosSin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store strEstadosSin;
+        
+        /// <summary>
+        /// Control Model9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model Model9;
         
         /// <summary>
         /// Control frmAnalisisNuevo.
@@ -220,6 +310,42 @@ namespace SDA.App {
         protected global::Ext.Net.GridPanel grdAnalisis;
         
         /// <summary>
+        /// Control Column1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column1;
+        
+        /// <summary>
+        /// Control Column2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column2;
+        
+        /// <summary>
+        /// Control Column3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column3;
+        
+        /// <summary>
+        /// Control Column4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column4;
+        
+        /// <summary>
         /// Control RowSelectionModel1.
         /// </summary>
         /// <remarks>
@@ -283,15 +409,6 @@ namespace SDA.App {
         protected global::Ext.Net.Label dspNumeroSiniestro;
         
         /// <summary>
-        /// Control dspNumeroSocio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Label dspNumeroSocio;
-        
-        /// <summary>
         /// Control Label1.
         /// </summary>
         /// <remarks>
@@ -301,13 +418,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label Label1;
         
         /// <summary>
-        /// Control dspNombreSocio.
+        /// Control dspNumeroSocio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label dspNombreSocio;
+        protected global::Ext.Net.Label dspNumeroSocio;
         
         /// <summary>
         /// Control Label2.
@@ -319,13 +436,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label Label2;
         
         /// <summary>
-        /// Control dspOcupacionSocio.
+        /// Control dspNombreSocio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label dspOcupacionSocio;
+        protected global::Ext.Net.Label dspNombreSocio;
         
         /// <summary>
         /// Control Label3.
@@ -337,13 +454,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label Label3;
         
         /// <summary>
-        /// Control dspCooperativa.
+        /// Control dspOcupacionSocio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label dspCooperativa;
+        protected global::Ext.Net.Label dspOcupacionSocio;
         
         /// <summary>
         /// Control Label4.
@@ -355,13 +472,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label Label4;
         
         /// <summary>
-        /// Control dspPlaza.
+        /// Control dspCooperativa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label dspPlaza;
+        protected global::Ext.Net.Label dspCooperativa;
         
         /// <summary>
         /// Control Label5.
@@ -373,13 +490,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label Label5;
         
         /// <summary>
-        /// Control dspSucursalSocio.
+        /// Control dspPlaza.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label dspSucursalSocio;
+        protected global::Ext.Net.Label dspPlaza;
         
         /// <summary>
         /// Control Label6.
@@ -389,6 +506,24 @@ namespace SDA.App {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Label Label6;
+        
+        /// <summary>
+        /// Control dspSucursalSocio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Label dspSucursalSocio;
+        
+        /// <summary>
+        /// Control Label7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Label Label7;
         
         /// <summary>
         /// Control dspEstadoBeneficio.
@@ -418,13 +553,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label lblNumeroSiniestro;
         
         /// <summary>
-        /// Control Label7.
+        /// Control Label8.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label Label7;
+        protected global::Ext.Net.Label Label8;
         
         /// <summary>
         /// Control lblNumeroSocio.
@@ -436,13 +571,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label lblNumeroSocio;
         
         /// <summary>
-        /// Control Label8.
+        /// Control Label9.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label Label8;
+        protected global::Ext.Net.Label Label9;
         
         /// <summary>
         /// Control lblNombreSocio.
@@ -454,13 +589,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label lblNombreSocio;
         
         /// <summary>
-        /// Control Label9.
+        /// Control Label10.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label Label9;
+        protected global::Ext.Net.Label Label10;
         
         /// <summary>
         /// Control lblOcupacionSocio.
@@ -472,13 +607,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label lblOcupacionSocio;
         
         /// <summary>
-        /// Control Label10.
+        /// Control Label11.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label Label10;
+        protected global::Ext.Net.Label Label11;
         
         /// <summary>
         /// Control lblCooperativa.
@@ -490,13 +625,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label lblCooperativa;
         
         /// <summary>
-        /// Control Label11.
+        /// Control Label12.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label Label11;
+        protected global::Ext.Net.Label Label12;
         
         /// <summary>
         /// Control lblPlaza.
@@ -508,13 +643,13 @@ namespace SDA.App {
         protected global::Ext.Net.Label lblPlaza;
         
         /// <summary>
-        /// Control Label12.
+        /// Control Label13.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label Label12;
+        protected global::Ext.Net.Label Label13;
         
         /// <summary>
         /// Control lblSucursalSocio.
@@ -526,22 +661,40 @@ namespace SDA.App {
         protected global::Ext.Net.Label lblSucursalSocio;
         
         /// <summary>
-        /// Control Label13.
+        /// Control Label14.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label Label13;
+        protected global::Ext.Net.Label Label14;
         
         /// <summary>
-        /// Control cmbEstadoBeneficio.
+        /// Control fcEstadoSin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbEstadoBeneficio;
+        protected global::Ext.Net.FieldContainer fcEstadoSin;
+        
+        /// <summary>
+        /// Control cmbEstadoSin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbEstadoSin;
+        
+        /// <summary>
+        /// Control btnGuardarEstadoSin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnGuardarEstadoSin;
         
         /// <summary>
         /// Control paneBitacora.
@@ -562,6 +715,42 @@ namespace SDA.App {
         protected global::Ext.Net.GridPanel grdBitacora;
         
         /// <summary>
+        /// Control Column5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column5;
+        
+        /// <summary>
+        /// Control Column6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column6;
+        
+        /// <summary>
+        /// Control Column7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column7;
+        
+        /// <summary>
+        /// Control btnNuevaBitacora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnNuevaBitacora;
+        
+        /// <summary>
         /// Control frmBitacora.
         /// </summary>
         /// <remarks>
@@ -580,13 +769,22 @@ namespace SDA.App {
         protected global::Ext.Net.TextArea txtBitacora;
         
         /// <summary>
-        /// Control btnEntradaBitacora.
+        /// Control btnGuardarBitacora.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Button btnEntradaBitacora;
+        protected global::Ext.Net.Button btnGuardarBitacora;
+        
+        /// <summary>
+        /// Control btnCancelarBitacora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnCancelarBitacora;
         
         /// <summary>
         /// Control paneArchivos.
@@ -607,6 +805,51 @@ namespace SDA.App {
         protected global::Ext.Net.GridPanel grdArchivos;
         
         /// <summary>
+        /// Control Column8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column8;
+        
+        /// <summary>
+        /// Control Column9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column9;
+        
+        /// <summary>
+        /// Control Column10.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column10;
+        
+        /// <summary>
+        /// Control CommandColumn1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CommandColumn CommandColumn1;
+        
+        /// <summary>
+        /// Control btnNuevoEnvio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnNuevoEnvio;
+        
+        /// <summary>
         /// Control frmArchivos.
         /// </summary>
         /// <remarks>
@@ -625,85 +868,157 @@ namespace SDA.App {
         protected global::Ext.Net.FormPanel frmArchivosOpciones;
         
         /// <summary>
-        /// Control Checkbox15.
+        /// Control chkGroup.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox15;
+        protected global::Ext.Net.CheckboxGroup chkGroup;
         
         /// <summary>
-        /// Control Checkbox16.
+        /// Control chkDoc1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox16;
+        protected global::Ext.Net.Checkbox chkDoc1;
         
         /// <summary>
-        /// Control Checkbox1.
+        /// Control chkDoc2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox1;
+        protected global::Ext.Net.Checkbox chkDoc2;
         
         /// <summary>
-        /// Control Checkbox2.
+        /// Control chkDoc3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox2;
+        protected global::Ext.Net.Checkbox chkDoc3;
         
         /// <summary>
-        /// Control Checkbox3.
+        /// Control chkDoc4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox3;
+        protected global::Ext.Net.Checkbox chkDoc4;
         
         /// <summary>
-        /// Control Checkbox4.
+        /// Control chkDoc5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox4;
+        protected global::Ext.Net.Checkbox chkDoc5;
         
         /// <summary>
-        /// Control Checkbox5.
+        /// Control chkDoc6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox5;
+        protected global::Ext.Net.Checkbox chkDoc6;
         
         /// <summary>
-        /// Control Checkbox6.
+        /// Control chkDoc7.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox6;
+        protected global::Ext.Net.Checkbox chkDoc7;
         
         /// <summary>
-        /// Control fileSelector.
+        /// Control chkDoc8.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FileUploadField fileSelector;
+        protected global::Ext.Net.Checkbox chkDoc8;
+        
+        /// <summary>
+        /// Control chkDoc9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkDoc9;
+        
+        /// <summary>
+        /// Control chkDoc10.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkDoc10;
+        
+        /// <summary>
+        /// Control chkDoc11.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkDoc11;
+        
+        /// <summary>
+        /// Control chkDoc12.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkDoc12;
+        
+        /// <summary>
+        /// Control chkDoc13.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkDoc13;
+        
+        /// <summary>
+        /// Control chkDoc14.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkDoc14;
+        
+        /// <summary>
+        /// Control chkDoc15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkDoc15;
+        
+        /// <summary>
+        /// Control chkDoc16.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkDoc16;
         
         /// <summary>
         /// Control frmArchivosOpciones2.
@@ -715,76 +1030,22 @@ namespace SDA.App {
         protected global::Ext.Net.FormPanel frmArchivosOpciones2;
         
         /// <summary>
-        /// Control Checkbox7.
+        /// Control dateEnvio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox7;
+        protected global::Ext.Net.DateField dateEnvio;
         
         /// <summary>
-        /// Control Checkbox8.
+        /// Control fileSelector.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox8;
-        
-        /// <summary>
-        /// Control Checkbox9.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox9;
-        
-        /// <summary>
-        /// Control Checkbox10.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox10;
-        
-        /// <summary>
-        /// Control Checkbox11.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox11;
-        
-        /// <summary>
-        /// Control Checkbox12.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox12;
-        
-        /// <summary>
-        /// Control Checkbox13.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox13;
-        
-        /// <summary>
-        /// Control Checkbox14.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox14;
+        protected global::Ext.Net.FileUploadField fileSelector;
         
         /// <summary>
         /// Control txtGuia.
@@ -812,6 +1073,15 @@ namespace SDA.App {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Button btnGuardarArchivo;
+        
+        /// <summary>
+        /// Control btnCancelarArchivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnCancelarArchivo;
         
         /// <summary>
         /// Control CancelButton.

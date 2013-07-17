@@ -70,8 +70,94 @@
           <s:element minOccurs="0" maxOccurs="1" name="TipoDoc" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="UpdateStatusSiniestroDA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSiniestro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="StatusSiniestro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateStatusSiniestroDAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateStatusSiniestroDAResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Error">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valor" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertBitacoraDA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSiniestro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="StatusSiniestro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Usuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBitacoraDAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertBitacoraDAResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertDocumentacionDA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSiniestro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdPaqueteria" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaEnvio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoGuia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertDocumentacionDAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertDocumentacionDAResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFechaRecDocuDA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdDocumentacion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaRecibido" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFechaRecDocuDAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateFechaRecDocuDAResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertDetDocuDA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdTipoDoc" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdDocumentacion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertDetDocuDAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertDetDocuDAResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ArrayOfSiniestro" nillable="true" type="tns:ArrayOfSiniestro" />
       <s:element name="ArrayOfBitacora" nillable="true" type="tns:ArrayOfBitacora" />
+      <s:element name="Error" nillable="true" type="tns:Error" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="SiniestrosSoapIn">
@@ -85,6 +171,36 @@
   </wsdl:message>
   <wsdl:message name="BitacorasSoapOut">
     <wsdl:part name="parameters" element="tns:BitacorasResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStatusSiniestroDASoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateStatusSiniestroDA" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStatusSiniestroDASoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateStatusSiniestroDAResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertBitacoraDASoapIn">
+    <wsdl:part name="parameters" element="tns:InsertBitacoraDA" />
+  </wsdl:message>
+  <wsdl:message name="InsertBitacoraDASoapOut">
+    <wsdl:part name="parameters" element="tns:InsertBitacoraDAResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentacionDASoapIn">
+    <wsdl:part name="parameters" element="tns:InsertDocumentacionDA" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentacionDASoapOut">
+    <wsdl:part name="parameters" element="tns:InsertDocumentacionDAResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFechaRecDocuDASoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFechaRecDocuDA" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFechaRecDocuDASoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFechaRecDocuDAResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertDetDocuDASoapIn">
+    <wsdl:part name="parameters" element="tns:InsertDetDocuDA" />
+  </wsdl:message>
+  <wsdl:message name="InsertDetDocuDASoapOut">
+    <wsdl:part name="parameters" element="tns:InsertDetDocuDAResponse" />
   </wsdl:message>
   <wsdl:message name="SiniestrosHttpGetIn">
     <wsdl:part name="Operacion" type="s:string" />
@@ -100,6 +216,45 @@
   <wsdl:message name="BitacorasHttpGetOut">
     <wsdl:part name="Body" element="tns:ArrayOfBitacora" />
   </wsdl:message>
+  <wsdl:message name="UpdateStatusSiniestroDAHttpGetIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+    <wsdl:part name="StatusSiniestro" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStatusSiniestroDAHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertBitacoraDAHttpGetIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+    <wsdl:part name="StatusSiniestro" type="s:string" />
+    <wsdl:part name="Usuario" type="s:string" />
+    <wsdl:part name="Mensaje" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertBitacoraDAHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentacionDAHttpGetIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+    <wsdl:part name="IdPaqueteria" type="s:string" />
+    <wsdl:part name="FechaEnvio" type="s:string" />
+    <wsdl:part name="NoGuia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentacionDAHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFechaRecDocuDAHttpGetIn">
+    <wsdl:part name="IdDocumentacion" type="s:string" />
+    <wsdl:part name="FechaRecibido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFechaRecDocuDAHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertDetDocuDAHttpGetIn">
+    <wsdl:part name="IdTipoDoc" type="s:string" />
+    <wsdl:part name="IdDocumentacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertDetDocuDAHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
   <wsdl:message name="SiniestrosHttpPostIn">
     <wsdl:part name="Operacion" type="s:string" />
     <wsdl:part name="IdEntidad" type="s:string" />
@@ -114,6 +269,45 @@
   <wsdl:message name="BitacorasHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfBitacora" />
   </wsdl:message>
+  <wsdl:message name="UpdateStatusSiniestroDAHttpPostIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+    <wsdl:part name="StatusSiniestro" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStatusSiniestroDAHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertBitacoraDAHttpPostIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+    <wsdl:part name="StatusSiniestro" type="s:string" />
+    <wsdl:part name="Usuario" type="s:string" />
+    <wsdl:part name="Mensaje" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertBitacoraDAHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentacionDAHttpPostIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+    <wsdl:part name="IdPaqueteria" type="s:string" />
+    <wsdl:part name="FechaEnvio" type="s:string" />
+    <wsdl:part name="NoGuia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertDocumentacionDAHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFechaRecDocuDAHttpPostIn">
+    <wsdl:part name="IdDocumentacion" type="s:string" />
+    <wsdl:part name="FechaRecibido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFechaRecDocuDAHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="InsertDetDocuDAHttpPostIn">
+    <wsdl:part name="IdTipoDoc" type="s:string" />
+    <wsdl:part name="IdDocumentacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertDetDocuDAHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
   <wsdl:portType name="wsConsultaReportesDASoap">
     <wsdl:operation name="Siniestros">
       <wsdl:input message="tns:SiniestrosSoapIn" />
@@ -122,6 +316,26 @@
     <wsdl:operation name="Bitacoras">
       <wsdl:input message="tns:BitacorasSoapIn" />
       <wsdl:output message="tns:BitacorasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatusSiniestroDA">
+      <wsdl:input message="tns:UpdateStatusSiniestroDASoapIn" />
+      <wsdl:output message="tns:UpdateStatusSiniestroDASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBitacoraDA">
+      <wsdl:input message="tns:InsertBitacoraDASoapIn" />
+      <wsdl:output message="tns:InsertBitacoraDASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumentacionDA">
+      <wsdl:input message="tns:InsertDocumentacionDASoapIn" />
+      <wsdl:output message="tns:InsertDocumentacionDASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFechaRecDocuDA">
+      <wsdl:input message="tns:UpdateFechaRecDocuDASoapIn" />
+      <wsdl:output message="tns:UpdateFechaRecDocuDASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDetDocuDA">
+      <wsdl:input message="tns:InsertDetDocuDASoapIn" />
+      <wsdl:output message="tns:InsertDetDocuDASoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsConsultaReportesDAHttpGet">
@@ -133,6 +347,26 @@
       <wsdl:input message="tns:BitacorasHttpGetIn" />
       <wsdl:output message="tns:BitacorasHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateStatusSiniestroDA">
+      <wsdl:input message="tns:UpdateStatusSiniestroDAHttpGetIn" />
+      <wsdl:output message="tns:UpdateStatusSiniestroDAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBitacoraDA">
+      <wsdl:input message="tns:InsertBitacoraDAHttpGetIn" />
+      <wsdl:output message="tns:InsertBitacoraDAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumentacionDA">
+      <wsdl:input message="tns:InsertDocumentacionDAHttpGetIn" />
+      <wsdl:output message="tns:InsertDocumentacionDAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFechaRecDocuDA">
+      <wsdl:input message="tns:UpdateFechaRecDocuDAHttpGetIn" />
+      <wsdl:output message="tns:UpdateFechaRecDocuDAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDetDocuDA">
+      <wsdl:input message="tns:InsertDetDocuDAHttpGetIn" />
+      <wsdl:output message="tns:InsertDetDocuDAHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsConsultaReportesDAHttpPost">
     <wsdl:operation name="Siniestros">
@@ -142,6 +376,26 @@
     <wsdl:operation name="Bitacoras">
       <wsdl:input message="tns:BitacorasHttpPostIn" />
       <wsdl:output message="tns:BitacorasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatusSiniestroDA">
+      <wsdl:input message="tns:UpdateStatusSiniestroDAHttpPostIn" />
+      <wsdl:output message="tns:UpdateStatusSiniestroDAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBitacoraDA">
+      <wsdl:input message="tns:InsertBitacoraDAHttpPostIn" />
+      <wsdl:output message="tns:InsertBitacoraDAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumentacionDA">
+      <wsdl:input message="tns:InsertDocumentacionDAHttpPostIn" />
+      <wsdl:output message="tns:InsertDocumentacionDAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFechaRecDocuDA">
+      <wsdl:input message="tns:UpdateFechaRecDocuDAHttpPostIn" />
+      <wsdl:output message="tns:UpdateFechaRecDocuDAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDetDocuDA">
+      <wsdl:input message="tns:InsertDetDocuDAHttpPostIn" />
+      <wsdl:output message="tns:InsertDetDocuDAHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsConsultaReportesDASoap" type="tns:wsConsultaReportesDASoap">
@@ -157,6 +411,51 @@
     </wsdl:operation>
     <wsdl:operation name="Bitacoras">
       <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Bitacoras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatusSiniestroDA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/UpdateStatusSiniestroDA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBitacoraDA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertBitacoraDA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumentacionDA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertDocumentacionDA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFechaRecDocuDA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/UpdateFechaRecDocuDA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDetDocuDA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertDetDocuDA" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -185,6 +484,51 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateStatusSiniestroDA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/UpdateStatusSiniestroDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBitacoraDA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertBitacoraDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumentacionDA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertDocumentacionDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFechaRecDocuDA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/UpdateFechaRecDocuDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDetDocuDA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertDetDocuDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsConsultaReportesDAHttpGet" type="tns:wsConsultaReportesDAHttpGet">
     <http:binding verb="GET" />
@@ -206,6 +550,51 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateStatusSiniestroDA">
+      <http:operation location="/UpdateStatusSiniestroDA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBitacoraDA">
+      <http:operation location="/InsertBitacoraDA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumentacionDA">
+      <http:operation location="/InsertDocumentacionDA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFechaRecDocuDA">
+      <http:operation location="/UpdateFechaRecDocuDA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDetDocuDA">
+      <http:operation location="/InsertDetDocuDA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsConsultaReportesDAHttpPost" type="tns:wsConsultaReportesDAHttpPost">
     <http:binding verb="POST" />
@@ -220,6 +609,51 @@
     </wsdl:operation>
     <wsdl:operation name="Bitacoras">
       <http:operation location="/Bitacoras" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatusSiniestroDA">
+      <http:operation location="/UpdateStatusSiniestroDA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBitacoraDA">
+      <http:operation location="/InsertBitacoraDA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDocumentacionDA">
+      <http:operation location="/InsertDocumentacionDA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFechaRecDocuDA">
+      <http:operation location="/UpdateFechaRecDocuDA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDetDocuDA">
+      <http:operation location="/InsertDetDocuDA" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
