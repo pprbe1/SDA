@@ -163,7 +163,7 @@ namespace SDA.App
                                    Convert.ToInt32(this.cmbSucursal.SelectedItem.Value), Convert.ToString(ano), 1, this.txtCalle.Text.ToUpper(),
                                    this.txtNoExt.Text.ToUpper(), this.txtNoInt.Text.ToUpper(), 1);
 
-                    Session["IdReclamo"] = ErrorOper.Mensaje;
+                    Session["IdReclamo"] = dfNumeroSiniestro2.Text = ErrorOper.Mensaje;
 
                     Session["Id_Sucursal"] = Convert.ToInt32(this.cmbSucursal.SelectedItem.Value);
                     Session["No_Socio"] = Convert.ToString(this.txtNumSocio.Text.ToUpper());
@@ -192,6 +192,11 @@ namespace SDA.App
             this.btnModificarSocio.Disabled = false;
 
             this.pnlAgregarDocumentacion.Disabled = true;
+        }
+
+        protected void btnAceptarNumSin_Click(object sender, DirectEventArgs e)
+        {
+            wd_SiniestroAsignado.Hide();
         }
 
         protected void btnBuscaCP_DirectClick(object sender, DirectEventArgs e)
@@ -270,7 +275,8 @@ namespace SDA.App
 
         protected void btnGuardar_Click(object sender, DirectEventArgs e)
         {
-            Response.Redirect("SocioBeneficios.aspx", true); ;
+            wd_SiniestroAsignado.Show();
+            //Response.Redirect("SocioBeneficios.aspx", true); ;
         }
 
         protected void CellSeguimientoReclamo_Click(object sender, DirectEventArgs e)

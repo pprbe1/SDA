@@ -592,6 +592,32 @@
             </ext:Panel>
         </Items>          
     </ext:Panel>
+
+    <ext:Window 
+        ID="wd_SiniestroAsignado" 
+        runat="server" 
+        Icon="TagPurple" 
+        Title="Numero de siniestro asignado" 
+        ButtonAlign="Center"
+        Width="250"
+        Height="150"
+        Hidden="true">
+        <Items>
+            <ext:Panel runat="server" Height ="150">
+                <Items>
+                    <ext:DisplayField ID="dfNumeroSiniestro" LabelAlign="Top" runat="server" Text="El numero de siniestro asignado es:"></ext:DisplayField>
+                    <ext:DisplayField ID="dfNumeroSiniestro2" LabelAlign="Top" runat="server" Text="12"></ext:DisplayField>
+                </Items>
+            </ext:Panel>
+        </Items>
+        <Buttons>
+            <ext:Button ID="btnAceptarNumSin" runat="server" Icon="Accept" Text="Aceptar">
+                <DirectEvents>
+                    <Click OnEvent="btnAceptarNumSin_Click" />
+                </DirectEvents>
+            </ext:Button>
+        </Buttons>
+    </ext:Window>
     </form>
 </body>
 </html>
