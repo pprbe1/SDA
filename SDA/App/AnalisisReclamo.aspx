@@ -31,7 +31,7 @@
     
     <ext:Store ID="strCoop" runat="server">
         <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaCoop">
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaCoop">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="Cooperativa" />
@@ -53,7 +53,7 @@
 
     <ext:Store ID="strPlaza" runat="server" AutoLoad="false">
         <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaPlaza">
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaPlaza">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="Plaza" />
@@ -78,7 +78,7 @@
 
     <ext:Store ID="strSucursal" runat="server" AutoLoad="false">
         <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://seguros.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaSucursal">
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaSucursal">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="Sucursal" />
