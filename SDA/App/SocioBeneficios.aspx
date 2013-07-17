@@ -159,7 +159,7 @@
     </ext:Store>
         
     <ext:Store runat="server" ID="stEstado">
-            <Proxy>
+        <Proxy>
             <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaEstados_SPM">
                 <ActionMethods Read="POST" />
                     <Reader>
@@ -178,31 +178,31 @@
                 </Fields>
             </ext:Model>
         </Model>             
-            <Listeners>
-                <Load Handler="#{cbEstado}.setValue(#{cbEstado}.store.getAt(0).get('id'));" />
-            </Listeners>          
-        </ext:Store>
+        <Listeners>
+            <Load Handler="#{cbEstado}.setValue(#{cbEstado}.store.getAt(0).get('id'));" />
+        </Listeners>          
+    </ext:Store>
         
     <ext:Store runat="server" ID="stMunicipio">
         <Proxy>
-        <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaMunicipios_SPM">
-            <ActionMethods Read="POST" />
-                <Reader>
-                <ext:XmlReader Record="Municipios" />
-            </Reader>
-        </ext:AjaxProxy>
-    </Proxy>
-    <Parameters>
-        <ext:StoreParameter Name="Municipio" Value="#{cbColonia}.getValue()" Mode="Raw" />              
-    </Parameters>
-    <Model>
-        <ext:Model ID="Model14" runat="server">
-            <Fields>
-                <ext:ModelField Name="id" Type="String" Mapping="Id" />
-                <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
-            </Fields>
-        </ext:Model>
-    </Model>        
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaMunicipios_SPM">
+                <ActionMethods Read="POST" />
+                    <Reader>
+                    <ext:XmlReader Record="Municipios" />
+                </Reader>
+            </ext:AjaxProxy>
+        </Proxy>
+        <Parameters>
+            <ext:StoreParameter Name="Municipio" Value="#{cbColonia}.getValue()" Mode="Raw" />              
+        </Parameters>
+        <Model>
+            <ext:Model ID="Model14" runat="server">
+                <Fields>
+                    <ext:ModelField Name="id" Type="String" Mapping="Id" />
+                    <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
+                </Fields>
+            </ext:Model>
+        </Model>        
         <Listeners>
             <Load Handler="#{cbMunicipio}.setValue(#{cbMunicipio}.store.getAt(0).get('id'));#{cbEstado}.clearValue();#{stEstado}.load();" />
         </Listeners>            
@@ -210,24 +210,24 @@
 
     <ext:Store runat="server" ID="stColonia">
         <Proxy>
-        <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaColonias_SPM">
-            <ActionMethods Read="POST" />
-                <Reader>
-                <ext:XmlReader Record="Colonias" />
-            </Reader>
-        </ext:AjaxProxy>
-    </Proxy>
-    <Parameters>
-        <ext:StoreParameter Name="CP" Value="#{txtCP}.getValue()" Mode="Raw" />              
-    </Parameters>
-    <Model>
-        <ext:Model ID="Model15" runat="server">
-            <Fields>
-                <ext:ModelField Name="id" Type="String" Mapping="Id" />
-                <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
-            </Fields>
-        </ext:Model>
-    </Model>
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaColonias_SPM">
+                <ActionMethods Read="POST" />
+                    <Reader>
+                    <ext:XmlReader Record="Colonias" />
+                </Reader>
+            </ext:AjaxProxy>
+        </Proxy>
+        <Parameters>
+            <ext:StoreParameter Name="CP" Value="#{txtCP}.getValue()" Mode="Raw" />              
+        </Parameters>
+        <Model>
+            <ext:Model ID="Model15" runat="server">
+                <Fields>
+                    <ext:ModelField Name="id" Type="String" Mapping="Id" />
+                    <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
+                </Fields>
+            </ext:Model>
+        </Model>
         <Listeners>
             <Load Handler="#{cbColonia}.setValue(#{cbColonia}.store.getAt(0).get('id')); #{cbMunicipio}.clearValue();#{stMunicipio}.load()" />
         </Listeners>            
