@@ -4,10 +4,29 @@
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <style>
+        .x-fieldset-header .x-fieldset-header-text 
+        {
+            float: left;
+            padding: 1px 0;
+            font-size: 15px;
+            font-weight: bold;
+            font-family: tahoma,arial,verdana,sans-serif;
+        }
+    
+        .x-panel-header-text-default 
+        {
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: tahoma,arial,verdana,sans-serif;
+            line-height: 17px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
-    <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Gray" />
+    <ext:ResourceManager ID="DefaultResource" runat="server" Theme="Gray"   />
     
     <ext:FormPanel 
         ID="FormPanel1" 
@@ -18,7 +37,7 @@
         Layout="ColumnLayout" ButtonAlign="Center">
     <Items>
 
-        <ext:Panel ID="Panel1" runat="server" Height="40" Layout="ColumnLayout" Width="917" Border="false"/>                          
+        <ext:Panel ID="Panel1" runat="server" Height="60" Layout="ColumnLayout" Width="917" Border="false"/>                          
 
         <ext:Panel ID="FormPanel3" runat="server" Height="165" Layout="ColumnLayout" Width="917" Border="false">
                 <Items>
@@ -79,22 +98,5 @@
         <ext:Panel ID="Panel2" runat="server" Height="40" Layout="ColumnLayout" Width="917" Border="false" />
     </Items>                
 
-    <Buttons>
-        <ext:ImageButton ID="btnSalir" 
-            runat="server" 
-            ImageUrl="/Media/Image/Buttons/btnExit.png">            
-            <%--<DirectEvents>
-                <Click OnEvent="Button_Click" />
-            </DirectEvents>--%>
-        </ext:ImageButton>  
-        
-        <ext:ImageButton ID="btnConfig" 
-            runat="server" 
-            ImageUrl="/Media/Image/Buttons/btnConfig.png">            
-            <%--<DirectEvents>
-                <Click OnEvent="Button_Click" />
-            </DirectEvents>--%>
-        </ext:ImageButton>    
-    </Buttons>
     </ext:FormPanel>    
 </asp:Content>

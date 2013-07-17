@@ -86,11 +86,33 @@
     <Content Include="App\AnalisisReclamo.aspx" />
     <Content Include="App\Menu.aspx" />
     <Content Include="App\SocioBeneficios.aspx" />
+    <Content Include="Media\Image\Buttons\acercade.png" />
+    <Content Include="Media\Image\Buttons\admin.png" />
     <Content Include="Media\Image\Buttons\btnConfig.png" />
     <Content Include="Media\Image\Buttons\btnExit.png" />
+    <Content Include="Media\Image\Buttons\correo.png" />
     <Content Include="Media\Image\Buttons\estadisticas.png" />
+    <Content Include="Media\Image\Buttons\facebook.png" />
+    <Content Include="Media\Image\Buttons\home.png" />
+    <Content Include="Media\Image\Buttons\menu.png" />
+    <Content Include="Media\Image\Buttons\preguntas.png" />
     <Content Include="Media\Image\Buttons\registro.png" />
+    <Content Include="Media\Image\Buttons\return.png" />
     <Content Include="Media\Image\Buttons\seguimiento.png" />
+    <Content Include="Media\Image\Buttons\title.png" />
+    <Content Include="Media\Image\Buttons\twitter.png" />
+    <Content Include="Media\Image\Style\arrow_left_blue.gif" />
+    <Content Include="Media\Image\Style\arrow_rigth_blue.gif" />
+    <Content Include="Media\Image\Style\azul26px.jpg" />
+    <Content Include="Media\Image\Style\azul30px.jpg" />
+    <Content Include="Media\Image\Style\barra_azul.gif" />
+    <Content Include="Media\Image\Style\BTrans.png" />
+    <Content Include="Media\Image\Style\BTrans_grayS.png" />
+    <Content Include="Media\Image\Style\calendar.gif" />
+    <Content Include="Media\Image\Style\calendar_blue.gif" />
+    <Content Include="Media\Image\Style\gris30px.jpg" />
+    <Content Include="Media\Image\Style\msj.gif" />
+    <Content Include="Media\Image\Style\PRYBE.png" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -260,9 +282,6 @@
     </None>
     <None Include="Web References\wsConsultaDatosBen\wsConsultaBeneficios.wsdl" />
     <None Include="Web References\wsConsultaReportesDA\Bitacora.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\wsConsultaReportesDA\Error.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\wsConsultaReportesDA\Reference.map">

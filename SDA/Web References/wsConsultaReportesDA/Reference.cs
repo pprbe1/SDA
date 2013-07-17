@@ -33,14 +33,6 @@ namespace SDA.wsConsultaReportesDA {
         
         private System.Threading.SendOrPostCallback BitacorasOperationCompleted;
         
-        private System.Threading.SendOrPostCallback UpdateStatusSiniestroDAOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback InsertBitacoraDAOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback InsertDocumentacionDAOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UpdateFechaRecDocuDAOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -84,18 +76,6 @@ namespace SDA.wsConsultaReportesDA {
         
         /// <remarks/>
         public event BitacorasCompletedEventHandler BitacorasCompleted;
-        
-        /// <remarks/>
-        public event UpdateStatusSiniestroDACompletedEventHandler UpdateStatusSiniestroDACompleted;
-        
-        /// <remarks/>
-        public event InsertBitacoraDACompletedEventHandler InsertBitacoraDACompleted;
-        
-        /// <remarks/>
-        public event InsertDocumentacionDACompletedEventHandler InsertDocumentacionDACompleted;
-        
-        /// <remarks/>
-        public event UpdateFechaRecDocuDACompletedEventHandler UpdateFechaRecDocuDACompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Siniestr" +
@@ -158,142 +138,6 @@ namespace SDA.wsConsultaReportesDA {
             if ((this.BitacorasCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.BitacorasCompleted(this, new BitacorasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/UpdateSt" +
-            "atusSiniestroDA", RequestNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", ResponseNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Error UpdateStatusSiniestroDA(int IdSiniestro, int StatusSiniestro) {
-            object[] results = this.Invoke("UpdateStatusSiniestroDA", new object[] {
-                        IdSiniestro,
-                        StatusSiniestro});
-            return ((Error)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void UpdateStatusSiniestroDAAsync(int IdSiniestro, int StatusSiniestro) {
-            this.UpdateStatusSiniestroDAAsync(IdSiniestro, StatusSiniestro, null);
-        }
-        
-        /// <remarks/>
-        public void UpdateStatusSiniestroDAAsync(int IdSiniestro, int StatusSiniestro, object userState) {
-            if ((this.UpdateStatusSiniestroDAOperationCompleted == null)) {
-                this.UpdateStatusSiniestroDAOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateStatusSiniestroDAOperationCompleted);
-            }
-            this.InvokeAsync("UpdateStatusSiniestroDA", new object[] {
-                        IdSiniestro,
-                        StatusSiniestro}, this.UpdateStatusSiniestroDAOperationCompleted, userState);
-        }
-        
-        private void OnUpdateStatusSiniestroDAOperationCompleted(object arg) {
-            if ((this.UpdateStatusSiniestroDACompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateStatusSiniestroDACompleted(this, new UpdateStatusSiniestroDACompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertBi" +
-            "tacoraDA", RequestNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", ResponseNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Error InsertBitacoraDA(int IdSiniestro, int StatusSiniestro, int Usuario, string Mensaje) {
-            object[] results = this.Invoke("InsertBitacoraDA", new object[] {
-                        IdSiniestro,
-                        StatusSiniestro,
-                        Usuario,
-                        Mensaje});
-            return ((Error)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void InsertBitacoraDAAsync(int IdSiniestro, int StatusSiniestro, int Usuario, string Mensaje) {
-            this.InsertBitacoraDAAsync(IdSiniestro, StatusSiniestro, Usuario, Mensaje, null);
-        }
-        
-        /// <remarks/>
-        public void InsertBitacoraDAAsync(int IdSiniestro, int StatusSiniestro, int Usuario, string Mensaje, object userState) {
-            if ((this.InsertBitacoraDAOperationCompleted == null)) {
-                this.InsertBitacoraDAOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertBitacoraDAOperationCompleted);
-            }
-            this.InvokeAsync("InsertBitacoraDA", new object[] {
-                        IdSiniestro,
-                        StatusSiniestro,
-                        Usuario,
-                        Mensaje}, this.InsertBitacoraDAOperationCompleted, userState);
-        }
-        
-        private void OnInsertBitacoraDAOperationCompleted(object arg) {
-            if ((this.InsertBitacoraDACompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.InsertBitacoraDACompleted(this, new InsertBitacoraDACompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertDo" +
-            "cumentacionDA", RequestNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", ResponseNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Error InsertDocumentacionDA(int IdSiniestro, int IdPaqueteria, string FechaEnvio, string NoGuia) {
-            object[] results = this.Invoke("InsertDocumentacionDA", new object[] {
-                        IdSiniestro,
-                        IdPaqueteria,
-                        FechaEnvio,
-                        NoGuia});
-            return ((Error)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void InsertDocumentacionDAAsync(int IdSiniestro, int IdPaqueteria, string FechaEnvio, string NoGuia) {
-            this.InsertDocumentacionDAAsync(IdSiniestro, IdPaqueteria, FechaEnvio, NoGuia, null);
-        }
-        
-        /// <remarks/>
-        public void InsertDocumentacionDAAsync(int IdSiniestro, int IdPaqueteria, string FechaEnvio, string NoGuia, object userState) {
-            if ((this.InsertDocumentacionDAOperationCompleted == null)) {
-                this.InsertDocumentacionDAOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertDocumentacionDAOperationCompleted);
-            }
-            this.InvokeAsync("InsertDocumentacionDA", new object[] {
-                        IdSiniestro,
-                        IdPaqueteria,
-                        FechaEnvio,
-                        NoGuia}, this.InsertDocumentacionDAOperationCompleted, userState);
-        }
-        
-        private void OnInsertDocumentacionDAOperationCompleted(object arg) {
-            if ((this.InsertDocumentacionDACompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.InsertDocumentacionDACompleted(this, new InsertDocumentacionDACompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/UpdateFe" +
-            "chaRecDocuDA", RequestNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", ResponseNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Error UpdateFechaRecDocuDA(int IdDocumentacion, string FechaRecibido) {
-            object[] results = this.Invoke("UpdateFechaRecDocuDA", new object[] {
-                        IdDocumentacion,
-                        FechaRecibido});
-            return ((Error)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void UpdateFechaRecDocuDAAsync(int IdDocumentacion, string FechaRecibido) {
-            this.UpdateFechaRecDocuDAAsync(IdDocumentacion, FechaRecibido, null);
-        }
-        
-        /// <remarks/>
-        public void UpdateFechaRecDocuDAAsync(int IdDocumentacion, string FechaRecibido, object userState) {
-            if ((this.UpdateFechaRecDocuDAOperationCompleted == null)) {
-                this.UpdateFechaRecDocuDAOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateFechaRecDocuDAOperationCompleted);
-            }
-            this.InvokeAsync("UpdateFechaRecDocuDA", new object[] {
-                        IdDocumentacion,
-                        FechaRecibido}, this.UpdateFechaRecDocuDAOperationCompleted, userState);
-        }
-        
-        private void OnUpdateFechaRecDocuDAOperationCompleted(object arg) {
-            if ((this.UpdateFechaRecDocuDACompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateFechaRecDocuDACompleted(this, new UpdateFechaRecDocuDACompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -429,39 +273,6 @@ namespace SDA.wsConsultaReportesDA {
             }
             set {
                 this.sucursalField = value;
-            }
-        }
-    }
-    
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18213")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx")]
-    public partial class Error {
-        
-        private string mensajeField;
-        
-        private bool valorField;
-        
-        /// <comentarios/>
-        public string Mensaje {
-            get {
-                return this.mensajeField;
-            }
-            set {
-                this.mensajeField = value;
-            }
-        }
-        
-        /// <comentarios/>
-        public bool Valor {
-            get {
-                return this.valorField;
-            }
-            set {
-                this.valorField = value;
             }
         }
     }
@@ -655,110 +466,6 @@ namespace SDA.wsConsultaReportesDA {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Bitacora[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
-    public delegate void UpdateStatusSiniestroDACompletedEventHandler(object sender, UpdateStatusSiniestroDACompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UpdateStatusSiniestroDACompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UpdateStatusSiniestroDACompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Error Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Error)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
-    public delegate void InsertBitacoraDACompletedEventHandler(object sender, InsertBitacoraDACompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class InsertBitacoraDACompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal InsertBitacoraDACompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Error Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Error)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
-    public delegate void InsertDocumentacionDACompletedEventHandler(object sender, InsertDocumentacionDACompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class InsertDocumentacionDACompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal InsertDocumentacionDACompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Error Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Error)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
-    public delegate void UpdateFechaRecDocuDACompletedEventHandler(object sender, UpdateFechaRecDocuDACompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UpdateFechaRecDocuDACompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UpdateFechaRecDocuDACompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Error Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Error)(this.results[0]));
             }
         }
     }

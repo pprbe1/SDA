@@ -49,9 +49,10 @@
             font-size   : 17px;
             text-align  : center;
             color       : #323232;
+            background-color: #53168E;
             margin-top  : 5px;
         }
-    
+        
         #itemBack {
             background : url(<%= this.ResourceManager1.GetIconUrl(Icon.House) %>) no-repeat 0 2px;
         }
@@ -161,7 +162,7 @@
                     </div>
 
                     <div id="pageTitle">                        
-                        <img src="/Media/Image/Buttons/header.png"/>                        
+                        <img src="/Media/Image/Style/PRYBE.png"/>                        
                     </div>
                 </Content>
             </ext:Panel>
@@ -229,7 +230,7 @@
                         <Items>
                             <ext:MenuItem ID="miSS" runat="server" Text="Consulta de Siniestro" Icon="MagnifierZoomIn">
                                 <Listeners>
-                                    <Click Handler="addTab(#{tabMain}, 'idCS', 'AnalisisReclamo.aspx', this, 'Seguimiento - Consulta de Siniestro');" />
+                                    <Click Handler="addTab(#{tabMain}, 'idCS', 'http://www.w3schools.com/', this, 'Seguimiento - Consulta de Siniestro');" />
                                 </Listeners>
                             </ext:MenuItem>                            
                             

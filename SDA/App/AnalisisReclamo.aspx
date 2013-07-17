@@ -20,10 +20,6 @@
                                (value == 'Aprobado') ? "#3EB13E" :
                                (value == 'Cotizacion rechazada') ? "#FF4D4D" : "#5E6E82", value);
     }
-
-    function MostrarMensaje(sender, record, index) {
-        Ext.getCmp('txtBitacora').setValue(record.data.mensaje);
-    }
     </script>
 </head>
 <body>
@@ -101,31 +97,14 @@
         </Listeners> 
     </ext:Store> 
 
-    <ext:Store ID="strBitacora" runat="server">
-        <Model>
-            <ext:Model ID="Model4" runat="server">
-                <Fields>
-                    <ext:ModelField Name="numbitacora" Mapping="IdBitacora" />
-                    <ext:ModelField Name="fecha" Mapping="Fecha" Type="Date" />
-                    <ext:ModelField Name="status" Mapping="Status" />
-                    <ext:ModelField Name="usuario" Mapping="Usuario" />
-                    <ext:ModelField Name="mensaje" Mapping="Mensaje" />
-                </Fields>
-            </ext:Model>
-        </Model>
-        <Reader>
-            <ext:ArrayReader />
-        </Reader>
-    </ext:Store>
-
     <ext:Store ID="strReclamosGral" runat="server">
         <Model>
-            <ext:Model ID="Model5" runat="server">
+            <ext:Model ID="Model4" runat="server">
                 <Fields>
                     <ext:ModelField Name="numsiniestro" Mapping="NoSiniestro" />
                     <ext:ModelField Name="numsocio" Mapping="NoSocio" />
                     <ext:ModelField Name="nombre" Mapping="Nombre" />
-                    <ext:ModelField Name="fecharec" Mapping="FechaReclamo" />
+                    <ext:ModelField Name="fecharec" Mapping="FechaReclamo" Type="Date" />
                     <ext:ModelField Name="estadosiniestro" Mapping="StatusSiniestro" />
                 </Fields>
             </ext:Model>
@@ -135,35 +114,6 @@
         </Reader>
     </ext:Store>
 
-    <ext:Store ID="strEnvio" runat="server">
-        <Model>
-            <ext:Model ID="Model6" runat="server">
-                <Fields>
-                    <ext:ModelField Name="numdocumentacion" Mapping="IdDocumentacion" />
-                    <ext:ModelField Name="paqueteria" Mapping="Paqueteria" />
-                    <ext:ModelField Name="numguia" Mapping="NoGuia" />
-                    <ext:ModelField Name="fechaenvio" Mapping="FechaEnvio" />
-                    <ext:ModelField Name="fechareclamo" Mapping="FechaReclamo" />
-                </Fields>
-            </ext:Model>
-        </Model>
-        <Reader>
-            <ext:ArrayReader />
-        </Reader>
-    </ext:Store>
-
-    <ext:Store ID="strArchivos" runat="server">
-        <Model>
-            <ext:Model ID="Model7" runat="server">
-                <Fields>
-                    <ext:ModelField Name="numdoc" Mapping="TipoDoc" />
-                </Fields>
-            </ext:Model>
-        </Model>
-        <Reader>
-            <ext:ArrayReader />
-        </Reader>
-    </ext:Store>
 
     <ext:FormPanel ID="frmAnalisisNuevo" runat="server" Border="true" Layout="Form" Title="Filtro Análisis Siniestros"
         AutoWidth="true" AutoHeight="true" Icon="FolderFind">
@@ -245,7 +195,7 @@
                             <Columns>
                                 <ext:Column runat="server" Header="No. Siniestro" DataIndex="numsiniestro" Align="Left"></ext:Column>
                                 <ext:Column runat="server" ColumnID="Socio" Header="No. Socio" DataIndex="numsocio" Align="Left"></ext:Column>
-                                <ext:Column runat="server" Width="250" Header="Nombre" DataIndex="nombre" Align="Left" Flex="1"></ext:Column>
+                                <ext:Column runat="server" Width="250" Header="Nombre" DataIndex="nombre" Align="Left"></ext:Column>
                                 <ext:Column runat="server" Header="Estado Siniestro" DataIndex="estadosiniestro" Align="Center">
                                     <Renderer Fn="Estado" />
                                 </ext:Column>
@@ -330,95 +280,72 @@
                     </ext:Panel>
                     <ext:Panel ID="paneBitacora" runat="server" Title="Bitacora" Layout="ColumnLayout">
                         <Items>
-                            <ext:GridPanel ID="grdBitacora" runat="server" ColumnWidth=".6" StoreID="strBitacora">
+                            <ext:GridPanel ID="grdBitacora" runat="server" ColumnWidth=".6">
                                 <ColumnModel>
                                     <Columns>
-                                        <ext:Column runat="server" Header="Fecha" DataIndex="fecha" Align="Center" />
-                                        <ext:Column runat="server" Header="Estado" DataIndex="status" Align="Center" />
-                                        <ext:Column runat="server" Header="Usuario" DataIndex="usuario" Align="Left" Flex="1" />
+                                        <ext:DateColumn runat="server" Header="Fecha" DataIndex="fecharec" Align="Center" Format="dd/MM/yyyy" />
+                                        <ext:Column runat="server" Header="Estado" DataIndex="estadob" Align="Center" />
+                                        <ext:Column runat="server" Header="Usuario" DataIndex="numreclamo" Align="Left" />
                                     </Columns>
                                 </ColumnModel>
-                                <Listeners>
-                                    <Select Fn="MostrarMensaje" />
-                                </Listeners>
-                                <Buttons>
-                                    <ext:Button ID="btnNuevaBitacora" runat="server" Icon="Pencil" Text="Nueva Entrada" OnDirectClick="NuevaBitacora" />
-                                </Buttons>
                             </ext:GridPanel>
                             <ext:FormPanel ID="frmBitacora" runat="server" ColumnWidth=".4" Title="Detalles/Nueva Bitacora" Border="false" Layout="FitLayout">
                                 <Items>
-                                    <ext:TextArea ID="txtBitacora" runat="server" EmptyText="Escriba aquí el texto de la bitacora..." Height="300" Width="120" ReadOnly="true" AllowBlank="false" />
+                                    <ext:TextArea ID="txtBitacora" runat="server" EmptyText="Escriba aquí el texto de la bitacora..." Height="300" Width="120"/>
                                 </Items>
                                 <Buttons>
-                                    <ext:Button ID="btnGuardarBitacora" runat="server" Text="Guardar" Icon="Disk" Hidden="true" FormBind="true" />
-                                    <ext:Button ID="btnCancelarBitacora" runat="server" Text="Cancelar" Icon="Cancel" Hidden="true" OnDirectClick="RestaurarBitacora" />
+                                    <ext:Button ID="btnEntradaBitacora" runat="server" Text="Agregar" />
                                 </Buttons>
                             </ext:FormPanel>
                         </Items>
                     </ext:Panel>
                     <ext:Panel ID="paneArchivos" runat="server" Title="Archivos" Layout="ColumnLayout">
                         <Items>
-                            <ext:GridPanel ID="grdArchivos" runat="server" ColumnWidth=".6" StoreID="strEnvio">
+                            <ext:GridPanel ID="grdArchivos" runat="server" ColumnWidth=".4">
                                 <ColumnModel>
                                     <Columns>
-                                        <ext:Column runat="server" Header="Fecha Envio" DataIndex="fechaenvio" Align="Center" />
-                                        <ext:Column runat="server" Header="Paquteria" DataIndex="paqueteria" Align="Center" />
-                                        <ext:Column runat="server" Header="N° Guia" DataIndex="numguia" Align="Left" Flex="1"/>
+                                        <ext:DateColumn runat="server" Header="Fecha" DataIndex="fecharec" Align="Center" Format="dd/MM/yyyy" />
+                                        <ext:Column runat="server" Header="N° Guia" DataIndex="estadob" Align="Center" />
+                                        <ext:Column runat="server" Header="Descargar" DataIndex="numreclamo" Align="Left" />
                                     </Columns>
                                 </ColumnModel>
-                                <DirectEvents>
-                                    <Select OnEvent="DocumentosEnvio" >
-                                        <ExtraParams>
-                                            <ext:Parameter Name="ID" Value="Ext.value(record.data.numdocumentacion)" Mode="Raw" />
-                                        </ExtraParams>
-                                    </Select>
-                                </DirectEvents>
-                                <Buttons>
-                                    <ext:Button ID="btnNuevoEnvio" runat="server" Icon="Box" Text="Nuevo Envio" OnDirectClick="NuevoEnvio" />
-                                </Buttons>
                             </ext:GridPanel>
-                            <ext:FormPanel ID="frmArchivos" runat="server" ColumnWidth=".4" Title="Detalles/Nuevo Archivo" >
+                            <ext:FormPanel ID="frmArchivos" runat="server" ColumnWidth=".6" Title="Detalles/Nuevo Archivo" Layout="ColumnLayout" >
                                 <Items>
-                                    <ext:FormPanel ID="frmArchivosOpciones" runat="server" Border="false" Padding="5">
+                                    <ext:FormPanel ID="frmArchivosOpciones" runat="server" ColumnWidth=".5" Border="false" Padding="5">
                                         <Items>
-                                            <ext:CheckboxGroup ID="chkGroup" runat="server" ColumnsNumber="2">
-                                                <Items>
-                                                    <ext:Checkbox ID="chkDoc1" CellId="1" runat="server" ReadOnly="true" BoxLabel="Solicitud de Beneficios" IndicatorTip="Original de Formato de Solicitud de Beneficios" />
-                                                    <ext:Checkbox ID="chkDoc2" CellId="2" runat="server" ReadOnly="true" BoxLabel="Solicitud de Ingreso" IndicatorTip="Original de Solicitud de ingreso" />
-                                                    <ext:Checkbox ID="chkDoc3" CellId="3" runat="server" ReadOnly="true" BoxLabel="Designacion de Beneficiarios" IndicatorTip="Original de Designación de beneficiarios" />
-                                                    <ext:Checkbox ID="chkDoc4" CellId="4" runat="server" ReadOnly="true" BoxLabel="Contrato de Dep. a Plazo Fijo Inicial y Subsecuentes" IndicatorTip="Original de Contrato de depósito a plazo fijo inicial y subsecuentes" />
-                                                    <ext:Checkbox ID="chkDoc5" CellId="5" runat="server" ReadOnly="true" BoxLabel="Solicitud de Prestamo de cada credito reclamado" IndicatorTip="Original de Solicitud de préstamo (de cada uno de los créditos reclamados)" />
-                                                    <ext:Checkbox ID="chkDoc6" CellId="6" runat="server" ReadOnly="true" BoxLabel="Pagaré o Línea de Crédito" IndicatorTip="Original de Pagaré o línea de crédito (de cada uno de los créditos reclamados)" />
-                                                    <ext:Checkbox ID="chkDoc7" CellId="7" runat="server" ReadOnly="true" BoxLabel="Auxiliar de Parte Social" IndicatorTip="Original de Auxiliar de parte social" />
-                                                    <ext:Checkbox ID="chkDoc8" CellId="8" runat="server" ReadOnly="true" BoxLabel="Auxiliar de Cada Cuenta de Captación" IndicatorTip="Original de Auxiliar de cada una de las cuentas de captación" />
-                                                    <ext:Checkbox ID="chkDoc9" CellId="9" runat="server" ReadOnly="true" BoxLabel="Auxiliar de Cada Préstamo" IndicatorTip="Original de Auxiliar de cada préstamo reclamado" />
-                                                    <ext:Checkbox ID="chkDoc10" CellId="10" runat="server" ReadOnly="true" BoxLabel="Acta de Defunción del Socio" IndicatorTip="Original Acta de defunción del socio" />
-                                                    <ext:Checkbox ID="chkDoc11" CellId="11" runat="server" ReadOnly="true" BoxLabel="Acta de Nacimiento del Socio" IndicatorTip="Copia de Acta de nacimiento del socio" />
-                                                    <ext:Checkbox ID="chkDoc12" CellId="12" runat="server" ReadOnly="true" BoxLabel="Acta de Nacimiento de cada Beneficiario" IndicatorTip="Copia de Acta de nacimiento de cada uno de los beneficiarios" />
-                                                    <ext:Checkbox ID="chkDoc13" CellId="13" runat="server" ReadOnly="true" BoxLabel="Identificación Oficial del Socio" IndicatorTip="Copia de Identificación oficial del socio" />
-                                                    <ext:Checkbox ID="chkDoc14" CellId="14" runat="server" ReadOnly="true" BoxLabel="Identificación Oficial de Cada Beneficiario" IndicatorTip="Copia de Identificación oficial de cada uno de los beneficiarios" />
-                                                    <ext:Checkbox ID="chkDoc15" CellId="15" runat="server" ReadOnly="true" BoxLabel="Parte del Ministerio Público" IndicatorTip="Parte Oficial del M.P., para aquellos casos de que el fallecimiento hubiera sido de manera violenta (homicidio, suicidio, accidental)" />
-                                                    <ext:Checkbox ID="chkDoc16" CellId="16" runat="server" ReadOnly="true" BoxLabel="Dictamen Médico" IndicatorTip="Dictamen médico emitido por una institución pública del sector salud (IMSS, ISSSTE, SSA) que determine la incapacidad total y permanente a causa de accidente" />
-                                                </Items>
-                                            </ext:CheckboxGroup>
+                                            <ext:Checkbox ID="Checkbox15" runat="server" BoxLabel="Solicitud de Beneficios" IndicatorTip="Original de Formato de Solicitud de Beneficios" />
+                                            <ext:Checkbox ID="Checkbox16" runat="server" BoxLabel="Solicitud de Ingreso" IndicatorTip="Original de Solicitud de ingreso" />
+                                            <ext:Checkbox ID="Checkbox1" runat="server" BoxLabel="Designacion de Beneficiarios" IndicatorTip="Original de Designación de beneficiarios" />
+                                            <ext:Checkbox ID="Checkbox2" runat="server" BoxLabel="Contrato de Dep. a Plazo Fijo Inicial y Subsecuentes" IndicatorTip="Original de Contrato de depósito a plazo fijo inicial y subsecuentes" />
+                                            <ext:Checkbox ID="Checkbox3" runat="server" BoxLabel="Solicitud de Prestamo de cada credito reclamado" IndicatorTip="Original de Solicitud de préstamo (de cada uno de los créditos reclamados)" />
+                                            <ext:Checkbox ID="Checkbox4" runat="server" BoxLabel="Pagaré o Línea de Crédito" IndicatorTip="Original de Pagaré o línea de crédito (de cada uno de los créditos reclamados)" />
+                                            <ext:Checkbox ID="Checkbox5" runat="server" BoxLabel="Auxiliar de Parte Social" IndicatorTip="Original de Auxiliar de parte social" />
+                                            <ext:Checkbox ID="Checkbox6" runat="server" BoxLabel="Auxiliar de Cada Cuenta de Captación" IndicatorTip="Original de Auxiliar de cada una de las cuentas de captación" />
+                                            <ext:FileUploadField ID="fileSelector" runat="server" Width="150" />
                                         </Items>
                                     </ext:FormPanel>
-                                    <ext:FormPanel ID="frmArchivosOpciones2" runat="server" Border="false" Padding="5" AnchorHorizontal="100">
+                                    <ext:FormPanel ID="frmArchivosOpciones2" runat="server" ColumnWidth=".5" Border="false" Padding="5">
                                         <Items>
-                                            <ext:DateField ID="dateEnvio" runat="server" ReadOnly="true" FieldLabel="Fecha de Envio" AllowBlank="false" />
-                                            <ext:FileUploadField ID="fileSelector" runat="server" FieldLabel="Archivo" ReadOnly="true" AllowBlank="false" />
-                                            <ext:TextField ID="txtGuia" runat="server" EmptyText="N° de Guia" FieldLabel="Guia" ReadOnly="true" AllowBlank="false" />
-                                            <ext:ComboBox ID="cmbPaqueteria" runat="server" FieldLabel="Paqueteria" ReadOnly="true" AllowBlank="false" />
+                                            <ext:Checkbox ID="Checkbox7" runat="server" BoxLabel="Auxiliar de Cada Préstamo" IndicatorTip="Original de Auxiliar de cada préstamo reclamado" />
+                                            <ext:Checkbox ID="Checkbox8" runat="server" BoxLabel="Acta de Defunción del Socio" IndicatorTip="Original Acta de defunción del socio" />
+                                            <ext:Checkbox ID="Checkbox9" runat="server" BoxLabel="Acta de Nacimiento del Socio" IndicatorTip="Copia de Acta de nacimiento del socio" />
+                                            <ext:Checkbox ID="Checkbox10" runat="server" BoxLabel="Acta de Nacimiento de cada Beneficiario" IndicatorTip="Copia de Acta de nacimiento de cada uno de los beneficiarios" />
+                                            <ext:Checkbox ID="Checkbox11" runat="server" BoxLabel="Identificación Oficial del Socio" IndicatorTip="Copia de Identificación oficial del socio" />
+                                            <ext:Checkbox ID="Checkbox12" runat="server" BoxLabel="Identificación Oficial de Cada Beneficiario" IndicatorTip="Copia de Identificación oficial de cada uno de los beneficiarios" />
+                                            <ext:Checkbox ID="Checkbox13" runat="server" BoxLabel="Parte del Ministerio Público" IndicatorTip="Parte Oficial del M.P., para aquellos casos de que el fallecimiento hubiera sido de manera violenta (homicidio, suicidio, accidental)" />
+                                            <ext:Checkbox ID="Checkbox14" runat="server" BoxLabel="Dictamen Médico" IndicatorTip="Dictamen médico emitido por una institución pública del sector salud (IMSS, ISSSTE, SSA) que determine la incapacidad total y permanente a causa de accidente" />
+                                            <ext:TextField ID="txtGuia" runat="server" EmptyText="N° de Guia" />
+                                            <ext:ComboBox ID="cmbPaqueteria" runat="server" />
                                         </Items>
                                     </ext:FormPanel>
                                 </Items>
                                 <Buttons>
-                                    <ext:Button ID="btnGuardarArchivo" runat="server" Text="Guardar" Icon="Disk" Hidden="true" FormBind="true">
+                                    <ext:Button ID="btnGuardarArchivo" runat="server" Text="Guardar" Icon="Disk">
                                         <DirectEvents>
                                             <Click OnEvent="UploadFile" />
                                         </DirectEvents>
                                     </ext:Button>
-                                    <ext:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" Icon="Cancel" Hidden="true" OnDirectClick="RestaurarArchivos" />
                                 </Buttons>
                             </ext:FormPanel>
                         </Items>

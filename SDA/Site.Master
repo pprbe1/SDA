@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SDA.SiteMaster" %>
 
+<%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
@@ -9,34 +11,109 @@
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body>   
     <form runat="server">
     <div class="page">
         <div class="header">
+            <div id="slideout">
+                <img src="/Media/Image/Buttons/menu.png" alt="Realimentación" />
+                <div id="slideout_inner">
+                   <%-- <ext:ImageButton ID="btHome" runat="server"
+                        ImageUrl="image/Botones/home.png" 
+                        ToolTip="<b>Regresar al inicio</b>"
+                        OnClientClick="location.href='Default.aspx'">
+                    </ext:ImageButton>
+                    <ext:ImageButton ID="btReturn" runat="server"
+                        ImageUrl="image/Botones/return.png"
+                        ToolTip="<b>Ir a la pagina anterior</b>">
+                    </ext:ImageButton>  --%>
+                </div>
+            </div>
             <div class="title">
-                <h1>
-                    <img src="/Media/Image/Buttons/skull.png"/>Sistema Deudor-Ahorrador
-                </h1>
+                <table class="TituloSite">
+                    <tr>
+                        <td></td>
+                        <th><a href="Default.aspx">
+                            <img src="/Media/Image/Buttons/title.png" alt="Regresar al inicio" height="70px" width="450px"/>
+                            </a> 
+                        </th>
+                        
+                    </tr>
+                </table>
             </div>
-            
-            <div class="clear hideSkiplink">
-                <%--<asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Página principal"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
-                    </Items>
-                </asp:Menu>--%>
-            </div>
+            <div class="loginDisplay">
+                <%--<asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false" >
+                    <AnonymousTemplate>
+                        [ <a href="/Login/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Bienvenido: <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" 
+                            LogoutText="Cerrar sesión" LogoutPageUrl="~/" 
+                            onloggingout="HeadLoginStatus_LoggingOut"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>--%>
+                <br />
+               
+                <asp:ImageButton ID="imgContacto" runat="server" 
+                    ToolTip="CONTACTO: Envia alguna duda, comentario o solicitud dando clic AQUI."
+                    ImageUrl="/Media/Image/Buttons/correo.png" 
+                    Height="48" Width="48" 
+                    onclick="imgContacto_Click" />
+
+                <asp:ImageButton ID="imgFAQs" runat="server" 
+                    ToolTip="FAQ´s: Consultar las preguntas frecuentes."
+                    ImageUrl="/Media/Image/Buttons/preguntas.png" 
+                    Height="48" Width="48" 
+                    onclick="imgFAQs_Click" />
+
+                <asp:ImageButton ID="imgAbout" runat="server" 
+                    ToolTip="ACERCA DE: Acerca del portal de cotización de Autos PRYBE."
+                    ImageUrl="/Media/Image/Buttons/acercade.png" 
+                    Height="48" Width="48" 
+                    onclick="imgAbout_Click" />
+        </div>
         </div>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
         </div>
         <div class="clear">
         </div>
-    </div>
-    <div class="footer">
-        
-    </div>
+        <div class="footer">
+                <table>
+                    <tr>
+                        <th class="Htop">Atención al cliente</th>
+                        <th class="Htop">PRYBE Protecciones y beneficios S.C.</th>
+                        <th class="Htop">Síguenos en:</th>
+                    </tr>
+                    <tr class="ft_bg">
+                        <td>01-444-834-00-40<br />01-800-251-51-51<br />Lunes a Viernes de 8:00 a 18:00 Hrs</td>
+                        <td>Muñoz No. 490<br />Col. Capitán Caldera<br />78250, San Luis Potosi, MX  </td>
+                        <td>
+                            <asp:ImageButton ID="imgFacebook" runat="server" 
+                                ToolTip="Siguenos en Facebook"
+                                ImageUrl="/Media/Image/Buttons/facebook.png" 
+                                Height="42" Width="42" 
+                                OnClientClick="window.open('https://www.facebook.com/#!/prybemx')" />
+                            <asp:ImageButton ID="imgTwitter" runat="server" 
+                                ToolTip="Siguenos en Twitter"
+                                ImageUrl="/Media/Image/Buttons/twitter.png" 
+                                Height="42" Width="42" 
+                                OnClientClick="window.open('http://twitter.com/#!/PRYBE_mx')" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="foot" colspan="3">Copyright 2013 &COPY; Derechos Reservados
+                            <a  title="Administracion sitio">
+                                <img src="/Media/Image/Buttons/admin.png" alt="" height="20" width="20" /></a>
+                        </th>
+                    </tr>
+                </table>
+                <div id="mfoot">
+                            
+                </div>
+            </div>   
+        </div> 
     </form>
 </body>
 </html>

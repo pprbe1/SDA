@@ -54,7 +54,8 @@ namespace SDA.App
             
             Siniestro[] siniestro = reportesDA.Siniestros(4, idSocio);
 
-            SaveSessionVarsFor(siniestro[0]);
+            Session["IdSocio"] = idSocio;
+            Session["NoSiniestro"] = siniestro[0].NoSiniestro;
 
             this.lblNombreSocio.Text = siniestro[0].Nombre;
             this.lblNumeroSocio.Text = siniestro[0].NoSocio;
@@ -64,125 +65,17 @@ namespace SDA.App
             this.lblPlaza.Text = siniestro[0].Plaza;
             this.lblCooperativa.Text = siniestro[0].Coop;
             //this.cmbEstadoBeneficio.Text = datossocio.EstadoBeneficio;
-
-            int noSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
-
-            BitacoraSiniestro(noSiniestro);
-            ArchivosSiniestro(noSiniestro);
-
             this.wndInformacionSiniestro.Show();
         }
 
-        private void SaveSessionVarsFor(Siniestro siniestro)
+        protected void BitacoraSiniestro(object sender, DirectEventArgs e)
         {
-            Session["NoSocio"] = siniestro.NoSocio;
-            Session["NoSiniestro"] = siniestro.NoSiniestro;
-            Session["NoEstado"] = siniestro.StatusSiniestro;
+
         }
 
-        private void BitacoraSiniestro(int noSiniestro)
+        protected void ArchivosSiniestro(object sender, DirectEventArgs e)
         {
-            Bitacora[] bitacora = reportesDA.Bitacoras(5, noSiniestro);
 
-            strBitacora.DataSource = bitacora;
-            strBitacora.DataBind();
-        }
-
-        private void ArchivosSiniestro(int noSiniestro)
-        {
-            Bitacora[] archivos = reportesDA.Bitacoras(6, noSiniestro);
-
-            strEnvio.DataSource = archivos;
-            strEnvio.DataBind();
-        }
-
-        protected void DocumentosEnvio(object sender, DirectEventArgs e)
-        {
-            int idEnvio = Convert.ToInt32(e.ExtraParams["ID"]);
-
-            Bitacora[] archivo = reportesDA.Bitacoras(7, idEnvio);
-
-            foreach (Bitacora documento in archivo)
-            {
-                Checkbox chk = ComponentManager.Get("chkDoc" + documento.TipoDoc) as Checkbox;
-
-                chk.Checked = true;
-            }
-        }
-
-        protected void NuevaBitacora(object sender, DirectEventArgs e)
-        {
-            int idSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
-
-            grdBitacora.Disabled = true;
-            txtBitacora.SetValue(string.Empty);
-            txtBitacora.ReadOnly = false;
-            btnGuardarBitacora.Hidden = false;
-            btnCancelarBitacora.Hidden = false;
-        }
-
-        protected void NuevoEnvio(object sender, DirectEventArgs e)
-        {
-            grdArchivos.Disabled = true;
-
-            for(int i = 1; i<17; i++)
-            {
-                Checkbox chk = ComponentManager.Get("chkDoc" + i.ToString()) as Checkbox;
-                chk.Value = 0;
-                chk.ReadOnly = false;
-            }
-
-            dateEnvio.ReadOnly = false;
-            fileSelector.ReadOnly = false;
-            txtGuia.ReadOnly = false;
-            cmbPaqueteria.ReadOnly = false;
-
-            btnGuardarArchivo.Hidden = false;
-            btnCancelarArchivo.Hidden = false;
-        }
-
-        protected void RestaurarBitacora(object sender, DirectEventArgs e)
-        {
-            grdBitacora.Disabled = false;
-            txtBitacora.SetValue(string.Empty);
-            txtBitacora.ReadOnly = true;
-            btnGuardarBitacora.Hidden = true;
-            btnCancelarBitacora.Hidden = true;
-        }
-
-        protected void RestaurarArchivos(object sender, DirectEventArgs e)
-        {
-            grdArchivos.Disabled = false;
-
-            for (int i = 1; i < 17; i++)
-            {
-                Checkbox chk = ComponentManager.Get("chkDoc" + i.ToString()) as Checkbox;
-                chk.Value = 0;
-                chk.ReadOnly = true;
-            }
-
-            dateEnvio.ReadOnly = true;
-            fileSelector.ReadOnly = true;
-            txtGuia.ReadOnly = true;
-            cmbPaqueteria.ReadOnly = true;
-
-            btnGuardarArchivo.Hidden = true;
-            btnCancelarArchivo.Hidden = true;
-        }
-
-        protected void InsertarBitacora(object sender, DirectEventArgs e)
-        {
-            int noSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
-
-            reportesDA.InsertBitacoraDA(noSiniestro, 0, 0, txtBitacora.Text);
-        }
-
-        protected void InsertarEnvio(object sender, DirectEventArgs e)
-        {
-            int noSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
-            int idPaqueteria = Convert.ToInt32(cmbPaqueteria.Value);
-
-            reportesDA.InsertDocumentacionDA(noSiniestro, idPaqueteria, dateEnvio.Text, txtGuia.Text);
         }
     }
 }

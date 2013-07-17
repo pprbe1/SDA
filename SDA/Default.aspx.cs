@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Ext.Net;
 
 namespace SDA
 {
@@ -11,7 +12,7 @@ namespace SDA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ResourceManager.GetInstance();
         }
 
         protected void Button_Click(object sender, Ext.Net.DirectEventArgs e)
