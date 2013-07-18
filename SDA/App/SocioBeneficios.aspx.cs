@@ -40,7 +40,8 @@ namespace SDA.App
             this.btnCancelarRegistroSocio.Disabled = false;
             if (!this.txtNumSocio.IsEmpty)
             {
-
+                Session["NumeroSocio"] = txtNumSocio.Text;
+                Session["Sucursal"] = cmbSucursal.SelectedItem.Value;
                 datsocio = llamada.CargaDatosSocioAlta(this.txtNumSocio.Text, this.cmbSucursal.SelectedItem.Value);
                 ConsultaSocioCPM = SocioCPM.ObtenSocioCPM(txtNumSocio.Text, "PRYBE");
                 if (!this.txtNumSocio.IsEmpty)
@@ -129,11 +130,46 @@ namespace SDA.App
 
         protected void btnModificarSocio_DirectClick(object sender, Ext.Net.DirectEventArgs e)
         {
-            this.btnModificarSocio.Disabled = true;
-            if (this.txtNumSocio.Text != "" && this.txtNombre.Text != "" && this.txtApellidoPat.Text != "" && this.dteFechaN.Text != ""
+            
+            if (this.txtNombre.Text != "" && this.txtApellidoPat.Text != "" && this.dteFechaN.Text != ""
                && this.dteFechaI.Text != "" && this.txtCalle.Text != "" && this.txtNoExt.Text != "")
             {
+                if (this.rdoMasculino.Checked == true)
+                {
+                    Session["Sexo"] = 1;
+                }
+                else
+                {
+                    Session["Sexo"] = 0;
+                }
+
+                DateTime hoy = new DateTime();
+                DateTime actual = new DateTime();
+                hoy = DateTime.Now;
+                actual = DateTime.Today;
+                int ano = DateTime.Now.Year;
+                fechaNac = Convert.ToDateTime(this.dteFechaN.Text);
+                fechaIng = Convert.ToDateTime(this.dteFechaI.Text);
+
+                if (DateTime.Compare(fechaIng, actual) > 0 || DateTime.Compare(fechaNac, actual) > 0)
+                {
+                    X.Msg.Alert("Error", "La fecha es mayor a la actual").Show();
+                }
+                else
+                {
+
+                    ErrorOper = socio.InsertSocioBeneficio(Convert.ToString(Session["NumeroSocio"]), this.txtNombre.Text.ToUpper(), this.txtNombre2.Text.ToUpper(), this.txtApellidoPat.Text.ToUpper(),
+                                   this.txtApellidoMat.Text.ToUpper(), fechaNac.ToString("dd/MM/yyyy"), fechaIng.ToString("dd/MM/yyyy"), (int)(Session["Sexo"]), "", "", "",
+                                   Convert.ToInt32(this.cmbOcupacion.SelectedItem.Value), Convert.ToInt32(this.cmbEdoCivil.SelectedItem.Value),
+                                   Convert.ToInt32(Session["Sucursal"]), Convert.ToString(ano), 1, this.txtCalle.Text.ToUpper(),
+                                   this.txtNoExt.Text.ToUpper(), this.txtNoInt.Text.ToUpper(), 1);
+
+                    Session["IdReclamo"] = dfNumeroSiniestro2.Text = ErrorOper.Mensaje;
+                    this.paneArchivos.Disabled = false;
+                    this.pnlSocio.Disabled = true;
+                }
                 this.btnCancelarRegistroSocio.Disabled = true;
+                this.btnModificarSocio.Disabled = true;
                 //pnlAgregarDocumentacion.Disabled = false;
             }
             else
@@ -146,50 +182,13 @@ namespace SDA.App
         protected void btnAceptarPaqueterias_DirectClick(object sender, Ext.Net.DirectEventArgs e)
         {
 
-            if (this.rdoMasculino.Checked == true)
-            {
-                Session["Sexo"] = 1;
-            }
-            else
-            {
-                Session["Sexo"] = 0;
-            }
-
-            DateTime hoy = new DateTime();
-            DateTime actual = new DateTime();
-            hoy = DateTime.Now;
-            actual = DateTime.Today;
-            int ano = DateTime.Now.Year;
-            fechaNac = Convert.ToDateTime(this.dteFechaN.Text);
-            fechaIng = Convert.ToDateTime(this.dteFechaI.Text);
-
-            if (DateTime.Compare(fechaIng, actual) > 0 || DateTime.Compare(fechaNac, actual) > 0)
-            {
-                X.Msg.Alert("Error", "La fecha es mayor a la actual").Show();
-            }
-            else
-            {
-
-                ErrorOper = socio.InsertSocioBeneficio(this.txtNumSocio.Text.ToUpper(), this.txtNombre.Text.ToUpper(), this.txtNombre2.Text.ToUpper(), this.txtApellidoPat.Text.ToUpper(),
-                               this.txtApellidoMat.Text.ToUpper(), fechaNac.ToString("dd/MM/yyyy"), fechaIng.ToString("dd/MM/yyyy"), (int)(Session["Sexo"]), "", "", "",
-                               Convert.ToInt32(this.cmbOcupacion.SelectedItem.Value), Convert.ToInt32(this.cmbEdoCivil.SelectedItem.Value),
-                               Convert.ToInt32(this.cmbSucursal.SelectedItem.Value), Convert.ToString(ano), hoy.ToString("dd/MM/yyyy"), 1, this.txtCalle.Text.ToUpper(),
-                               this.txtNoExt.Text.ToUpper(), this.txtNoInt.Text.ToUpper(), 1, 1, Convert.ToInt32(this.cmbPaqueteria.SelectedItem.Value), this.txtGuia.Text.ToUpper());
-                if (ErrorOper.Valor == true)
-                {
-                    X.Msg.Alert("Aviso", "No se pudo ingresar los datos del socio, intentelo nuevamente").Show();
-                }
-
-                Session["Id_Sucursal"] = Convert.ToInt32(this.cmbSucursal.SelectedItem.Value);
-                Session["No_Socio"] = Convert.ToString(this.txtNumSocio.Text.ToUpper());
-                noSocio = Convert.ToString(Session["No_Socio"]);
-                idSucursal = Convert.ToString(Session["Id_Sucursal"]);
-
-                //this.pnlAgregarDocumentacion.Disabled = false;
-                this.pnlSocio.Disabled = true;
-                Carga_CamposDocumentos();
-            }
         }
+
+        protected void btnAceptarNumSin_Click(object sender, DirectEventArgs e)
+        {
+            wd_SiniestroAsignado.Hide();
+        }
+
 
         protected void btnModificarDatos_Click(object sender, DirectEventArgs e)
         {

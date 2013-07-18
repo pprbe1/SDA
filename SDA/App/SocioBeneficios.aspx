@@ -3,6 +3,40 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+        #dfNumeroSiniestro-inputEl
+        {
+            width: 100%;
+            font-size: 14px;
+            text-align: center;
+        }
+        #pnlSocio1
+        {
+            width: 397px;
+            height: 115px;
+            padding-right: 95px;
+        }
+        #pnlSocio2
+        {
+            width: 548px;
+            height: 207px;
+            padding-right: 185px;
+        }
+        #pnlSocio3
+        {
+            width: 425px;
+            height: 179px;
+            padding-right: 145px;
+        }
+        #Toolbar1-innerCt
+        {
+            width: 1385px;
+            height: 22px;
+            padding-right: 140px;
+        }
+    </style>
+</head>
 <body>
     <form id="form1" runat="server">
     <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Gray"/>
@@ -274,22 +308,22 @@
 
     <ext:Panel ID="pnlSocio" runat="server"
         ButtonAlign="Right" Title="Datos Del Socio"
-        Border="true" Layout="FormLayout"
+        Border="true" Layout="FormLayout" 
         Icon="UserMagnify" Height="290">
         <Items>
             <ext:Panel ID="Panel1" runat="server"
-                Border="false" Layout="ColumnLayout"
+                Border="false" Layout="ColumnLayout" BodyPadding="10" 
                 Height="250">
                 <Items>                    
                     <ext:Panel ID="pnlSocio1" runat="server" 
-                        Border="false" Header="false" BodyPadding="6"
-                        ColumnWidth=".29" Layout="FormLayout"
-                        Resizable="false" LabelAlign="Right">
+                        Border="false" Header="false" 
+                        ColumnWidth=".29" Layout="Form"
+                        Resizable="false">
                         <Items>
-                            <ext:FieldContainer ID="fcNumSocio" runat="server" FieldBodyCls="Numero de Socio" MsgTarget="Under" Layout="ColumnLayout">
+                            <ext:FieldContainer ID="fcNumSocio" runat="server" FieldBodyCls="Numero de Socio" MsgTarget="Under" Layout="HBoxLayout">
                                 <Items>
-                                    <ext:TextField ID="txtNumSocio" runat="server" FieldLabel="Número de Socio" AllowBlank="false" Margins="0 5 0 0"
-                                        MaxLength="10" ColumnWidth=".9" />
+                                    <ext:TextField ID="txtNumSocio" runat="server" LabelAlign="Right" FieldLabel="Número de Socio" AllowBlank="false" Margins="0 3 0 0"
+                                        MaxLength="10" Width="220"/>
                                     <ext:Button ID="btnBuscarSocio" runat="server" Icon="Magnifier">
                                         <DirectEvents>
                                             <Click OnEvent="btnBuscaSocio_Click"></Click>
@@ -300,9 +334,9 @@
                             <ext:ComboBox 
                                 ID="cmbCoop" runat="server"
                                 StoreID="strCoop" Editable="false"
-                                TypeAhead="true" QueryMode="Local"
+                                TypeAhead="true" QueryMode="Local" LabelWidth="50"
                                 ForceSelection="true" TriggerAction="All"            
-                                DisplayField="name" ValueField="id"
+                                DisplayField="name" ValueField="id" Width="250"
                                 EmptyText="Loading..." ValueNotFoundText="Loading...">
                                 <Listeners>
                                     <Select Handler="#{strPlaza}.load();" />
@@ -333,30 +367,29 @@
                     <ext:Panel ID="pnlSocio2" 
                         runat="server" Border="false" 
                         Header="false" ColumnWidth=".4" 
-                        Layout="Form" LabelAlign="Right"
-                        Resizable="false" LabelWidth="115">  
+                        Layout="Form">  
                         <Items>
-                            <ext:FieldContainer ID="fcNombres" runat="server" FieldLabel="Nombre(s)" MsgTarget="Under" Disabled="true" Layout="ColumnLayout">
+                            <ext:FieldContainer ID="fcNombres" runat="server" LabelAlign="Right" FieldLabel="Nombre(s)" MsgTarget="Under" Disabled="true" Layout="HBoxLayout">
                                 <Items>
                                     <ext:TextField ID="txtNombre" runat="server" EmptyText="Primer Nombre" AllowBlank="false" DataIndex="Nombre"
-                                                    MaxLength="20" MinLength="2" StyleSpec="text-transform:uppercase" ColumnWidth=".5" />
+                                                    MaxLength="20" MinLength="2" StyleSpec="text-transform:uppercase" Width="120" Margins="0 3 0 0" />
                                     <ext:TextField ID="txtNombre2" runat="server" EmptyText="Segundo Nombre" MaxLength="20" 
-                                                    StyleSpec="text-transform:uppercase" Width="120" ColumnWidth=".5" />
+                                                    StyleSpec="text-transform:uppercase" Width="120" />
                                 </Items>
                             </ext:FieldContainer>
-                            <ext:FieldContainer ID="fcApellidos" runat="server" FieldLabel="Apellido(s)" MsgTarget="Under" Disabled="true" Layout="ColumnLayout">
+                            <ext:FieldContainer ID="fcApellidos" runat="server" LabelAlign="Right" FieldLabel="Apellido(s)" MsgTarget="Under" Disabled="true" Layout="HBoxLayout">
                                 <Items>
-                                    <ext:TextField ID="txtApellidoPat" EmptyText="Primer Apellido" runat="server" AllowBlank="false" DataIndex="Primer Apellido"
-                                                    MaxLength="20" MinLength="2" MinLengthText="Debe escribir el apellido" StyleSpec="text-transform:uppercase" ColumnWidth=".5"/>
+                                    <ext:TextField ID="txtApellidoPat" EmptyText="Primer Apellido" runat="server" AllowBlank="false" DataIndex="Primer Apellido" Margins="0 3 0 0"
+                                                    MaxLength="20" MinLength="2" MinLengthText="Debe escribir el apellido" StyleSpec="text-transform:uppercase" Width="120"/>
                                     <ext:TextField ID="txtApellidoMat" EmptyText="Segundo Apellido" runat="server" MaxLength="20" 
-                                                    StyleSpec="text-transform:uppercase" ColumnWidth=".5" />
+                                                    StyleSpec="text-transform:uppercase" Width="120" />
                                 </Items>
                             </ext:FieldContainer>
-                            <ext:DateField ID="dteFechaN" runat="server" FieldLabel="Fecha Nacimiento" 
-                                        EmptyText="dd/mm/aaaa" AllowBlank="false" Width="130px"  MsgTarget="Side" Disabled="true" DataIndex="Fecha Nacimiento" />
-                            <ext:DateField ID="dteFechaI" runat="server" FieldLabel="Fecha Ingreso" DataIndex="Fecha Ingreso"
+                            <ext:DateField ID="dteFechaN" runat="server" FieldLabel="Fecha Nacimiento" LabelAlign="Right" LabelWidth="100"
+                                        EmptyText="dd/mm/aaaa" AllowBlank="false" Width="130"  MsgTarget="Side" Disabled="true" DataIndex="Fecha Nacimiento" />
+                            <ext:DateField ID="dteFechaI" runat="server" FieldLabel="Fecha Ingreso" DataIndex="Fecha Ingreso" LabelAlign="Right"
                                         EmptyText="dd/mm/aaaa" AllowBlank="false"  Width="130"  MsgTarget="Side" Disabled="true"/> 
-                            <ext:RadioGroup ID="rdoSexo" runat="server" FieldLabel="Sexo" ColumnsNumber="2" Width="145px" Disabled="true" >
+                            <ext:RadioGroup ID="rdoSexo" runat="server" FieldLabel="Sexo" ColumnsNumber="2" Width="120" Disabled="true" LabelAlign="Right" >
                             <Items>
                                 <ext:Radio ID="rdoFemenino" runat="server" BoxLabel="Femenino" />
                                 <ext:Radio ID="rdoMasculino" runat="server" BoxLabel="Masculino" Checked="true"/>
@@ -365,7 +398,7 @@
                             <ext:ComboBox
                                 ID="cmbOcupacion" runat="server"  
                                 Editable="true" TypeAhead="true" 
-                                Resizable="true" Mode="Local" 
+                                Resizable="true" Mode="Local" LabelAlign="Right"
                                 ForceSelection="true" TriggerAction="All" 
                                 DisplayField="name" ValueField="id" FieldLabel="Ocupación"
                                 StoreID="strOcupacion" Width="130" 
@@ -373,7 +406,7 @@
                             <ext:ComboBox
                                 ID="cmbEdoCivil" runat="server"  
                                 Editable="true" TypeAhead="true"
-                                StoreID="strEdoCivil" Mode="Local" 
+                                StoreID="strEdoCivil" Mode="Local" LabelAlign="Right"
                                 ForceSelection="true" TriggerAction="All" 
                                 DisplayField="name" ValueField="id" FieldLabel="Estado Civil"  
                                 Width="130" Disabled="true"/>                                
@@ -382,11 +415,10 @@
                   
                     <ext:Panel
                         ID="pnlSocio3" runat="server"
-                        Border="false" Header="false"
-                        ColumnWidth=".31" Layout="Form"
-                        LabelAlign="Right">
+                        Border="false" Header="false" 
+                        ColumnWidth=".31" Layout="Form">
                         <Items>                             
-                            <ext:FieldContainer runat="server" ID="cfCP" FieldLabel="Código Postal" MsgTarget="Under" Disabled="true" Layout="HBoxLayout" >
+                            <ext:FieldContainer runat="server" ID="cfCP" FieldLabel="Código Postal" LabelAlign="Right" MsgTarget="Under" Disabled="true" Layout="HBoxLayout" >
                             <Items>
                                 <ext:TextField 
                                     runat="server" 
@@ -425,6 +457,7 @@
                             EmptyText="Selecciona tu Colonia..."
                             ValueNotFoundText="Cargando..." 
                             FieldLabel="Colonia"
+                            LabelAlign="Right"
                             Width="145"
                             Disabled="true"
                             Resizable="True"
@@ -450,6 +483,7 @@
                             EmptyText="Selecciona tu Municipio..."
                             ValueNotFoundText="Cargando..." 
                             FieldLabel="Municipio"
+                            LabelAlign="Right"
                             Width="145"
                             Disabled="true"
                             Resizable="True"
@@ -475,6 +509,7 @@
                             ValueNotFoundText="Cargando..."
                             EmptyText="Selecciona tu estado..." 
                             FieldLabel="Estado"
+                            LabelAlign="Right"
                             Disabled="true"
                             Resizable="True"
                             StyleSpec="background-image:url('/Microseguro/Styles/text_in.gif');"                            
@@ -483,11 +518,11 @@
                                 <Select Handler="#{cbMunicipio}.clearValue();#{stMunicipio}.load();" />
                             </Listeners>
                         </ext:ComboBox>
-                            <ext:TextField ID="txtCalle" runat="server" FieldLabel="Calle" AllowBlank="false" MsgTarget="Side" Width="130" Disabled="true"/>
-                            <ext:FieldContainer ID="fcNumero" runat="server" FieldLabel="Número" MsgTarget="Under" Layout="ColumnLayout" Disabled="true">
+                            <ext:TextField ID="txtCalle" runat="server" FieldLabel="Calle" LabelAlign="Right" AllowBlank="false" MsgTarget="Side" Width="130" Disabled="true"/>
+                            <ext:FieldContainer ID="fcNumero" runat="server" FieldLabel="Número" LabelAlign="Right" MsgTarget="Under" Layout="HBoxLayout" Disabled="true">
                                 <Items>
-                                    <ext:TextField ID="txtNoExt" DataIndex="Numero" runat="server" EmptyText="Ext" AllowBlank="false" MsgTarget="Side" Width="50" Disabled="true" ColumnWidth=".5" Margins="0 5 0 0"/>
-                                    <ext:TextField ID="txtNoInt" runat="server" EmptyText="Int" Disabled="true" Width="50" ColumnWidth=".5"/>
+                                    <ext:TextField ID="txtNoExt" DataIndex="Numero" runat="server" EmptyText="Ext" AllowBlank="false" MsgTarget="Side" Width="50" Disabled="true" Margins="0 3 0 0"/>
+                                    <ext:TextField ID="txtNoInt" runat="server" EmptyText="Int" Disabled="true" Width="50"/>
                                 </Items>
                             </ext:FieldContainer>           
                         </Items>
@@ -585,5 +620,31 @@
         </Items>
     </ext:Panel>
     </form>
+      <ext:Window 
+        ID="wd_SiniestroAsignado" 
+        runat="server" 
+        Icon="TagPurple" 
+        Title="Numero de siniestro asignado" 
+        ButtonAlign="Center"
+        Width="250"
+        Height="150"
+        Hidden="true">
+        <Items>
+            <ext:Panel ID="Panel2" runat="server" Height ="150">
+                <Items>
+                    <ext:DisplayField ID="dfNumeroSiniestro" LabelAlign="Top" runat="server" Text="El numero de siniestro asignado es:"></ext:DisplayField>
+                    <ext:DisplayField ID="dfNumeroSiniestro2" LabelAlign="Top" runat="server" Text="12"></ext:DisplayField>
+                </Items>
+            </ext:Panel>
+        </Items>
+        <Buttons>
+            <ext:Button ID="btnAceptarNumSin" runat="server" Icon="Accept" Text="Aceptar">
+                <DirectEvents>
+                    <Click OnEvent="btnAceptarNumSin_Click" />
+                </DirectEvents>
+            </ext:Button>
+        </Buttons>
+    </ext:Window>
+
 </body>
 </html>
