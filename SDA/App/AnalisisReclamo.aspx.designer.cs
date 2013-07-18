@@ -382,15 +382,6 @@ namespace SDA.App {
         protected global::Ext.Net.TabPanel tabSiniestro;
         
         /// <summary>
-        /// Control paneInfo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Panel paneInfo;
-        
-        /// <summary>
         /// Control paneLabels.
         /// </summary>
         /// <remarks>
@@ -461,15 +452,6 @@ namespace SDA.App {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.DisplayField dspSucursal;
-        
-        /// <summary>
-        /// Control fcEstadoSin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcEstadoSin;
         
         /// <summary>
         /// Control cmbEstadoSin.
@@ -559,7 +541,7 @@ namespace SDA.App {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextArea txtBitacora;
+        protected global::Ext.Net.HtmlEditor txtBitacora;
         
         /// <summary>
         /// Control btnGuardarBitacora.
@@ -884,5 +866,14 @@ namespace SDA.App {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Button CancelButton;
+        
+        /// <summary>
+        /// Control wndPDF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Window wndPDF;
     }
 }

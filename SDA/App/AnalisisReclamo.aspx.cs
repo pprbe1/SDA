@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using System.Text;
+using System.IO;
 using SDA.wsConsultaReportesDA;
 
 namespace SDA.App
@@ -40,6 +41,37 @@ namespace SDA.App
             this.strReclamosGral.DataBind();
         }
 
+        protected void CommandArchivos(object sender, DirectEventArgs e)
+        {
+            Session["NoGuia"] = e.ExtraParams["NoGuia"];
+
+            string cmd = e.ExtraParams["Command"];
+
+            switch (cmd)
+            {
+                case "Ver":
+                    wndPDF.Hidden = false;
+                    wndPDF.Loader.LoadContent();
+                    break;
+
+                case "Descargar":
+                    Response.Clear();
+                    Response.AppendHeader("content-disposition", "attachment; filename=" + Session["NoGuia"] + ".pdf");
+                    Response.ContentType = "application/octet-stream";
+                    Response.BinaryWrite(GetFileBytes());
+                    Response.End();
+                    break;
+            }
+        }
+
+        private byte[] GetFileBytes()
+        {
+            string noSiniestro = Session["NoSiniestro"].ToString();
+            string noGuia = Session["NoGuia"].ToString();
+
+            return insertaDatos.GetFileForSiniestro(noSiniestro, noGuia, ".pdf");
+        }
+
         protected void InformacionSiniestro(object sender, DirectEventArgs e)
         {
             int idSocio = Convert.ToInt32(e.ExtraParams["ID"]);
@@ -65,6 +97,9 @@ namespace SDA.App
             BitacoraSiniestro(noSiniestro);
             ArchivosSiniestro(noSiniestro);
 
+            RestaurarArchivos(null, null);
+            RestaurarBitacora(null, null);
+
             this.wndInformacionSiniestro.Show();
         }
 
@@ -74,13 +109,14 @@ namespace SDA.App
             int noEstadoSin = Convert.ToInt32(e.ExtraParams["EstadoSin"]);
 
             Error err = reportesDA.UpdateStatusSiniestroDA(noSiniestro, noEstadoSin);
+
+            btnGuardarEstadoSin.Disabled = true;
         }
 
         private void SaveSessionVarsFor(Siniestro siniestro)
         {
             Session["NoSocio"] = siniestro.NoSocio;
             Session["NoSiniestro"] = siniestro.NoSiniestro;
-            Session["NoEstado"] = siniestro.StatusSiniestro;
         }
 
         private void BitacoraSiniestro(int noSiniestro)
@@ -179,6 +215,7 @@ namespace SDA.App
             btnCancelarArchivo.Hidden = true;
         }
 
+        
         protected void InsertarBitacora(object sender, DirectEventArgs e)
         {
             Session["Usuario"] = "830"; //which stands for luisito homs
@@ -186,7 +223,7 @@ namespace SDA.App
             int idUsuario = Convert.ToInt32(Session["Usuario"]);
             int noSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
 
-            Error err = reportesDA.InsertBitacoraDA(noSiniestro, 1, idUsuario, txtBitacora.Text);
+            Error err = reportesDA.InsertBitacoraDA(noSiniestro, 1, idUsuario, txtBitacora.RawValue.ToString());
 
             if (err.Valor) X.MessageBox.Alert("Alerta", err.Mensaje).Show();
 

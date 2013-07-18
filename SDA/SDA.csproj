@@ -85,6 +85,7 @@
   <ItemGroup>
     <Content Include="App\AnalisisReclamo.aspx" />
     <Content Include="App\Menu.aspx" />
+    <Content Include="App\PdfReader.aspx" />
     <Content Include="App\SocioBeneficios.aspx" />
     <Content Include="Media\Image\Buttons\acercade.png" />
     <Content Include="Media\Image\Buttons\admin.png" />
@@ -101,6 +102,38 @@
     <Content Include="Media\Image\Buttons\seguimiento.png" />
     <Content Include="Media\Image\Buttons\title.png" />
     <Content Include="Media\Image\Buttons\twitter.png" />
+    <Content Include="Media\Image\PdfAssets\annotation-check.svg" />
+    <Content Include="Media\Image\PdfAssets\annotation-comment.svg" />
+    <Content Include="Media\Image\PdfAssets\annotation-help.svg" />
+    <Content Include="Media\Image\PdfAssets\annotation-insert.svg" />
+    <Content Include="Media\Image\PdfAssets\annotation-key.svg" />
+    <Content Include="Media\Image\PdfAssets\annotation-newparagraph.svg" />
+    <Content Include="Media\Image\PdfAssets\annotation-note.svg" />
+    <Content Include="Media\Image\PdfAssets\annotation-paragraph.svg" />
+    <Content Include="Media\Image\PdfAssets\findbarButton-next-rtl.png" />
+    <Content Include="Media\Image\PdfAssets\findbarButton-next.png" />
+    <Content Include="Media\Image\PdfAssets\findbarButton-previous-rtl.png" />
+    <Content Include="Media\Image\PdfAssets\findbarButton-previous.png" />
+    <Content Include="Media\Image\PdfAssets\loading-icon.gif" />
+    <Content Include="Media\Image\PdfAssets\loading-small.png" />
+    <Content Include="Media\Image\PdfAssets\shadow.png" />
+    <Content Include="Media\Image\PdfAssets\texture.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-bookmark.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-download.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-menuArrows.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-openFile.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-pageDown-rtl.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-pageDown.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-pageUp-rtl.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-pageUp.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-presentationMode.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-print.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-search.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-sidebarToggle.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-viewOutline.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-viewThumbnail.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-zoomIn.png" />
+    <Content Include="Media\Image\PdfAssets\toolbarButton-zoomOut.png" />
     <Content Include="Media\Image\Style\arrow_left_blue.gif" />
     <Content Include="Media\Image\Style\arrow_rigth_blue.gif" />
     <Content Include="Media\Image\Style\azul26px.jpg" />
@@ -113,7 +146,11 @@
     <Content Include="Media\Image\Style\gris30px.jpg" />
     <Content Include="Media\Image\Style\msj.gif" />
     <Content Include="Media\Image\Style\PRYBE.png" />
-    <Content Include="Styles\Site.css" />
+    <Content Include="Scripts\pdf\compatibility.js" />
+    <Content Include="Scripts\pdf\l10n.js" />
+    <Content Include="Scripts\pdf\pdf.js" />
+    <Content Include="Scripts\pdf\viewer.js" />
+    <Content Include="Styles\PdfViewer.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
@@ -317,6 +354,7 @@
     </None>
     <None Include="Web References\wsInsercionDatosBen\wsInsertaDatosBeneficios.disco" />
     <None Include="Web References\wsConsultaReportesDA\wsConsultaReportesDA.disco" />
+    <Content Include="Styles\Site.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -334,7 +372,6 @@
   <ItemGroup>
     <Compile Include="App\AnalisisReclamo.aspx.cs">
       <DependentUpon>AnalisisReclamo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App\AnalisisReclamo.aspx.designer.cs">
       <DependentUpon>AnalisisReclamo.aspx</DependentUpon>
@@ -345,6 +382,12 @@
     </Compile>
     <Compile Include="App\Menu.aspx.designer.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\PdfReader.aspx.cs">
+      <DependentUpon>PdfReader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\PdfReader.aspx.designer.cs">
+      <DependentUpon>PdfReader.aspx</DependentUpon>
     </Compile>
     <Compile Include="App\SocioBeneficios.aspx.cs">
       <DependentUpon>SocioBeneficios.aspx</DependentUpon>

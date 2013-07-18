@@ -1,32 +1,50 @@
-﻿<%@ Page Title="Analisis del Siniestro" Language="C#" AutoEventWireup="true" CodeBehind="AnalisisReclamo.aspx.cs" Inherits="SDA.App.AnalisisReclamo" %>
+﻿<%@ Page Title="Analisis del Siniestro" Language="C#" AutoEventWireup="true" CodeBehind="AnalisisReclamo.aspx.cs" Inherits="SDA.App.AnalisisReclamo" ValidateRequest="false" %>
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
 
 <html>
 <head>
-<script type="text/javascript">
-    var template = '<span style="color:{0};font-weight:800;">{1}</span>';
+    <script type="text/javascript">
+        var template = '<span style="color:{0};font-weight:800;">{1}</span>';
 
-    String.prototype.format = function () {
-        var args = arguments;
-        return this.replace(/{(\d+)}/g, function (match, number) {
-            return typeof args[number] != 'undefined' ? args[number] : match;
-        });
-    };
+        String.prototype.format = function () {
+            var args = arguments;
+            return this.replace(/{(\d+)}/g, function (match, number) {
+                return typeof args[number] != 'undefined' ? args[number] : match;
+            });
+        };
 
-    var Estado = function (value) {
-        return template.format((value == 'Analisis') ? "#DBA901" :
-            (value == 'Enviado') ? "#B45F04" :
-            (value == 'Recibido') ? "#328ED3" :
-            (value == 'Proceso de pago') ? "#194B96" :
-            (value == 'Rechazado') ? "#DF0101" :
-            (value == 'Req. Adicional') ? "#8904B1" :
-            (value == 'Pagado') ? "#0F9726" : "#5E6E82", value);
-    }
+        var Estado = function (value) {
+            return template.format((value == 'Analisis') ? "#DBA901" :
+                (value == 'Enviado') ? "#B45F04" :
+                (value == 'Recibido') ? "#328ED3" :
+                (value == 'Proceso de pago') ? "#194B96" :
+                (value == 'Rechazado') ? "#DF0101" :
+                (value == 'Req. Adicional') ? "#8904B1" :
+                (value == 'Pagado') ? "#0F9726" : "#5E6E82", value);
+        }
 
-    function MostrarMensaje(sender, record, index) {
-        Ext.getCmp('txtBitacora').setValue(record.data.mensaje);
-    }
+        function MostrarMensaje(sender, record, index) {
+            Ext.getCmp('txtBitacora').setValue(record.data.mensaje);
+        }
     </script>
+    <style type="text/css">
+        .fieldInfo 
+        {
+            color: #696969;
+            font-weight: 700;
+            font-size: 14px;
+            width: 200px;
+        }
+        
+        .labelInfo
+        {
+            color: #696969;
+            font-weight: 700;
+            font-size: 16px;.
+            margin-top: 10px;
+        }
+    </style>
+    <link href="/Styles/Site.css" type="text/css" rel="Stylesheet" />
 </head>
 <body>
     <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Gray" />
@@ -266,10 +284,10 @@
                     </ext:Panel>
                 </Items>                     
             </ext:Panel>
-            <ext:Panel ID="Panel1" runat="server" Layout="Form" Border="true">
+            <ext:Panel ID="Panel1" runat="server" Border="true">
                 <Items>
-                    <ext:GridPanel ID="grdAnalisis" runat="server" Height="460" Border="false" Title="Siniestros"
-                        AutoWidth="true" StoreID="strReclamosGral" Region="Center" Icon="PageEdit" Frame="false">
+                    <ext:GridPanel ID="grdAnalisis" runat="server" Border="false" Title="Siniestros"
+                        AutoWidth="true" StoreID="strReclamosGral" Icon="PageEdit" Frame="false">
                         <Features>                                               
                             <ext:GridFilters>
                                 <Filters>
@@ -325,49 +343,33 @@
         ButtonAlign="Center"
         Layout="FitLayout">
         <Items>     
-            <ext:TabPanel ID="tabSiniestro" runat="server" Layout="FitLayout">
+            <ext:TabPanel ID="tabSiniestro" runat="server">
                 <Items>
-                    <ext:Panel ID="paneInfo" runat="server" Title="Informacion" Layout="ColumnLayout" Padding="20">
+                    <ext:Panel ID="paneLabels" runat="server" Border="false" Title="Información" Padding="20" Margins="0 0 0 180">
                         <Items>
-                            <ext:Panel ID="paneLabels" runat="server" ColumnWidth="1" Border="false">
-                                <Items>
-                                    <ext:DisplayField ID="dspNumeroSiniestro" runat="server" FieldLabel="Número de Siniestro"
-                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px; width: 200px;" />
-                                    <ext:DisplayField ID="dspNumeroSocio" runat="server" FieldLabel="Número de Socio"
-                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
-                                    <ext:DisplayField ID="dspNombreSocio" runat="server" FieldLabel="Nombre"
-                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
-                                    <ext:DisplayField ID="dspOcupacionSocio" runat="server" FieldLabel="Ocupacion"
-                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
-                                    <ext:DisplayField ID="dspCooperativa" runat="server" FieldLabel="Cooperativa"
-                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
-                                    <ext:DisplayField ID="dspPlaza" runat="server" FieldLabel="Plaza"
-                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
-                                    <ext:DisplayField ID="dspSucursal" runat="server" FieldLabel="Sucursal"
-                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
-                                    <ext:FieldContainer ID="fcEstadoSin" runat="server" Layout="ColumnLayout">
-                                        <Items>
-                                            <ext:ComboBox ID="cmbEstadoSin" runat="server" StoreID="strEstadosSin" Editable="false"
-                                                TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All"
-                                                DisplayField="name" ValueField="id" EmptyText="Estado del Siniestro" ValueNotFoundText="Cargando..."
-                                                ColumnWidth=".8">
-                                                <Listeners>
-                                                    <Select Handler="#{btnGuardarEstadoSin}.setDisabled(false)" />
-                                                </Listeners>
-                                            </ext:ComboBox> 
-                                            <ext:Button ID="btnGuardarEstadoSin" runat="server" Text="Guardar" Icon="Disk" Disabled="true" OnDirectClick="UpdateEstadoSiniestro">
-                                                <DirectEvents>
-                                                    <Click OnEvent="UpdateEstadoSiniestro">
-                                                        <ExtraParams>
-                                                            <ext:Parameter Name="EstadoSin" Value="#{cmbEstadoSin}.getValue()" Mode="Raw" />
-                                                        </ExtraParams>
-                                                    </Click>
-                                                </DirectEvents>
-                                            </ext:Button>
-                                        </Items>
-                                    </ext:FieldContainer>
-                                </Items>
-                            </ext:Panel>
+                            <ext:DisplayField ID="dspNumeroSiniestro" LabelAlign="Right" LabelWidth="150" runat="server" FieldLabel="Número de Siniestro" FieldCls="fieldInfo" />      
+                            <ext:DisplayField ID="dspNumeroSocio" LabelAlign="Right" LabelWidth="150" runat="server" FieldLabel="Número de Socio" FieldCls="fieldInfo" />
+                            <ext:DisplayField ID="dspNombreSocio" LabelAlign="Right" LabelWidth="150" runat="server" FieldLabel="Nombre" FieldCls="fieldInfo" />
+                            <ext:DisplayField ID="dspOcupacionSocio" LabelAlign="Right" LabelWidth="150" runat="server" FieldLabel="Ocupacion" FieldCls="fieldInfo" />
+                            <ext:DisplayField ID="dspCooperativa" LabelAlign="Right" LabelWidth="150" runat="server" FieldLabel="Cooperativa" FieldCls="fieldInfo" />
+                            <ext:DisplayField ID="dspPlaza" LabelAlign="Right" LabelWidth="150" runat="server" FieldLabel="Plaza" FieldCls="fieldInfo" />
+                            <ext:DisplayField ID="dspSucursal" LabelAlign="Right" LabelWidth="150" runat="server" FieldLabel="Sucursal" FieldCls="fieldInfo" />
+                            <ext:ComboBox ID="cmbEstadoSin" runat="server" StoreID="strEstadosSin" Editable="false" TypeAhead="true" Mode="Local"
+                                ForceSelection="true" TriggerAction="All" FieldLabel="Estado" LabelWidth="150" LabelAlign="Right"
+                                DisplayField="name" ValueField="id" EmptyText="Estado del Siniestro" ValueNotFoundText="Cargando...">
+                                <Listeners>
+                                    <Select Handler="#{btnGuardarEstadoSin}.setDisabled(false)" />
+                                </Listeners>
+                            </ext:ComboBox> 
+                            <ext:Button ID="btnGuardarEstadoSin" Text="Guardar Estado" runat="server" Icon="Disk" Disabled="true" StyleSpec="margin-left: 200px;" OnDirectClick="UpdateEstadoSiniestro">
+                                <DirectEvents>
+                                    <Click OnEvent="UpdateEstadoSiniestro">
+                                        <ExtraParams>
+                                            <ext:Parameter Name="EstadoSin" Value="#{cmbEstadoSin}.getValue()" Mode="Raw" />
+                                        </ExtraParams>
+                                    </Click>
+                                </DirectEvents>
+                            </ext:Button>
                         </Items>
                     </ext:Panel>
                     <ext:Panel ID="paneBitacora" runat="server" Title="Bitacora" Layout="ColumnLayout">
@@ -389,7 +391,7 @@
                             </ext:GridPanel>
                             <ext:FormPanel ID="frmBitacora" runat="server" ColumnWidth=".4" Title="Detalles/Nueva Bitacora" Border="false" Layout="FitLayout">
                                 <Items>
-                                    <ext:TextArea ID="txtBitacora" runat="server" EmptyText="Escriba aquí el texto de la bitacora..." Height="300" Width="120" ReadOnly="true" AllowBlank="false" />
+                                    <ext:HtmlEditor ID="txtBitacora" runat="server" Height="400" Width="120" ReadOnly="true" />
                                 </Items>
                                 <Buttons>
                                     <ext:Button ID="btnGuardarBitacora" runat="server" Text="Guardar" Icon="Disk" Hidden="true" OnDirectClick="InsertarBitacora" FormBind="true" />
@@ -408,8 +410,18 @@
                                         <ext:Column ID="Column10" runat="server" Header="N° Guia" DataIndex="numguia" Align="Left" Flex="1"/>
                                         <ext:CommandColumn ID="CommandColumn1" runat="server">
                                             <Commands>
-                                                <ext:GridCommand Icon="WorldLink" CommandName="Descargar" Text="Descargar" />
+                                                <ext:GridCommand Icon="Disk" CommandName="Descargar" />
+                                                <ext:GridCommand Icon="Magnifier" CommandName="Ver" Text="Ver" />
                                             </Commands>
+                                            <DirectEvents>
+                                                <Command OnEvent="CommandArchivos">
+                                                    <ExtraParams>
+                                                        <ext:Parameter Name="Command" Value="command" Mode="Raw" />
+                                                        <ext:Parameter Name="NoGuia" Value="Ext.value(record.data.numguia)" Mode="Raw" />
+                                                        <ext:Parameter Name="NoSiniestro" Value="Ext.value(record.data.numsiniestro)" Mode="Raw" />
+                                                    </ExtraParams>
+                                                </Command>
+                                            </DirectEvents>
                                         </ext:CommandColumn>
                                     </Columns>
                                 </ColumnModel>
@@ -424,7 +436,7 @@
                                     <ext:Button ID="btnNuevoEnvio" runat="server" Icon="Box" Text="Nuevo Envio" OnDirectClick="NuevoEnvio" />
                                 </Buttons>
                             </ext:GridPanel>
-                            <ext:FormPanel ID="frmArchivos" runat="server" ColumnWidth=".4" Title="Detalles/Nuevo Archivo" >
+                            <ext:FormPanel ID="frmArchivos" runat="server" ColumnWidth=".4" Title="Detalles/Nuevo Archivo">
                                 <Items>
                                     <ext:FormPanel ID="frmArchivosOpciones" runat="server" Border="false" Padding="5">
                                         <Items>
@@ -450,13 +462,13 @@
                                             </ext:CheckboxGroup>
                                         </Items>
                                     </ext:FormPanel>
-                                    <ext:FormPanel ID="frmArchivosOpciones2" runat="server" Border="false" Padding="5" AnchorHorizontal="100">
+                                    <ext:FormPanel ID="frmArchivosOpciones2" runat="server" Border="false" Padding="5">
                                         <Items>
-                                            <ext:DateField ID="dateEnvio" runat="server" ReadOnly="true" FieldLabel="Fecha de Envio" AllowBlank="false" />
-                                            <ext:FileUploadField ID="fileSelector" runat="server" FieldLabel="Archivo" ReadOnly="true" AllowBlank="false" />
-                                            <ext:TextField ID="txtGuia" runat="server" EmptyText="N° de Guia" FieldLabel="Guia" ReadOnly="true" AllowBlank="false" />
+                                            <ext:DateField ID="dateEnvio" runat="server" ReadOnly="true" FieldLabel="Fecha de Envio" AllowBlank="false" LabelWidth="130" />
+                                            <ext:FileUploadField ID="fileSelector" runat="server" FieldLabel="Archivo" ReadOnly="true" AllowBlank="false" Regex="(.pdf|.PDF)" LabelWidth="130" />
+                                            <ext:TextField ID="txtGuia" runat="server" EmptyText="N° de Guia" FieldLabel="Guia" ReadOnly="true" AllowBlank="false" LabelWidth="130" />
                                             <ext:ComboBox ID="cmbPaqueteria" runat="server" StoreID="strPaqueteria" Editable="false"
-                                                TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All"
+                                                TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All" LabelWidth="130"
                                                 DisplayField="name" ValueField="id" EmptyText="Paquetería..." ValueNotFoundText="Cargando..."
                                                 FieldLabel="Paquetería">
                                             </ext:ComboBox> 
@@ -480,5 +492,8 @@
                 </Listeners>
             </ext:Button>
         </Buttons>
+    </ext:Window>
+    <ext:Window ID="wndPDF" runat="server" Title="Vista Previa del Documento" Height="800" Width="800" Hidden="true">
+        <Loader ID="ldPDF" runat="server" Url="/App/PdfReader.aspx" Mode="Frame" AutoLoad="false" />
     </ext:Window>
 </body>
