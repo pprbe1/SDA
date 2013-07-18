@@ -14,11 +14,13 @@
     };
 
     var Estado = function (value) {
-        return template.format((value == 'PRE Analisis') ? "#985C4C" :
-                               (value == 'Enviado') ? "#7DB1D5" :
-                               (value == 'Valoracion') ? "#297ACC" :
-                               (value == 'Aprobado') ? "#3EB13E" :
-                               (value == 'Cotizacion rechazada') ? "#FF4D4D" : "#5E6E82", value);
+        return template.format((value == 'Analisis') ? "#DBA901" :
+                               (value == 'Enviado') ? "#B45F04" :
+                               (value == 'Recibido') ? "#328ED3" :
+                               (value == 'Proceso de pago') ? "#194B96" :
+                               (value == 'Rechazado') ? "#DF0101" :
+                               (value == 'Req. Adicional') ? "#8904B1" :
+                               (value == 'Pagado') ? "#0F9726" : "#5E6E82", value);
     }
 
     function MostrarMensaje(sender, record, index) {
