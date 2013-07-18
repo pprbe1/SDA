@@ -18,15 +18,17 @@
             <div id="slideout">
                 <img src="/Media/Image/Buttons/menu.png" alt="Realimentación" />
                 <div id="slideout_inner">
-                   <%-- <ext:ImageButton ID="btHome" runat="server"
-                        ImageUrl="image/Botones/home.png" 
-                        ToolTip="<b>Regresar al inicio</b>"
-                        OnClientClick="location.href='Default.aspx'">
-                    </ext:ImageButton>
-                    <ext:ImageButton ID="btReturn" runat="server"
-                        ImageUrl="image/Botones/return.png"
-                        ToolTip="<b>Ir a la pagina anterior</b>">
-                    </ext:ImageButton>  --%>
+                   <asp:ImageButton ID="ImageButton1" runat="server" 
+                    ToolTip="HOME: Regresar a la página principal dando click AQUÍ."
+                    ImageUrl="/Media/Image/Buttons/home.png" 
+                    Height="37" Width="33" 
+                    onclick="imgContacto_Click" />
+
+                <asp:ImageButton ID="ImageButton2" runat="server" 
+                    ToolTip="PÁGINA ANTERIOR: Regresar a la página anterior."
+                    ImageUrl="/Media/Image/Buttons/return.png" 
+                    Height="31" Width="36" 
+                    onclick="imgFAQs_Click" />
                 </div>
             </div>
             <div class="title">

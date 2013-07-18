@@ -48,8 +48,8 @@
             font-family : "Trebuchet MS",sans-serif;
             font-size   : 17px;
             text-align  : center;
-            color       : #323232;
-            background-color: #53168E;
+            color       : #FFF;
+            background-color: #6E409B;
             margin-top  : 5px;
         }
         
@@ -87,6 +87,7 @@
         font-family: tahoma,arial,verdana,sans-serif;
         line-height: 17px;
         }   
+
          
     </style>
     
@@ -148,7 +149,7 @@
                 Height="110" 
                 Border="false" 
                 Header="false" 
-                BodyStyle="background-color: transparent;">
+                BodyStyle="background-color: #6E409B;">
                 <Content>
                     <div id="settingsWrapper">
                         <div id="settings">
@@ -162,7 +163,7 @@
                     </div>
 
                     <div id="pageTitle">                        
-                        <img src="/Media/Image/Style/PRYBE.png"/>                        
+                        <img src="/Media/Image/Style/PRYBE.png"/>                      
                     </div>
                 </Content>
             </ext:Panel>

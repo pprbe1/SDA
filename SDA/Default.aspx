@@ -13,6 +13,24 @@
             font-weight: bold;
             font-family: tahoma,arial,verdana,sans-serif;
         }
+        
+        .x-fieldset-header {
+        font: 11px/14px bold tahoma,arial,verdana,sans-serif;
+        color: #333;
+        text-align: center;
+        }
+        
+        .x-btn {
+            display: inline-block;
+            zoom: 1;
+            position: relative;
+            cursor: pointer;
+            cursor: hand;
+            white-space: nowrap;
+            vertical-align: middle;
+            background-repeat: no-repeat;
+            padding-left: 75px;
+            }
     
         .x-panel-header-text-default 
         {
@@ -45,13 +63,13 @@
                 <ext:FieldSet ID="FieldSet1" runat="server" Title="Registro de Siniestros" Disabled="false" ColumnWidth=".33" Border="false" >
 
                     <Defaults>
-                        <ext:Parameter Name="LabelWidth" Value="90" />
+                        <ext:Parameter Name="LabelWidth" Value="90"/>
                     </Defaults>              
 
                     <Items>
                         <ext:ImageButton ID="btnRegistro"
                             runat="server" 
-                            ImageUrl="/Media/Image/Buttons/registro.png">
+                            ImageUrl="/Media/Image/Buttons/registro.png" StyleSpec="padding:0px 0px 0px 60px;">
                             <DirectEvents>
                                 <Click OnEvent="Button_Click" />
                             </DirectEvents>

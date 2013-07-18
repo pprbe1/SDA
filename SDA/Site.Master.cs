@@ -65,12 +65,12 @@ namespace SDA
 
         public void imgFAQs_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("Faqs.aspx");
+            Response.Redirect("Default.aspx");
         }
 
         public void imgAbout_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("About.aspx");
+            Response.Redirect("Default.aspx");
         }
 
         /*  ----------------------------------------------------------------------------------------
@@ -79,6 +79,7 @@ namespace SDA
         //  Muestra ventana de contacto
         public void imgContacto_Click(object sender, ImageClickEventArgs e)
         {
+            Response.Redirect("Default.aspx");
             //wdContacto.Show();
             //if (Session["NombreCompleto"] != null)
             //{
