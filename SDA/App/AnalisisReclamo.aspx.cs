@@ -48,15 +48,17 @@ namespace SDA.App
 
             SaveSessionVarsFor(siniestro[0]);
 
-            lblNombreSocio.Text = siniestro[0].Nombre;
-            lblNumeroSocio.Text = siniestro[0].NoSocio;
-            lblOcupacionSocio.Text = siniestro[0].Ocupacion;
-            lblSucursalSocio.Text = siniestro[0].Sucursal;
-            lblNumeroSiniestro.Text = siniestro[0].NoSiniestro;
-            lblPlaza.Text = siniestro[0].Plaza;
-            lblCooperativa.Text = siniestro[0].Coop;
+            dspNombreSocio.Text = siniestro[0].Nombre;
+            dspNumeroSocio.Text = siniestro[0].NoSocio;
+            dspOcupacionSocio.Text = siniestro[0].Ocupacion;
+            dspSucursal.Text = siniestro[0].Sucursal;
+            dspNumeroSiniestro.Text = siniestro[0].NoSiniestro;
+            dspPlaza.Text = siniestro[0].Plaza;
+            dspCooperativa.Text = siniestro[0].Coop;
 
             cmbEstadoSin.SetRawValue(siniestro[0].StatusSiniestro);
+
+            btnGuardarEstadoSin.Disabled = true;
 
             int noSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
 

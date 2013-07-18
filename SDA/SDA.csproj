@@ -334,7 +334,6 @@
   <ItemGroup>
     <Compile Include="App\AnalisisReclamo.aspx.cs">
       <DependentUpon>AnalisisReclamo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App\AnalisisReclamo.aspx.designer.cs">
       <DependentUpon>AnalisisReclamo.aspx</DependentUpon>

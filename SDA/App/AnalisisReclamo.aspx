@@ -15,12 +15,12 @@
 
     var Estado = function (value) {
         return template.format((value == 'Analisis') ? "#DBA901" :
-                               (value == 'Enviado') ? "#B45F04" :
-                               (value == 'Recibido') ? "#328ED3" :
-                               (value == 'Proceso de pago') ? "#194B96" :
-                               (value == 'Rechazado') ? "#DF0101" :
-                               (value == 'Req. Adicional') ? "#8904B1" :
-                               (value == 'Pagado') ? "#0F9726" : "#5E6E82", value);
+            (value == 'Enviado') ? "#B45F04" :
+            (value == 'Recibido') ? "#328ED3" :
+            (value == 'Proceso de pago') ? "#194B96" :
+            (value == 'Rechazado') ? "#DF0101" :
+            (value == 'Req. Adicional') ? "#8904B1" :
+            (value == 'Pagado') ? "#0F9726" : "#5E6E82", value);
     }
 
     function MostrarMensaje(sender, record, index) {
@@ -329,41 +329,22 @@
                 <Items>
                     <ext:Panel ID="paneInfo" runat="server" Title="Informacion" Layout="ColumnLayout" Padding="20">
                         <Items>
-                            <ext:Panel ID="paneLabels" runat="server" ColumnWidth=".4" Border="false">
+                            <ext:Panel ID="paneLabels" runat="server" ColumnWidth="1" Border="false">
                                 <Items>
-                                    <ext:Label ID="dspNumeroSiniestro" runat="server" Text="Número de Siniestro: " Width="150" StyleSpec="color: #696969; font-weight:700; font-size:14px;"/>
-                                    <ext:Label ID="Label1" runat="server" Html="<br />" />
-                                    <ext:Label ID="dspNumeroSocio" runat="server" Text="Número de Socio: " Width="150" StyleSpec="color: #696969; font-weight:700; font-size:14px;"/>
-                                    <ext:Label ID="Label2" runat="server" Html="<br />" />
-                                    <ext:Label ID="dspNombreSocio" runat="server" Text="Nombre: " Width="150" StyleSpec="color: #696969; font-weight:700; font-size:14px;"/>
-                                    <ext:Label ID="Label3" runat="server" Html="<br />" />
-                                    <ext:Label ID="dspOcupacionSocio" runat="server" Text="Ocupación: " Width="150" StyleSpec="color: #696969; font-weight:700; font-size:14px;"/>
-                                    <ext:Label ID="Label4" runat="server" Html="<br />" />
-                                    <ext:Label ID="dspCooperativa" runat="server" Text="Cooperativa: " Width="150" StyleSpec="color: #696969; font-weight:700; font-size:14px;"/>
-                                    <ext:Label ID="Label5" runat="server" Html="<br />" />
-                                    <ext:Label ID="dspPlaza" runat="server" Text="Plaza: " Width="150" StyleSpec="color: #696969; font-weight:700; font-size:14px;"/>
-                                    <ext:Label ID="Label6" runat="server" Html="<br />" />
-                                    <ext:Label ID="dspSucursalSocio" runat="server" Text="Sucursal: " Width="150" StyleSpec="color: #696969; font-weight:700; font-size:14px;"/>
-                                    <ext:Label ID="Label7" runat="server" Html="<br />" />
-                                    <ext:Label ID="dspEstadoBeneficio" runat="server" Text="Estado del Siniestro: " Width="150" StyleSpec="color: #696969; font-weight:700; font-size:14px;"/>
-                                </Items>
-                            </ext:Panel>
-                            <ext:Panel ID="paneData" runat="server" ColumnWidth=".6" Border="false">
-                                <Items>
-                                    <ext:Label ID="lblNumeroSiniestro" runat="server" Width="300" StyleSpec="color: #246BB2; font-weight:bold; font-size:24px;"/>
-                                    <ext:Label ID="Label8" runat="server" Html="<br />" />
-                                    <ext:Label ID="lblNumeroSocio" runat="server" Width="250" StyleSpec="font-weight:bold;font-size:16px;"/>
-                                    <ext:Label ID="Label9" runat="server" Html="<br />" />
-                                    <ext:Label ID="lblNombreSocio" runat="server" Width="250" />
-                                    <ext:Label ID="Label10" runat="server" Html="<br />" />
-                                    <ext:Label ID="lblOcupacionSocio" runat="server" Width="250" />
-                                    <ext:Label ID="Label11" runat="server" Html="<br />" />
-                                    <ext:Label ID="lblCooperativa" runat="server" Width="300" />
-                                    <ext:Label ID="Label12" runat="server" Html="<br />" />
-                                    <ext:Label ID="lblPlaza" runat="server" Width="300" />
-                                    <ext:Label ID="Label13" runat="server" Html="<br />" />
-                                    <ext:Label ID="lblSucursalSocio" runat="server" Width="250" />
-                                    <ext:Label ID="Label14" runat="server" Html="<br />" />
+                                    <ext:DisplayField ID="dspNumeroSiniestro" runat="server" FieldLabel="Número de Siniestro"
+                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px; width: 200px;" />
+                                    <ext:DisplayField ID="dspNumeroSocio" runat="server" FieldLabel="Número de Socio"
+                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
+                                    <ext:DisplayField ID="dspNombreSocio" runat="server" FieldLabel="Nombre"
+                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
+                                    <ext:DisplayField ID="dspOcupacionSocio" runat="server" FieldLabel="Ocupacion"
+                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
+                                    <ext:DisplayField ID="dspCooperativa" runat="server" FieldLabel="Cooperativa"
+                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
+                                    <ext:DisplayField ID="dspPlaza" runat="server" FieldLabel="Plaza"
+                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
+                                    <ext:DisplayField ID="dspSucursal" runat="server" FieldLabel="Sucursal"
+                                        StyleSpec="color: #696969; font-weight:700; font-size:14px;" FieldStyle="color: #696969; font-weight:700; font-size:14px;" />
                                     <ext:FieldContainer ID="fcEstadoSin" runat="server" Layout="ColumnLayout">
                                         <Items>
                                             <ext:ComboBox ID="cmbEstadoSin" runat="server" StoreID="strEstadosSin" Editable="false"
