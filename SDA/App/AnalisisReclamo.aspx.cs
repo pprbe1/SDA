@@ -41,8 +41,17 @@ namespace SDA.App
 
             wsConsultaReportesDA.Siniestro[] siniestros;
 
-            siniestros = reportesDA.Siniestros(operacion, entidad);
+            switch (operacion)
+            {
+                case 1:
+                    siniestros = reportesDA.Siniestros(operacion, entidad, string.Empty);
+                    break;
 
+                case 3:
+                    siniestros = reportesDA.Siniestros(operacion, 0, Session["Entidad"]);
+                    break;
+            }
+            
             this.strReclamosGral.DataSource = siniestros;
             this.strReclamosGral.DataBind();
         }
@@ -127,7 +136,7 @@ namespace SDA.App
         {
             int idSocio = Convert.ToInt32(e.ExtraParams["ID"]);
 
-            Siniestro[] siniestro = reportesDA.Siniestros(4, idSocio);
+            Siniestro[] siniestro = reportesDA.Siniestros(4, idSocio, string.Empty);
 
             SaveSessionVarsFor(siniestro[0]);
 
