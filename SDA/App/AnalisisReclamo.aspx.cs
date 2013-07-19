@@ -39,7 +39,7 @@ namespace SDA.App
             int operacion = Convert.ToInt32(Session["Operacion"]);
             int entidad = Convert.ToInt32(Session["Entidad"]);
 
-            wsConsultaReportesDA.Siniestro[] siniestros;
+            wsConsultaReportesDA.Siniestro[] siniestros = null;
 
             switch (operacion)
             {
@@ -48,7 +48,7 @@ namespace SDA.App
                     break;
 
                 case 3:
-                    siniestros = reportesDA.Siniestros(operacion, 0, Session["Entidad"]);
+                    siniestros = reportesDA.Siniestros(operacion, 0, Convert.ToString(Session["Entidad"]));
                     break;
             }
             
@@ -285,7 +285,7 @@ namespace SDA.App
             int idUsuario = Convert.ToInt32(Session["Usuario"]);
             int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
 
-            Error err = reportesDA.InsertBitacoraDA(noSiniestro, 1, idUsuario, txtBitacora.RawValue.ToString());
+            Error err = reportesDA.InsertBitacoraDA(noSiniestro, idUsuario, txtBitacora.RawValue.ToString());
 
             if (err.Valor) X.MessageBox.Alert("Alerta", err.Mensaje).Show();
 
