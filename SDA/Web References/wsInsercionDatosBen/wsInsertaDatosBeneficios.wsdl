@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/AbstractTypes" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/AbstractTypes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx">
       <s:element name="UploadFileForSiniestros">
@@ -16,6 +16,22 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="UploadFileForSiniestrosResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileForSiniestro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="noSiniestro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noGuia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="extension" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileForSiniestroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileForSiniestroResult" type="s:base64Binary" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -312,6 +328,7 @@
         </s:complexType>
       </s:element>
       <s:element name="boolean" type="s:boolean" />
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
       <s:element name="Error" nillable="true" type="tns:Error" />
     </s:schema>
     <s:schema targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/AbstractTypes">
@@ -332,6 +349,12 @@
   </wsdl:message>
   <wsdl:message name="UploadFileForSiniestrosSoapOut">
     <wsdl:part name="parameters" element="tns:UploadFileForSiniestrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileForSiniestroSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileForSiniestro" />
+  </wsdl:message>
+  <wsdl:message name="GetFileForSiniestroSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileForSiniestroResponse" />
   </wsdl:message>
   <wsdl:message name="InsertSocioBeneficioSoapIn">
     <wsdl:part name="parameters" element="tns:InsertSocioBeneficio" />
@@ -425,6 +448,14 @@
   </wsdl:message>
   <wsdl:message name="UploadFileForSiniestrosHttpGetOut">
     <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetFileForSiniestroHttpGetIn">
+    <wsdl:part name="noSiniestro" type="s:string" />
+    <wsdl:part name="noGuia" type="s:string" />
+    <wsdl:part name="extension" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFileForSiniestroHttpGetOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
   </wsdl:message>
   <wsdl:message name="InsertSocioBeneficioHttpGetIn">
     <wsdl:part name="No_Socio" type="s:string" />
@@ -609,6 +640,14 @@
   <wsdl:message name="UploadFileForSiniestrosHttpPostOut">
     <wsdl:part name="Body" element="tns:boolean" />
   </wsdl:message>
+  <wsdl:message name="GetFileForSiniestroHttpPostIn">
+    <wsdl:part name="noSiniestro" type="s:string" />
+    <wsdl:part name="noGuia" type="s:string" />
+    <wsdl:part name="extension" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFileForSiniestroHttpPostOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
   <wsdl:message name="InsertSocioBeneficioHttpPostIn">
     <wsdl:part name="No_Socio" type="s:string" />
     <wsdl:part name="Nombre" type="s:string" />
@@ -788,6 +827,10 @@
       <wsdl:input message="tns:UploadFileForSiniestrosSoapIn" />
       <wsdl:output message="tns:UploadFileForSiniestrosSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetFileForSiniestro">
+      <wsdl:input message="tns:GetFileForSiniestroSoapIn" />
+      <wsdl:output message="tns:GetFileForSiniestroSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="InsertSocioBeneficio">
       <wsdl:input message="tns:InsertSocioBeneficioSoapIn" />
       <wsdl:output message="tns:InsertSocioBeneficioSoapOut" />
@@ -849,6 +892,10 @@
     <wsdl:operation name="UploadFileForSiniestros">
       <wsdl:input message="tns:UploadFileForSiniestrosHttpGetIn" />
       <wsdl:output message="tns:UploadFileForSiniestrosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileForSiniestro">
+      <wsdl:input message="tns:GetFileForSiniestroHttpGetIn" />
+      <wsdl:output message="tns:GetFileForSiniestroHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="InsertSocioBeneficio">
       <wsdl:input message="tns:InsertSocioBeneficioHttpGetIn" />
@@ -912,6 +959,10 @@
       <wsdl:input message="tns:UploadFileForSiniestrosHttpPostIn" />
       <wsdl:output message="tns:UploadFileForSiniestrosHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetFileForSiniestro">
+      <wsdl:input message="tns:GetFileForSiniestroHttpPostIn" />
+      <wsdl:output message="tns:GetFileForSiniestroHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="InsertSocioBeneficio">
       <wsdl:input message="tns:InsertSocioBeneficioHttpPostIn" />
       <wsdl:output message="tns:InsertSocioBeneficioHttpPostOut" />
@@ -973,6 +1024,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="UploadFileForSiniestros">
       <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/UploadFileForSiniestros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileForSiniestro">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/GetFileForSiniestro" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1118,6 +1178,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFileForSiniestro">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/GetFileForSiniestro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InsertSocioBeneficio">
       <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx/InsertSocioBeneficio" style="document" />
       <wsdl:input>
@@ -1249,6 +1318,15 @@
     <http:binding verb="GET" />
     <wsdl:operation name="UploadFileForSiniestros">
       <http:operation location="/UploadFileForSiniestros" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileForSiniestro">
+      <http:operation location="/GetFileForSiniestro" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1394,6 +1472,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFileForSiniestro">
+      <http:operation location="/GetFileForSiniestro" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InsertSocioBeneficio">
       <http:operation location="/InsertSocioBeneficio" />
       <wsdl:input>
@@ -1523,16 +1610,16 @@
   </wsdl:binding>
   <wsdl:service name="wsInsertaDatosBeneficios">
     <wsdl:port name="wsInsertaDatosBeneficiosSoap" binding="tns:wsInsertaDatosBeneficiosSoap">
-      <soap:address location="http://localhost:50444/wspbene/wsInsertaDatosBeneficios.asmx" />
+      <soap:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" />
     </wsdl:port>
     <wsdl:port name="wsInsertaDatosBeneficiosSoap12" binding="tns:wsInsertaDatosBeneficiosSoap12">
-      <soap12:address location="http://localhost:50444/wspbene/wsInsertaDatosBeneficios.asmx" />
+      <soap12:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" />
     </wsdl:port>
     <wsdl:port name="wsInsertaDatosBeneficiosHttpGet" binding="tns:wsInsertaDatosBeneficiosHttpGet">
-      <http:address location="http://localhost:50444/wspbene/wsInsertaDatosBeneficios.asmx" />
+      <http:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" />
     </wsdl:port>
     <wsdl:port name="wsInsertaDatosBeneficiosHttpPost" binding="tns:wsInsertaDatosBeneficiosHttpPost">
-      <http:address location="http://localhost:50444/wspbene/wsInsertaDatosBeneficios.asmx" />
+      <http:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

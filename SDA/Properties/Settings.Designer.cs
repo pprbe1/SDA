@@ -86,7 +86,7 @@ namespace SDA.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:50444/wspbene/wsInsertaDatosBeneficios.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx")]
         public string SDA_wsInsercionDatosBen_wsInsertaDatosBeneficios {
             get {
                 return ((string)(this["SDA_wsInsercionDatosBen_wsInsertaDatosBeneficios"]));
@@ -96,7 +96,7 @@ namespace SDA.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:50444/wspbene/wsConsultaReportesDA.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx")]
         public string SDA_wsConsultaReportesDA_wsConsultaReportesDA {
             get {
                 return ((string)(this["SDA_wsConsultaReportesDA_wsConsultaReportesDA"]));

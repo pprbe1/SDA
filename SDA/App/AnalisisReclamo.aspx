@@ -35,14 +35,6 @@
             font-size: 14px;
             width: 200px;
         }
-        
-        .labelInfo
-        {
-            color: #696969;
-            font-weight: 700;
-            font-size: 16px;.
-            margin-top: 10px;
-        }
     </style>
     <link href="/Styles/Site.css" type="text/css" rel="Stylesheet" />
 </head>
@@ -174,7 +166,7 @@
 
     <ext:Store ID="strPaqueteria" runat="server">
         <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://localhost:50444/wspbene/wsCargaCombosBene.asmx/CargaPaqueteria">
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsCargaCombosBene.asmx/CargaPaqueteria">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="Paqueterias" />
@@ -206,7 +198,7 @@
 
     <ext:Store ID="strEstadosSin" runat="server">
         <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://localhost:50444/wspbene/wsCargaCombosBene.asmx/CargaEstadosSiniestros">
+            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsCargaCombosBene.asmx/CargaEstadosSiniestros">
                 <ActionMethods Read="POST" />
                     <Reader>
                     <ext:XmlReader Record="EstadoSiniestro" />
@@ -237,7 +229,7 @@
                             <ext:ComboBox ID="cmbCoop" runat="server" StoreID="strCoop" Editable="true" Width="130"
                                 TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All" SelectOnFocus="true"
                                 DisplayField="name" ValueField="id" ValueNotFoundText="Cargando..." EmptyText="Selecciona tu cooperativa..."
-                                FieldLabel="Cooperativa" Resizable="true">
+                                FieldLabel="Cooperativa" Resizable="true" LabelAlign="Right">
                                 <Listeners>
                                     <Select Handler="#{cmbPlaza}.clearValue();#{strPlaza}.load();" />
                                 </Listeners>                           
@@ -250,7 +242,7 @@
                             <ext:ComboBox ID="cmbPlaza" runat="server" StoreID="strPlaza" Editable="true" Width="130"
                                 TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All" SelectOnFocus="true"
                                 DisplayField="name" ValueField="id" ValueNotFoundText="Cargando..." EmptyText="Selecciona tu Plaza..."
-                                FieldLabel="Plaza">
+                                FieldLabel="Plaza" LabelAlign="Right">
                                 <Listeners>
                                     <Select Handler="#{cmbSucursal}.clearValue();#{strSucursal}.load();" />
                                 </Listeners>                          
@@ -263,7 +255,7 @@
                             <ext:ComboBox ID="cmbSucursal" runat="server" StoreID="strSucursal" Editable="false"
                                 Width="130" TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All"
                                 DisplayField="name" ValueField="id" EmptyText="Selecciona tu Sucursal..." ValueNotFoundText="Cargando..."
-                                FieldLabel="Sucursal">
+                                FieldLabel="Sucursal" LabelAlign="Right">
                             </ext:ComboBox>                      
                         </Items>
                     </ext:Panel>
@@ -377,7 +369,7 @@
                             <ext:GridPanel ID="grdBitacora" runat="server" ColumnWidth=".6" StoreID="strBitacora">
                                 <ColumnModel>
                                     <Columns>
-                                        <ext:Column ID="Column5" runat="server" Header="Fecha" DataIndex="fecha" Align="Center" />
+                                        <ext:DateColumn ID="Column5" runat="server" Header="Fecha" DataIndex="fecha" Align="Center" Format="dd/MM/yyyy" />
                                         <ext:Column ID="Column6" runat="server" Header="Estado" DataIndex="status" Align="Center" />
                                         <ext:Column ID="Column7" runat="server" Header="Usuario" DataIndex="usuario" Align="Left" Flex="1" />
                                     </Columns>
@@ -408,10 +400,11 @@
                                         <ext:Column ID="Column8" runat="server" Header="Fecha Envio" DataIndex="fechaenvio" Align="Center" />
                                         <ext:Column ID="Column9" runat="server" Header="Paquteria" DataIndex="paqueteria" Align="Center" />
                                         <ext:Column ID="Column10" runat="server" Header="N° Guia" DataIndex="numguia" Align="Left" Flex="1"/>
-                                        <ext:CommandColumn ID="CommandColumn1" runat="server">
+                                        <ext:CommandColumn ID="CommandColumn1" runat="server" Width="70">
                                             <Commands>
+                                                <ext:GridCommand Icon="Date" CommandName="Recibo" />
                                                 <ext:GridCommand Icon="Disk" CommandName="Descargar" />
-                                                <ext:GridCommand Icon="Magnifier" CommandName="Ver" Text="Ver" />
+                                                <ext:GridCommand Icon="Magnifier" CommandName="Ver"/>
                                             </Commands>
                                             <DirectEvents>
                                                 <Command OnEvent="CommandArchivos">
@@ -419,6 +412,7 @@
                                                         <ext:Parameter Name="Command" Value="command" Mode="Raw" />
                                                         <ext:Parameter Name="NoGuia" Value="Ext.value(record.data.numguia)" Mode="Raw" />
                                                         <ext:Parameter Name="NoSiniestro" Value="Ext.value(record.data.numsiniestro)" Mode="Raw" />
+                                                        <ext:Parameter Name="NoDocumentacion" Value="Ext.value(record.data.numdocumentacion)" Mode="Raw" />
                                                     </ExtraParams>
                                                 </Command>
                                             </DirectEvents>
@@ -495,5 +489,21 @@
     </ext:Window>
     <ext:Window ID="wndPDF" runat="server" Title="Vista Previa del Documento" Height="800" Width="800" Hidden="true">
         <Loader ID="ldPDF" runat="server" Url="/App/PdfReader.aspx" Mode="Frame" AutoLoad="false" />
+    </ext:Window>
+    <ext:Window ID="wndRecibo" runat="server" Title="Agregar fecha de recibo" Height="260" Layout="FitLayout" Hidden="true">
+        <Items>
+            <ext:DatePicker ID="dateRecibo" runat="server" />
+        </Items>
+        <Buttons>
+            <ext:Button ID="btnGuardarRecibo" runat="server" Text="Guardar" Icon="Accept" OnDirectClick="UpdateFechaRecibo">
+                <DirectEvents>
+                    <Click OnEvent="UpdateFechaRecibo">
+                        <ExtraParams>
+                            <ext:Parameter Name="FechaRecibo" Value="Ext.value(#{dateRecibo}.getValue())" Mode="Raw" />
+                        </ExtraParams>
+                    </Click>
+                </DirectEvents>
+            </ext:Button>
+        </Buttons>
     </ext:Window>
 </body>

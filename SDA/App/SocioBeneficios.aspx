@@ -158,25 +158,6 @@
             <Load Handler="#{cmbEdoCivil}.setValue(#{cmbEdoCivil}.store.getAt(0).get('id'));" />
         </Listeners> 
     </ext:Store>
-
-    <ext:Store ID="strDocumentos" runat="server">
-        <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsCargaCombosBene.asmx/CargaDocumentos">
-                <ActionMethods Read="POST" />
-                    <Reader>
-                    <ext:XmlReader Record="Documentos"/>
-                </Reader>
-            </ext:AjaxProxy>
-        </Proxy>
-        <Model>
-            <ext:Model ID="Model6" runat="server">
-                <Fields>
-                    <ext:ModelField Name="id" Type="String" Mapping="Id" />
-                    <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
-                </Fields>
-            </ext:Model>
-        </Model>
-    </ext:Store>
     
     <ext:Store ID="strDocumentosAgregados" runat="server">
         <Model>
@@ -277,16 +258,13 @@
             </ext:AjaxProxy>
         </Proxy>
         <Model>
-            <ext:Model ID="Model12" runat="server">
+            <ext:Model ID="Model6" runat="server">
                 <Fields>
                     <ext:ModelField Name="id" Type="String" Mapping="Id" />
                     <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
                 </Fields>
             </ext:Model>
         </Model>
-        <Listeners>
-            <Load Handler="#{cmbPaqueteria}.setValue(#{cmbPaqueteria}.store.getAt(0).get('id'));" />
-        </Listeners> 
     </ext:Store>
 
     <ext:Store ID="strEnvio" runat="server">
@@ -552,28 +530,39 @@
             <ext:GridPanel ID="grdArchivos" runat="server" ColumnWidth=".6" StoreID="strEnvio">
                 <ColumnModel>
                     <Columns>
-                        <ext:Column ID="Column1" runat="server" Header="Fecha Envio" DataIndex="fechaenvio" Align="Center" />
-                        <ext:Column ID="Column2" runat="server" Header="Paquteria" DataIndex="paqueteria" Align="Center" />
-                        <ext:Column ID="Column3" runat="server" Header="N° Guia" DataIndex="numguia" Align="Left" Flex="1"/>
-                        <ext:CommandColumn ID="CommandColumn1" runat="server">
+                        <ext:Column ID="Column8" runat="server" Header="Fecha Envio" DataIndex="fechaenvio" Align="Center" />
+                        <ext:Column ID="Column9" runat="server" Header="Paquteria" DataIndex="paqueteria" Align="Center" />
+                        <ext:Column ID="Column10" runat="server" Header="N° Guia" DataIndex="numguia" Align="Left" Flex="1"/>
+                        <ext:CommandColumn ID="CommandColumn1" runat="server" Width="70">
                             <Commands>
-                                <ext:GridCommand Icon="WorldLink" CommandName="Descargar" Text="Descargar" />
+                                <ext:GridCommand Icon="Disk" CommandName="Descargar" />
+                                <ext:GridCommand Icon="Magnifier" CommandName="Ver"/>
                             </Commands>
+                            <DirectEvents>
+                                <Command OnEvent="CommandArchivos">
+                                    <ExtraParams>
+                                        <ext:Parameter Name="Command" Value="command" Mode="Raw" />
+                                        <ext:Parameter Name="NoGuia" Value="Ext.value(record.data.numguia)" Mode="Raw" />
+                                        <ext:Parameter Name="NoSiniestro" Value="Ext.value(record.data.numsiniestro)" Mode="Raw" />
+                                        <ext:Parameter Name="NoDocumentacion" Value="Ext.value(record.data.numdocumentacion)" Mode="Raw" />
+                                    </ExtraParams>
+                                </Command>
+                            </DirectEvents>
                         </ext:CommandColumn>
                     </Columns>
                 </ColumnModel>
                 <DirectEvents>
-                    <%--<Select OnEvent="DocumentosEnvio" >
+                    <Select OnEvent="DocumentosEnvio" >
                         <ExtraParams>
                             <ext:Parameter Name="ID" Value="Ext.value(record.data.numdocumentacion)" Mode="Raw" />
                         </ExtraParams>
-                    </Select>--%>
+                    </Select>
                 </DirectEvents>
                 <Buttons>
-                    <ext:Button ID="btnNuevoEnvio" runat="server" Icon="Box" Text="Nuevo Envio"  />
+                    <ext:Button ID="btnNuevoEnvio" runat="server" Icon="Box" Text="Nuevo Envio" OnDirectClick="NuevoEnvio" />
                 </Buttons>
             </ext:GridPanel>
-            <ext:FormPanel ID="frmArchivos" runat="server" ColumnWidth=".4" Title="Detalles/Nuevo Archivo" >
+            <ext:FormPanel ID="frmArchivos" runat="server" ColumnWidth=".4" Title="Detalles/Nuevo Archivo">
                 <Items>
                     <ext:FormPanel ID="frmArchivosOpciones" runat="server" Border="false" Padding="5">
                         <Items>
@@ -599,23 +588,23 @@
                             </ext:CheckboxGroup>
                         </Items>
                     </ext:FormPanel>
-                    <ext:FormPanel ID="frmArchivosOpciones2" runat="server" Border="false" Padding="5" AnchorHorizontal="100">
+                    <ext:FormPanel ID="frmArchivosOpciones2" runat="server" Border="false" Padding="5">
                         <Items>
-                            <ext:DateField ID="dateEnvio" runat="server" ReadOnly="true" FieldLabel="Fecha de Envio" AllowBlank="false" />
-                            <ext:FileUploadField ID="fileSelector" runat="server" FieldLabel="Archivo" ReadOnly="true" AllowBlank="false" />
-                            <ext:TextField ID="txtGuia" runat="server" EmptyText="N° de Guia" FieldLabel="Guia" ReadOnly="true" AllowBlank="false" />
+                            <ext:DateField ID="dateEnvio" runat="server" ReadOnly="true" FieldLabel="Fecha de Envio" AllowBlank="false" LabelWidth="130" />
+                            <ext:FileUploadField ID="fileSelector" runat="server" FieldLabel="Archivo" ReadOnly="true" AllowBlank="false" Regex="(.pdf|.PDF)" LabelWidth="130" />
+                            <ext:TextField ID="txtGuia" runat="server" EmptyText="N° de Guia" FieldLabel="Guia" ReadOnly="true" AllowBlank="false" LabelWidth="130" />
                             <ext:ComboBox ID="cmbPaqueteria" runat="server" StoreID="strPaqueteria" Editable="false"
-                                TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All"
+                                TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All" LabelWidth="130"
                                 DisplayField="name" ValueField="id" EmptyText="Paquetería..." ValueNotFoundText="Cargando..."
                                 FieldLabel="Paquetería">
                             </ext:ComboBox> 
                         </Items>
                     </ext:FormPanel>
                 </Items>
-                <%--<Buttons>
+                <Buttons>
                     <ext:Button ID="btnGuardarArchivo" runat="server" Text="Guardar" Icon="Disk" Hidden="true" OnDirectClick="InsertarEnvio" FormBind="true" />
                     <ext:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" Icon="Cancel" Hidden="true" OnDirectClick="RestaurarArchivos" />
-                </Buttons>--%>
+                </Buttons>
             </ext:FormPanel>
         </Items>
     </ext:Panel>
@@ -645,6 +634,24 @@
             </ext:Button>
         </Buttons>
     </ext:Window>
-
+    <ext:Window ID="wndPDF" runat="server" Title="Vista Previa del Documento" Height="800" Width="800" Hidden="true">
+        <Loader ID="ldPDF" runat="server" Url="/App/PdfReader.aspx" Mode="Frame" AutoLoad="false" />
+    </ext:Window>
+    <ext:Window ID="wndRecibo" runat="server" Title="Agregar fecha de recibo" Height="260" Layout="FitLayout" Hidden="true">
+        <Items>
+            <ext:DatePicker ID="dateRecibo" runat="server" />
+        </Items>
+        <Buttons>
+            <ext:Button ID="btnGuardarRecibo" runat="server" Text="Guardar" Icon="Accept" OnDirectClick="UpdateFechaRecibo">
+                <DirectEvents>
+                    <Click OnEvent="UpdateFechaRecibo">
+                        <ExtraParams>
+                            <ext:Parameter Name="FechaRecibo" Value="Ext.value(#{dateRecibo}.getValue())" Mode="Raw" />
+                        </ExtraParams>
+                    </Click>
+                </DirectEvents>
+            </ext:Button>
+        </Buttons>
+    </ext:Window>
 </body>
 </html>

@@ -25,7 +25,7 @@ namespace SDA.App
 
         public void WriteBytesFromFile()
         {
-            string noSiniestro = Session["NoSiniestro"].ToString();
+            string noSiniestro = Session["IdSiniestro"].ToString();
             string noGuia = Session["NoGuia"].ToString();
 
             Response.Clear();

@@ -496,7 +496,7 @@ namespace SDA.App {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column Column5;
+        protected global::Ext.Net.DateColumn Column5;
         
         /// <summary>
         /// Control Column6.
@@ -875,5 +875,32 @@ namespace SDA.App {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Window wndPDF;
+        
+        /// <summary>
+        /// Control wndRecibo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Window wndRecibo;
+        
+        /// <summary>
+        /// Control dateRecibo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DatePicker dateRecibo;
+        
+        /// <summary>
+        /// Control btnGuardarRecibo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnGuardarRecibo;
     }
 }

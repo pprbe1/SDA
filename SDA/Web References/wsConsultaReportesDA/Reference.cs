@@ -43,6 +43,8 @@ namespace SDA.wsConsultaReportesDA {
         
         private System.Threading.SendOrPostCallback InsertDetDocuDAOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ConsultaNumSiniestroDAOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -101,6 +103,9 @@ namespace SDA.wsConsultaReportesDA {
         
         /// <remarks/>
         public event InsertDetDocuDACompletedEventHandler InsertDetDocuDACompleted;
+        
+        /// <remarks/>
+        public event ConsultaNumSiniestroDACompletedEventHandler ConsultaNumSiniestroDACompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Siniestr" +
@@ -335,6 +340,36 @@ namespace SDA.wsConsultaReportesDA {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Consulta" +
+            "NumSiniestroDA", RequestNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", ResponseNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public NumSiniestro ConsultaNumSiniestroDA(int IdSiniestro) {
+            object[] results = this.Invoke("ConsultaNumSiniestroDA", new object[] {
+                        IdSiniestro});
+            return ((NumSiniestro)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ConsultaNumSiniestroDAAsync(int IdSiniestro) {
+            this.ConsultaNumSiniestroDAAsync(IdSiniestro, null);
+        }
+        
+        /// <remarks/>
+        public void ConsultaNumSiniestroDAAsync(int IdSiniestro, object userState) {
+            if ((this.ConsultaNumSiniestroDAOperationCompleted == null)) {
+                this.ConsultaNumSiniestroDAOperationCompleted = new System.Threading.SendOrPostCallback(this.OnConsultaNumSiniestroDAOperationCompleted);
+            }
+            this.InvokeAsync("ConsultaNumSiniestroDA", new object[] {
+                        IdSiniestro}, this.ConsultaNumSiniestroDAOperationCompleted, userState);
+        }
+        
+        private void OnConsultaNumSiniestroDAOperationCompleted(object arg) {
+            if ((this.ConsultaNumSiniestroDACompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ConsultaNumSiniestroDACompleted(this, new ConsultaNumSiniestroDACompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -476,6 +511,27 @@ namespace SDA.wsConsultaReportesDA {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx")]
+    public partial class NumSiniestro {
+        
+        private string numeroSiniestroField;
+        
+        /// <comentarios/>
+        public string NumeroSiniestro {
+            get {
+                return this.numeroSiniestroField;
+            }
+            set {
+                this.numeroSiniestroField = value;
+            }
+        }
+    }
+    
+    /// <comentarios/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18213")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx")]
     public partial class Error {
         
         private string mensajeField;
@@ -513,7 +569,7 @@ namespace SDA.wsConsultaReportesDA {
         
         private string idBitacoraField;
         
-        private string fechaField;
+        private System.DateTime fechaField;
         
         private string statusField;
         
@@ -544,7 +600,7 @@ namespace SDA.wsConsultaReportesDA {
         }
         
         /// <comentarios/>
-        public string Fecha {
+        public System.DateTime Fecha {
             get {
                 return this.fechaField;
             }
@@ -822,6 +878,32 @@ namespace SDA.wsConsultaReportesDA {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Error)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
+    public delegate void ConsultaNumSiniestroDACompletedEventHandler(object sender, ConsultaNumSiniestroDACompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ConsultaNumSiniestroDACompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ConsultaNumSiniestroDACompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public NumSiniestro Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((NumSiniestro)(this.results[0]));
             }
         }
     }

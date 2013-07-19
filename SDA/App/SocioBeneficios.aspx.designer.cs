@@ -121,24 +121,6 @@ namespace SDA.App {
         protected global::Ext.Net.Model Model5;
         
         /// <summary>
-        /// Control strDocumentos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store strDocumentos;
-        
-        /// <summary>
-        /// Control Model6.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model Model6;
-        
-        /// <summary>
         /// Control strDocumentosAgregados.
         /// </summary>
         /// <remarks>
@@ -220,13 +202,13 @@ namespace SDA.App {
         protected global::Ext.Net.Store strPaqueteria;
         
         /// <summary>
-        /// Control Model12.
+        /// Control Model6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model Model12;
+        protected global::Ext.Net.Model Model6;
         
         /// <summary>
         /// Control strEnvio.
@@ -598,31 +580,31 @@ namespace SDA.App {
         protected global::Ext.Net.GridPanel grdArchivos;
         
         /// <summary>
-        /// Control Column1.
+        /// Control Column8.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column Column1;
+        protected global::Ext.Net.Column Column8;
         
         /// <summary>
-        /// Control Column2.
+        /// Control Column9.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column Column2;
+        protected global::Ext.Net.Column Column9;
         
         /// <summary>
-        /// Control Column3.
+        /// Control Column10.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column Column3;
+        protected global::Ext.Net.Column Column10;
         
         /// <summary>
         /// Control CommandColumn1.
@@ -859,6 +841,24 @@ namespace SDA.App {
         protected global::Ext.Net.ComboBox cmbPaqueteria;
         
         /// <summary>
+        /// Control btnGuardarArchivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnGuardarArchivo;
+        
+        /// <summary>
+        /// Control btnCancelarArchivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnCancelarArchivo;
+        
+        /// <summary>
         /// Control wd_SiniestroAsignado.
         /// </summary>
         /// <remarks>
@@ -902,5 +902,41 @@ namespace SDA.App {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Button btnAceptarNumSin;
+        
+        /// <summary>
+        /// Control wndPDF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Window wndPDF;
+        
+        /// <summary>
+        /// Control wndRecibo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Window wndRecibo;
+        
+        /// <summary>
+        /// Control dateRecibo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DatePicker dateRecibo;
+        
+        /// <summary>
+        /// Control btnGuardarRecibo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnGuardarRecibo;
     }
 }

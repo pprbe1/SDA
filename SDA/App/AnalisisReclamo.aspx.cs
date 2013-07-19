@@ -20,20 +20,26 @@ namespace SDA.App
 
         protected void BuscarSiniestros(object sender, DirectEventArgs e)
         {
-            wsConsultaReportesDA.Siniestro[] siniestros;
-            int operacion;
-            int entidad;
-
             if (txtNumSocio.Text != string.Empty)
             {
-                operacion = 3;
-                entidad = Convert.ToInt32(txtNumSocio.Text);
+                Session["Operacion"] = 3;
+                Session["Entidad"] = txtNumSocio.Text;
             }
             else
             {
-                operacion = 1;
-                entidad = Convert.ToInt32(cmbSucursal.SelectedItem.Value);
+                Session["Operacion"] = 1;
+                Session["Entidad"] = cmbSucursal.SelectedItem.Value;
             }
+
+            ActualizarSiniestros();
+        }
+
+        private void ActualizarSiniestros()
+        {
+            int operacion = Convert.ToInt32(Session["Operacion"]);
+            int entidad = Convert.ToInt32(Session["Entidad"]);
+
+            wsConsultaReportesDA.Siniestro[] siniestros;
 
             siniestros = reportesDA.Siniestros(operacion, entidad);
 
@@ -61,12 +67,57 @@ namespace SDA.App
                     Response.BinaryWrite(GetFileBytes());
                     Response.End();
                     break;
+                case "Recibo":
+                    int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
+                    int noDocumentacion = Convert.ToInt32(e.ExtraParams["NoDocumentacion"]);
+
+                    Session["NoDocumentacion"] = e.ExtraParams["NoDocumentacion"];
+
+                    Bitacora[] siniestros = reportesDA.Bitacoras(6, noSiniestro);
+
+                    foreach (Bitacora siniestro in siniestros)
+                    {
+                        int tmp = Convert.ToInt32(siniestro.IdDocumentacion);
+
+                        if (tmp == noDocumentacion)
+                        {
+                            DateTime date = DateTime.Now;
+
+                            bool ret = DateTime.TryParse(siniestro.FechaReclamo, out date);
+
+                            if (ret)
+                            {
+                                X.MessageBox.Alert("Fecha de Recibo", "El documento se recibio el: " + siniestro.FechaReclamo).Show();
+                            }
+                            else
+                            {
+                                dateRecibo.SelectedDate = date;
+
+                                wndRecibo.Show();
+                            }
+
+                            return;
+                        }
+                    }
+                    break;
             }
+        }
+
+        protected void UpdateFechaRecibo(object sender, DirectEventArgs e)
+        {
+            int noDocumentacion = Convert.ToInt32(Session["NoDocumentacion"]);
+            string fechaRecibo = e.ExtraParams["FechaRecibo"].ToString();
+
+            Error err = reportesDA.UpdateFechaRecDocuDA(noDocumentacion, fechaRecibo);
+
+            dateRecibo.SelectedDate = DateTime.Now;
+
+            wndRecibo.Hide();
         }
 
         private byte[] GetFileBytes()
         {
-            string noSiniestro = Session["NoSiniestro"].ToString();
+            string noSiniestro = Session["IdSiniestro"].ToString();
             string noGuia = Session["NoGuia"].ToString();
 
             return insertaDatos.GetFileForSiniestro(noSiniestro, noGuia, ".pdf");
@@ -92,7 +143,7 @@ namespace SDA.App
 
             btnGuardarEstadoSin.Disabled = true;
 
-            int noSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
+            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
 
             BitacoraSiniestro(noSiniestro);
             ArchivosSiniestro(noSiniestro);
@@ -105,18 +156,20 @@ namespace SDA.App
 
         protected void UpdateEstadoSiniestro(object sender, DirectEventArgs e)
         {
-            int noSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
+            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
             int noEstadoSin = Convert.ToInt32(e.ExtraParams["EstadoSin"]);
 
             Error err = reportesDA.UpdateStatusSiniestroDA(noSiniestro, noEstadoSin);
 
             btnGuardarEstadoSin.Disabled = true;
+
+            ActualizarSiniestros();
         }
 
         private void SaveSessionVarsFor(Siniestro siniestro)
         {
             Session["NoSocio"] = siniestro.NoSocio;
-            Session["NoSiniestro"] = siniestro.NoSiniestro;
+            Session["IdSiniestro"] = siniestro.NoSiniestro;
         }
 
         private void BitacoraSiniestro(int noSiniestro)
@@ -153,7 +206,7 @@ namespace SDA.App
 
         protected void NuevaBitacora(object sender, DirectEventArgs e)
         {
-            int idSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
+            int idSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
 
             grdBitacora.Disabled = true;
             txtBitacora.SetValue(string.Empty);
@@ -218,10 +271,10 @@ namespace SDA.App
         
         protected void InsertarBitacora(object sender, DirectEventArgs e)
         {
-            Session["Usuario"] = "830"; //which stands for luisito homs
+            Session["Usuario"] = "1"; //este vato es Administrador Prybe S.C.
 
             int idUsuario = Convert.ToInt32(Session["Usuario"]);
-            int noSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
+            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
 
             Error err = reportesDA.InsertBitacoraDA(noSiniestro, 1, idUsuario, txtBitacora.RawValue.ToString());
 
@@ -236,7 +289,7 @@ namespace SDA.App
         {
             if (VerifyCheckList())
             {
-                int noSiniestro = Convert.ToInt32(Session["NoSiniestro"]);
+                int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
                 int idPaqueteria = Convert.ToInt32(cmbPaqueteria.Value);
 
                 string extension = System.IO.Path.GetExtension(fileSelector.FileName);
@@ -291,9 +344,12 @@ namespace SDA.App
             {
                 Checkbox chk = ComponentManager.Get("chkDoc" + i.ToString()) as Checkbox;
 
-                Error err = reportesDA.InsertDetDocuDA(i, idDocumentacion);
+                if (chk.Checked)
+                {
+                    wsConsultaReportesDA.Error err = reportesDA.InsertDetDocuDA(i, idDocumentacion);
 
-                if (err.Valor) return err.Mensaje;
+                    if (err.Valor) return err.Mensaje;
+                }
             }
 
             return string.Empty; //fix this bad behavior

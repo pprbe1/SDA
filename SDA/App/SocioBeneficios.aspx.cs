@@ -8,7 +8,8 @@ using System.Text.RegularExpressions;
 using Ext.Net;
 using System.Text;
 using System.Web.Configuration;
-
+using SDA.wsInsercionDatosBen;
+using SDA.wsConsultaReportesDA;
 
 namespace SDA.App
 {
@@ -21,9 +22,13 @@ namespace SDA.App
         wsInsercionDatosBen.wsInsertaDatosBeneficios documento = new wsInsercionDatosBen.wsInsertaDatosBeneficios();
         wsConsultaDatos2.wsConsultaSiniestros cdocumento = new wsConsultaDatos2.wsConsultaSiniestros();
 
+        wsConsultaReportesDA.wsConsultaReportesDA reportesDA = new wsConsultaReportesDA.wsConsultaReportesDA();
+
         wsInsercionDatosBen.Error ErrorOper = new wsInsercionDatosBen.Error();
         wsCPM.wsPrybeCPM SocioCPM = new wsCPM.wsPrybeCPM();
         wsCPM.SocioCPM ConsultaSocioCPM = new wsCPM.SocioCPM();
+
+        byte[] DOCUMENTOS_OBLIGATORIOS = new byte[] { 1, 2, 3, 4, 7, 8, 10, 11, 12, 13, 14 };
 
         DateTime fechaNac = new DateTime();
         DateTime fechaIng = new DateTime();
@@ -34,6 +39,222 @@ namespace SDA.App
         {
         }
 
+        protected void NuevoEnvio(object sender, DirectEventArgs e)
+        {
+            grdArchivos.Disabled = true;
+
+            for (int i = 1; i < 17; i++)
+            {
+                Checkbox chk = ComponentManager.Get("chkDoc" + i.ToString()) as Checkbox;
+                chk.Value = 0;
+                chk.ReadOnly = false;
+            }
+
+            dateEnvio.ReadOnly = false;
+            fileSelector.ReadOnly = false;
+            txtGuia.ReadOnly = false;
+            cmbPaqueteria.ReadOnly = false;
+
+            btnGuardarArchivo.Hidden = false;
+            btnCancelarArchivo.Hidden = false;
+        }
+
+        private byte[] GetFileBytes()
+        {
+            string noSiniestro = Session["IdSiniestro"].ToString();
+            string noGuia = Session["NoGuia"].ToString();
+
+            return documento.GetFileForSiniestro(noSiniestro, noGuia, ".pdf");
+        }
+
+        protected void InsertarEnvio(object sender, DirectEventArgs e)
+        {
+            if (VerifyCheckList())
+            {
+                int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
+                int idPaqueteria = Convert.ToInt32(cmbPaqueteria.SelectedItem.Value); //
+
+                string extension = System.IO.Path.GetExtension(fileSelector.FileName);
+
+                documento.UploadFileForSiniestros(fileSelector.FileBytes, noSiniestro.ToString(), txtGuia.Text, extension);
+
+                //Hasta aquí se ha insertado correctamente el archivo, procedemos a insertar los datos del envío a la base de datos
+
+                wsConsultaReportesDA.Error ret = reportesDA.InsertDocumentacionDA(noSiniestro, idPaqueteria, dateEnvio.SelectedDate.ToShortDateString(), txtGuia.Text);
+
+                int idDocumentacion = 0;
+
+                //Hasta aquí se ha insertado la entrada del envío en la base de datos. El procedimiento devuelve el número del envío y procedemos a
+                //insertar en la base de datos los documentos especificos enviados
+
+                if (int.TryParse(ret.Mensaje, out idDocumentacion))
+                {
+                    string loopRet = LoopThroughEachCheckBoxAndInsertThemInToTheDataBaseBecauseNoArrays(idDocumentacion);
+
+                    if (loopRet != string.Empty) X.MessageBox.Alert("Error al insertar datos", loopRet);
+
+                    ArchivosSiniestro(noSiniestro);
+
+                    RestaurarArchivos(null, null);
+                }
+                else
+                {
+                    X.MessageBox.Alert("Alerta", "Ocurrio un problema al insertar los detalles del documento");
+                }
+            }
+            else
+            {
+                X.MessageBox.Alert("Documentos de envío", "No has enviado el minimo de documentos obligatorios para el reclamo del siniestro").Show();
+            }
+        }
+
+        private void ArchivosSiniestro(int noSiniestro)
+        {
+            Bitacora[] archivos = reportesDA.Bitacoras(6, noSiniestro);
+
+            strEnvio.DataSource = archivos;
+            strEnvio.DataBind();
+
+            wd_SiniestroAsignado.Show();
+        }
+
+        private bool VerifyCheckList()
+        {
+            foreach (byte id in DOCUMENTOS_OBLIGATORIOS)
+            {
+                Checkbox chk = ComponentManager.Get<Checkbox>("chkDoc" + id);
+
+                if (!chk.Checked) return false;
+            }
+
+            return true;
+        }
+
+        private string LoopThroughEachCheckBoxAndInsertThemInToTheDataBaseBecauseNoArrays(int idDocumentacion)
+        {
+            for (int i = 1; i < 17; i++)
+            {
+                Checkbox chk = ComponentManager.Get("chkDoc" + i.ToString()) as Checkbox;
+
+                if (chk.Checked)
+                {
+                    wsConsultaReportesDA.Error err = reportesDA.InsertDetDocuDA(i, idDocumentacion);
+
+                    if (err.Valor) return err.Mensaje;
+                }
+            }
+
+            return string.Empty; //fix this bad behavior
+        }
+
+        protected void RestaurarArchivos(object sender, DirectEventArgs e)
+        {
+            grdArchivos.Disabled = false;
+
+            for (int i = 1; i < 17; i++)
+            {
+                Checkbox chk = ComponentManager.Get("chkDoc" + i.ToString()) as Checkbox;
+                chk.Value = 0;
+                chk.ReadOnly = true;
+            }
+
+            dateEnvio.ReadOnly = true;
+            dateEnvio.Clear();
+            fileSelector.ReadOnly = true;
+            fileSelector.Clear();
+            txtGuia.ReadOnly = true;
+            txtGuia.Clear();
+            cmbPaqueteria.ReadOnly = true;
+            cmbPaqueteria.ClearValue();
+
+            btnGuardarArchivo.Hidden = true;
+            btnCancelarArchivo.Hidden = true;
+        }
+
+        protected void DocumentosEnvio(object sender, DirectEventArgs e)
+        {
+            int idEnvio = Convert.ToInt32(e.ExtraParams["ID"]);
+
+            RestaurarArchivos(null, null);
+
+            Bitacora[] archivos = reportesDA.Bitacoras(7, idEnvio);
+
+            foreach (Bitacora documento in archivos)
+            {
+                Checkbox chk = ComponentManager.Get<Checkbox>("chkDoc" + documento.TipoDoc);
+
+                chk.Checked = true;
+            }
+        }
+
+        protected void CommandArchivos(object sender, DirectEventArgs e)
+        {
+            Session["NoGuia"] = e.ExtraParams["NoGuia"];
+
+            string cmd = e.ExtraParams["Command"];
+
+            switch (cmd)
+            {
+                case "Ver":
+                    wndPDF.Hidden = false;
+                    wndPDF.Loader.LoadContent();
+                    break;
+
+                case "Descargar":
+                    Response.Clear();
+                    Response.AppendHeader("content-disposition", "attachment; filename=" + Session["NoGuia"] + ".pdf");
+                    Response.ContentType = "application/octet-stream";
+                    Response.BinaryWrite(GetFileBytes());
+                    Response.End();
+                    break;
+                case "Recibo":
+                    int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
+                    int noDocumentacion = Convert.ToInt32(e.ExtraParams["NoDocumentacion"]);
+
+                    Session["NoDocumentacion"] = e.ExtraParams["NoDocumentacion"];
+
+                    Bitacora[] siniestros = reportesDA.Bitacoras(6, noSiniestro);
+
+                    foreach (Bitacora siniestro in siniestros)
+                    {
+                        int tmp = Convert.ToInt32(siniestro.IdDocumentacion);
+
+                        if (tmp == noDocumentacion)
+                        {
+                            DateTime date = DateTime.Now;
+
+                            bool ret = DateTime.TryParse(siniestro.FechaReclamo, out date);
+
+                            if (ret)
+                            {
+                                X.MessageBox.Alert("Fecha de Recibo", "El documento se recibio el: " + siniestro.FechaReclamo).Show();
+                            }
+                            else
+                            {
+                                dateRecibo.SelectedDate = date;
+
+                                wndRecibo.Show();
+                            }
+
+                            return;
+                        }
+                    }
+                    break;
+            }
+        }
+
+        protected void UpdateFechaRecibo(object sender, DirectEventArgs e)
+        {
+            int noDocumentacion = Convert.ToInt32(Session["NoDocumentacion"]);
+            string fechaRecibo = e.ExtraParams["FechaRecibo"].ToString();
+
+            wsConsultaReportesDA.Error err = reportesDA.UpdateFechaRecDocuDA(noDocumentacion, fechaRecibo);
+
+            dateRecibo.SelectedDate = DateTime.Now;
+
+            wndRecibo.Hide();
+        }
+
         protected void btnBuscaSocio_Click(object sender, EventArgs e)
         {
             this.btnModificarSocio.Disabled = false;
@@ -42,7 +263,7 @@ namespace SDA.App
             {
                 Session["NumeroSocio"] = txtNumSocio.Text;
                 Session["Sucursal"] = cmbSucursal.SelectedItem.Value;
-                datsocio = llamada.CargaDatosSocioAlta(this.txtNumSocio.Text, this.cmbSucursal.SelectedItem.Value);
+                //datsocio = llamada.CargaDatosSocioAlta(this.txtNumSocio.Text, this.cmbSucursal.SelectedItem.Value);
                 ConsultaSocioCPM = SocioCPM.ObtenSocioCPM(txtNumSocio.Text, "PRYBE");
                 if (!this.txtNumSocio.IsEmpty)
                 {
@@ -164,7 +385,7 @@ namespace SDA.App
                                    Convert.ToInt32(Session["Sucursal"]), Convert.ToString(ano), 1, this.txtCalle.Text.ToUpper(),
                                    this.txtNoExt.Text.ToUpper(), this.txtNoInt.Text.ToUpper(), 1);
 
-                    Session["IdReclamo"] = dfNumeroSiniestro2.Text = ErrorOper.Mensaje;
+                    Session["IdSiniestro"] = dfNumeroSiniestro2.Text = ErrorOper.Mensaje;
                     this.paneArchivos.Disabled = false;
                     this.pnlSocio.Disabled = true;
                 }

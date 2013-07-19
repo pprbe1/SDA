@@ -58,7 +58,7 @@
       <s:complexType name="Bitacora">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="IdBitacora" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Fecha" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
           <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
@@ -155,9 +155,29 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ConsultaNumSiniestroDA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSiniestro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaNumSiniestroDAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaNumSiniestroDAResult" type="tns:NumSiniestro" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NumSiniestro">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroSiniestro" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ArrayOfSiniestro" nillable="true" type="tns:ArrayOfSiniestro" />
       <s:element name="ArrayOfBitacora" nillable="true" type="tns:ArrayOfBitacora" />
       <s:element name="Error" nillable="true" type="tns:Error" />
+      <s:element name="NumSiniestro" nillable="true" type="tns:NumSiniestro" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="SiniestrosSoapIn">
@@ -201,6 +221,12 @@
   </wsdl:message>
   <wsdl:message name="InsertDetDocuDASoapOut">
     <wsdl:part name="parameters" element="tns:InsertDetDocuDAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaNumSiniestroDASoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaNumSiniestroDA" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaNumSiniestroDASoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaNumSiniestroDAResponse" />
   </wsdl:message>
   <wsdl:message name="SiniestrosHttpGetIn">
     <wsdl:part name="Operacion" type="s:string" />
@@ -255,6 +281,12 @@
   <wsdl:message name="InsertDetDocuDAHttpGetOut">
     <wsdl:part name="Body" element="tns:Error" />
   </wsdl:message>
+  <wsdl:message name="ConsultaNumSiniestroDAHttpGetIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaNumSiniestroDAHttpGetOut">
+    <wsdl:part name="Body" element="tns:NumSiniestro" />
+  </wsdl:message>
   <wsdl:message name="SiniestrosHttpPostIn">
     <wsdl:part name="Operacion" type="s:string" />
     <wsdl:part name="IdEntidad" type="s:string" />
@@ -308,6 +340,12 @@
   <wsdl:message name="InsertDetDocuDAHttpPostOut">
     <wsdl:part name="Body" element="tns:Error" />
   </wsdl:message>
+  <wsdl:message name="ConsultaNumSiniestroDAHttpPostIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaNumSiniestroDAHttpPostOut">
+    <wsdl:part name="Body" element="tns:NumSiniestro" />
+  </wsdl:message>
   <wsdl:portType name="wsConsultaReportesDASoap">
     <wsdl:operation name="Siniestros">
       <wsdl:input message="tns:SiniestrosSoapIn" />
@@ -336,6 +374,10 @@
     <wsdl:operation name="InsertDetDocuDA">
       <wsdl:input message="tns:InsertDetDocuDASoapIn" />
       <wsdl:output message="tns:InsertDetDocuDASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNumSiniestroDA">
+      <wsdl:input message="tns:ConsultaNumSiniestroDASoapIn" />
+      <wsdl:output message="tns:ConsultaNumSiniestroDASoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsConsultaReportesDAHttpGet">
@@ -367,6 +409,10 @@
       <wsdl:input message="tns:InsertDetDocuDAHttpGetIn" />
       <wsdl:output message="tns:InsertDetDocuDAHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="ConsultaNumSiniestroDA">
+      <wsdl:input message="tns:ConsultaNumSiniestroDAHttpGetIn" />
+      <wsdl:output message="tns:ConsultaNumSiniestroDAHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsConsultaReportesDAHttpPost">
     <wsdl:operation name="Siniestros">
@@ -396,6 +442,10 @@
     <wsdl:operation name="InsertDetDocuDA">
       <wsdl:input message="tns:InsertDetDocuDAHttpPostIn" />
       <wsdl:output message="tns:InsertDetDocuDAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNumSiniestroDA">
+      <wsdl:input message="tns:ConsultaNumSiniestroDAHttpPostIn" />
+      <wsdl:output message="tns:ConsultaNumSiniestroDAHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsConsultaReportesDASoap" type="tns:wsConsultaReportesDASoap">
@@ -456,6 +506,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsertDetDocuDA">
       <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertDetDocuDA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNumSiniestroDA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/ConsultaNumSiniestroDA" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -529,6 +588,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ConsultaNumSiniestroDA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/ConsultaNumSiniestroDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsConsultaReportesDAHttpGet" type="tns:wsConsultaReportesDAHttpGet">
     <http:binding verb="GET" />
@@ -588,6 +656,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsertDetDocuDA">
       <http:operation location="/InsertDetDocuDA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNumSiniestroDA">
+      <http:operation location="/ConsultaNumSiniestroDA" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -661,19 +738,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ConsultaNumSiniestroDA">
+      <http:operation location="/ConsultaNumSiniestroDA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="wsConsultaReportesDA">
     <wsdl:port name="wsConsultaReportesDASoap" binding="tns:wsConsultaReportesDASoap">
-      <soap:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
+      <soap:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" />
     </wsdl:port>
     <wsdl:port name="wsConsultaReportesDASoap12" binding="tns:wsConsultaReportesDASoap12">
-      <soap12:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
+      <soap12:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" />
     </wsdl:port>
     <wsdl:port name="wsConsultaReportesDAHttpGet" binding="tns:wsConsultaReportesDAHttpGet">
-      <http:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
+      <http:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" />
     </wsdl:port>
     <wsdl:port name="wsConsultaReportesDAHttpPost" binding="tns:wsConsultaReportesDAHttpPost">
-      <http:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
+      <http:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
