@@ -287,55 +287,36 @@ namespace SDA.App
 
         protected void InsertarEnvio(object sender, DirectEventArgs e)
         {
-            if (VerifyCheckList())
+            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
+            int idPaqueteria = Convert.ToInt32(cmbPaqueteria.Value);
+
+            string extension = System.IO.Path.GetExtension(fileSelector.FileName);
+
+            insertaDatos.UploadFileForSiniestros(fileSelector.FileBytes, noSiniestro.ToString(), txtGuia.Text, extension);
+
+            //Hasta aquí se ha insertado correctamente el archivo, procedemos a insertar los datos del envío a la base de datos
+
+            Error ret = reportesDA.InsertDocumentacionDA(noSiniestro, idPaqueteria, dateEnvio.SelectedDate.ToShortDateString(), txtGuia.Text);
+
+            int idDocumentacion = 0;
+
+            //Hasta aquí se ha insertado la entrada del envío en la base de datos. El procedimiento devuelve el número del envío y procedemos a
+            //insertar en la base de datos los documentos especificos enviados
+
+            if (int.TryParse(ret.Mensaje, out idDocumentacion))
             {
-                int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
-                int idPaqueteria = Convert.ToInt32(cmbPaqueteria.Value);
+                string loopRet = LoopThroughEachCheckBoxAndInsertThemInToTheDataBaseBecauseNoArrays(idDocumentacion);
 
-                string extension = System.IO.Path.GetExtension(fileSelector.FileName);
+                if (loopRet != string.Empty) X.MessageBox.Alert("Error al insertar datos", loopRet);
 
-                insertaDatos.UploadFileForSiniestros(fileSelector.FileBytes, noSiniestro.ToString(), txtGuia.Text, extension);
+                ArchivosSiniestro(noSiniestro);
 
-                //Hasta aquí se ha insertado correctamente el archivo, procedemos a insertar los datos del envío a la base de datos
-
-                Error ret = reportesDA.InsertDocumentacionDA(noSiniestro, idPaqueteria, dateEnvio.SelectedDate.ToShortDateString(), txtGuia.Text);
-
-                int idDocumentacion = 0;
-
-                //Hasta aquí se ha insertado la entrada del envío en la base de datos. El procedimiento devuelve el número del envío y procedemos a
-                //insertar en la base de datos los documentos especificos enviados
-
-                if (int.TryParse(ret.Mensaje, out idDocumentacion))
-                {
-                    string loopRet = LoopThroughEachCheckBoxAndInsertThemInToTheDataBaseBecauseNoArrays(idDocumentacion);
-
-                    if (loopRet != string.Empty) X.MessageBox.Alert("Error al insertar datos", loopRet);
-
-                    ArchivosSiniestro(noSiniestro);
-
-                    RestaurarArchivos(null, null);
-                }
-                else
-                {
-                    X.MessageBox.Alert("Alerta", "Ocurrio un problema al insertar los detalles del documento");
-                }
+                RestaurarArchivos(null, null);
             }
             else
             {
-                X.MessageBox.Alert("Documentos de envío", "No has enviado el minimo de documentos obligatorios para el reclamo del siniestro").Show();
+                X.MessageBox.Alert("Alerta", "Ocurrio un problema al insertar los detalles del documento");
             }
-        }
-
-        private bool VerifyCheckList()
-        {
-            foreach (byte id in DOCUMENTOS_OBLIGATORIOS)
-            {
-                Checkbox chk = ComponentManager.Get<Checkbox>("chkDoc" + id);
-
-                if (!chk.Checked) return false;
-            }
-
-            return true;
         }
 
         private string LoopThroughEachCheckBoxAndInsertThemInToTheDataBaseBecauseNoArrays(int idDocumentacion)

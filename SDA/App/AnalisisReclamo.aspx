@@ -487,7 +487,7 @@
             </ext:Button>
         </Buttons>
     </ext:Window>
-    <ext:Window ID="wndPDF" runat="server" Title="Vista Previa del Documento" Height="800" Width="800" Hidden="true">
+    <ext:Window ID="wndPDF" runat="server" Title="Vista Previa del Documento" Maximized="true" Hidden="true">
         <Loader ID="ldPDF" runat="server" Url="/App/PdfReader.aspx" Mode="Frame" AutoLoad="false" />
     </ext:Window>
     <ext:Window ID="wndRecibo" runat="server" Title="Agregar fecha de recibo" Height="260" Layout="FitLayout" Hidden="true">

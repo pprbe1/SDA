@@ -590,13 +590,13 @@
                     </ext:FormPanel>
                     <ext:FormPanel ID="frmArchivosOpciones2" runat="server" Border="false" Padding="5">
                         <Items>
-                            <ext:DateField ID="dateEnvio" runat="server" ReadOnly="true" FieldLabel="Fecha de Envio" AllowBlank="false" LabelWidth="130" />
-                            <ext:FileUploadField ID="fileSelector" runat="server" FieldLabel="Archivo" ReadOnly="true" AllowBlank="false" Regex="(.pdf|.PDF)" LabelWidth="130" />
-                            <ext:TextField ID="txtGuia" runat="server" EmptyText="N° de Guia" FieldLabel="Guia" ReadOnly="true" AllowBlank="false" LabelWidth="130" />
+                            <ext:DateField ID="dateEnvio" runat="server" ReadOnly="true" FieldLabel="Fecha de Envio" AllowBlank="false" LabelWidth="130" AnchorHorizontal="100%" />
+                            <ext:FileUploadField ID="fileSelector" runat="server" FieldLabel="Archivo" ReadOnly="true" AllowBlank="false" Regex="(.pdf|.PDF)" LabelWidth="130" AnchorHorizontal="100%" />
+                            <ext:TextField ID="txtGuia" runat="server" EmptyText="N° de Guia" FieldLabel="Guia" ReadOnly="true" AllowBlank="false" LabelWidth="130" AnchorHorizontal="100%" />
                             <ext:ComboBox ID="cmbPaqueteria" runat="server" StoreID="strPaqueteria" Editable="false"
                                 TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All" LabelWidth="130"
                                 DisplayField="name" ValueField="id" EmptyText="Paquetería..." ValueNotFoundText="Cargando..."
-                                FieldLabel="Paquetería">
+                                FieldLabel="Paquetería" AnchorHorizontal="100%">
                             </ext:ComboBox> 
                         </Items>
                     </ext:FormPanel>
@@ -634,7 +634,7 @@
             </ext:Button>
         </Buttons>
     </ext:Window>
-    <ext:Window ID="wndPDF" runat="server" Title="Vista Previa del Documento" Height="800" Width="800" Hidden="true">
+    <ext:Window ID="wndPDF" runat="server" Title="Vista Previa del Documento" Maximized="true" Hidden="true">
         <Loader ID="ldPDF" runat="server" Url="/App/PdfReader.aspx" Mode="Frame" AutoLoad="false" />
     </ext:Window>
     <ext:Window ID="wndRecibo" runat="server" Title="Agregar fecha de recibo" Height="260" Layout="FitLayout" Hidden="true">
