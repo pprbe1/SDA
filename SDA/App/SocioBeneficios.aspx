@@ -566,7 +566,7 @@
                 <Items>
                     <ext:FormPanel ID="frmArchivosOpciones" runat="server" Border="false" Padding="5">
                         <Items>
-                            <ext:CheckboxGroup ID="chkGroup" runat="server" ColumnsNumber="2">
+                            <ext:CheckboxGroup ID="chkGroup" runat="server" ColumnsNumber="2" AllowBlank="false">
                                 <Items>
                                     <ext:Checkbox ID="chkDoc1" runat="server" ReadOnly="true" BoxLabel="Solicitud de Beneficios" IndicatorTip="Original de Formato de Solicitud de Beneficios" />
                                     <ext:Checkbox ID="chkDoc2" runat="server" ReadOnly="true" BoxLabel="Solicitud de Ingreso" IndicatorTip="Original de Solicitud de ingreso" />
@@ -596,7 +596,7 @@
                             <ext:ComboBox ID="cmbPaqueteria" runat="server" StoreID="strPaqueteria" Editable="false"
                                 TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All" LabelWidth="130"
                                 DisplayField="name" ValueField="id" EmptyText="Paquetería..." ValueNotFoundText="Cargando..."
-                                FieldLabel="Paquetería" AnchorHorizontal="100%">
+                                FieldLabel="Paquetería" AnchorHorizontal="100%" AllowBlank="false">
                             </ext:ComboBox> 
                         </Items>
                     </ext:FormPanel>

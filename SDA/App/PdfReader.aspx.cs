@@ -29,6 +29,7 @@ namespace SDA.App
             string noGuia = Session["NoGuia"].ToString();
 
             Response.Clear();
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.BinaryWrite(getter.GetFileForSiniestro(noSiniestro, noGuia, ".pdf"));
         }
     }

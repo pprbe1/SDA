@@ -77,8 +77,8 @@ namespace SDA.App
                     Response.End();
                     break;
                 case "Recibo":
-                    int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
                     int noDocumentacion = Convert.ToInt32(e.ExtraParams["NoDocumentacion"]);
+                    int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
 
                     Session["NoDocumentacion"] = e.ExtraParams["NoDocumentacion"];
 
