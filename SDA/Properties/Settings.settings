@@ -24,7 +24,7 @@
       <Value Profile="(Default)">http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsInsertaDatosBeneficios.asmx</Value>
     </Setting>
     <Setting Name="SDA_wsConsultaReportesDA_wsConsultaReportesDA" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx</Value>
+      <Value Profile="(Default)">http://localhost:50444/wspbene/wsConsultaReportesDA.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

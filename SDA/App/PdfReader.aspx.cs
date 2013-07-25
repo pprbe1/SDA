@@ -25,12 +25,12 @@ namespace SDA.App
 
         public void WriteBytesFromFile()
         {
-            string noSiniestro = Session["IdSiniestro"].ToString();
-            string noGuia = Session["NoGuia"].ToString();
+            string folder = Session["IdSiniestro"].ToString();
+            string file = Session["NoDocumentacion"].ToString();
 
             Response.Clear();
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.BinaryWrite(getter.GetFileForSiniestro(noSiniestro, noGuia, ".pdf"));
+            Response.BinaryWrite(getter.GetFileForSiniestro(folder, file, ".pdf"));
         }
     }
 }

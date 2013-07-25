@@ -112,6 +112,15 @@ namespace SDA.App {
         protected global::Ext.Net.MenuItem miSS;
         
         /// <summary>
+        /// Control miDocPend.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem miDocPend;
+        
+        /// <summary>
         /// Control mpReportes.
         /// </summary>
         /// <remarks>

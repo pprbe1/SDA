@@ -3,6 +3,7 @@
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
 
 <html>
 <head id="Head1" runat="server">
@@ -235,13 +236,13 @@
                                 </Listeners>
                             </ext:MenuItem>                            
                             
-                            <%--<ext:MenuItem ID="miOC" runat="server" Text="Pedidos de Clientes" Icon="TableAdd">
+                            <ext:MenuItem ID="miDocPend" runat="server" Text="Documentos Pendientes" Icon="TableAdd">
                                 <Listeners>
-                                    <Click Handler="addTab(#{tabMain}, 'idOC', 'http://www.w3schools.com/', this, 'Pedido de Clientes');" />
+                                    <Click Handler="addTab(#{tabMain}, 'idDP', 'DocPendientes.aspx', this, 'Seguimiento - Consulta de Documentacion Pendiente');" />
                                 </Listeners>
                             </ext:MenuItem>                            
                             
-                            <ext:MenuItem ID="miIC" runat="server" Text="Facturas de Clientes" Icon="PageAttach">
+                            <%--<ext:MenuItem ID="miIC" runat="server" Text="Facturas de Clientes" Icon="PageAttach">
                                 <Listeners>
                                     <Click Handler="addTab(#{tabMain}, 'idIC', 'http://www.w3schools.com/', this, 'Facturas de Clientes');" />
                                 </Listeners>
@@ -312,13 +313,14 @@
                     </Menu>
                 </ext:MenuPanel>   
 
-                </Items>                                    
+                </Items>                         
             </ext:Panel>
 
             <ext:TabPanel 
                 ID="tabMain"
                 Region="Center"
-                runat="server" 
+                runat="server"
+                Layout="AnchorLayout"
                 Border="true" >                
             </ext:TabPanel> 
         </Items>

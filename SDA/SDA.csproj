@@ -84,6 +84,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\AnalisisReclamo.aspx" />
+    <Content Include="App\DocPendientes.aspx" />
+    <Content Include="App\FileUploadBit.ascx" />
     <Content Include="App\Menu.aspx" />
     <Content Include="App\PdfReader.aspx" />
     <Content Include="App\SocioBeneficios.aspx" />
@@ -321,6 +323,9 @@
     <None Include="Web References\wsConsultaReportesDA\Bitacora.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\wsConsultaReportesDA\DocumentoPendiente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\wsConsultaReportesDA\Error1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -379,6 +384,20 @@
     </Compile>
     <Compile Include="App\AnalisisReclamo.aspx.designer.cs">
       <DependentUpon>AnalisisReclamo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\DocPendientes.aspx.cs">
+      <DependentUpon>DocPendientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\DocPendientes.aspx.designer.cs">
+      <DependentUpon>DocPendientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\FileUploadBit.ascx.cs">
+      <DependentUpon>FileUploadBit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\FileUploadBit.ascx.designer.cs">
+      <DependentUpon>FileUploadBit.ascx</DependentUpon>
     </Compile>
     <Compile Include="App\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
@@ -478,10 +497,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx">
+    <WebReferenceUrl Include="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wsConsultaReportesDA\</RelPath>
-      <UpdateFromURL>http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:50444/wspbene/wsConsultaReportesDA.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

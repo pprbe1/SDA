@@ -1,7 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx">
+      <s:element name="DocumentacionPendiente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DocumentacionPendienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentacionPendienteResult" type="tns:ArrayOfDocumentoPendiente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocumentoPendiente">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DocumentoPendiente" nillable="true" type="tns:DocumentoPendiente" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DocumentoPendiente">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdDocumentacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdSiniestro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cooperativa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plaza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaAlta" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Siniestros">
         <s:complexType>
           <s:sequence>
@@ -115,6 +147,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="IdPaqueteria" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="FechaEnvio" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="NoGuia" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdDocumentacion" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -174,12 +207,19 @@
           <s:element minOccurs="0" maxOccurs="1" name="NumeroSiniestro" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ArrayOfDocumentoPendiente" nillable="true" type="tns:ArrayOfDocumentoPendiente" />
       <s:element name="ArrayOfSiniestro" nillable="true" type="tns:ArrayOfSiniestro" />
       <s:element name="ArrayOfBitacora" nillable="true" type="tns:ArrayOfBitacora" />
       <s:element name="Error" nillable="true" type="tns:Error" />
       <s:element name="NumSiniestro" nillable="true" type="tns:NumSiniestro" />
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="DocumentacionPendienteSoapIn">
+    <wsdl:part name="parameters" element="tns:DocumentacionPendiente" />
+  </wsdl:message>
+  <wsdl:message name="DocumentacionPendienteSoapOut">
+    <wsdl:part name="parameters" element="tns:DocumentacionPendienteResponse" />
+  </wsdl:message>
   <wsdl:message name="SiniestrosSoapIn">
     <wsdl:part name="parameters" element="tns:Siniestros" />
   </wsdl:message>
@@ -228,6 +268,13 @@
   <wsdl:message name="ConsultaNumSiniestroDASoapOut">
     <wsdl:part name="parameters" element="tns:ConsultaNumSiniestroDAResponse" />
   </wsdl:message>
+  <wsdl:message name="DocumentacionPendienteHttpGetIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="NoSocio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DocumentacionPendienteHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDocumentoPendiente" />
+  </wsdl:message>
   <wsdl:message name="SiniestrosHttpGetIn">
     <wsdl:part name="Operacion" type="s:string" />
     <wsdl:part name="IdEntidad" type="s:string" />
@@ -263,6 +310,7 @@
     <wsdl:part name="IdPaqueteria" type="s:string" />
     <wsdl:part name="FechaEnvio" type="s:string" />
     <wsdl:part name="NoGuia" type="s:string" />
+    <wsdl:part name="IdDocumentacion" type="s:string" />
   </wsdl:message>
   <wsdl:message name="InsertDocumentacionDAHttpGetOut">
     <wsdl:part name="Body" element="tns:Error" />
@@ -286,6 +334,13 @@
   </wsdl:message>
   <wsdl:message name="ConsultaNumSiniestroDAHttpGetOut">
     <wsdl:part name="Body" element="tns:NumSiniestro" />
+  </wsdl:message>
+  <wsdl:message name="DocumentacionPendienteHttpPostIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="NoSocio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DocumentacionPendienteHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDocumentoPendiente" />
   </wsdl:message>
   <wsdl:message name="SiniestrosHttpPostIn">
     <wsdl:part name="Operacion" type="s:string" />
@@ -322,6 +377,7 @@
     <wsdl:part name="IdPaqueteria" type="s:string" />
     <wsdl:part name="FechaEnvio" type="s:string" />
     <wsdl:part name="NoGuia" type="s:string" />
+    <wsdl:part name="IdDocumentacion" type="s:string" />
   </wsdl:message>
   <wsdl:message name="InsertDocumentacionDAHttpPostOut">
     <wsdl:part name="Body" element="tns:Error" />
@@ -347,6 +403,10 @@
     <wsdl:part name="Body" element="tns:NumSiniestro" />
   </wsdl:message>
   <wsdl:portType name="wsConsultaReportesDASoap">
+    <wsdl:operation name="DocumentacionPendiente">
+      <wsdl:input message="tns:DocumentacionPendienteSoapIn" />
+      <wsdl:output message="tns:DocumentacionPendienteSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Siniestros">
       <wsdl:input message="tns:SiniestrosSoapIn" />
       <wsdl:output message="tns:SiniestrosSoapOut" />
@@ -381,6 +441,10 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsConsultaReportesDAHttpGet">
+    <wsdl:operation name="DocumentacionPendiente">
+      <wsdl:input message="tns:DocumentacionPendienteHttpGetIn" />
+      <wsdl:output message="tns:DocumentacionPendienteHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="Siniestros">
       <wsdl:input message="tns:SiniestrosHttpGetIn" />
       <wsdl:output message="tns:SiniestrosHttpGetOut" />
@@ -415,6 +479,10 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsConsultaReportesDAHttpPost">
+    <wsdl:operation name="DocumentacionPendiente">
+      <wsdl:input message="tns:DocumentacionPendienteHttpPostIn" />
+      <wsdl:output message="tns:DocumentacionPendienteHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="Siniestros">
       <wsdl:input message="tns:SiniestrosHttpPostIn" />
       <wsdl:output message="tns:SiniestrosHttpPostOut" />
@@ -450,6 +518,15 @@
   </wsdl:portType>
   <wsdl:binding name="wsConsultaReportesDASoap" type="tns:wsConsultaReportesDASoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DocumentacionPendiente">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/DocumentacionPendiente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Siniestros">
       <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Siniestros" style="document" />
       <wsdl:input>
@@ -525,6 +602,15 @@
   </wsdl:binding>
   <wsdl:binding name="wsConsultaReportesDASoap12" type="tns:wsConsultaReportesDASoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DocumentacionPendiente">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/DocumentacionPendiente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Siniestros">
       <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Siniestros" style="document" />
       <wsdl:input>
@@ -600,6 +686,15 @@
   </wsdl:binding>
   <wsdl:binding name="wsConsultaReportesDAHttpGet" type="tns:wsConsultaReportesDAHttpGet">
     <http:binding verb="GET" />
+    <wsdl:operation name="DocumentacionPendiente">
+      <http:operation location="/DocumentacionPendiente" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Siniestros">
       <http:operation location="/Siniestros" />
       <wsdl:input>
@@ -675,6 +770,15 @@
   </wsdl:binding>
   <wsdl:binding name="wsConsultaReportesDAHttpPost" type="tns:wsConsultaReportesDAHttpPost">
     <http:binding verb="POST" />
+    <wsdl:operation name="DocumentacionPendiente">
+      <http:operation location="/DocumentacionPendiente" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Siniestros">
       <http:operation location="/Siniestros" />
       <wsdl:input>
@@ -750,16 +854,16 @@
   </wsdl:binding>
   <wsdl:service name="wsConsultaReportesDA">
     <wsdl:port name="wsConsultaReportesDASoap" binding="tns:wsConsultaReportesDASoap">
-      <soap:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" />
+      <soap:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
     </wsdl:port>
     <wsdl:port name="wsConsultaReportesDASoap12" binding="tns:wsConsultaReportesDASoap12">
-      <soap12:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" />
+      <soap12:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
     </wsdl:port>
     <wsdl:port name="wsConsultaReportesDAHttpGet" binding="tns:wsConsultaReportesDAHttpGet">
-      <http:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" />
+      <http:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
     </wsdl:port>
     <wsdl:port name="wsConsultaReportesDAHttpPost" binding="tns:wsConsultaReportesDAHttpPost">
-      <http:address location="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" />
+      <http:address location="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
