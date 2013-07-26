@@ -85,6 +85,8 @@ namespace SDA.App
             }
 
             wndDatosEnvio.Hidden = true;
+
+            ActualizarSiniestros();
         }
     }
 }
