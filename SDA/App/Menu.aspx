@@ -193,7 +193,7 @@
                     >
                     <Menu ID="mRegistro" runat="server">
                         <Items>
-                            <ext:MenuItem ID="miAS" runat="server" Text="Alta de Siniestro" Icon="UserAdd">
+                            <ext:MenuItem ID="miAS" runat="server" Text="Alta de Siniestro" Icon="UserAdd" ToolTip="Realiza el alta de un siniestro">
                                 <Listeners>
                                     <Click Handler="addTab(#{tabMain}, 'idAS', 'SocioBeneficios.aspx', this, 'Siniestro - Nuevo Siniestro');" />
                                 </Listeners>
@@ -230,13 +230,13 @@
                     >
                     <Menu ID="mContratos" runat="server">
                         <Items>
-                            <ext:MenuItem ID="miSS" runat="server" Text="Consulta de Siniestro" Icon="MagnifierZoomIn">
+                            <ext:MenuItem ID="miSS" runat="server" Text="Consulta de Siniestro" Icon="MagnifierZoomIn" ToolTip="Da seguimiento a un siniestro">
                                 <Listeners>
                                     <Click Handler="addTab(#{tabMain}, 'idCS', 'AnalisisReclamo.aspx', this, 'Seguimiento - Consulta de Siniestro');" />
                                 </Listeners>
                             </ext:MenuItem>                            
                             
-                            <ext:MenuItem ID="miDocPend" runat="server" Text="Documentos Pendientes" Icon="TableAdd">
+                            <ext:MenuItem ID="miDocPend" runat="server" Text="Documentos Pendientes" Icon="TableAdd" ToolTip="Selecciona docuemntacion que se envia físicamente">
                                 <Listeners>
                                     <Click Handler="addTab(#{tabMain}, 'idDP', 'DocPendientes.aspx', this, 'Seguimiento - Consulta de Documentacion Pendiente');" />
                                 </Listeners>

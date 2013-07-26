@@ -37,11 +37,36 @@
             padding-right: 140px;
         }
     </style>
+    <style>      
+          div.botright {
+            display:block;      
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:100%;  
+            background-image: url("/Styles/BTrans_grayS.png");      
+            height:100%;
+            padding:18% 30% 20% 30%;  
+            border:1px solid #ddd;
+            z-index:10000;
+            text-align:center;
+            font-size: 20px;
+            font-weight: 900;
+            color: #626262;
+          }
+    </style> 
 </head>
 <body>
     <form id="form1" runat="server">
     <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Gray"/>
-
+    
+    <div id="maskDiv" class="botright x-hide-display">    
+        <%--GIF ANIMADO--%> 
+        <img src="Styles/msj.gif" alt="Cargando..." /> 
+        
+        <%--MENSAJE INFORMATIVO--%> 
+        <br />Espere un momento, por favor...
+    </div>
     <ext:Store ID="strCoop" runat="server">
         <Proxy>
             <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBDa/wspbd/wsCargaCombos.asmx/CargaCoop">
@@ -253,7 +278,10 @@
                                 <Items>
                                     <ext:TextField ID="txtNumSocio" runat="server" LabelAlign="Right" FieldLabel="Número de Socio" AllowBlank="false" Margins="0 3 0 0"
                                         MaxLength="10" Width="220"/>
-                                    <ext:Button ID="btnBuscarSocio" runat="server" Icon="Magnifier">
+                                    <ext:Button ID="btnBuscarSocio" runat="server" Icon="Magnifier" ToolTip="Da click en este botón para realizar...<br>busqueda de datos generales del Socio.">
+                                        <Listeners>
+                                            <Click Handler="#{maskDiv}.removeCls('x-hide-display');"></Click>
+                                        </Listeners>
                                         <DirectEvents>
                                             <Click OnEvent="btnBuscaSocio_Click"></Click>
                                         </DirectEvents>
@@ -460,12 +488,12 @@
                 <FooterBar>
                     <ext:Toolbar ID="Toolbar1" runat="server" AutoHeight="true">
                         <Items>
-                            <ext:Button ID="btnCancelarRegistroSocio" runat="server" Text="Cancelar" Icon="Cancel" Disabled="true">
+                            <ext:Button ID="btnCancelarRegistroSocio" runat="server" Text="Cancelar" Icon="Cancel" Disabled="true" ToolTip="Cancela la operación de registro de siniestro...<br>y realiza una nueva busqueda de Socio">
                                 <DirectEvents>
                                     <Click OnEvent="btnCancelarRegistroSocio_DirectClick"></Click>
                                 </DirectEvents>
                             </ext:Button>
-                            <ext:Button ID="btnModificarSocio" runat="server" Text="Guardar" Icon="DiskEdit" Disabled="true">
+                            <ext:Button ID="btnModificarSocio" runat="server" Text="Guardar" Icon="DiskEdit" Disabled="true" ToolTip="Guarda los datos generales del Socio">
                                 <DirectEvents>
                                     <Click OnEvent="btnModificarSocio_DirectClick"></Click>
                                 </DirectEvents>
@@ -476,7 +504,7 @@
             </ext:Panel>
         </Items>           
     </ext:Panel>
-    <ext:Panel ID="paneLol" Title="Archivos" runat="server" Disabled="true" Height="600" AnchorHorizontal="100%" Frame="false">
+    <ext:Panel ID="paneLol" Title="Archivos" runat="server" Disabled="true" Height="600" AnchorHorizontal="100%" Border="false">
         <Content>
             <SDA:FileUploadBit ID="FileUploadBit1" runat="server" />
         </Content>

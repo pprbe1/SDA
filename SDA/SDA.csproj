@@ -89,6 +89,7 @@
     <Content Include="App\Menu.aspx" />
     <Content Include="App\PdfReader.aspx" />
     <Content Include="App\SocioBeneficios.aspx" />
+    <Content Include="App\Styles\msj.gif" />
     <Content Include="Media\Image\Buttons\acercade.png" />
     <Content Include="Media\Image\Buttons\admin.png" />
     <Content Include="Media\Image\Buttons\btnConfig.png" />
@@ -152,6 +153,7 @@
     <Content Include="Scripts\pdf\l10n.js" />
     <Content Include="Scripts\pdf\pdf.js" />
     <Content Include="Scripts\pdf\viewer.js" />
+    <Content Include="Styles\BTrans_grayS.png" />
     <Content Include="Styles\PdfViewer.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -497,10 +499,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx">
+    <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wsConsultaReportesDA\</RelPath>
-      <UpdateFromURL>http://localhost:50444/wspbene/wsConsultaReportesDA.asmx</UpdateFromURL>
+      <UpdateFromURL>http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

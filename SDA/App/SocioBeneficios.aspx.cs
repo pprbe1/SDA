@@ -107,6 +107,7 @@ namespace SDA.App
                 this.cmbCoop.Disabled = true;
                 this.cmbPlaza.Disabled = true;
                 this.cmbSucursal.Disabled = true;
+                X.Get("maskDiv").AddCls("x-hide-display");
             }
             else
             {
