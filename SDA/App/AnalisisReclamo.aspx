@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Analisis del Siniestro" Language="C#" AutoEventWireup="true" CodeBehind="AnalisisReclamo.aspx.cs" Inherits="SDA.App.AnalisisReclamo" ValidateRequest="false" %>
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
-<%@ Register TagPrefix="SDA" TagName="FileUploadBit" Src="~/App/FileUploadBit.ascx" %>
+<%@ Register TagPrefix="SDA" TagName="FileUploadBit" Src="/App/FileUploadBit.ascx" %>
 
 <html>
 <head>
