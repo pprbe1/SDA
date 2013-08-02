@@ -31,10 +31,17 @@ namespace SDA.App
         DateTime fechaNac = new DateTime();
         DateTime fechaIng = new DateTime();
 
-        string noSocio, idSucursal, idDocumento;
+        string idDocumento;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["IdSiniestro"] = 20; //LOL, quitame
+
+            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
+
+            CargarCuentasColocacion(noSiniestro);
+            CargarCuentasCaptacion(noSiniestro);
         }
 
         protected void btnBuscaSocio_Click(object sender, EventArgs e)
@@ -45,13 +52,11 @@ namespace SDA.App
             {
                 Session["NumeroSocio"] = txtNumSocio.Text;
                 Session["Sucursal"] = cmbSucursal.SelectedItem.Value;
-                //datsocio = llamada.CargaDatosSocioAlta(this.txtNumSocio.Text, this.cmbSucursal.SelectedItem.Value);
                 ConsultaSocioCPM = SocioCPM.ObtenSocioCPM(txtNumSocio.Text, "PRYBE");
                 if (!this.txtNumSocio.IsEmpty)
                 {
                     Habilitar_CamposSocio();
                     btnModificarSocio.Disabled = false;
-                    //btnSiguiente.Disabled = true;
                     txtNumSocio.Disabled = true;
 
                     this.txtNombre.Text = ConsultaSocioCPM.PrimerNombre;
@@ -115,37 +120,14 @@ namespace SDA.App
             }
         }
 
-
-        //protected void btnSiguienteSocio_Click(object sender, EventArgs e)
-        //{
-        //    if (this.txtNumSocio.Text != "" && this.txtNombre.Text != "" && this.txtApellidoPat.Text != "" && this.dteFechaN.Text != ""
-        //        && this.dteFechaI.Text != "" && this.txtCalle.Text != "" && this.txtNoExt.Text != "")
-        //    {
-        //        this.pnlPaqueteria1.Disabled = false;
-        //        this.pnlPaqueteria2.Disabled = false;
-        //        this.pnlPaqueteria3.Disabled = false;
-        //        this.btnCancelarRegistroSocio.Disabled = true;
-        //    }
-        //    else
-        //    {
-        //        X.Msg.Alert("Aviso", "Faltan algunos campos de llenado").Show();
-        //    }
-        //}
-
         protected void btnModificarSocio_DirectClick(object sender, Ext.Net.DirectEventArgs e)
         {
-            
-            if (this.txtNombre.Text != "" && this.txtApellidoPat.Text != "" && this.dteFechaN.Text != ""
-               && this.dteFechaI.Text != "" && this.txtCalle.Text != "" && this.txtNoExt.Text != "")
+            if (this.txtNombre.Text != "" && this.txtApellidoPat.Text != "" && this.dteFechaN.Text != "" && this.dteFechaI.Text != "" && this.txtCalle.Text != "" && this.txtNoExt.Text != "")
             {
                 if (this.rdoMasculino.Checked == true)
-                {
                     Session["Sexo"] = 1;
-                }
                 else
-                {
                     Session["Sexo"] = 0;
-                }
 
                 DateTime hoy = new DateTime();
                 DateTime actual = new DateTime();
@@ -156,12 +138,10 @@ namespace SDA.App
                 fechaIng = Convert.ToDateTime(this.dteFechaI.Text);
 
                 if (DateTime.Compare(fechaIng, actual) > 0 || DateTime.Compare(fechaNac, actual) > 0)
-                {
                     X.Msg.Alert("Error", "La fecha es mayor a la actual").Show();
-                }
+                
                 else
                 {
-
                     ErrorOper = socio.InsertSocioBeneficio(Convert.ToString(Session["NumeroSocio"]), this.txtNombre.Text.ToUpper(), this.txtNombre2.Text.ToUpper(), this.txtApellidoPat.Text.ToUpper(),
                                    this.txtApellidoMat.Text.ToUpper(), fechaNac.ToString("dd/MM/yyyy"), fechaIng.ToString("dd/MM/yyyy"), (int)(Session["Sexo"]), "", "", "",
                                    Convert.ToInt32(this.cmbOcupacion.SelectedItem.Value), Convert.ToInt32(this.cmbEdoCivil.SelectedItem.Value),
@@ -172,34 +152,29 @@ namespace SDA.App
                     this.paneLol.Disabled = false;
                     this.pnlSocio.Disabled = true;
                 }
+
                 this.btnCancelarRegistroSocio.Disabled = true;
                 this.btnModificarSocio.Disabled = true;
-                //pnlAgregarDocumentacion.Disabled = false;
+
+
+                int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
+
+                CargarCuentasCaptacion(noSiniestro);
+                CargarCuentasColocacion(noSiniestro);
             }
             else
-            {
                 X.Msg.Alert("Aviso", "Faltan algunos campos de llenado").Show();
-            }
-        }
-
-
-        protected void btnAceptarPaqueterias_DirectClick(object sender, Ext.Net.DirectEventArgs e)
-        {
-
         }
 
         protected void btnAceptarNumSin_Click(object sender, DirectEventArgs e)
         {
-            wd_SiniestroAsignado.Hide();
+            wndSiniestroAsignado.Hide();
         }
-
 
         protected void btnModificarDatos_Click(object sender, DirectEventArgs e)
         {
             this.pnlSocio.Disabled = false;
             this.btnModificarSocio.Disabled = false;
-
-            //this.pnlAgregarDocumentacion.Disabled = true;
         }
 
         protected void btnBuscaCP_DirectClick(object sender, DirectEventArgs e)
@@ -209,10 +184,10 @@ namespace SDA.App
             cpcheck = true;
             Session["BuscaCP"] = cpcheck;
         }
+
         protected void btnCancelarRegistroSocio_DirectClick(object sneder, DirectEventArgs e)
         {
             Limpia_CamposSocio();
-            //this.btnSiguiente.Disabled = true;
             this.btnModificarSocio.Disabled = true;
             this.fcNumSocio.Disabled = false;
             this.btnBuscarSocio.Disabled = false;
@@ -238,7 +213,6 @@ namespace SDA.App
             this.cfCP.Disabled = true;
             this.btnCancelarRegistroSocio.Disabled = true;
         }
-
 
         protected void btnAgregarDocumento_Click(object sender, DirectEventArgs e)
         {
@@ -330,6 +304,138 @@ namespace SDA.App
                 new List<wsConsultaDatos2.ConsultaDocumentoSocio>(cdocumento.ConsultaDocumentos(Convert.ToString(Session["No_Socio"]), Convert.ToString(Session["Id_Sucursal"])));
             //this.strDocumentosAgregados.DataSource = documentossocio;
             //this.strDocumentosAgregados.DataBind();
+        }
+
+
+        //De AnalisisEspecifico.aspx.cs
+
+        protected void AgregarCuentaCaptacion(object sender, DirectEventArgs e)
+        {
+            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
+            int idCuenta = Convert.ToInt32(cmbCuentas.SelectedItem.Value);
+            string monto = nmrMonto.Value.ToString();
+            string ultimoMovimiento = dteFechaUltimoMovimiento.RawValue.ToString();
+
+            wsConsultaReportesDA.Error err = reportesDA.InsertSaldosDA(noSiniestro, idCuenta, 11, monto, ultimoMovimiento, string.Empty, string.Empty, string.Empty);
+
+            CargarCuentasCaptacion(noSiniestro);
+        }
+
+        private void CargarCuentasCaptacion(int noSiniestro)
+        {
+            SaldosDA[] cuentasCaptacion = reportesDA.SaldoDA(noSiniestro, 1);
+            strCaptacion.DataSource = cuentasCaptacion;
+            strCaptacion.DataBind();   
+        }
+
+        protected void AgregarCuentaColocacion(object sender, DirectEventArgs e)
+        {
+            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
+            int tipoPrestamo = Convert.ToInt32(cmbTipoPrestamo.SelectedItem.Value);
+            string interes = nmrTasaInteres.Value.ToString();
+            string ultimoMovimiento = dteFechaUltimoMovimientoCol.RawValue.ToString();
+            string saldo = nmrSaldoPrincipal.Value.ToString();
+            string fechaPrestamo = datePrestamo.RawValue.ToString();
+
+            wsConsultaReportesDA.Error err = reportesDA.InsertSaldosDA(noSiniestro, 7, tipoPrestamo, saldo, ultimoMovimiento, string.Empty, interes, fechaPrestamo);
+
+            CargarCuentasColocacion(noSiniestro);
+        }
+
+        protected void CargarCuentasColocacion(int noSiniestro)
+        {
+            SaldosDA[] cuentasColocacion = reportesDA.SaldoDA(noSiniestro, 2);
+            strColocacion.DataSource = cuentasColocacion;
+            strColocacion.DataBind();
+        }
+
+        protected void SelectBeneficiario(object sender, DirectEventArgs e)
+        {
+
+        }
+
+        protected void CellCuentaColocacion(object sender, DirectEventArgs e)
+        {
+            wndBeneficiario.Hidden = false;
+        }
+
+        protected void CellCuentaCaptacion(object sender, DirectEventArgs e)
+        {
+            wndBeneficiario.Hidden = false;
+        }
+
+        protected void Habilita_CamposBeneficiario()
+        {
+            this.txtNombreBeneficiario.Disabled = false;
+            this.txtNombre2Beneficiario.Disabled = false;
+            this.txtApellidoPBeneficiario.Disabled = false;
+            this.txtApellidoMBeneficiario.Disabled = false;
+            this.nmrPorcentaje.Disabled = false;
+            this.btnAgregarBeneficiario.Disabled = false;
+        }
+
+        protected void Habilita_CamposCaptacion()
+        {
+            this.cmbCuentas.Disabled = false;
+            this.nmrMonto.Disabled = false;
+            this.dteFechaUltimoMovimiento.Disabled = false;
+            this.btnAgregarCuentaCaptacion.Disabled = false;
+            this.nmrPorcentaje.Disabled = false;
+        }
+
+        protected void Habilita_CamposColocacion()
+        {
+            this.nmrTasaInteres.Disabled = false;
+            this.nmrSaldoPrincipal.Disabled = false;
+            this.dteFechaUltimoMovimientoCol.Disabled = false;
+            this.cmbTipoPrestamo.Disabled = false;
+            this.btnAgregarCuentaColocacion.Disabled = false;
+        }
+
+        protected void Limpia_CamposBeneficiario()
+        {
+            this.txtNombreBeneficiario.Text = "";
+            this.txtNombre2Beneficiario.Text = "";
+            this.txtApellidoPBeneficiario.Text = "";
+            this.txtApellidoMBeneficiario.Text = "";
+            this.nmrPorcentaje.Value = EmptyValue.EmptyString;
+        }
+
+        protected void Limpia_CamposCaptacion()
+        {
+            this.cmbCuentas.Value = "";
+            this.nmrMonto.Value = EmptyValue.EmptyString;
+            this.dteFechaUltimoMovimiento.Text = "";
+        }
+
+        protected void Limpia_CamposColocacion()
+        {
+            this.cmbTipoPrestamo.SelectedItem.Value = "1";
+            this.nmrTasaInteres.Value = EmptyValue.EmptyString;
+            this.dteFechaUltimoMovimientoCol.Text = "";
+            this.nmrSaldoPrincipal.Value = EmptyValue.EmptyString;
+        }
+
+        [DirectMethod(Namespace = "App")]
+        public void Edit(dynamic items)
+        {
+            //Verificar en code-behind que esté todo bien. No quiero chapusas con la consola de JS
+
+            double totalPercent = 0; 
+
+            foreach (dynamic item in items)
+                totalPercent += Convert.ToDouble(item["porcentaje"].Value);
+
+            if (totalPercent < 100)
+                X.Msg.Alert("Alerta", "El porcentaje de asignacion a beneficiarios no alcanza el 100%").Show();
+
+            else if (totalPercent > 100)
+                X.Msg.Alert("Alerta", "El porcentaje de asignacion a beneficiarios excede el 100%").Show();
+
+            else
+                X.Msg.Alert("Alerta", "No hay alerta").Show();
+
+            //Error err = insercion.InsertBeneficiarioDA();
         }
     }
 }

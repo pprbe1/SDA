@@ -2,6 +2,8 @@
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
 <%@ Register TagPrefix="SDA" TagName="FileUploadBit" Src="/App/FileUploadBit.ascx" %>
 
+<!DOCTYPE html>
+
 <html>
 <head>
     <script type="text/javascript">

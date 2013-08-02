@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx">
       <s:element name="DocumentacionPendiente">
@@ -207,11 +207,109 @@
           <s:element minOccurs="0" maxOccurs="1" name="NumeroSiniestro" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="InsertSaldosDA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSiniestro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdCuenta" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdPrestamo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Saldo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UltimoMov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Plazo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TasaInteres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaPrestamo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSaldosDAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertSaldosDAResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaldoDA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSiniestro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Oper" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaldoDAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaldoDAResult" type="tns:ArrayOfSaldosDA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSaldosDA">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SaldosDA" nillable="true" type="tns:SaldosDA" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SaldosDA">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Saldo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdSaldo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cuenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoPrestamo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaCuentasDA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCoop" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCuentasDAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaCuentasDAResult" type="tns:ArrayOfCuentasDA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCuentasDA">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CuentasDA" nillable="true" type="tns:CuentasDA" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CuentasDA">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cuenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCoop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCuenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdTipoCta" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertBeneficiarioDA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre_1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre_2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apellido_Pat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Apellido_Mat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Porcentaje" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdParentesco" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdSaldosDA" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBeneficiarioDAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertBeneficiarioDAResult" type="tns:Error" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ArrayOfDocumentoPendiente" nillable="true" type="tns:ArrayOfDocumentoPendiente" />
       <s:element name="ArrayOfSiniestro" nillable="true" type="tns:ArrayOfSiniestro" />
       <s:element name="ArrayOfBitacora" nillable="true" type="tns:ArrayOfBitacora" />
       <s:element name="Error" nillable="true" type="tns:Error" />
       <s:element name="NumSiniestro" nillable="true" type="tns:NumSiniestro" />
+      <s:element name="ArrayOfSaldosDA" nillable="true" type="tns:ArrayOfSaldosDA" />
+      <s:element name="ArrayOfCuentasDA" nillable="true" type="tns:ArrayOfCuentasDA" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="DocumentacionPendienteSoapIn">
@@ -267,6 +365,30 @@
   </wsdl:message>
   <wsdl:message name="ConsultaNumSiniestroDASoapOut">
     <wsdl:part name="parameters" element="tns:ConsultaNumSiniestroDAResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSaldosDASoapIn">
+    <wsdl:part name="parameters" element="tns:InsertSaldosDA" />
+  </wsdl:message>
+  <wsdl:message name="InsertSaldosDASoapOut">
+    <wsdl:part name="parameters" element="tns:InsertSaldosDAResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaldoDASoapIn">
+    <wsdl:part name="parameters" element="tns:SaldoDA" />
+  </wsdl:message>
+  <wsdl:message name="SaldoDASoapOut">
+    <wsdl:part name="parameters" element="tns:SaldoDAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasDASoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaCuentasDA" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasDASoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaCuentasDAResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioDASoapIn">
+    <wsdl:part name="parameters" element="tns:InsertBeneficiarioDA" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioDASoapOut">
+    <wsdl:part name="parameters" element="tns:InsertBeneficiarioDAResponse" />
   </wsdl:message>
   <wsdl:message name="DocumentacionPendienteHttpGetIn">
     <wsdl:part name="IdSucursal" type="s:string" />
@@ -335,6 +457,44 @@
   <wsdl:message name="ConsultaNumSiniestroDAHttpGetOut">
     <wsdl:part name="Body" element="tns:NumSiniestro" />
   </wsdl:message>
+  <wsdl:message name="InsertSaldosDAHttpGetIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+    <wsdl:part name="IdCuenta" type="s:string" />
+    <wsdl:part name="IdPrestamo" type="s:string" />
+    <wsdl:part name="Saldo" type="s:string" />
+    <wsdl:part name="UltimoMov" type="s:string" />
+    <wsdl:part name="Plazo" type="s:string" />
+    <wsdl:part name="TasaInteres" type="s:string" />
+    <wsdl:part name="FechaPrestamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertSaldosDAHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="SaldoDAHttpGetIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+    <wsdl:part name="Oper" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaldoDAHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSaldosDA" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasDAHttpGetIn">
+    <wsdl:part name="IdCoop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasDAHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCuentasDA" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioDAHttpGetIn">
+    <wsdl:part name="Nombre_1" type="s:string" />
+    <wsdl:part name="Nombre_2" type="s:string" />
+    <wsdl:part name="Apellido_Pat" type="s:string" />
+    <wsdl:part name="Apellido_Mat" type="s:string" />
+    <wsdl:part name="Porcentaje" type="s:string" />
+    <wsdl:part name="IdParentesco" type="s:string" />
+    <wsdl:part name="IdSaldosDA" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioDAHttpGetOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
   <wsdl:message name="DocumentacionPendienteHttpPostIn">
     <wsdl:part name="IdSucursal" type="s:string" />
     <wsdl:part name="NoSocio" type="s:string" />
@@ -402,6 +562,44 @@
   <wsdl:message name="ConsultaNumSiniestroDAHttpPostOut">
     <wsdl:part name="Body" element="tns:NumSiniestro" />
   </wsdl:message>
+  <wsdl:message name="InsertSaldosDAHttpPostIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+    <wsdl:part name="IdCuenta" type="s:string" />
+    <wsdl:part name="IdPrestamo" type="s:string" />
+    <wsdl:part name="Saldo" type="s:string" />
+    <wsdl:part name="UltimoMov" type="s:string" />
+    <wsdl:part name="Plazo" type="s:string" />
+    <wsdl:part name="TasaInteres" type="s:string" />
+    <wsdl:part name="FechaPrestamo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertSaldosDAHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
+  <wsdl:message name="SaldoDAHttpPostIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+    <wsdl:part name="Oper" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaldoDAHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSaldosDA" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasDAHttpPostIn">
+    <wsdl:part name="IdCoop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCuentasDAHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCuentasDA" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioDAHttpPostIn">
+    <wsdl:part name="Nombre_1" type="s:string" />
+    <wsdl:part name="Nombre_2" type="s:string" />
+    <wsdl:part name="Apellido_Pat" type="s:string" />
+    <wsdl:part name="Apellido_Mat" type="s:string" />
+    <wsdl:part name="Porcentaje" type="s:string" />
+    <wsdl:part name="IdParentesco" type="s:string" />
+    <wsdl:part name="IdSaldosDA" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertBeneficiarioDAHttpPostOut">
+    <wsdl:part name="Body" element="tns:Error" />
+  </wsdl:message>
   <wsdl:portType name="wsConsultaReportesDASoap">
     <wsdl:operation name="DocumentacionPendiente">
       <wsdl:input message="tns:DocumentacionPendienteSoapIn" />
@@ -438,6 +636,22 @@
     <wsdl:operation name="ConsultaNumSiniestroDA">
       <wsdl:input message="tns:ConsultaNumSiniestroDASoapIn" />
       <wsdl:output message="tns:ConsultaNumSiniestroDASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSaldosDA">
+      <wsdl:input message="tns:InsertSaldosDASoapIn" />
+      <wsdl:output message="tns:InsertSaldosDASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaldoDA">
+      <wsdl:input message="tns:SaldoDASoapIn" />
+      <wsdl:output message="tns:SaldoDASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentasDA">
+      <wsdl:input message="tns:ConsultaCuentasDASoapIn" />
+      <wsdl:output message="tns:ConsultaCuentasDASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiarioDA">
+      <wsdl:input message="tns:InsertBeneficiarioDASoapIn" />
+      <wsdl:output message="tns:InsertBeneficiarioDASoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsConsultaReportesDAHttpGet">
@@ -477,6 +691,22 @@
       <wsdl:input message="tns:ConsultaNumSiniestroDAHttpGetIn" />
       <wsdl:output message="tns:ConsultaNumSiniestroDAHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="InsertSaldosDA">
+      <wsdl:input message="tns:InsertSaldosDAHttpGetIn" />
+      <wsdl:output message="tns:InsertSaldosDAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaldoDA">
+      <wsdl:input message="tns:SaldoDAHttpGetIn" />
+      <wsdl:output message="tns:SaldoDAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentasDA">
+      <wsdl:input message="tns:ConsultaCuentasDAHttpGetIn" />
+      <wsdl:output message="tns:ConsultaCuentasDAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiarioDA">
+      <wsdl:input message="tns:InsertBeneficiarioDAHttpGetIn" />
+      <wsdl:output message="tns:InsertBeneficiarioDAHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsConsultaReportesDAHttpPost">
     <wsdl:operation name="DocumentacionPendiente">
@@ -514,6 +744,22 @@
     <wsdl:operation name="ConsultaNumSiniestroDA">
       <wsdl:input message="tns:ConsultaNumSiniestroDAHttpPostIn" />
       <wsdl:output message="tns:ConsultaNumSiniestroDAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSaldosDA">
+      <wsdl:input message="tns:InsertSaldosDAHttpPostIn" />
+      <wsdl:output message="tns:InsertSaldosDAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaldoDA">
+      <wsdl:input message="tns:SaldoDAHttpPostIn" />
+      <wsdl:output message="tns:SaldoDAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentasDA">
+      <wsdl:input message="tns:ConsultaCuentasDAHttpPostIn" />
+      <wsdl:output message="tns:ConsultaCuentasDAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiarioDA">
+      <wsdl:input message="tns:InsertBeneficiarioDAHttpPostIn" />
+      <wsdl:output message="tns:InsertBeneficiarioDAHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsConsultaReportesDASoap" type="tns:wsConsultaReportesDASoap">
@@ -592,6 +838,42 @@
     </wsdl:operation>
     <wsdl:operation name="ConsultaNumSiniestroDA">
       <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/ConsultaNumSiniestroDA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSaldosDA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertSaldosDA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaldoDA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/SaldoDA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentasDA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/ConsultaCuentasDA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiarioDA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertBeneficiarioDA" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -683,6 +965,42 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InsertSaldosDA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertSaldosDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaldoDA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/SaldoDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentasDA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/ConsultaCuentasDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiarioDA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/InsertBeneficiarioDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsConsultaReportesDAHttpGet" type="tns:wsConsultaReportesDAHttpGet">
     <http:binding verb="GET" />
@@ -767,6 +1085,42 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InsertSaldosDA">
+      <http:operation location="/InsertSaldosDA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaldoDA">
+      <http:operation location="/SaldoDA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentasDA">
+      <http:operation location="/ConsultaCuentasDA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiarioDA">
+      <http:operation location="/InsertBeneficiarioDA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsConsultaReportesDAHttpPost" type="tns:wsConsultaReportesDAHttpPost">
     <http:binding verb="POST" />
@@ -844,6 +1198,42 @@
     </wsdl:operation>
     <wsdl:operation name="ConsultaNumSiniestroDA">
       <http:operation location="/ConsultaNumSiniestroDA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSaldosDA">
+      <http:operation location="/InsertSaldosDA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaldoDA">
+      <http:operation location="/SaldoDA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCuentasDA">
+      <http:operation location="/ConsultaCuentasDA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBeneficiarioDA">
+      <http:operation location="/InsertBeneficiarioDA" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

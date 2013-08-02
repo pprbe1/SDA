@@ -14,6 +14,8 @@ namespace SDA.App
         wsConsultaReportesDA.wsConsultaReportesDA reportesDA = new wsConsultaReportesDA.wsConsultaReportesDA();
         wsInsercionDatosBen.wsInsertaDatosBeneficios insertaDatos = new wsInsercionDatosBen.wsInsertaDatosBeneficios();
 
+        public bool CanEdit { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }
@@ -27,6 +29,8 @@ namespace SDA.App
 
         protected void UpdateFechaRecibo(object sender, DirectEventArgs e)
         {
+            if (!CanEdit) return;
+
             int noDocumentacion = Convert.ToInt32(Session["NoDocumentacion"]);
             string fechaRecibo = e.ExtraParams["FechaRecibo"].ToString();
 

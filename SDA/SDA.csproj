@@ -83,9 +83,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\AnalisisEspecifico.aspx" />
     <Content Include="App\AnalisisReclamo.aspx" />
     <Content Include="App\DocPendientes.aspx" />
     <Content Include="App\FileUploadBit.ascx" />
+    <Content Include="App\ListaaaaaasHoms.aspx" />
     <Content Include="App\Menu.aspx" />
     <Content Include="App\PdfReader.aspx" />
     <Content Include="App\SocioBeneficios.aspx" />
@@ -325,6 +327,9 @@
     <None Include="Web References\wsConsultaReportesDA\Bitacora.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\wsConsultaReportesDA\CuentasDA.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\wsConsultaReportesDA\DocumentoPendiente.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -338,10 +343,42 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\wsConsultaReportesDA\SaldosDA.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\wsConsultaReportesDA\Siniestro.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\wsConsultaReportesDA\wsConsultaReportesDA.wsdl" />
+    <None Include="Web References\wsConsultasMS\Beneficiario.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultasMS\CURP.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultasMS\DatosPago.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultasMS\IdSocioMA.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultasMS\MenorAH.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultasMS\Parentesco.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultasMS\Poliza.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultasMS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsConsultasMS\Sucursal.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsConsultasMS\wsConsultas.wsdl" />
     <None Include="Web References\wsCPM\PermisoCPM.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -365,6 +402,7 @@
     <None Include="Web References\wsInsercionDatosBen\wsInsertaDatosBeneficios.disco" />
     <None Include="Web References\wsConsultaReportesDA\wsConsultaReportesDA.disco" />
     <Content Include="Styles\Site.css" />
+    <None Include="Web References\wsConsultasMS\wsConsultas.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -380,6 +418,13 @@
     <None Include="Web References\wsInsercionDatosBen\wsInsertaDatosBeneficios.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\AnalisisEspecifico.aspx.cs">
+      <DependentUpon>AnalisisEspecifico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\AnalisisEspecifico.aspx.designer.cs">
+      <DependentUpon>AnalisisEspecifico.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\AnalisisReclamo.aspx.cs">
       <DependentUpon>AnalisisReclamo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -400,6 +445,13 @@
     </Compile>
     <Compile Include="App\FileUploadBit.ascx.designer.cs">
       <DependentUpon>FileUploadBit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="App\ListaaaaaasHoms.aspx.cs">
+      <DependentUpon>ListaaaaaasHoms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\ListaaaaaasHoms.aspx.designer.cs">
+      <DependentUpon>ListaaaaaasHoms.aspx</DependentUpon>
     </Compile>
     <Compile Include="App\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
@@ -471,6 +523,11 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\wsConsultaReportesDA\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\wsConsultasMS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -586,6 +643,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SDA_wsCPM_wsPrybeCPM</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsConsultasMS\</RelPath>
+      <UpdateFromURL>http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SDA_wsConsultasMS_wsConsultas</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>

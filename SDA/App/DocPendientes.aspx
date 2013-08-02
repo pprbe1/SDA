@@ -114,9 +114,6 @@
         </ext:Store>
 
         <ext:Store ID="strDocPend" runat="server" GroupField="idsiniestro">
-            <Sorters>
-                <%--<ext:DataSorter Property="Due" Direction="ASC" />--%>
-            </Sorters>
             <Model>
                 <ext:Model ID="mdlDocPend" runat="server">
                     <Fields>

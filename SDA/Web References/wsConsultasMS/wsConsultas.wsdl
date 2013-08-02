@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx">
+      <s:element name="ConsultaDatosPago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSiniestro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDatosPagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaDatosPagoResult" type="tns:DatosPago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosPago">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NoCheque" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaPago" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaIdSucPrybe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaIdSucPrybeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaIdSucPrybeResult" type="tns:Sucursal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Sucursal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdPlaza" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaPoliza">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdEmision" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaPolizaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaPolizaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaParentesco">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsultaParentescoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaParentescoResult" type="tns:ArrayOfParentesco" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfParentesco">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Parentesco" nillable="true" type="tns:Parentesco" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Parentesco">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Error">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valor" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaPolizasSocio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCoop" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaPolizasSocioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaPolizasSocioResult" type="tns:ArrayOfPoliza" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPoliza">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Poliza" nillable="true" type="tns:Poliza" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Poliza">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Numero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCoop" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdAsegurado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Asegurado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SumaAsegurada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaTotal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaInicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaFin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaEmision" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EsDependiente" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Socio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Municipio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colonia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoExt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoInt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OcupEsp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaNac" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Renovacion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Link" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DomicilioGral" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CURPExiste">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CURP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CURPExisteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CURPExisteResult" type="tns:CURP" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CURP">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Existe" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalPolizas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalCertificado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaBeneficiarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdEmision" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="SumAseg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaBeneficiariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaBeneficiariosResult" type="tns:ArrayOfBeneficiario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBeneficiario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Beneficiario" nillable="true" type="tns:Beneficiario" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Beneficiario">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimerNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SegundoNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimerApellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SegundoApellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Parentesco" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Porcentaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdParentesco" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Porcentaje2" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estatus" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnIdSocioMA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoSocioMA" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnIdSocioMAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnIdSocioMAResult" type="tns:IdSocioMA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IdSocioMA">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CIdSocioMA_IdSoc" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnDatMenorAH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NoSocioMA" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdCoop" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnDatMenorAHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnDatMenorAHResult" type="tns:MenorAH" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MenorAH">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApePat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApeMat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaNac" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaIng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CURP" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCoop" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdPlaza" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdOcupacion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdEdoCivil" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="boolEncontrado" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosPago" nillable="true" type="tns:DatosPago" />
+      <s:element name="Sucursal" nillable="true" type="tns:Sucursal" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfParentesco" nillable="true" type="tns:ArrayOfParentesco" />
+      <s:element name="ArrayOfPoliza" nillable="true" type="tns:ArrayOfPoliza" />
+      <s:element name="CURP" nillable="true" type="tns:CURP" />
+      <s:element name="ArrayOfBeneficiario" nillable="true" type="tns:ArrayOfBeneficiario" />
+      <s:element name="IdSocioMA" nillable="true" type="tns:IdSocioMA" />
+      <s:element name="MenorAH" nillable="true" type="tns:MenorAH" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultaDatosPagoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaDatosPago" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatosPagoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaDatosPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaIdSucPrybeSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaIdSucPrybe" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaIdSucPrybeSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaIdSucPrybeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizaSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaPoliza" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizaSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaPolizaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaParentescoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaParentesco" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaParentescoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaParentescoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizasSocioSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaPolizasSocio" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizasSocioSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaPolizasSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="CURPExisteSoapIn">
+    <wsdl:part name="parameters" element="tns:CURPExiste" />
+  </wsdl:message>
+  <wsdl:message name="CURPExisteSoapOut">
+    <wsdl:part name="parameters" element="tns:CURPExisteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaBeneficiarios" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaBeneficiariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioMASoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnIdSocioMA" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioMASoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnIdSocioMAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatMenorAHSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnDatMenorAH" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatMenorAHSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnDatMenorAHResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatosPagoHttpGetIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatosPagoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosPago" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaIdSucPrybeHttpGetIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaIdSucPrybeHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sucursal" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizaHttpGetIn">
+    <wsdl:part name="IdEmision" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaParentescoHttpGetIn" />
+  <wsdl:message name="ConsultaParentescoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfParentesco" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizasSocioHttpGetIn">
+    <wsdl:part name="IdCoop" type="s:string" />
+    <wsdl:part name="NoSocio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizasSocioHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPoliza" />
+  </wsdl:message>
+  <wsdl:message name="CURPExisteHttpGetIn">
+    <wsdl:part name="CURP" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CURPExisteHttpGetOut">
+    <wsdl:part name="Body" element="tns:CURP" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosHttpGetIn">
+    <wsdl:part name="IdEmision" type="s:string" />
+    <wsdl:part name="SumAseg" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioMAHttpGetIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="NoSocioMA" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioMAHttpGetOut">
+    <wsdl:part name="Body" element="tns:IdSocioMA" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatMenorAHHttpGetIn">
+    <wsdl:part name="NoSocioMA" type="s:string" />
+    <wsdl:part name="IdCoop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatMenorAHHttpGetOut">
+    <wsdl:part name="Body" element="tns:MenorAH" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatosPagoHttpPostIn">
+    <wsdl:part name="IdSiniestro" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatosPagoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosPago" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaIdSucPrybeHttpPostIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaIdSucPrybeHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sucursal" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizaHttpPostIn">
+    <wsdl:part name="IdEmision" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaParentescoHttpPostIn" />
+  <wsdl:message name="ConsultaParentescoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfParentesco" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizasSocioHttpPostIn">
+    <wsdl:part name="IdCoop" type="s:string" />
+    <wsdl:part name="NoSocio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaPolizasSocioHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPoliza" />
+  </wsdl:message>
+  <wsdl:message name="CURPExisteHttpPostIn">
+    <wsdl:part name="CURP" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CURPExisteHttpPostOut">
+    <wsdl:part name="Body" element="tns:CURP" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosHttpPostIn">
+    <wsdl:part name="IdEmision" type="s:string" />
+    <wsdl:part name="SumAseg" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaBeneficiariosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioMAHttpPostIn">
+    <wsdl:part name="IdSucursal" type="s:string" />
+    <wsdl:part name="NoSocioMA" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnIdSocioMAHttpPostOut">
+    <wsdl:part name="Body" element="tns:IdSocioMA" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatMenorAHHttpPostIn">
+    <wsdl:part name="NoSocioMA" type="s:string" />
+    <wsdl:part name="IdCoop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnDatMenorAHHttpPostOut">
+    <wsdl:part name="Body" element="tns:MenorAH" />
+  </wsdl:message>
+  <wsdl:portType name="wsConsultasSoap">
+    <wsdl:operation name="ConsultaDatosPago">
+      <wsdl:input message="tns:ConsultaDatosPagoSoapIn" />
+      <wsdl:output message="tns:ConsultaDatosPagoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaIdSucPrybe">
+      <wsdl:input message="tns:ConsultaIdSucPrybeSoapIn" />
+      <wsdl:output message="tns:ConsultaIdSucPrybeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPoliza">
+      <wsdl:input message="tns:ConsultaPolizaSoapIn" />
+      <wsdl:output message="tns:ConsultaPolizaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaParentesco">
+      <wsdl:input message="tns:ConsultaParentescoSoapIn" />
+      <wsdl:output message="tns:ConsultaParentescoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPolizasSocio">
+      <wsdl:input message="tns:ConsultaPolizasSocioSoapIn" />
+      <wsdl:output message="tns:ConsultaPolizasSocioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CURPExiste">
+      <wsdl:input message="tns:CURPExisteSoapIn" />
+      <wsdl:output message="tns:CURPExisteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <wsdl:input message="tns:ConsultaBeneficiariosSoapIn" />
+      <wsdl:output message="tns:ConsultaBeneficiariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocioMA">
+      <wsdl:input message="tns:ReturnIdSocioMASoapIn" />
+      <wsdl:output message="tns:ReturnIdSocioMASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatMenorAH">
+      <wsdl:input message="tns:ReturnDatMenorAHSoapIn" />
+      <wsdl:output message="tns:ReturnDatMenorAHSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsConsultasHttpGet">
+    <wsdl:operation name="ConsultaDatosPago">
+      <wsdl:input message="tns:ConsultaDatosPagoHttpGetIn" />
+      <wsdl:output message="tns:ConsultaDatosPagoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaIdSucPrybe">
+      <wsdl:input message="tns:ConsultaIdSucPrybeHttpGetIn" />
+      <wsdl:output message="tns:ConsultaIdSucPrybeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPoliza">
+      <wsdl:input message="tns:ConsultaPolizaHttpGetIn" />
+      <wsdl:output message="tns:ConsultaPolizaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaParentesco">
+      <wsdl:input message="tns:ConsultaParentescoHttpGetIn" />
+      <wsdl:output message="tns:ConsultaParentescoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPolizasSocio">
+      <wsdl:input message="tns:ConsultaPolizasSocioHttpGetIn" />
+      <wsdl:output message="tns:ConsultaPolizasSocioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CURPExiste">
+      <wsdl:input message="tns:CURPExisteHttpGetIn" />
+      <wsdl:output message="tns:CURPExisteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <wsdl:input message="tns:ConsultaBeneficiariosHttpGetIn" />
+      <wsdl:output message="tns:ConsultaBeneficiariosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocioMA">
+      <wsdl:input message="tns:ReturnIdSocioMAHttpGetIn" />
+      <wsdl:output message="tns:ReturnIdSocioMAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatMenorAH">
+      <wsdl:input message="tns:ReturnDatMenorAHHttpGetIn" />
+      <wsdl:output message="tns:ReturnDatMenorAHHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsConsultasHttpPost">
+    <wsdl:operation name="ConsultaDatosPago">
+      <wsdl:input message="tns:ConsultaDatosPagoHttpPostIn" />
+      <wsdl:output message="tns:ConsultaDatosPagoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaIdSucPrybe">
+      <wsdl:input message="tns:ConsultaIdSucPrybeHttpPostIn" />
+      <wsdl:output message="tns:ConsultaIdSucPrybeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPoliza">
+      <wsdl:input message="tns:ConsultaPolizaHttpPostIn" />
+      <wsdl:output message="tns:ConsultaPolizaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaParentesco">
+      <wsdl:input message="tns:ConsultaParentescoHttpPostIn" />
+      <wsdl:output message="tns:ConsultaParentescoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPolizasSocio">
+      <wsdl:input message="tns:ConsultaPolizasSocioHttpPostIn" />
+      <wsdl:output message="tns:ConsultaPolizasSocioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CURPExiste">
+      <wsdl:input message="tns:CURPExisteHttpPostIn" />
+      <wsdl:output message="tns:CURPExisteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <wsdl:input message="tns:ConsultaBeneficiariosHttpPostIn" />
+      <wsdl:output message="tns:ConsultaBeneficiariosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocioMA">
+      <wsdl:input message="tns:ReturnIdSocioMAHttpPostIn" />
+      <wsdl:output message="tns:ReturnIdSocioMAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatMenorAH">
+      <wsdl:input message="tns:ReturnDatMenorAHHttpPostIn" />
+      <wsdl:output message="tns:ReturnDatMenorAHHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsConsultasSoap" type="tns:wsConsultasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaDatosPago">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaDatosPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaIdSucPrybe">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaIdSucPrybe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPoliza">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaPoliza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaParentesco">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaParentesco" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPolizasSocio">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaPolizasSocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CURPExiste">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/CURPExiste" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaBeneficiarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocioMA">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ReturnIdSocioMA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatMenorAH">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ReturnDatMenorAH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsConsultasSoap12" type="tns:wsConsultasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaDatosPago">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaDatosPago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaIdSucPrybe">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaIdSucPrybe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPoliza">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaPoliza" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaParentesco">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaParentesco" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPolizasSocio">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaPolizasSocio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CURPExiste">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/CURPExiste" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ConsultaBeneficiarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocioMA">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ReturnIdSocioMA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatMenorAH">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx/ReturnDatMenorAH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsConsultasHttpGet" type="tns:wsConsultasHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ConsultaDatosPago">
+      <http:operation location="/ConsultaDatosPago" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaIdSucPrybe">
+      <http:operation location="/ConsultaIdSucPrybe" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPoliza">
+      <http:operation location="/ConsultaPoliza" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaParentesco">
+      <http:operation location="/ConsultaParentesco" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPolizasSocio">
+      <http:operation location="/ConsultaPolizasSocio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CURPExiste">
+      <http:operation location="/CURPExiste" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <http:operation location="/ConsultaBeneficiarios" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocioMA">
+      <http:operation location="/ReturnIdSocioMA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatMenorAH">
+      <http:operation location="/ReturnDatMenorAH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsConsultasHttpPost" type="tns:wsConsultasHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ConsultaDatosPago">
+      <http:operation location="/ConsultaDatosPago" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaIdSucPrybe">
+      <http:operation location="/ConsultaIdSucPrybe" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPoliza">
+      <http:operation location="/ConsultaPoliza" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaParentesco">
+      <http:operation location="/ConsultaParentesco" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaPolizasSocio">
+      <http:operation location="/ConsultaPolizasSocio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CURPExiste">
+      <http:operation location="/CURPExiste" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBeneficiarios">
+      <http:operation location="/ConsultaBeneficiarios" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnIdSocioMA">
+      <http:operation location="/ReturnIdSocioMA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnDatMenorAH">
+      <http:operation location="/ReturnDatMenorAH" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsConsultas">
+    <wsdl:port name="wsConsultasSoap" binding="tns:wsConsultasSoap">
+      <soap:address location="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsConsultasSoap12" binding="tns:wsConsultasSoap12">
+      <soap12:address location="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsConsultasHttpGet" binding="tns:wsConsultasHttpGet">
+      <http:address location="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsConsultasHttpPost" binding="tns:wsConsultasHttpPost">
+      <http:address location="http://qa.prybe.coop/WSPrybeMS/wsmsp/wsConsultas.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
