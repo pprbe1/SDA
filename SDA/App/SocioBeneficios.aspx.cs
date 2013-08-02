@@ -36,12 +36,6 @@ namespace SDA.App
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["IdSiniestro"] = 20; //LOL, quitame
-
-            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
-
-            CargarCuentasColocacion(noSiniestro);
-            CargarCuentasCaptacion(noSiniestro);
         }
 
         protected void btnBuscaSocio_Click(object sender, EventArgs e)

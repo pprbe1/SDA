@@ -83,11 +83,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\AnalisisEspecifico.aspx" />
     <Content Include="App\AnalisisReclamo.aspx" />
     <Content Include="App\DocPendientes.aspx" />
     <Content Include="App\FileUploadBit.ascx" />
-    <Content Include="App\ListaaaaaasHoms.aspx" />
     <Content Include="App\Menu.aspx" />
     <Content Include="App\PdfReader.aspx" />
     <Content Include="App\SocioBeneficios.aspx" />
@@ -418,13 +416,6 @@
     <None Include="Web References\wsInsercionDatosBen\wsInsertaDatosBeneficios.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\AnalisisEspecifico.aspx.cs">
-      <DependentUpon>AnalisisEspecifico.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App\AnalisisEspecifico.aspx.designer.cs">
-      <DependentUpon>AnalisisEspecifico.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App\AnalisisReclamo.aspx.cs">
       <DependentUpon>AnalisisReclamo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -445,13 +436,6 @@
     </Compile>
     <Compile Include="App\FileUploadBit.ascx.designer.cs">
       <DependentUpon>FileUploadBit.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="App\ListaaaaaasHoms.aspx.cs">
-      <DependentUpon>ListaaaaaasHoms.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App\ListaaaaaasHoms.aspx.designer.cs">
-      <DependentUpon>ListaaaaaasHoms.aspx</DependentUpon>
     </Compile>
     <Compile Include="App\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
