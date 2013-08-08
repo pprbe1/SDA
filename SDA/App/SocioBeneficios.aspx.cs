@@ -36,6 +36,7 @@ namespace SDA.App
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["Usuario"] = 1;
         }
 
         protected void btnBuscaSocio_Click(object sender, EventArgs e)
@@ -140,11 +141,16 @@ namespace SDA.App
                                    this.txtApellidoMat.Text.ToUpper(), fechaNac.ToString("dd/MM/yyyy"), fechaIng.ToString("dd/MM/yyyy"), (int)(Session["Sexo"]), "", "", "",
                                    Convert.ToInt32(this.cmbOcupacion.SelectedItem.Value), Convert.ToInt32(this.cmbEdoCivil.SelectedItem.Value),
                                    Convert.ToInt32(Session["Sucursal"]), Convert.ToString(ano), 1, this.txtCalle.Text.ToUpper(),
-                                   this.txtNoExt.Text.ToUpper(), this.txtNoInt.Text.ToUpper(), 1);
+                                   this.txtNoExt.Text.ToUpper(), this.txtNoInt.Text.ToUpper(), 1, Convert.ToInt32(Session["Usuario"]));
 
                     Session["IdSiniestro"] = dfNumeroSiniestro2.Text = ErrorOper.Mensaje;
-                    this.paneLol.Disabled = false;
+
                     this.pnlSocio.Disabled = true;
+                    this.pnlSocio.Collapsed = true;
+
+                    this.paneLol.Disabled = false;
+                    this.pnlProteccionAhorros.Disabled = false;
+                    this.pnlProteccionPrestamos.Disabled = false;
                 }
 
                 this.btnCancelarRegistroSocio.Disabled = true;
@@ -153,8 +159,6 @@ namespace SDA.App
 
                 int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
 
-                CargarCuentasCaptacion(noSiniestro);
-                CargarCuentasColocacion(noSiniestro);
             }
             else
                 X.Msg.Alert("Aviso", "Faltan algunos campos de llenado").Show();
@@ -350,11 +354,21 @@ namespace SDA.App
 
         protected void CellCuentaColocacion(object sender, DirectEventArgs e)
         {
+            strBeneficiarios.RemoveAll();
+            LimpiaCamposBeneficiario();
+
+            Session["SaldosDA"] = e.ExtraParams["Id"];
+
             wndBeneficiario.Hidden = false;
         }
 
         protected void CellCuentaCaptacion(object sender, DirectEventArgs e)
         {
+            strBeneficiarios.RemoveAll();
+            LimpiaCamposBeneficiario();
+
+            Session["SaldosDA"] = e.ExtraParams["Id"];
+
             wndBeneficiario.Hidden = false;
         }
 
@@ -395,6 +409,16 @@ namespace SDA.App
             this.nmrPorcentaje.Value = EmptyValue.EmptyString;
         }
 
+        private void LimpiaCamposBeneficiario()
+        {
+            txtApellidoMBeneficiario.Text = string.Empty;
+            txtApellidoPBeneficiario.Text = string.Empty;
+            txtNombre2Beneficiario.Text = string.Empty;
+            txtNombreBeneficiario.Text = string.Empty;
+            nmrPorcentaje.Value = 0;
+            cmbParentesco.Value = 0;
+        }
+
         protected void Limpia_CamposCaptacion()
         {
             this.cmbCuentas.Value = "";
@@ -427,9 +451,22 @@ namespace SDA.App
                 X.Msg.Alert("Alerta", "El porcentaje de asignacion a beneficiarios excede el 100%").Show();
 
             else
-                X.Msg.Alert("Alerta", "No hay alerta").Show();
+            {
+                foreach (dynamic item in items)
+                {
+                    string nombre = Convert.ToString(item["nombre"].Value);
+                    string nombre2 = Convert.ToString(item["nombre2"].Value);
+                    string apellidop = Convert.ToString(item["apellidop"].Value);
+                    string apellidom = Convert.ToString(item["apellidom"].Value);
+                    string porcentaje = Convert.ToString(item["porcentaje"].Value);
+                    int idparentesco = Convert.ToInt32(item["idparentesco"].Value);
+                    int idsaldosda = Convert.ToInt32(Session["SaldosDA"]);
 
-            //Error err = insercion.InsertBeneficiarioDA();
+                    SDA.wsConsultaReportesDA.Error err = reportesDA.InsertBeneficiarioDA(nombre, nombre2, apellidop, apellidom, porcentaje, idparentesco, idsaldosda);
+                }
+
+                wndBeneficiario.Hide();
+            }
         }
     }
 }

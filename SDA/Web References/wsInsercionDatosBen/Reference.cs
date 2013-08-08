@@ -241,7 +241,8 @@ namespace SDA.wsInsercionDatosBen {
                     string Calle, 
                     string No_Ext, 
                     string No_Int, 
-                    int Actual) {
+                    int Actual, 
+                    int IdUsuario) {
             object[] results = this.Invoke("InsertSocioBeneficio", new object[] {
                         No_Socio,
                         Nombre,
@@ -262,7 +263,8 @@ namespace SDA.wsInsercionDatosBen {
                         Calle,
                         No_Ext,
                         No_Int,
-                        Actual});
+                        Actual,
+                        IdUsuario});
             return ((Error)(results[0]));
         }
         
@@ -287,8 +289,9 @@ namespace SDA.wsInsercionDatosBen {
                     string Calle, 
                     string No_Ext, 
                     string No_Int, 
-                    int Actual) {
-            this.InsertSocioBeneficioAsync(No_Socio, Nombre, Nombre_2, Apellido_Pat, Apellido_Mat, Fecha_Nac, Fecha_Ing, Sexo, Correo, RFC, Curp, Ocupacion, Edo_Civil, Id_Sucursal, Ano_Reclamo, Id_Colonia, Calle, No_Ext, No_Int, Actual, null);
+                    int Actual, 
+                    int IdUsuario) {
+            this.InsertSocioBeneficioAsync(No_Socio, Nombre, Nombre_2, Apellido_Pat, Apellido_Mat, Fecha_Nac, Fecha_Ing, Sexo, Correo, RFC, Curp, Ocupacion, Edo_Civil, Id_Sucursal, Ano_Reclamo, Id_Colonia, Calle, No_Ext, No_Int, Actual, IdUsuario, null);
         }
         
         /// <remarks/>
@@ -313,6 +316,7 @@ namespace SDA.wsInsercionDatosBen {
                     string No_Ext, 
                     string No_Int, 
                     int Actual, 
+                    int IdUsuario, 
                     object userState) {
             if ((this.InsertSocioBeneficioOperationCompleted == null)) {
                 this.InsertSocioBeneficioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertSocioBeneficioOperationCompleted);
@@ -337,7 +341,8 @@ namespace SDA.wsInsercionDatosBen {
                         Calle,
                         No_Ext,
                         No_Int,
-                        Actual}, this.InsertSocioBeneficioOperationCompleted, userState);
+                        Actual,
+                        IdUsuario}, this.InsertSocioBeneficioOperationCompleted, userState);
         }
         
         private void OnInsertSocioBeneficioOperationCompleted(object arg) {

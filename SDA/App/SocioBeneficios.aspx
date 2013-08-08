@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeBehind="SocioBeneficios.aspx.cs" Inherits="SDA.App.SocioBeneficios" %>
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
+
 <%@ Register TagPrefix="SDA" TagName="FileUploadBit" Src="/App/FileUploadBit.ascx" %>
+<%@ Register TagPrefix="SDA" TagName="LogBit" Src="/App/LogBit.ascx" %>
 
 <!DOCTYPE html>
 <html>
@@ -57,22 +59,30 @@
     </style>
     <script type="text/javascript">
         var agregarBeneficiario = function (store) {
-            var nombre = Ext.getCmp('txtNombreBeneficiario').getValue();
-            var nombre2 = Ext.getCmp('txtNombre2Beneficiario').getValue();
-            var apellidop = Ext.getCmp('txtApellidoPBeneficiario').getValue();
-            var apellidom = Ext.getCmp('txtApellidoMBeneficiario').getValue();
-            var porcentaje = Ext.getCmp('nmrPorcentaje').getValue();
-            var parentesco = Ext.getCmp('cmbParentesco').getRawValue();
+            var nombre = Ext.getCmp('txtNombreBeneficiario');
+            var nombre2 = Ext.getCmp('txtNombre2Beneficiario');
+            var apellidop = Ext.getCmp('txtApellidoPBeneficiario');
+            var apellidom = Ext.getCmp('txtApellidoMBeneficiario');
+            var porcentaje = Ext.getCmp('nmrPorcentaje');
+            var parentesco = Ext.getCmp('cmbParentesco');
 
             store.add({
                 id: 2,
-                nombre: nombre,
-                nombre2: nombre2,
-                apellidop: apellidop,
-                apellidom: apellidom,
-                porcentaje: porcentaje,
-                parentesco: parentesco
+                nombre: nombre.getValue(),
+                nombre2: nombre2.getValue(),
+                apellidop: apellidop.getValue(),
+                apellidom: apellidom.getValue(),
+                porcentaje: porcentaje.getValue(),
+                parentesco: parentesco.getRawValue(),
+                idparentesco: parentesco.getValue()
             });
+
+            nombre.clear();
+            nombre2.clear();
+            apellidop.clear();
+            apellidom.clear();
+            porcentaje.clear();
+            parentesco.clear();
         };
 
         var guardarBeneficiarios = function (store) {
@@ -97,6 +107,10 @@
         var bitchYouMadeItToOneHundredPercent = function (items) {
             App.Edit(items);
         };
+
+        var deleteBeneficiario = function(record) {
+            Ext.getCmp('gplBeneficiario').getStore().remove(record);
+        }
     </script>
 </head>
 <body>
@@ -169,6 +183,7 @@
                     <ext:ModelField Name="apellidom" />
                     <ext:ModelField Name="parentesco" />
                     <ext:ModelField Name="porcentaje" Type="Float" />
+                    <ext:ModelField Name="idparentesco" />
                 </Fields>
             </ext:Model>
         </Model>
@@ -178,8 +193,9 @@
     </ext:Store>
     <ext:Store ID="strCaptacion" runat="server">
         <Model>
-            <ext:Model ID="Model6" runat="server">
+            <ext:Model ID="Model6" runat="server" IDProperty="IdSaldo">
                 <Fields>
+                    <ext:ModelField Name="id" Mapping="IdSaldo" />
                     <ext:ModelField Name="cuenta" Mapping="Cuenta" Type="String" />
                     <ext:ModelField Name="saldo" Mapping="Saldo" />
                     <ext:ModelField Name="idsaldo" Mapping="IdSaldo"/>
@@ -194,8 +210,9 @@
     </ext:Store>
     <ext:Store ID="strColocacion" runat="server">
         <Model>
-            <ext:Model ID="Model7" runat="server">
+            <ext:Model ID="Model7" runat="server" IDProperty="IdSaldo">
                 <Fields>
+                    <ext:ModelField Name="id" Mapping="IdSaldo" />
                     <ext:ModelField Name="cuenta" Mapping="Cuenta" Type="String" />
                     <ext:ModelField Name="saldo" Mapping="Saldo" />
                     <ext:ModelField Name="idsaldo" Mapping="IdSaldo"/>
@@ -640,16 +657,10 @@
                 <FooterBar>
                     <ext:Toolbar ID="Toolbar1" runat="server" AutoHeight="true">
                         <Items>
-                            <ext:Button ID="btnCancelarRegistroSocio" runat="server" Text="Cancelar" Icon="Cancel" Disabled="true" ToolTip="Cancela la operación de registro de siniestro...<br>y realiza una nueva busqueda de Socio">
-                                <DirectEvents>
-                                    <Click OnEvent="btnCancelarRegistroSocio_DirectClick"></Click>
-                                </DirectEvents>
-                            </ext:Button>
-                            <ext:Button ID="btnModificarSocio" runat="server" Text="Guardar" Icon="DiskEdit" Disabled="true" ToolTip="Guarda los datos generales del Socio">
-                                <DirectEvents>
-                                    <Click OnEvent="btnModificarSocio_DirectClick"></Click>
-                                </DirectEvents>
-                            </ext:Button>
+                            <ext:Button ID="btnCancelarRegistroSocio" runat="server" Text="Cancelar" Icon="Cancel" Disabled="true" ToolTip="Cancela la operación de registro de siniestro...<br>y realiza una nueva busqueda de Socio"
+                                OnDirectClick="btnCancelarRegistroSocio_DirectClick" />
+                            <ext:Button ID="btnModificarSocio" runat="server" Text="Guardar" Icon="DiskEdit" Disabled="true" ToolTip="Guarda los datos generales del Socio"
+                                OnDirectClick="btnModificarSocio_DirectClick"/>
                         </Items>
                     </ext:Toolbar>
                 </FooterBar>
@@ -657,7 +668,7 @@
         </Items>           
     </ext:Panel>
     <ext:Panel runat="server" ID="pnlProteccionAhorros" Title="Protección a los Ahorros"
-        Icon="Money" Height="300" Collapsible="true" Collapsed="true" Layout="Form">
+        Icon="Money" Height="300" Collapsible="true" Collapsed="true" Layout="Form" Disabled="true">
         <Items>
             <ext:FormPanel ID="pnlCaptacion" runat="server" Border="false" Height="80" Padding="10"
                 Header="false" Layout="Column" >
@@ -674,6 +685,11 @@
                 </Items>
                 <Buttons>
                     <ext:Button runat="server" ID="btnAgregarCuentaCaptacion" Icon="MoneyAdd" Text="Agregar Cuenta Ahorro" FormBind="true" OnDirectClick="AgregarCuentaCaptacion" />
+                    <ext:Button runat="server" ID="btnMostrarBitacora" Icon="Book" Text="Mostrar Bitacora">
+                        <Listeners>
+                            <Click Handler="#{wndBitacora}.show();" />
+                        </Listeners>
+                    </ext:Button>
                 </Buttons>
             </ext:FormPanel>
             <ext:GridPanel runat="server" ID="gplCaptacion" AutoHeight="true"
@@ -688,9 +704,12 @@
                     </Columns>
                 </ColumnModel>
                 <SelectionModel>
-                    <ext:RowSelectionModel ID="RowSelectionModel2" runat="server" ItemID="idcaptacion">
+                    <ext:RowSelectionModel ID="smCaptacion" runat="server">
                         <DirectEvents>
                             <Select OnEvent="CellCuentaCaptacion">
+                                <ExtraParams>
+                                    <ext:Parameter Name="Id" Value="record.data.id" Mode="Raw" />
+                                </ExtraParams>
                             </Select>
                         </DirectEvents>
                     </ext:RowSelectionModel>
@@ -699,7 +718,7 @@
         </Items>
     </ext:Panel>
     <ext:Panel runat="server" ID="pnlProteccionPrestamos" Layout="Form" Title="Protección a los Préstamos"
-        Icon="Money" Height="300" Collapsible="true" Collapsed="true">
+        Icon="Money" Height="300" Collapsible="true" Collapsed="true" Disabled="true">
         <Items>
             <ext:FormPanel runat="server" Height="80" Border="false"
                 ID="pnlColocacion" Padding="10" Layout="Column">
@@ -718,6 +737,11 @@
                 </Items>
                 <Buttons>
                     <ext:Button runat="server" ID="btnAgregarCuentaColocacion" Text="Agregar Préstamo" Icon="MoneyAdd" OnDirectClick="AgregarCuentaColocacion" FormBind="true" />
+                    <ext:Button runat="server" ID="Button1" Icon="Book" Text="Mostrar Bitacora">
+                        <Listeners>
+                            <Click Handler="#{wndBitacora}.show();" />
+                        </Listeners>
+                    </ext:Button>
                 </Buttons>
             </ext:FormPanel>
             <ext:GridPanel runat="server" ID="gplColocacion" AutoHeight="true"
@@ -732,16 +756,20 @@
                     </Columns>
                 </ColumnModel>
                 <SelectionModel>
-                    <ext:RowSelectionModel ID="RowSelectionModel3" runat="server" ItemID="idcaptacion">
+                    <ext:RowSelectionModel ID="smColocacion" runat="server">
                         <DirectEvents>
-                            <Select OnEvent="CellCuentaColocacion" />
+                            <Select OnEvent="CellCuentaColocacion">
+                                <ExtraParams>
+                                    <ext:Parameter Name="Id" Value="record.data.id" Mode="Raw" />
+                                </ExtraParams>
+                            </Select>
                         </DirectEvents>
                     </ext:RowSelectionModel>
                 </SelectionModel>
             </ext:GridPanel>
         </Items>
     </ext:Panel>
-    <ext:Panel ID="paneLol" Title="Archivos" runat="server" Disabled="true" Height="600" AnchorHorizontal="100%" Border="false">
+    <ext:Panel ID="paneLol" runat="server" Disabled="true" Height="600" AnchorHorizontal="100%">
         <Content>
             <SDA:FileUploadBit ID="FileUploadBit1" runat="server" CanEdit="false" />
         </Content>
@@ -823,15 +851,18 @@
                         <ext:Column ID="Column2" runat="server" Text="Porcentaje" DataIndex="porcentaje" Align="Left" />
                         <ext:CommandColumn runat="server">
                             <Commands>
-                                <ext:GridCommand Icon="Delete" />
+                                <ext:GridCommand Icon="Delete" CommandName="Delete" />
                             </Commands>
+                            <Listeners>
+                                <Command Handler="deleteBeneficiario(record);" />
+                            </Listeners>
                         </ext:CommandColumn>
                         <ext:Column ID="Column3" Hidden="true" runat="server" DataIndex="idbeneficiario" />
                         <ext:Column ID="Column14" Hidden="true" runat="server" DataIndex="idparentesco" />
                     </Columns>
                 </ColumnModel>
                 <SelectionModel>
-                    <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" ItemID="idbeneficiario">
+                    <ext:RowSelectionModel ID="RowSelectionModel1" runat="server">
                         <DirectEvents>
                             <Select OnEvent="SelectBeneficiario" />
                         </DirectEvents>
@@ -846,6 +877,12 @@
                 </Buttons>
             </ext:GridPanel>
         </Items>
+    </ext:Window>
+    <ext:Window ID="wndBitacora" runat="server" Modal="true" Title="Bitacora del Siniestro" Height="520" Width="800" Resizable="false"
+        Icon="Book" Hidden="true">
+        <Content>
+            <SDA:LogBit runat="server" />
+        </Content>
     </ext:Window>
     </form>
 </body>

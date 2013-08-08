@@ -86,6 +86,7 @@
     <Content Include="App\AnalisisReclamo.aspx" />
     <Content Include="App\DocPendientes.aspx" />
     <Content Include="App\FileUploadBit.ascx" />
+    <Content Include="App\LogBit.ascx" />
     <Content Include="App\Menu.aspx" />
     <Content Include="App\PdfReader.aspx" />
     <Content Include="App\SocioBeneficios.aspx" />
@@ -347,6 +348,9 @@
     <None Include="Web References\wsConsultaReportesDA\Siniestro.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\wsConsultaReportesDA\TipoPrestamo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\wsConsultaReportesDA\wsConsultaReportesDA.wsdl" />
     <None Include="Web References\wsConsultasMS\Beneficiario.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -436,6 +440,13 @@
     </Compile>
     <Compile Include="App\FileUploadBit.ascx.designer.cs">
       <DependentUpon>FileUploadBit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="App\LogBit.ascx.cs">
+      <DependentUpon>LogBit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\LogBit.ascx.designer.cs">
+      <DependentUpon>LogBit.ascx</DependentUpon>
     </Compile>
     <Compile Include="App\Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>

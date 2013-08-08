@@ -670,6 +670,15 @@ namespace SDA.App {
         protected global::Ext.Net.Button btnAgregarCuentaCaptacion;
         
         /// <summary>
+        /// Control btnMostrarBitacora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnMostrarBitacora;
+        
+        /// <summary>
         /// Control gplCaptacion.
         /// </summary>
         /// <remarks>
@@ -706,13 +715,13 @@ namespace SDA.App {
         protected global::Ext.Net.Column Column6;
         
         /// <summary>
-        /// Control RowSelectionModel2.
+        /// Control smCaptacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.RowSelectionModel RowSelectionModel2;
+        protected global::Ext.Net.RowSelectionModel smCaptacion;
         
         /// <summary>
         /// Control pnlProteccionPrestamos.
@@ -787,6 +796,15 @@ namespace SDA.App {
         protected global::Ext.Net.Button btnAgregarCuentaColocacion;
         
         /// <summary>
+        /// Control Button1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button Button1;
+        
+        /// <summary>
         /// Control gplColocacion.
         /// </summary>
         /// <remarks>
@@ -823,13 +841,13 @@ namespace SDA.App {
         protected global::Ext.Net.Column Column9;
         
         /// <summary>
-        /// Control RowSelectionModel3.
+        /// Control smColocacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.RowSelectionModel RowSelectionModel3;
+        protected global::Ext.Net.RowSelectionModel smColocacion;
         
         /// <summary>
         /// Control paneLol.
@@ -1091,5 +1109,14 @@ namespace SDA.App {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Button btnGuardarBeneficiarios;
+        
+        /// <summary>
+        /// Control wndBitacora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Window wndBitacora;
     }
 }

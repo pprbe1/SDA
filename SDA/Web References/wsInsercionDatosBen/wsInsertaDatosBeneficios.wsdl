@@ -58,6 +58,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="No_Ext" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="No_Int" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="Actual" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -478,6 +479,7 @@
     <wsdl:part name="No_Ext" type="s:string" />
     <wsdl:part name="No_Int" type="s:string" />
     <wsdl:part name="Actual" type="s:string" />
+    <wsdl:part name="IdUsuario" type="s:string" />
   </wsdl:message>
   <wsdl:message name="InsertSocioBeneficioHttpGetOut">
     <wsdl:part name="Body" element="tns:Error" />
@@ -669,6 +671,7 @@
     <wsdl:part name="No_Ext" type="s:string" />
     <wsdl:part name="No_Int" type="s:string" />
     <wsdl:part name="Actual" type="s:string" />
+    <wsdl:part name="IdUsuario" type="s:string" />
   </wsdl:message>
   <wsdl:message name="InsertSocioBeneficioHttpPostOut">
     <wsdl:part name="Body" element="tns:Error" />

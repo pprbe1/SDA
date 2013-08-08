@@ -55,6 +55,8 @@ namespace SDA.wsConsultaReportesDA {
         
         private System.Threading.SendOrPostCallback InsertBeneficiarioDAOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CargaPrestamoOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -131,6 +133,9 @@ namespace SDA.wsConsultaReportesDA {
         
         /// <remarks/>
         public event InsertBeneficiarioDACompletedEventHandler InsertBeneficiarioDACompleted;
+        
+        /// <remarks/>
+        public event CargaPrestamoCompletedEventHandler CargaPrestamoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/Document" +
@@ -576,6 +581,34 @@ namespace SDA.wsConsultaReportesDA {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/CargaPre" +
+            "stamo", RequestNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", ResponseNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public TipoPrestamo[] CargaPrestamo() {
+            object[] results = this.Invoke("CargaPrestamo", new object[0]);
+            return ((TipoPrestamo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CargaPrestamoAsync() {
+            this.CargaPrestamoAsync(null);
+        }
+        
+        /// <remarks/>
+        public void CargaPrestamoAsync(object userState) {
+            if ((this.CargaPrestamoOperationCompleted == null)) {
+                this.CargaPrestamoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCargaPrestamoOperationCompleted);
+            }
+            this.InvokeAsync("CargaPrestamo", new object[0], this.CargaPrestamoOperationCompleted, userState);
+        }
+        
+        private void OnCargaPrestamoOperationCompleted(object arg) {
+            if ((this.CargaPrestamoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CargaPrestamoCompleted(this, new CargaPrestamoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -695,6 +728,39 @@ namespace SDA.wsConsultaReportesDA {
             }
             set {
                 this.fechaAltaField = value;
+            }
+        }
+    }
+    
+    /// <comentarios/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18213")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx")]
+    public partial class TipoPrestamo {
+        
+        private string idTipoPrestamoField;
+        
+        private string prestamoField;
+        
+        /// <comentarios/>
+        public string IdTipoPrestamo {
+            get {
+                return this.idTipoPrestamoField;
+            }
+            set {
+                this.idTipoPrestamoField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public string Prestamo {
+            get {
+                return this.prestamoField;
+            }
+            set {
+                this.prestamoField = value;
             }
         }
     }
@@ -1459,6 +1525,32 @@ namespace SDA.wsConsultaReportesDA {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Error)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
+    public delegate void CargaPrestamoCompletedEventHandler(object sender, CargaPrestamoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18213")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CargaPrestamoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CargaPrestamoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public TipoPrestamo[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((TipoPrestamo[])(this.results[0]));
             }
         }
     }
