@@ -267,17 +267,35 @@
                     >
                     <Menu ID="mReporte1" runat="server">
                         <Items>
-                            <ext:MenuItem ID="miR1" runat="server" Text="Reporte #1" Icon="Report">
+                            <ext:MenuItem ID="miR1" runat="server" Text="Reporte General" Icon="Report">
                                 <Listeners>
-                                    <Click Handler="addTab(#{tabMain}, 'idNB', 'http://www.w3schools.com/', this, 'Reportes -  Reportes #1');" />
+                                    <Click Handler="addTab(#{tabMain}, 'idRG', 'ReporteGralDA.aspx', this, 'Reportes -  Reporte General');" />
                                 </Listeners>
                             </ext:MenuItem>                            
                             
-                            <%--<ext:MenuItem ID="miOP" runat="server" Text="Orden de Producción" Icon="PackageGo">
+                            <ext:MenuItem ID="miR2" runat="server" Text="Reporte Requerimientos Adicionales" Icon="Report">
                                 <Listeners>
-                                    <Click Handler="addTab(#{tabMain}, 'idOP', 'http://www.w3schools.com/', this, 'Orden de Producción');" />
+                                    <Click Handler="addTab(#{tabMain}, 'idRA', 'ReporteReqAdicionalDA.aspx', this, 'Reportes -  Reporte Requerimientos Adicionales');" />
                                 </Listeners>
-                            </ext:MenuItem>  --%>                           
+                            </ext:MenuItem> 
+                            
+                            <ext:MenuItem ID="miR3" runat="server" Text="Reporte Estatus Siniestro" Icon="Report">
+                                <Listeners>
+                                    <Click Handler="addTab(#{tabMain}, 'idES', 'ReporteSinEstatusDA.aspx', this, 'Reportes -  Reporte Estatus Siniestro');" />
+                                </Listeners>
+                            </ext:MenuItem> 
+                            
+                            <ext:MenuItem ID="miR4" runat="server" Text="Reporte Finiquitos" Icon="Report">
+                                <Listeners>
+                                    <Click Handler="addTab(#{tabMain}, 'idF', 'ReporteFiniquitos.aspx', this, 'Reportes -  Reporte Finiquitos');" />
+                                </Listeners>
+                            </ext:MenuItem> 
+                            
+                            <ext:MenuItem ID="miR5" runat="server" Text="Reporte Documentación Física" Icon="Report">
+                                <Listeners>
+                                    <Click Handler="addTab(#{tabMain}, 'idDF', 'ReporteDocuFisicos.aspx', this, 'Reportes -  Reporte Documentación Física');" />
+                                </Listeners>
+                            </ext:MenuItem>                          
                         </Items>
                     </Menu>
                 </ext:MenuPanel>

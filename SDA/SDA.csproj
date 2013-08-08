@@ -89,6 +89,11 @@
     <Content Include="App\LogBit.ascx" />
     <Content Include="App\Menu.aspx" />
     <Content Include="App\PdfReader.aspx" />
+    <Content Include="App\ReporteDocuFisicos.aspx" />
+    <Content Include="App\ReporteFiniquitos.aspx" />
+    <Content Include="App\ReporteGralDA.aspx" />
+    <Content Include="App\ReporteReqAdicionalDA.aspx" />
+    <Content Include="App\ReporteSinEstatusDA.aspx" />
     <Content Include="App\SocioBeneficios.aspx" />
     <Content Include="App\Styles\msj.gif" />
     <Content Include="Media\Image\Buttons\acercade.png" />
@@ -342,6 +347,9 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\wsConsultaReportesDA\ReporteSiniestrosDA.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\wsConsultaReportesDA\SaldosDA.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -461,6 +469,41 @@
     </Compile>
     <Compile Include="App\PdfReader.aspx.designer.cs">
       <DependentUpon>PdfReader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\ReporteDocuFisicos.aspx.cs">
+      <DependentUpon>ReporteDocuFisicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\ReporteDocuFisicos.aspx.designer.cs">
+      <DependentUpon>ReporteDocuFisicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\ReporteFiniquitos.aspx.cs">
+      <DependentUpon>ReporteFiniquitos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\ReporteFiniquitos.aspx.designer.cs">
+      <DependentUpon>ReporteFiniquitos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\ReporteGralDA.aspx.cs">
+      <DependentUpon>ReporteGralDA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\ReporteGralDA.aspx.designer.cs">
+      <DependentUpon>ReporteGralDA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\ReporteReqAdicionalDA.aspx.cs">
+      <DependentUpon>ReporteReqAdicionalDA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\ReporteReqAdicionalDA.aspx.designer.cs">
+      <DependentUpon>ReporteReqAdicionalDA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\ReporteSinEstatusDA.aspx.cs">
+      <DependentUpon>ReporteSinEstatusDA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\ReporteSinEstatusDA.aspx.designer.cs">
+      <DependentUpon>ReporteSinEstatusDA.aspx</DependentUpon>
     </Compile>
     <Compile Include="App\SocioBeneficios.aspx.cs">
       <DependentUpon>SocioBeneficios.aspx</DependentUpon>

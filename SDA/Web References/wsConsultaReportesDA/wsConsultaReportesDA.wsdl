@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx">
       <s:element name="DocumentacionPendiente">
@@ -324,6 +324,53 @@
           <s:element minOccurs="0" maxOccurs="1" name="Prestamo" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ReporteSiniestros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaInicio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaFin" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Operacion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReporteSiniestrosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReporteSiniestrosResult" type="tns:ArrayOfReporteSiniestrosDA" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReporteSiniestrosDA">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReporteSiniestrosDA" nillable="true" type="tns:ReporteSiniestrosDA" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReporteSiniestrosDA">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdReclamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plaza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreEjecutivo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaRegistro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreSocio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaldoAhorro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaldoPrestamo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AyudaFuneraria" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SeguroMutual" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreBeneficiario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cuenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaldoBene" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoRequerimiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaRequerimiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaldoTotal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaEnvio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Paqueteria" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoGuia" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ArrayOfDocumentoPendiente" nillable="true" type="tns:ArrayOfDocumentoPendiente" />
       <s:element name="ArrayOfSiniestro" nillable="true" type="tns:ArrayOfSiniestro" />
       <s:element name="ArrayOfBitacora" nillable="true" type="tns:ArrayOfBitacora" />
@@ -332,6 +379,7 @@
       <s:element name="ArrayOfSaldosDA" nillable="true" type="tns:ArrayOfSaldosDA" />
       <s:element name="ArrayOfCuentasDA" nillable="true" type="tns:ArrayOfCuentasDA" />
       <s:element name="ArrayOfTipoPrestamo" nillable="true" type="tns:ArrayOfTipoPrestamo" />
+      <s:element name="ArrayOfReporteSiniestrosDA" nillable="true" type="tns:ArrayOfReporteSiniestrosDA" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="DocumentacionPendienteSoapIn">
@@ -417,6 +465,12 @@
   </wsdl:message>
   <wsdl:message name="CargaPrestamoSoapOut">
     <wsdl:part name="parameters" element="tns:CargaPrestamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReporteSiniestrosSoapIn">
+    <wsdl:part name="parameters" element="tns:ReporteSiniestros" />
+  </wsdl:message>
+  <wsdl:message name="ReporteSiniestrosSoapOut">
+    <wsdl:part name="parameters" element="tns:ReporteSiniestrosResponse" />
   </wsdl:message>
   <wsdl:message name="DocumentacionPendienteHttpGetIn">
     <wsdl:part name="IdSucursal" type="s:string" />
@@ -527,6 +581,15 @@
   <wsdl:message name="CargaPrestamoHttpGetOut">
     <wsdl:part name="Body" element="tns:ArrayOfTipoPrestamo" />
   </wsdl:message>
+  <wsdl:message name="ReporteSiniestrosHttpGetIn">
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="FechaInicio" type="s:string" />
+    <wsdl:part name="FechaFin" type="s:string" />
+    <wsdl:part name="Operacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReporteSiniestrosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfReporteSiniestrosDA" />
+  </wsdl:message>
   <wsdl:message name="DocumentacionPendienteHttpPostIn">
     <wsdl:part name="IdSucursal" type="s:string" />
     <wsdl:part name="NoSocio" type="s:string" />
@@ -636,6 +699,15 @@
   <wsdl:message name="CargaPrestamoHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfTipoPrestamo" />
   </wsdl:message>
+  <wsdl:message name="ReporteSiniestrosHttpPostIn">
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="FechaInicio" type="s:string" />
+    <wsdl:part name="FechaFin" type="s:string" />
+    <wsdl:part name="Operacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReporteSiniestrosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfReporteSiniestrosDA" />
+  </wsdl:message>
   <wsdl:portType name="wsConsultaReportesDASoap">
     <wsdl:operation name="DocumentacionPendiente">
       <wsdl:input message="tns:DocumentacionPendienteSoapIn" />
@@ -692,6 +764,10 @@
     <wsdl:operation name="CargaPrestamo">
       <wsdl:input message="tns:CargaPrestamoSoapIn" />
       <wsdl:output message="tns:CargaPrestamoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteSiniestros">
+      <wsdl:input message="tns:ReporteSiniestrosSoapIn" />
+      <wsdl:output message="tns:ReporteSiniestrosSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsConsultaReportesDAHttpGet">
@@ -751,6 +827,10 @@
       <wsdl:input message="tns:CargaPrestamoHttpGetIn" />
       <wsdl:output message="tns:CargaPrestamoHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="ReporteSiniestros">
+      <wsdl:input message="tns:ReporteSiniestrosHttpGetIn" />
+      <wsdl:output message="tns:ReporteSiniestrosHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsConsultaReportesDAHttpPost">
     <wsdl:operation name="DocumentacionPendiente">
@@ -808,6 +888,10 @@
     <wsdl:operation name="CargaPrestamo">
       <wsdl:input message="tns:CargaPrestamoHttpPostIn" />
       <wsdl:output message="tns:CargaPrestamoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReporteSiniestros">
+      <wsdl:input message="tns:ReporteSiniestrosHttpPostIn" />
+      <wsdl:output message="tns:ReporteSiniestrosHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsConsultaReportesDASoap" type="tns:wsConsultaReportesDASoap">
@@ -931,6 +1015,15 @@
     </wsdl:operation>
     <wsdl:operation name="CargaPrestamo">
       <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/CargaPrestamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteSiniestros">
+      <soap:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/ReporteSiniestros" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1067,6 +1160,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReporteSiniestros">
+      <soap12:operation soapAction="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx/ReporteSiniestros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsConsultaReportesDAHttpGet" type="tns:wsConsultaReportesDAHttpGet">
     <http:binding verb="GET" />
@@ -1196,6 +1298,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReporteSiniestros">
+      <http:operation location="/ReporteSiniestros" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsConsultaReportesDAHttpPost" type="tns:wsConsultaReportesDAHttpPost">
     <http:binding verb="POST" />
@@ -1318,6 +1429,15 @@
     </wsdl:operation>
     <wsdl:operation name="CargaPrestamo">
       <http:operation location="/CargaPrestamo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReporteSiniestros">
+      <http:operation location="/ReporteSiniestros" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

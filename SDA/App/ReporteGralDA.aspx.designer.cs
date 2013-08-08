@@ -10,34 +10,16 @@
 namespace SDA.App {
     
     
-    public partial class Menu {
+    public partial class ReporteGralDA {
         
         /// <summary>
-        /// Control Head1.
+        /// Control form1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
-        
-        /// <summary>
-        /// Control XScript1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.XScript XScript1;
-        
-        /// <summary>
-        /// Control Form1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// Control ResourceManager1.
@@ -49,156 +31,210 @@ namespace SDA.App {
         protected global::Ext.Net.ResourceManager ResourceManager1;
         
         /// <summary>
-        /// Control Viewport1.
+        /// Control FormPanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Viewport Viewport1;
+        protected global::Ext.Net.FormPanel FormPanel1;
         
         /// <summary>
-        /// Control pnlMnenu.
+        /// Control Panel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel pnlMnenu;
+        protected global::Ext.Net.Panel Panel1;
         
         /// <summary>
-        /// Control pnlSettings.
+        /// Control GridPanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel pnlSettings;
+        protected global::Ext.Net.GridPanel GridPanel1;
         
         /// <summary>
-        /// Control mpRegistro.
+        /// Control Toolbar1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuPanel mpRegistro;
+        protected global::Ext.Net.Toolbar Toolbar1;
         
         /// <summary>
-        /// Control miAS.
+        /// Control ToolbarFill1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miAS;
+        protected global::Ext.Net.ToolbarFill ToolbarFill1;
         
         /// <summary>
-        /// Control mpSeguimiento.
+        /// Control Store3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuPanel mpSeguimiento;
+        protected global::Ext.Net.Store Store3;
         
         /// <summary>
-        /// Control miSS.
+        /// Control Model3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miSS;
+        protected global::Ext.Net.Model Model3;
         
         /// <summary>
-        /// Control miDocPend.
+        /// Control Column2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miDocPend;
+        protected global::Ext.Net.Column Column2;
         
         /// <summary>
-        /// Control mpReportes.
+        /// Control Column3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuPanel mpReportes;
+        protected global::Ext.Net.Column Column3;
         
         /// <summary>
-        /// Control miR1.
+        /// Control Column4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miR1;
+        protected global::Ext.Net.Column Column4;
         
         /// <summary>
-        /// Control miR2.
+        /// Control Column5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miR2;
+        protected global::Ext.Net.Column Column5;
         
         /// <summary>
-        /// Control miR3.
+        /// Control Column6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miR3;
+        protected global::Ext.Net.Column Column6;
         
         /// <summary>
-        /// Control miR4.
+        /// Control Column7.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miR4;
+        protected global::Ext.Net.Column Column7;
         
         /// <summary>
-        /// Control miR5.
+        /// Control Column8.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miR5;
+        protected global::Ext.Net.Column Column8;
         
         /// <summary>
-        /// Control mpEstadisticas.
+        /// Control Column9.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuPanel mpEstadisticas;
+        protected global::Ext.Net.Column Column9;
         
         /// <summary>
-        /// Control miE1.
+        /// Control Column10.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miE1;
+        protected global::Ext.Net.Column Column10;
         
         /// <summary>
-        /// Control tabMain.
+        /// Control Column11.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TabPanel tabMain;
+        protected global::Ext.Net.Column Column11;
+        
+        /// <summary>
+        /// Control Column12.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column12;
+        
+        /// <summary>
+        /// Control Column13.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column13;
+        
+        /// <summary>
+        /// Control Column14.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column14;
+        
+        /// <summary>
+        /// Control Column15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column15;
+        
+        /// <summary>
+        /// Control RowSelectionModel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.RowSelectionModel RowSelectionModel1;
+        
+        /// <summary>
+        /// Control GridView1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.GridView GridView1;
     }
 }
