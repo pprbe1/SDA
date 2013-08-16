@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 
+using System.Threading;
+
 namespace SDA
 {
     public class Global : System.Web.HttpApplication
@@ -13,7 +15,6 @@ namespace SDA
         void Application_Start(object sender, EventArgs e)
         {
             // Código que se ejecuta al iniciarse la aplicación
-
         }
 
         void Application_End(object sender, EventArgs e)

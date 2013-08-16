@@ -76,24 +76,6 @@ namespace SDA.App {
         protected global::Ext.Net.Model Model3;
         
         /// <summary>
-        /// Control strBitacora.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store strBitacora;
-        
-        /// <summary>
-        /// Control Model4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model Model4;
-        
-        /// <summary>
         /// Control strReclamosGral.
         /// </summary>
         /// <remarks>
@@ -110,42 +92,6 @@ namespace SDA.App {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Model Model5;
-        
-        /// <summary>
-        /// Control strEnvio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store strEnvio;
-        
-        /// <summary>
-        /// Control Model6.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model Model6;
-        
-        /// <summary>
-        /// Control strPaqueteria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store strPaqueteria;
-        
-        /// <summary>
-        /// Control Model8.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model Model8;
         
         /// <summary>
         /// Control strArchivos.
@@ -472,103 +418,31 @@ namespace SDA.App {
         protected global::Ext.Net.Button btnGuardarEstadoSin;
         
         /// <summary>
-        /// Control paneBitacora.
+        /// Control paneSDALog.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel paneBitacora;
+        protected global::Ext.Net.Panel paneSDALog;
         
         /// <summary>
-        /// Control grdBitacora.
+        /// Control LogBit1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.GridPanel grdBitacora;
+        protected global::SDA.App.LogBit LogBit1;
         
         /// <summary>
-        /// Control Column5.
+        /// Control paneSDAFile.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.DateColumn Column5;
-        
-        /// <summary>
-        /// Control Column6.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column Column6;
-        
-        /// <summary>
-        /// Control Column7.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column Column7;
-        
-        /// <summary>
-        /// Control btnNuevaBitacora.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Button btnNuevaBitacora;
-        
-        /// <summary>
-        /// Control frmBitacora.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FormPanel frmBitacora;
-        
-        /// <summary>
-        /// Control txtBitacora.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.HtmlEditor txtBitacora;
-        
-        /// <summary>
-        /// Control btnGuardarBitacora.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Button btnGuardarBitacora;
-        
-        /// <summary>
-        /// Control btnCancelarBitacora.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Button btnCancelarBitacora;
-        
-        /// <summary>
-        /// Control paneLol.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Panel paneLol;
+        protected global::Ext.Net.Panel paneSDAFile;
         
         /// <summary>
         /// Control FileUploadBit1.

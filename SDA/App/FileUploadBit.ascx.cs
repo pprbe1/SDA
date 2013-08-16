@@ -23,6 +23,7 @@ namespace SDA.App
         [DirectMethod]
         public void CargarArchivos()
         {
+            RestaurarArchivos(null, null);
             int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
             ArchivosSiniestro(noSiniestro);
         }

@@ -17,6 +17,7 @@
         <ext:ArrayReader />
     </Reader>
 </ext:Store>
+
 <ext:Store ID="strPaqueteria" runat="server">
     <Proxy>
         <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsCargaCombosBene.asmx/CargaPaqueteria">

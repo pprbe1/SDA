@@ -317,6 +317,8 @@ namespace SDA.App
             wsConsultaReportesDA.Error err = reportesDA.InsertSaldosDA(noSiniestro, idCuenta, 11, monto, ultimoMovimiento, string.Empty, string.Empty, string.Empty);
 
             CargarCuentasCaptacion(noSiniestro);
+
+            LimpiaCamposCaptacion();
         }
 
         private void CargarCuentasCaptacion(int noSiniestro)
@@ -338,6 +340,8 @@ namespace SDA.App
             wsConsultaReportesDA.Error err = reportesDA.InsertSaldosDA(noSiniestro, 7, tipoPrestamo, saldo, ultimoMovimiento, string.Empty, interes, fechaPrestamo);
 
             CargarCuentasColocacion(noSiniestro);
+
+            LimpiaCamposColocacion();
         }
 
         protected void CargarCuentasColocacion(int noSiniestro)
@@ -349,7 +353,6 @@ namespace SDA.App
 
         protected void SelectBeneficiario(object sender, DirectEventArgs e)
         {
-
         }
 
         protected void CellCuentaColocacion(object sender, DirectEventArgs e)
@@ -370,6 +373,18 @@ namespace SDA.App
             Session["SaldosDA"] = e.ExtraParams["Id"];
 
             wndBeneficiario.Hidden = false;
+
+            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
+            int noCuenta = Convert.ToInt32(e.ExtraParams["IdCuenta"]);
+
+            CargarBeneficiarios(noSiniestro, noCuenta, 11);
+        }
+
+        private void CargarBeneficiarios(int noSiniestro, int noCuenta, int noTipoPrestamo)
+        {
+            BeneficiariosDA[] beneficiarios = reportesDA.ConsultaBeneFiciariosDA(noSiniestro, noCuenta, noTipoPrestamo);
+            strBeneficiarios.DataSource = beneficiarios;
+            strBeneficiarios.DataBind();
         }
 
         protected void Habilita_CamposBeneficiario()
@@ -400,38 +415,44 @@ namespace SDA.App
             this.btnAgregarCuentaColocacion.Disabled = false;
         }
 
-        protected void Limpia_CamposBeneficiario()
-        {
-            this.txtNombreBeneficiario.Text = "";
-            this.txtNombre2Beneficiario.Text = "";
-            this.txtApellidoPBeneficiario.Text = "";
-            this.txtApellidoMBeneficiario.Text = "";
-            this.nmrPorcentaje.Value = EmptyValue.EmptyString;
-        }
-
         private void LimpiaCamposBeneficiario()
         {
             txtApellidoMBeneficiario.Text = string.Empty;
             txtApellidoPBeneficiario.Text = string.Empty;
             txtNombre2Beneficiario.Text = string.Empty;
             txtNombreBeneficiario.Text = string.Empty;
-            nmrPorcentaje.Value = 0;
-            cmbParentesco.Value = 0;
+            nmrPorcentaje.Value = string.Empty;
+            cmbParentesco.Value = string.Empty;
         }
 
-        protected void Limpia_CamposCaptacion()
+        protected void LimpiaCamposCaptacion()
         {
-            this.cmbCuentas.Value = "";
-            this.nmrMonto.Value = EmptyValue.EmptyString;
-            this.dteFechaUltimoMovimiento.Text = "";
+            cmbCuentas.Value = string.Empty;
+            nmrMonto.Value = string.Empty;
+            dteFechaUltimoMovimiento.Text = string.Empty;
         }
 
-        protected void Limpia_CamposColocacion()
+        protected void LimpiaCamposColocacion()
         {
-            this.cmbTipoPrestamo.SelectedItem.Value = "1";
-            this.nmrTasaInteres.Value = EmptyValue.EmptyString;
-            this.dteFechaUltimoMovimientoCol.Text = "";
-            this.nmrSaldoPrincipal.Value = EmptyValue.EmptyString;
+            cmbTipoPrestamo.Value = string.Empty;
+            nmrTasaInteres.Value = string.Empty;
+            dteFechaUltimoMovimientoCol.Text = string.Empty;
+            nmrSaldoPrincipal.Value = string.Empty;
+            datePrestamo.Value = string.Empty;
+        }
+
+        [DirectMethod(Namespace = "App")]
+        public void Delete(int idBeneficiario)
+        {
+            int idSaldo = Convert.ToInt32(Session["SaldosDA"]);
+
+            bool deleted = reportesDA.EliminarBeneficiarioDA(idBeneficiario, idSaldo);
+
+            if (deleted)
+                X.Msg.Alert("Operacion finalizada", "Se ha eliminado al beneficiario").Show();
+
+            else
+                X.Msg.Alert("Operacion fallida", "Hubo un error al eliminar al beneficiario").Show();
         }
 
         [DirectMethod(Namespace = "App")]
@@ -454,6 +475,8 @@ namespace SDA.App
             {
                 foreach (dynamic item in items)
                 {
+                    int id = Convert.ToInt32(item["id"].Value);
+
                     string nombre = Convert.ToString(item["nombre"].Value);
                     string nombre2 = Convert.ToString(item["nombre2"].Value);
                     string apellidop = Convert.ToString(item["apellidop"].Value);
@@ -462,7 +485,7 @@ namespace SDA.App
                     int idparentesco = Convert.ToInt32(item["idparentesco"].Value);
                     int idsaldosda = Convert.ToInt32(Session["SaldosDA"]);
 
-                    SDA.wsConsultaReportesDA.Error err = reportesDA.InsertBeneficiarioDA(nombre, nombre2, apellidop, apellidom, porcentaje, idparentesco, idsaldosda);
+                    SDA.wsConsultaReportesDA.Error err = reportesDA.InsertBeneficiarioDA(id, nombre, nombre2, apellidop, apellidom, porcentaje, idparentesco, idsaldosda);
                 }
 
                 wndBeneficiario.Hide();

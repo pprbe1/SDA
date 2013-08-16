@@ -328,6 +328,9 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\wsConsultaDatosBen\wsConsultaBeneficios.wsdl" />
+    <None Include="Web References\wsConsultaReportesDA\BeneficiariosDA.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\wsConsultaReportesDA\Bitacora.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -594,10 +597,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx">
+    <WebReferenceUrl Include="http://localhost:50444/wspbene/wsConsultaReportesDA.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\wsConsultaReportesDA\</RelPath>
-      <UpdateFromURL>http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsConsultaReportesDA.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:50444/wspbene/wsConsultaReportesDA.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

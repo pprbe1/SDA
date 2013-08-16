@@ -76,10 +76,6 @@ namespace SDA.App
 
             int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
 
-            BitacoraSiniestro(noSiniestro);
-
-            RestaurarBitacora(null, null);
-
             this.wndInformacionSiniestro.Show();
         }
 
@@ -99,50 +95,6 @@ namespace SDA.App
         {
             Session["NoSocio"] = siniestro.NoSocio;
             Session["IdSiniestro"] = siniestro.NoSiniestro;
-        }
-
-        private void BitacoraSiniestro(int noSiniestro)
-        {
-            Bitacora[] bitacora = reportesDA.Bitacoras(5, noSiniestro);
-
-            strBitacora.DataSource = bitacora;
-            strBitacora.DataBind();
-        }
-
-        protected void NuevaBitacora(object sender, DirectEventArgs e)
-        {
-            int idSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
-
-            grdBitacora.Disabled = true;
-            txtBitacora.SetValue(string.Empty);
-            txtBitacora.ReadOnly = false;
-            btnGuardarBitacora.Hidden = false;
-            btnCancelarBitacora.Hidden = false;
-        }
-
-        protected void RestaurarBitacora(object sender, DirectEventArgs e)
-        {
-            grdBitacora.Disabled = false;
-            txtBitacora.SetValue(string.Empty);
-            txtBitacora.ReadOnly = true;
-            btnGuardarBitacora.Hidden = true;
-            btnCancelarBitacora.Hidden = true;
-        }
-
-        protected void InsertarBitacora(object sender, DirectEventArgs e)
-        {
-            Session["Usuario"] = "1"; //este vato es Administrador Prybe S.C.
-
-            int idUsuario = Convert.ToInt32(Session["Usuario"]);
-            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
-
-            Error err = reportesDA.InsertBitacoraDA(noSiniestro, idUsuario, txtBitacora.RawValue.ToString());
-
-            if (err.Valor) X.MessageBox.Alert("Alerta", err.Mensaje).Show();
-
-            BitacoraSiniestro(noSiniestro);
-
-            RestaurarBitacora(null, null);
         }
     }
 }

@@ -679,13 +679,13 @@ namespace SDA.App {
         protected global::Ext.Net.Button btnMostrarBitacora;
         
         /// <summary>
-        /// Control gplCaptacion.
+        /// Control grdCaptacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gplCaptacion;
+        protected global::Ext.Net.GridPanel grdCaptacion;
         
         /// <summary>
         /// Control Column4.
@@ -704,15 +704,6 @@ namespace SDA.App {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column Column5;
-        
-        /// <summary>
-        /// Control Column6.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column Column6;
         
         /// <summary>
         /// Control smCaptacion.

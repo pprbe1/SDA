@@ -58,6 +58,9 @@
         }
     </style>
     <script type="text/javascript">
+        var thisBroIsEditing = false;
+        var currentId = 0;
+
         var agregarBeneficiario = function (store) {
             var nombre = Ext.getCmp('txtNombreBeneficiario');
             var nombre2 = Ext.getCmp('txtNombre2Beneficiario');
@@ -67,7 +70,7 @@
             var parentesco = Ext.getCmp('cmbParentesco');
 
             store.add({
-                id: 2,
+                id: currentId,
                 nombre: nombre.getValue(),
                 nombre2: nombre2.getValue(),
                 apellidop: apellidop.getValue(),
@@ -82,10 +85,18 @@
             apellidop.clear();
             apellidom.clear();
             porcentaje.clear();
-            parentesco.clear();
+            parentesco.clearValue();
+            
+            currentId = 0;
+            thisBroIsEditing = false;
         };
 
         var guardarBeneficiarios = function (store) {
+            if (thisBroIsEditing) {
+                Ext.MessageBox.alert('Alerta', 'Termina de editar el beneficiario actual antes de continuar.');
+                return;
+            }
+
             var totalPercent = 0;
             var items = new Array();
 
@@ -101,16 +112,54 @@
                 Ext.MessageBox.alert('Verifique su informacion', 'El total de porcentaje no alcanza el 100% (' + totalPercent + '%)');
 
             else
-                bitchYouMadeItToOneHundredPercent(items);
+                App.Edit(items);
+
+            currentId = 0;
         };
 
-        var bitchYouMadeItToOneHundredPercent = function (items) {
-            App.Edit(items);
+        var deleteBeneficiario = function (record) {
+            if (thisBroIsEditing) {
+                Ext.MessageBox.alert('Alerta', 'Termina de editar el beneficiario actual antes de continuar.');
+                return;
+            }
+
+            if (currentId != 0)
+                App.Delete(record.data.id);
+
+            Ext.StoreManager.lookup('strBeneficiarios').remove(record);
+
+            currentId = 0;
         };
 
-        var deleteBeneficiario = function(record) {
-            Ext.getCmp('gplBeneficiario').getStore().remove(record);
-        }
+        var modifyBeneficiario = function (record) {
+            if (thisBroIsEditing) {
+                Ext.MessageBox.alert('Alerta', 'Termina de editar el beneficiario actual antes de continuar.');
+                return;
+            }
+
+            thisBroIsEditing = true;
+
+            Ext.getCmp('txtNombreBeneficiario').setValue(record.data.nombre);
+            Ext.getCmp('txtNombre2Beneficiario').setValue(record.data.nombre2);
+            Ext.getCmp('txtApellidoPBeneficiario').setValue(record.data.apellidop);
+            Ext.getCmp('txtApellidoMBeneficiario').setValue(record.data.apellidom);
+            Ext.getCmp('nmrPorcentaje').setValue(record.data.porcentaje);
+            Ext.getCmp('cmbParentesco').setValue(record.data.idparentesco);
+
+            currentId = record.data.id;
+
+            Ext.StoreManager.lookup('strBeneficiarios').remove(record);
+        };
+
+        var verificaCaptacion = function (e) {
+            var cuenta = Ext.getCmp('cmbCuentas').getRawValue();
+            var ret = Ext.StoreManager.lookup('strCaptacion').findExact('cuenta', cuenta);
+
+            if (ret !== -1) {
+                Ext.MessageBox.alert('Verifique su informacion', 'Ya ha agregado una cuenta ' + cuenta);
+                e.stopPropagation();
+            }
+        };
     </script>
 </head>
 <body>
@@ -174,16 +223,16 @@
     </ext:Store>
     <ext:Store ID="strBeneficiarios" runat="server">
         <Model>
-            <ext:Model ID="Model8" runat="server">
+            <ext:Model ID="Model8" runat="server" IDProperty="id" >
                 <Fields>
-                    <ext:ModelField Name="id" Type="Int" />
-                    <ext:ModelField Name="nombre" />
-                    <ext:ModelField Name="nombre2" />
-                    <ext:ModelField Name="apellidop" />
-                    <ext:ModelField Name="apellidom" />
-                    <ext:ModelField Name="parentesco" />
-                    <ext:ModelField Name="porcentaje" Type="Float" />
-                    <ext:ModelField Name="idparentesco" />
+                    <ext:ModelField Name="id" Mapping="IdBeneficiario" />
+                    <ext:ModelField Name="nombre" Mapping="Nombre1" />
+                    <ext:ModelField Name="nombre2" Mapping="Nombre2" />
+                    <ext:ModelField Name="apellidop" Mapping="Apellido1" />
+                    <ext:ModelField Name="apellidom" Mapping="Apellido2" />
+                    <ext:ModelField Name="parentesco" Mapping="Parentesco" />
+                    <ext:ModelField Name="porcentaje" Type="Float" Mapping="Porcentaje" />
+                    <ext:ModelField Name="idparentesco" Mapping="IdParentesco" />
                 </Fields>
             </ext:Model>
         </Model>
@@ -193,14 +242,15 @@
     </ext:Store>
     <ext:Store ID="strCaptacion" runat="server">
         <Model>
-            <ext:Model ID="Model6" runat="server" IDProperty="IdSaldo">
+            <ext:Model ID="Model6" runat="server" IDProperty="Cuenta">
                 <Fields>
                     <ext:ModelField Name="id" Mapping="IdSaldo" />
                     <ext:ModelField Name="cuenta" Mapping="Cuenta" Type="String" />
+                    <ext:ModelField Name="idcuenta" Mapping="IdCuenta" />
                     <ext:ModelField Name="saldo" Mapping="Saldo" />
                     <ext:ModelField Name="idsaldo" Mapping="IdSaldo"/>
+                    <ext:ModelField Name="idtipoprestamo" Mapping="IdTipoPrestamo" />
                     <ext:ModelField Name="tipoprestamo" Mapping="TipoPrestamo" />
-
                 </Fields>
             </ext:Model>
         </Model>
@@ -210,12 +260,14 @@
     </ext:Store>
     <ext:Store ID="strColocacion" runat="server">
         <Model>
-            <ext:Model ID="Model7" runat="server" IDProperty="IdSaldo">
+            <ext:Model ID="Model7" runat="server" IDProperty="Cuenta">
                 <Fields>
                     <ext:ModelField Name="id" Mapping="IdSaldo" />
                     <ext:ModelField Name="cuenta" Mapping="Cuenta" Type="String" />
+                    <ext:ModelField Name="idcuenta" Mapping="IdCuenta" />
                     <ext:ModelField Name="saldo" Mapping="Saldo" />
                     <ext:ModelField Name="idsaldo" Mapping="IdSaldo"/>
+                    <ext:ModelField Name="idtipoprestamo" Mapping="IdTipoPrestamo" />
                     <ext:ModelField Name="tipoprestamo" Mapping="TipoPrestamo" />
                 </Fields>
             </ext:Model>
@@ -511,9 +563,9 @@
                                                     StyleSpec="text-transform:uppercase" Width="120" />
                                 </Items>
                             </ext:FieldContainer>
-                            <ext:DateField ID="dteFechaN" runat="server" FieldLabel="Fecha Nacimiento" LabelAlign="Right" LabelWidth="100"
+                            <ext:DateField ID="dteFechaN" runat="server" FieldLabel="Fecha Nacimiento" LabelAlign="Right" LabelWidth="100" MaxDate="<%# DateTime.Now %>" AutoDataBind="true"
                                         EmptyText="dd/mm/aaaa" AllowBlank="false" Width="130"  MsgTarget="Side" Disabled="true" DataIndex="Fecha Nacimiento" />
-                            <ext:DateField ID="dteFechaI" runat="server" FieldLabel="Fecha Ingreso" DataIndex="Fecha Ingreso" LabelAlign="Right"
+                            <ext:DateField ID="dteFechaI" runat="server" FieldLabel="Fecha Ingreso" DataIndex="Fecha Ingreso" LabelAlign="Right" MaxDate="<%# DateTime.Now %>" AutoDataBind="true"
                                         EmptyText="dd/mm/aaaa" AllowBlank="false"  Width="130"  MsgTarget="Side" Disabled="true"/> 
                             <ext:RadioGroup ID="rdoSexo" runat="server" FieldLabel="Sexo" ColumnsNumber="2" Width="120" Disabled="true" LabelAlign="Right" >
                             <Items>
@@ -668,7 +720,7 @@
         </Items>           
     </ext:Panel>
     <ext:Panel runat="server" ID="pnlProteccionAhorros" Title="Protección a los Ahorros"
-        Icon="Money" Height="300" Collapsible="true" Collapsed="true" Layout="Form" Disabled="true">
+        Icon="Money" Height="300" Collapsible="true" Collapsed="true" Layout="FormLayout" Disabled="true">
         <Items>
             <ext:FormPanel ID="pnlCaptacion" runat="server" Border="false" Height="80" Padding="10"
                 Header="false" Layout="Column" >
@@ -681,10 +733,14 @@
                         runat="server" AllowDecimals="true" DecimalSeparator="." AllowBlank="false"
                         ColumnWidth=".15" LabelAlign="Right" />
                     <ext:DateField ID="dteFechaUltimoMovimiento" runat="server" FieldLabel="Fecha Último Movimiento"
-                        EmptyText="dd/mm/aaaa" AllowBlank="false" LabelAlign="Right" ColumnWidth=".28" />
+                        EmptyText="dd/mm/aaaa" AllowBlank="false" LabelAlign="Right" ColumnWidth=".28" MaxDate="<%# DateTime.Now %>" AutoDataBind="true" />
                 </Items>
                 <Buttons>
-                    <ext:Button runat="server" ID="btnAgregarCuentaCaptacion" Icon="MoneyAdd" Text="Agregar Cuenta Ahorro" FormBind="true" OnDirectClick="AgregarCuentaCaptacion" />
+                    <ext:Button runat="server" ID="btnAgregarCuentaCaptacion" Icon="MoneyAdd" Text="Agregar Cuenta Ahorro" FormBind="true" OnDirectClick="AgregarCuentaCaptacion">
+                        <Listeners>
+                            <Click Fn="verificaCaptacion" />
+                        </Listeners>
+                    </ext:Button>
                     <ext:Button runat="server" ID="btnMostrarBitacora" Icon="Book" Text="Mostrar Bitacora">
                         <Listeners>
                             <Click Handler="#{wndBitacora}.show();" />
@@ -692,15 +748,14 @@
                     </ext:Button>
                 </Buttons>
             </ext:FormPanel>
-            <ext:GridPanel runat="server" ID="gplCaptacion" AutoHeight="true"
-                Layout="Form" AutoScroll="true" StoreID="strCaptacion">
+            <ext:GridPanel runat="server" ID="grdCaptacion" Height="300" Scroll="Both"
+                Layout="Form" StoreID="strCaptacion">
                 <ColumnModel>
                     <Columns>
                         <ext:Column ID="Column4" runat="server" Text="Cuenta" DataIndex="cuenta" Width="150" />
                         <ext:Column ID="Column5" runat="server" Text="Saldo" DataIndex="saldo" Align="Right">
                             <Renderer Format="UsMoney" />
                         </ext:Column>
-                        <ext:Column ID="Column6" Text="Tipo Prestamo" runat="server" DataIndex="tipoprestamo" Width="200" Align="Right" />
                     </Columns>
                 </ColumnModel>
                 <SelectionModel>
@@ -709,6 +764,7 @@
                             <Select OnEvent="CellCuentaCaptacion">
                                 <ExtraParams>
                                     <ext:Parameter Name="Id" Value="record.data.id" Mode="Raw" />
+                                    <ext:Parameter Name="IdCuenta" Value="record.data.idcuenta" Mode="Raw" />
                                 </ExtraParams>
                             </Select>
                         </DirectEvents>
@@ -728,12 +784,12 @@
                         ForceSelection="true" ColumnWidth=".2" />
                     <ext:NumberField runat="server" AllowDecimals="true" LabelAlign="Right" DecimalSeparator="."
                         EmptyText="0.0%" ID="nmrTasaInteres" FieldLabel="Tasa Interés" AllowBlank="false" ColumnWidth=".2" />
-                    <ext:DateField runat="server" ID="dteFechaUltimoMovimientoCol" LabelAlign="Right"
+                    <ext:DateField runat="server" ID="dteFechaUltimoMovimientoCol" LabelAlign="Right" MaxDate="<%# DateTime.Now %>" AutoDataBind="true"
                         EmptyText="dd/mm/aaaa" FieldLabel="Fecha Último Movimiento" AllowBlank="false" ColumnWidth=".2" />
                     <ext:NumberField runat="server" AllowDecimals="true" DecimalSeparator="." LabelAlign="Right"
                         EmptyText="$##,###.00" ID="nmrSaldoPrincipal" FieldLabel="Saldo Principal"
                         AllowBlank="false" ColumnWidth=".2" />
-                    <ext:DateField ID="datePrestamo" runat="server" AllowBlank="false" FieldLabel="Fecha de Prestamo" ColumnWidth=".2" LabelAlign="Right" />
+                    <ext:DateField ID="datePrestamo" runat="server" AllowBlank="false" FieldLabel="Fecha de Prestamo" ColumnWidth=".2" LabelAlign="Right" MaxDate="<%# DateTime.Now %>" AutoDataBind="true" />
                 </Items>
                 <Buttons>
                     <ext:Button runat="server" ID="btnAgregarCuentaColocacion" Text="Agregar Préstamo" Icon="MoneyAdd" OnDirectClick="AgregarCuentaColocacion" FormBind="true" />
@@ -745,7 +801,7 @@
                 </Buttons>
             </ext:FormPanel>
             <ext:GridPanel runat="server" ID="gplColocacion" AutoHeight="true"
-                Layout="Fit" AutoScroll="true" Region="Center" StoreID="strColocacion">
+                Layout="Fit" Region="Center" StoreID="strColocacion">
                 <ColumnModel>
                     <Columns>
                         <ext:Column ID="Column7" runat="server" Text="Cuenta" DataIndex="cuenta" Width="150" />
@@ -824,7 +880,7 @@
                         ID="cmbParentesco" runat="server" LabelAlign="Right"
                         StoreID="strParentescos" Editable="false"
                         TypeAhead="true" QueryMode="Local" FieldLabel="Parentesco"
-                        ForceSelection="true" TriggerAction="All"            
+                        TriggerAction="All" AllowBlank="false"      
                         DisplayField="name" ValueField="id"
                         EmptyText="Loading..." ValueNotFoundText="Loading..." />
                     <ext:NumberField ID="nmrPorcentaje" LabelAlign="Right" AllowDecimals="true" DecimalSeparator="." runat="server"
@@ -849,12 +905,20 @@
                         <ext:Column ID="Column12" runat="server" Text="Apellido Paterno" DataIndex="apellidom" Align="Left" />
                         <ext:Column ID="Column13" runat="server" Text="Paretensco" DataIndex="parentesco" Align="Left" />
                         <ext:Column ID="Column2" runat="server" Text="Porcentaje" DataIndex="porcentaje" Align="Left" />
-                        <ext:CommandColumn runat="server">
+                        <ext:CommandColumn runat="server" Width="23">
                             <Commands>
                                 <ext:GridCommand Icon="Delete" CommandName="Delete" />
                             </Commands>
                             <Listeners>
                                 <Command Handler="deleteBeneficiario(record);" />
+                            </Listeners>
+                        </ext:CommandColumn>
+                        <ext:CommandColumn runat="server" Width="23">
+                            <Commands>
+                                <ext:GridCommand Icon="Pencil" CommandName="Modify" />
+                            </Commands>
+                            <Listeners>
+                                <Command Handler="modifyBeneficiario(record);" />
                             </Listeners>
                         </ext:CommandColumn>
                         <ext:Column ID="Column3" Hidden="true" runat="server" DataIndex="idbeneficiario" />

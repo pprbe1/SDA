@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="Analisis del Siniestro" Language="C#" AutoEventWireup="true" CodeBehind="AnalisisReclamo.aspx.cs" Inherits="SDA.App.AnalisisReclamo" ValidateRequest="false" %>
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
+
 <%@ Register TagPrefix="SDA" TagName="FileUploadBit" Src="/App/FileUploadBit.ascx" %>
+<%@ Register TagPrefix="SDA" TagName="LogBit" Src="/App/LogBit.ascx" %>
 
 <!DOCTYPE html>
 
@@ -25,10 +27,6 @@
                 (value == 'Req. Adicional') ? "#8904B1" :
                 (value == 'Pagado') ? "#0F9726" : "#5E6E82", value);
         }
-
-        function MostrarMensaje(sender, record, index) {
-            Ext.getCmp('txtBitacora').setValue(record.data.mensaje);
-        }
     </script>
     <style type="text/css">
         .fieldInfo 
@@ -39,7 +37,6 @@
             width: 200px;
         }
     </style>
-    <%--<link href="/Styles/Site.css" type="text/css" rel="Stylesheet" />--%>
 </head>
 <body>
     <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Gray" />
@@ -116,23 +113,6 @@
         </Listeners> 
     </ext:Store> 
 
-    <ext:Store ID="strBitacora" runat="server">
-        <Model>
-            <ext:Model ID="Model4" runat="server">
-                <Fields>
-                    <ext:ModelField Name="numbitacora" Mapping="IdBitacora" />
-                    <ext:ModelField Name="fecha" Mapping="Fecha" Type="Date" />
-                    <ext:ModelField Name="status" Mapping="Status" />
-                    <ext:ModelField Name="usuario" Mapping="Usuario" />
-                    <ext:ModelField Name="mensaje" Mapping="Mensaje" />
-                </Fields>
-            </ext:Model>
-        </Model>
-        <Reader>
-            <ext:ArrayReader />
-        </Reader>
-    </ext:Store>
-
     <ext:Store ID="strReclamosGral" runat="server">
         <Model>
             <ext:Model ID="Model5" runat="server">
@@ -148,42 +128,6 @@
         <Reader>
             <ext:ArrayReader />
         </Reader>
-    </ext:Store>
-
-    <ext:Store ID="strEnvio" runat="server">
-        <Model>
-            <ext:Model ID="Model6" runat="server">
-                <Fields>
-                    <ext:ModelField Name="numdocumentacion" Mapping="IdDocumentacion" />
-                    <ext:ModelField Name="paqueteria" Mapping="Paqueteria" />
-                    <ext:ModelField Name="numguia" Mapping="NoGuia" />
-                    <ext:ModelField Name="fechaenvio" Mapping="FechaEnvio" />
-                    <ext:ModelField Name="fechareclamo" Mapping="FechaReclamo" />
-                </Fields>
-            </ext:Model>
-        </Model>
-        <Reader>
-            <ext:ArrayReader />
-        </Reader>
-    </ext:Store>
-
-    <ext:Store ID="strPaqueteria" runat="server">
-        <Proxy>
-            <ext:AjaxProxy runat="server" Url="http://qa.prybe.coop/WSPrybeBeneficios/wspbene/wsCargaCombosBene.asmx/CargaPaqueteria">
-                <ActionMethods Read="POST" />
-                    <Reader>
-                    <ext:XmlReader Record="Paqueterias" />
-                </Reader>
-            </ext:AjaxProxy>
-        </Proxy>
-        <Model>
-            <ext:Model ID="Model8" runat="server">
-                <Fields>
-                    <ext:ModelField Name="id" Type="String" Mapping="Id" />
-                    <ext:ModelField Name="name" Type="String" Mapping="Name" />                        
-                </Fields>
-            </ext:Model>
-        </Model>
     </ext:Store>
 
     <ext:Store ID="strArchivos" runat="server">
@@ -331,7 +275,7 @@
         Icon="Group" 
         Title="Analísis del Siniestro"
         Width="800"
-        Height="600"
+        Height="500"
         Closable="false"
         Hidden="true"
         Modal="true"
@@ -367,35 +311,15 @@
                             </ext:Button>
                         </Items>
                     </ext:Panel>
-                    <ext:Panel ID="paneBitacora" runat="server" Title="Bitacora" Layout="ColumnLayout">
-                        <Items>
-                            <ext:GridPanel ID="grdBitacora" runat="server" ColumnWidth=".6" StoreID="strBitacora">
-                                <ColumnModel>
-                                    <Columns>
-                                        <ext:DateColumn ID="Column5" runat="server" Header="Fecha" DataIndex="fecha" Align="Center" Format="dd/MM/yyyy" />
-                                        <ext:Column ID="Column6" runat="server" Header="Estado" DataIndex="status" Align="Center" />
-                                        <ext:Column ID="Column7" runat="server" Header="Usuario" DataIndex="usuario" Align="Left" Flex="1" />
-                                    </Columns>
-                                </ColumnModel>
-                                <Listeners>
-                                    <Select Fn="MostrarMensaje" />
-                                </Listeners>
-                                <Buttons>
-                                    <ext:Button ID="btnNuevaBitacora" runat="server" Icon="Pencil" Text="Nueva Entrada" OnDirectClick="NuevaBitacora" />
-                                </Buttons>
-                            </ext:GridPanel>
-                            <ext:FormPanel ID="frmBitacora" runat="server" ColumnWidth=".4" Title="Detalles/Nueva Bitacora" Border="false" Layout="FitLayout">
-                                <Items>
-                                    <ext:HtmlEditor ID="txtBitacora" runat="server" Height="400" Width="120" ReadOnly="true" />
-                                </Items>
-                                <Buttons>
-                                    <ext:Button ID="btnGuardarBitacora" runat="server" Text="Guardar" Icon="Disk" Hidden="true" OnDirectClick="InsertarBitacora" FormBind="true" />
-                                    <ext:Button ID="btnCancelarBitacora" runat="server" Text="Cancelar" Icon="Cancel" Hidden="true" OnDirectClick="RestaurarBitacora" />
-                                </Buttons>
-                            </ext:FormPanel>
-                        </Items>
+                    <ext:Panel ID="paneSDALog" runat="server" Title="Bitacora">
+                        <Content>
+                            <SDA:LogBit ID="LogBit1" runat="server" />
+                        </Content>
+                        <Listeners>
+                            <Activate Handler="#{paneBitacora}.doLayout();" />
+                        </Listeners>
                     </ext:Panel>
-                    <ext:Panel ID="paneLol" Title="Archivos" runat="server" >
+                    <ext:Panel ID="paneSDAFile" Title="Archivos" runat="server" >
                         <Content>
                             <SDA:FileUploadBit ID="FileUploadBit1" runat="server" />
                         </Content>
@@ -414,7 +338,8 @@
             </ext:Button>
         </Buttons>
         <Listeners>
-            <Show Handler="App.direct.FileUploadBit1.CargarArchivos();" />
+            <Show Handler="App.direct.FileUploadBit1.CargarArchivos(); App.direct.LogBit1.CargarBitacora();" />
         </Listeners>
     </ext:Window>
 </body>
+</html>

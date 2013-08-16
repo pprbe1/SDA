@@ -16,7 +16,14 @@ namespace SDA.App
 
         protected void Page_Load(object sender, EventArgs e)
         {
+        }
 
+        [DirectMethod]
+        public void CargarBitacora()
+        {
+            RestaurarBitacora(null, null);
+            int noSiniestro = Convert.ToInt32(Session["IdSiniestro"]);
+            BitacoraSiniestro(noSiniestro);
         }
 
         private void BitacoraSiniestro(int noSiniestro)
@@ -59,6 +66,11 @@ namespace SDA.App
             BitacoraSiniestro(noSiniestro);
 
             RestaurarBitacora(null, null);
+        }
+
+        protected void MostrarMensaje(object sender, DirectEventArgs e)
+        {
+            txtBitacora.SetValue(e.ExtraParams["Mensaje"]);
         }
     }
 }
